@@ -15,11 +15,25 @@
      "description": "One line for the list of papers",
      "order": 3,                           the order in the list
      "minutes": 30,                        the time allowed (leave it out, or null, for no time limit)
+     "suggestedMinutes": 40,               with no time limit: the time we suggest; the clock at the top counts the
+                                           time spent writing (while the paper is open), and says when it is reached
+     "week": 1,                            the supervision it belongs to: on that supervision's page it is listed
+                                           first (papers with no week are practice papers, listed on every page)
+     "required": true,                     work to hand in (a "To hand in" badge, listed first); else optional
+     "handIn": true,                       work handed in through the site (config.js: handIn, the hand-in script):
+                                           after submitting, the student types the hand-in password and the site
+                                           sends the Word document to the script, which saves it in the supervisor's
+                                           Google Drive and sends back a receipt. Or {"script": "https://…", "to":
+                                           "…", "password": true}: a hand-in of its own. Or HTML ("<p>…</p>"), which
+                                           only says how to hand it in (on the first page and after submitting,
+                                           beside the button for the Word document)
      "autoSubmit": false,                  true: the answers are submitted when the time is up
      "spellcheck": false,                  is the browser's spelling checker on at the start? (students can switch it)
      "showWordCount": true,                show "Words: …" under essays
      "toolbar": "default",                 the essay toolbar: "default", "basic" (bold, italic, underline, lists,
                                            undo and redo) or "plain" (plain text); a question can have its own
+     "pictures": true,                     with the default toolbar, may students add pictures from their computer
+                                           (Insert picture)? (false: no; a question can have its own)
      "clipboard": "exam",                  "exam" (the default): as in Inspera's exam browser, only what was copied in
                                            the exam can be pasted into it; "any": anything can be pasted, as in an
                                            exam taken in an ordinary web browser
@@ -47,7 +61,8 @@
 
    ATTEMPTS (~/essays/<paper>-<n>.exam.json): {format, paper (a copy), candidate, started, deadline, submitted,
    timeUp, current, answers: {qid: {html, words} | {value} | {choice}, flag}, backups: {qid: [{time, html, words}]},
-   settings: {spellcheck}}.
+   images: {id: {type, data, w, h}} (the pictures added, each kept once: the answers hold <img class="ex-image"
+   data-img="id">), settings: {spellcheck}}.
 
    EVENTS (MG.bus), for the practicals' steps that tick themselves:
      exam:open     {paper, title}            a paper's first page, or an attempt, is opened
@@ -55,7 +70,8 @@
      exam:words    {paper, q, words}         the number of words of an answer (as the student types; debounced)
      exam:format   {cmd}                     a command of the editor's toolbar: bold, italic, underline, subscript,
                                              superscript, removeFormat, heading, copy, paste, undo, redo, ol, ul, indent,
-                                             outdent, special, table, drawing, formula, backup, restore, expand
+                                             outdent, special, table, drawing, picture, formula, backup, restore,
+                                             expand
      exam:flag     {paper, q, on}            a question is flagged or unflagged
      exam:nav      {paper, q}                another question (or 'submission', 'contents') is shown
      exam:timeup   {paper}                   the time allowed has run out
@@ -64,6 +80,13 @@
      exam:saved    {path}                    the attempt is saved to its file
      exam:paste    {paper, q, refused}       something is pasted (or dropped) into the exam; refused: it was copied
                                              from outside the exam, so it was not let in
+     exam:picture  {paper, q, n, source}     n pictures were added to an answer, from 'files' (the workbench's: a
+                                             photograph taken with the microscope…), 'computer', 'drop' or 'paste'
+     exam:suggested {paper, minutes}         the time spent writing reached the suggested time
+     exam:handin   {paper, step, receipt, error}  handing a paper in: 'confirmed' (the hand-in script has saved it,
+                                             with a receipt) or 'failed' (the script refused it, or didn't answer)
+   What a student has done with a paper to hand in is also kept for the whole site (MG.siteStore 'paper:<id>':
+   {started, submitted, downloaded, handedIn, receipt, file, folder}), for the supervisions' landing page.
      (the calculator: calc:open {}, calc:result {expr, value})
 
    THE PROGRAM: MG.ExamApp(root, {fs}) → .ready (a promise), .shown(), .openPaper(id), .newEssay(), .openFile(path),
@@ -93,6 +116,134 @@
     return `${fmtClock(d)} on ${fmtDate(d)}`;
   };
   const plural = (n, w, ws) => `${n} ${n === 1 ? w : ws || w + 's'}`;
+  /** what a student has done with a paper (for the landing page): 'paper:<id>' in the site's store */
+  const mark = (id, what, off) => {
+    if (!MG.siteStore || !id) return;
+    const r = MG.siteStore.get('paper:' + id, {}) || {};
+    if (off) delete r[what];
+    else r[what] = new Date().toISOString();
+    MG.siteStore.set('paper:' + id, r);
+  };
+  const paperState = (id) => (MG.siteStore && id ? MG.siteStore.get('paper:' + id, {}) || {} : {});
+  /** the site's name, for the web page a submission downloads as (build/supervisions.py: SITE_TITLE) */
+  const SITE_NAME = () => (window.BMS_PAGE && window.BMS_PAGE.site) || CFG.courseTitle || 'Supervision work';
+  /** where a paper is handed in through the site, or null when it isn't (no handIn, handIn is only HTML, or there is
+      no hand-in script): {to, password, script – the address of the hand-in script, which takes the Word document –
+      and drive, where it keeps it}. A paper's "handIn": true takes the site's (config.js: handIn); an object of its
+      own adds to it, or replaces it. */
+  function handInOf(paper) {
+    const v = paper && paper.handIn;
+    if (!v || typeof v === 'string') return null;
+    const o = Object.assign({}, CFG.handIn || {}, v === true ? {} : v);
+    if (typeof o.script !== 'string' || !/^https:\/\//.test(o.script)) return null;
+    return { to: o.to || 'your supervisor', password: o.password !== false, script: o.script, drive: o.drive || 'Google Drive' };
+  }
+  /** a paper's handIn when it is only HTML that says how to hand it in */
+  const handInHTML = (paper) => (paper && typeof paper.handIn === 'string' ? paper.handIn : '');
+  /** keeps what a student has done with a paper: a patch of fields, for the landing page and the instructions */
+  const setPaperState = (id, patch) => {
+    if (!MG.siteStore || !id) return;
+    MG.siteStore.set('paper:' + id, Object.assign(MG.siteStore.get('paper:' + id, {}) || {}, patch));
+  };
+  const DOCX_TYPE = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+  const base64Of = (blob) => new Promise((ok, no) => {
+    const r = new FileReader();
+    r.onload = () => ok(String(r.result).split(',')[1] || '');
+    r.onerror = () => no(r.error);
+    r.readAsDataURL(blob);
+  });
+  const possessive = (who) => (/s$/.test(who) ? who + '’' : who + '’s');
+  /** what the work of a paper is called in the hand-in's messages: "essay" for a paper that is one essay, else "work" */
+  const workOf = (paper) => {
+    const qs = ((paper && paper.questions) || []).filter((q) => q.type !== 'info');
+    return qs.length === 1 && qs[0].type === 'essay' ? 'essay' : 'work';
+  };
+
+  /* ------------------------------------------------------------------
+     pictures: added to an answer from the student's computer (Insert picture, or a picture file dropped in), made
+     smaller in the browser, and kept once with the attempt – att.images: {id: {type, data (base64), w, h}}. An
+     answer (and its backup copies, and the editor's undo) holds only <img class="ex-image" data-img="id" width
+     height alt>: the editor shows the picture from a blob: address, and the downloads, the review and the hand-in
+     from its data (withPictures).
+     ------------------------------------------------------------------ */
+  const PIC = { maxSide: 1600, maxFileMB: 30, maxKB: 700, perAnswer: 10, totalMB: 15 };
+  const PIC_ID = /^[a-z0-9]{6,24}$/;
+  function newPicId() {
+    const a = new Uint8Array(10);
+    if (window.crypto && crypto.getRandomValues) crypto.getRandomValues(a);
+    else a.forEach((x, i) => (a[i] = Math.floor(Math.random() * 256)));
+    return 'p' + Array.from(a, (b) => (b % 36).toString(36)).join('');
+  }
+  function b64ToBlob(data, type) {
+    const bin = atob(data);
+    const bytes = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+    return new Blob([bytes], { type });
+  }
+  /** the pictures (ids) an answer's HTML uses, added to a set */
+  function picRefs(html, set) {
+    (String(html || '').match(/data-img="[a-z0-9]+"/g) || []).forEach((m) => set.add(m.slice(10, -1)));
+    return set;
+  }
+  /** a picture file → {type, data, w, h}: at most PIC.maxSide pixels on its longer side and PIC.maxKB in size, on
+      white (so that a transparent picture looks the same in Word); a PNG for a drawing or a screenshot that stays
+      small, else a JPEG. (Drawn as an <img>, so that a photo is the right way up.) */
+  async function preparePicture(file) {
+    const url = URL.createObjectURL(file);
+    try {
+      const img = await new Promise((ok, no) => {
+        const im = new Image();
+        im.onload = () => ok(im);
+        im.onerror = () => no(new Error('This picture could not be opened.'));
+        im.src = url;
+      });
+      const W0 = img.naturalWidth || 800, H0 = img.naturalHeight || 600;
+      const graphic = /png|gif|webp|bmp|svg/i.test(file.type || '');
+      let side = PIC.maxSide;
+      for (let tries = 0; tries < 5; tries++) {
+        const k = Math.min(1, side / Math.max(W0, H0));
+        const w = Math.max(1, Math.round(W0 * k)), hh = Math.max(1, Math.round(H0 * k));
+        const cv = document.createElement('canvas');
+        cv.width = w;
+        cv.height = hh;
+        const g = cv.getContext('2d');
+        g.fillStyle = '#ffffff';
+        g.fillRect(0, 0, w, hh);
+        g.imageSmoothingQuality = 'high';
+        g.drawImage(img, 0, 0, w, hh);
+        const blobOf = (type, q) => new Promise((ok) => cv.toBlob(ok, type, q));
+        const jpeg = await blobOf('image/jpeg', tries ? 0.75 : 0.85);
+        let out = jpeg;
+        if (graphic) {
+          const png = await blobOf('image/png');
+          if (png && png.size <= PIC.maxKB * 1024 && (!jpeg || png.size < 200 * 1024 || png.size <= jpeg.size * 1.5)) out = png;
+        }
+        if (!out) throw new Error('This picture could not be made smaller.');
+        if (out.size <= PIC.maxKB * 1024 || tries === 4) return { type: out.type, data: await base64Of(out), w, h: hh };
+        side = Math.round(Math.min(side, Math.max(W0, H0)) * 0.8);
+      }
+      throw new Error('This picture could not be made smaller.');
+    } finally {
+      URL.revokeObjectURL(url);
+    }
+  }
+  /** an answer's HTML with its pictures' data in it (for the downloads, the review and the hand-in) */
+  function withPictures(html, att) {
+    if (!html || html.indexOf('ex-image') < 0) return html;
+    const t = document.createElement('template');
+    t.innerHTML = html;
+    t.content.querySelectorAll('img.ex-image').forEach((im) => {
+      const r = att && att.images && att.images[im.getAttribute('data-img')];
+      if (r) im.setAttribute('src', `data:${r.type};base64,${r.data}`);
+      else im.remove();
+    });
+    const d = document.createElement('div');
+    d.appendChild(t.content);
+    return d.innerHTML;
+  }
+  /** the time a paper allows, or suggests: "40 minutes", "No time limit (about 40 minutes suggested)" */
+  const timeText = (p) => (p.minutes ? `${p.minutes} minutes` : p.suggestedMinutes ? `No time limit (about ${p.suggestedMinutes} minutes suggested)` : 'No time limit');
+  const fullName = () => (MG.user && MG.user.fullName ? MG.user.fullName() : '');
   /** "1 hour, 57 minutes remaining"; seconds in the last 5 minutes */
   function fmtRemaining(ms) {
     if (ms <= 0) return 'Time is up';
@@ -139,6 +290,7 @@
     indent: svg('<path d="M21 5H3M21 19H3M21 12h-9M4 9l3 3-3 3"/>'),
     table: svg('<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M3 15h18M9 4v16M15 4v16"/>'),
     draw: svg('<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/>'),
+    picture: svg('<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="M21 15.5l-5-5L5 20"/>'),
     expand: svg('<path d="M8 3H5a2 2 0 0 0-2 2v3M21 8V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3M16 21h3a2 2 0 0 0 2-2v-3"/>'),
     shrink: svg('<path d="M8 3v3a2 2 0 0 1-2 2H3M21 8h-3a2 2 0 0 1-2-2V3M3 16h3a2 2 0 0 1 2 2v3M16 21v-3a2 2 0 0 1 2-2h3"/>'),
     eraser: svg('<path d="M7 21h10M5.5 15.5l9-9a2 2 0 0 1 2.8 0l1.2 1.2a2 2 0 0 1 0 2.8L12 17H8z"/>'),
@@ -168,7 +320,7 @@
         return;
       }
       if (n.tagName === 'IMG') {
-        out += forCount ? ' ' : ' [drawing] ';
+        out += forCount ? ' ' : n.classList.contains('ex-image') ? ' [picture] ' : ' [drawing] ';
         return;
       }
       if (n.tagName === 'BR') {
@@ -234,16 +386,26 @@
         if (st.verticalAlign === 'sub') wrapWith('sub');
       });
       B.querySelectorAll('[data-unwrap]').forEach((el) => el.replaceWith(...Array.from(el.childNodes)));
-      // our own formulas and drawings may come back (copied from another answer); other pictures may not
-      B.querySelectorAll('img:not(.ex-drawing)').forEach((n) => n.remove());
+      // our own formulas, drawings and pictures may come back (copied from another answer); other pictures may not
+      B.querySelectorAll('img:not(.ex-drawing):not(.ex-image)').forEach((n) => n.remove());
     }
     let out = window.DOMPurify
-      ? window.DOMPurify.sanitize(B.innerHTML, { ALLOWED_TAGS: ALLOWED, ALLOWED_ATTR: ['class', 'data-tex', 'data-drawing', 'data-indent', 'src', 'alt', 'title', 'width', 'height', 'contenteditable'], ALLOW_DATA_ATTR: false })
+      ? window.DOMPurify.sanitize(B.innerHTML, { ALLOWED_TAGS: ALLOWED, ALLOWED_ATTR: ['class', 'data-tex', 'data-drawing', 'data-img', 'data-indent', 'src', 'alt', 'title', 'width', 'height', 'contenteditable'], ALLOW_DATA_ATTR: false })
       : B.innerHTML;
     const t = document.createElement('template');
     t.innerHTML = out;
     const R = t.content;
     R.querySelectorAll('img').forEach((im) => {
+      // a picture: only its id (the editor and the downloads find its data); a drawing: its PNG
+      if (im.classList.contains('ex-image') && PIC_ID.test(im.getAttribute('data-img') || '')) {
+        im.className = 'ex-image';
+        im.removeAttribute('src');
+        ['width', 'height'].forEach((k) => {
+          const v = +im.getAttribute(k);
+          if (!(v > 0 && v <= 10000)) im.removeAttribute(k);
+        });
+        return;
+      }
       if (!im.classList.contains('ex-drawing') || !/^data:image\/png;base64,/.test(im.getAttribute('src') || '')) im.remove();
       else im.className = 'ex-drawing';
     });
@@ -268,7 +430,7 @@
       }
     });
     R.querySelectorAll('[class]').forEach((x) => {
-      if (/^(ex-formula|ex-drawing|ex-table)$/.test(x.className)) return;
+      if (/^(ex-formula|ex-drawing|ex-image|ex-table)$/.test(x.className)) return;
       if (x.parentElement && x.parentElement.closest('.ex-formula')) return;
       x.removeAttribute('class');
     });
@@ -319,13 +481,13 @@
      menu) puts the text here and on the computer's clipboard, and a paste is let in when what it brings is what was
      copied here. (Copying out of the exam is not stopped: students may keep their writing.) A paper with
      "clipboard": "any" lets anything be pasted, as an exam taken in an ordinary web browser does. */
-  const CLIP = { text: '', html: '' };
+  const CLIP = { text: '', html: '', images: {} };
   const clipKey = (t) => String(t || '').replace(/\s+/g, '');
   function clipFromExam(text, html) {
     const k = clipKey(text);
     if (k) return k === clipKey(CLIP.text);
-    // (no text: a drawing copied in the exam)
-    const pics = String(html || '').match(/src="data:image\/[^"]{30,}"/g) || [];
+    // (no text: a drawing or a picture copied in the exam)
+    const pics = String(html || '').match(/src="data:image\/[^"]{30,}"|data-img="[a-z0-9]+"/g) || [];
     return pics.length > 0 && pics.every((x) => CLIP.html.includes(x));
   }
 
@@ -428,11 +590,11 @@
             const p = peek();
             if (p && p.t === '^') {
               next();
-              if (a.sup) throw new Error('Two superscripts in a row: put them in braces, as in x^{ab}.');
+              if (a.sup) throw new Error('There are two superscripts in a row. Put them in braces, as in x^{ab}.');
               a.sup = arg();
             } else if (p && p.t === '_') {
               next();
-              if (a.sub) throw new Error('Two subscripts in a row: put them in braces, as in x_{ab}.');
+              if (a.sub) throw new Error('There are two subscripts in a row. Put them in braces, as in x_{ab}.');
               a.sub = arg();
             } else break;
           }
@@ -738,7 +900,7 @@
       ok.disabled = !s || !!e;
     }
     ta.addEventListener('input', update);
-    const help = h('p.hint', 'Type the formula, or use the buttons. Braces {} group things: x^{2a}, \\frac{top}{bottom}. Square brackets for concentrations: [Na^{+}]. Ordinary words: \\text{mmHg}.');
+    const help = h('p.hint', 'Type the formula, or use the buttons. Braces {} group things together, as in x^{2a} or \\frac{top}{bottom}. Use square brackets for concentrations, as in [Na^{+}], and \\text{} for ordinary words, as in \\text{mmHg}.');
     const body = h('div.ex-formula-dlg', h('div.ex-ftop', ex), pal, ta, help, h('div.ex-fprevwrap', h('span.ex-fname', 'Preview'), prev), err, h('div.prompt-actions', cancel, ok));
     const m = dialog('Edit formula', body, { wide: true });
     cancel.addEventListener('click', () => m.close());
@@ -974,7 +1136,11 @@
   let edCount = 0;
   class Editor {
     /* opts: html, words {min, max, hard}, showWords, spellcheck, lines, toolbar ('default'|'basic'|'plain'), readonly,
-       label, onInput(editor), onFormat(cmd), onBackup(), getBackups() → [...], restoreBackup(b), onExpand(on) */
+       label, onInput(editor), onFormat(cmd), onBackup(), getBackups() → [...], restoreBackup(b), onExpand(on), and
+       images – the attempt's pictures, when the answer may have them: {has(id), url(id) → a blob: address, add(picture,
+       id) → its id, or null when there is no room, files() → the pictures in the workbench's files that Insert picture
+       offers [{path, name, where}], blob(path) → a promise of one of them}, and onPictures(n, source) – pictures were
+       added ('computer', 'files', 'drop' or 'paste') */
     constructor(opts) {
       this.o = opts || {};
       this.id = 'exed' + ++edCount;
@@ -1041,6 +1207,7 @@
         btn('special', '<span class="ex-om">Ω</span>', 'Insert special character', () => this.command('special'));
         btn('table', IC.table, 'Table', () => this.command('table'));
         btn('drawing', IC.draw, 'Insert drawing', () => this.command('drawing'));
+        if (this.o.images) btn('picture', IC.picture, 'Insert picture (from your computer)', () => this.command('picture'));
         btn('formula', '<span class="ex-sig">Σ</span>', 'Edit formula', () => this.command('formula'));
         sep();
         btn('expand', IC.expand, 'Expand (full screen)', () => this.command('expand'));
@@ -1074,6 +1241,8 @@
         e.preventDefault();
         if (this.readonly) return;
         const cd = e.clipboardData;
+        // (a picture on the clipboard, on a paper that lets anything be pasted: as if it had been inserted)
+        if (cd && cd.files && cd.files.length && this.o.images && !cd.getData('text/plain')) return this._addPictures(cd.files, null, 'paste');
         this.insertPasted(cd ? cd.getData('text/html') : '', cd ? cd.getData('text/plain') : '');
       });
       // (text dragged from one place in the answer to another: the browser moves it, and the word limit is checked)
@@ -1084,8 +1253,13 @@
         e.preventDefault();
         if (this.readonly) return;
         const dt = e.dataTransfer;
-        if (!dt || dt.files && dt.files.length) return this._note('Files and pictures cannot be put into an answer. Use the drawing tool for a diagram.');
+        if (!dt) return;
         const r = document.caretRangeFromPoint ? document.caretRangeFromPoint(e.clientX, e.clientY) : null;
+        // pictures from the computer: put in where they are dropped (the same as Insert picture)
+        if (dt.files && dt.files.length) {
+          if (!this.o.images) return this._note('Files and pictures can’t be added to this answer, but you can use the drawing tool for a diagram.');
+          return this._addPictures(dt.files, r && this.area.contains(r.startContainer) ? r : null, 'drop');
+        }
         if (r) {
           const s = window.getSelection();
           s.removeAllRanges();
@@ -1096,9 +1270,11 @@
       A.addEventListener('dblclick', (e) => {
         const f = e.target.closest && e.target.closest('.ex-formula');
         const d = e.target.closest && e.target.closest('img.ex-drawing');
+        const pic = e.target.closest && e.target.closest('img.ex-image');
         if (this.readonly) return;
         if (f && A.contains(f)) this._editFormula(f);
         else if (d && A.contains(d)) this._editDrawing(d);
+        else if (pic && A.contains(pic)) this._removePicture(pic);
       });
       A.addEventListener('contextmenu', (e) => {
         const cell = e.target.closest && e.target.closest('td,th');
@@ -1163,10 +1339,15 @@
     getHTML() {
       const A = this.area;
       if (!A.textContent.trim() && !A.querySelector('img,.ex-formula,table')) return '';
-      return A.innerHTML;
+      if (!A.querySelector('img.ex-image')) return A.innerHTML;
+      // (a picture is kept by its id: its data is kept once, with the attempt)
+      const c = A.cloneNode(true);
+      c.querySelectorAll('img.ex-image').forEach((im) => im.removeAttribute('src'));
+      return c.innerHTML;
     }
     setHTML(html, initial) {
       this.area.innerHTML = html ? cleanHTML(html) : '';
+      this._showPictures();
       this._range = null;
       this.hist = [{ html: this.area.innerHTML, sel: null }];
       this.hi = 0;
@@ -1344,12 +1525,13 @@
       this.el.classList.remove('ex-limit-flash');
       void this.el.offsetWidth;
       this.el.classList.add('ex-limit-flash');
-      this._note(`You have reached the limit of ${this._limit()} words.`);
+      this._note(`You’ve reached the limit of ${this._limit()} words.`);
     }
-    _note(text) {
+    _note(text, ms, ok) {
       this.note.textContent = text;
+      this.note.classList.toggle('ok', !!ok);
       clearTimeout(this._nt);
-      this._nt = setTimeout(() => (this.note.textContent = ''), 5000);
+      this._nt = setTimeout(() => (this.note.textContent = ''), ms || 5000);
     }
     _keydown(e) {
       const mod = e.ctrlKey || e.metaKey;
@@ -1473,6 +1655,7 @@
         if (d) return this._editDrawing(d);
         return drawingDialog(null, (x) => x && this._insertHTML(this._drawingHTML(x) + '<br>', 'drawing'));
       }
+      if (cmd === 'picture') return this._choosePictures();
       if (cmd === 'backup') {
         this._format('backup');
         return this.o.onBackups && this.o.onBackups();
@@ -1656,12 +1839,228 @@
         this._format('drawing');
       });
     }
+
+    /* ---------- pictures (from the student's files in the workbench, or from their computer) ---------- */
+    _choosePictures() {
+      if (!this.o.images) return;
+      this._keepRange();
+      const range = this._range ? this._range.cloneRange() : null;
+      // (with pictures in the workbench's files – a photograph taken with the microscope, say – a choice; else the
+      // computer's chooser at once)
+      const mine = this.o.images.files ? this.o.images.files() : [];
+      if (mine.length) this._pictureDialog(mine, range);
+      else this._fromComputer(range);
+    }
+    _fromComputer(range) {
+      const inp = h('input', { type: 'file', accept: 'image/*', multiple: true, hidden: true });
+      inp.addEventListener('change', () => {
+        const files = Array.from(inp.files || []);
+        inp.remove();
+        if (files.length) this._addPictures(files, range, 'computer');
+      });
+      inp.addEventListener('cancel', () => inp.remove());
+      // (in the page while it is open: some browsers only open a chooser that is)
+      this.el.appendChild(inp);
+      inp.click();
+    }
+    /** the pictures in the workbench's files (list: [{path, name, where}], the newest first) to choose from, and a
+        button for one from the computer */
+    _pictureDialog(list, range) {
+      const urls = [];
+      const grid = h('div.ex-picgrid', { role: 'list', 'aria-label': 'Pictures in your files' });
+      const pc = h('button.btn', { type: 'button' }, 'From your computer…');
+      const cancel = h('button.btn', { type: 'button' }, 'Cancel');
+      const m = dialog('Insert a picture', h('div.ex-picdlg',
+        h('p', 'Choose a picture from your files in the workbench, such as a photograph you took with the microscope, or add one from your computer.'),
+        grid, h('div.prompt-actions', pc, h('span.grow'), cancel)), { wide: true, onClose: () => urls.forEach((u) => URL.revokeObjectURL(u)) });
+      pc.addEventListener('click', () => {
+        m.close();
+        this._fromComputer(range);
+      });
+      cancel.addEventListener('click', () => m.close());
+      list.forEach((f) => {
+        const img = h('img', { alt: '' });
+        const folder = f.where.slice(0, f.where.lastIndexOf('/')) || f.where;
+        const b = h('button.ex-picitem', { type: 'button', role: 'listitem', title: f.where, 'aria-label': `${f.name}, in ${folder}` },
+          h('span.ex-picthumb', img), h('span.ex-picname', f.name), h('span.ex-picwhere', folder));
+        this.o.images.blob(f.path).then((blob) => {
+          const u = URL.createObjectURL(blob);
+          urls.push(u);
+          img.src = u;
+        }, () => b.classList.add('broken'));
+        b.addEventListener('click', async () => {
+          m.close();
+          let file;
+          try {
+            const blob = await this.o.images.blob(f.path);
+            const ext = (/\.([a-z]+)$/i.exec(f.name) || [])[1] || 'png';
+            file = new File([blob], f.name, { type: /^image\//.test(blob.type) ? blob.type : 'image/' + ext.toLowerCase().replace('jpg', 'jpeg') });
+          } catch (e) {
+            return this._note(`${f.name} couldn’t be read from your files.`, 8000);
+          }
+          this._addPictures([file], range, 'files');
+        });
+        grid.appendChild(b);
+      });
+      setTimeout(() => grid.querySelector('button') && grid.querySelector('button').focus(), 30);
+    }
+    /** pictures (files) into the answer, where the cursor is (or range): made smaller, kept with the attempt, each on
+        a line of its own, with the cursor on a new line after them for a caption. source: where they came from
+        ('computer', 'files', 'drop', 'paste'), for onPictures */
+    async _addPictures(files, range, source) {
+      if (this.readonly || !this.o.images) return;
+      const list = Array.from(files || []);
+      const isPic = (f) => /^image\//.test(f.type || '') || /\.(png|jpe?g|gif|webp|bmp|heic|heif|avif)$/i.test(f.name || '');
+      const pics = list.filter(isPic);
+      if (!pics.length) return this._note('Only pictures, such as PNG, JPEG, GIF or WebP files, can be added to an answer.', 8000);
+      const room = PIC.perAnswer - this.area.querySelectorAll('img.ex-image').length;
+      if (room <= 0) return this._note(`An answer can have up to ${PIC.perAnswer} pictures.`, 8000);
+      const notes = [];
+      if (pics.length < list.length) notes.push('Only pictures can be added, so the other files were left out.');
+      if (pics.length > room) notes.push(`An answer can have up to ${PIC.perAnswer} pictures, so only ${plural(room, 'picture')} ${room === 1 ? 'was' : 'were'} added.`);
+      this._note(pics.length > 1 ? 'Adding the pictures…' : 'Adding the picture…', 60000, true);
+      const ready = [];
+      for (const f of pics.slice(0, room)) {
+        const name = f.name || 'A picture';
+        if (f.size > PIC.maxFileMB * 1048576) {
+          notes.push(`${name} is too big to add (${Math.round(f.size / 1048576)} MB, and the limit is ${PIC.maxFileMB} MB).`);
+          continue;
+        }
+        try {
+          const rec = await preparePicture(f);
+          const id = this.o.images.add(rec);
+          if (!id) {
+            notes.push('There’s no room for any more pictures in this attempt.');
+            break;
+          }
+          ready.push({ id, rec });
+        } catch (e) {
+          notes.push(`${name} couldn’t be opened. Try saving it as a JPEG or PNG and adding that instead.`);
+        }
+      }
+      if (ready.length) {
+        this._insertPictures(ready, range);
+        if (this.o.onPictures) this.o.onPictures(ready.length, source || 'drop');
+      }
+      const done = ready.length ? `${ready.length > 1 ? `${ready.length} pictures added.` : 'Picture added.'} You can type a caption under ${ready.length > 1 ? 'each' : 'it'}.` : '';
+      this._note([done, ...notes].filter(Boolean).join(' ') || ' ', notes.length ? 10000 : 6000, !notes.length);
+    }
+    _pictureEl({ id, rec }) {
+      const im = document.createElement('img');
+      im.className = 'ex-image';
+      im.setAttribute('data-img', id);
+      im.src = this.o.images.url(id);
+      im.width = rec.w;
+      im.height = rec.h;
+      im.alt = 'A picture';
+      im.title = 'A picture (double-click to take it out)';
+      return im;
+    }
+    _insertPictures(list, range) {
+      const A = this.area;
+      this.focus();
+      this.flush();
+      const s = window.getSelection();
+      if (range && A.contains(range.startContainer)) {
+        s.removeAllRanges();
+        s.addRange(range);
+      }
+      if (!s.rangeCount || !A.contains(s.anchorNode)) this._caretToEnd();
+      const r = s.getRangeAt(0);
+      r.deleteContents();
+      const node = r.startContainer.nodeType === 1 ? r.startContainer : r.startContainer.parentNode;
+      const inLine = node.closest && node.closest('td,th,li');
+      if (inLine && A.contains(inLine)) {
+        // (in a table or a list: in its line, where the cursor is)
+        const frag = document.createDocumentFragment();
+        list.forEach((x) => frag.append(this._pictureEl(x), document.createElement('br')));
+        const last = frag.lastChild;
+        r.insertNode(frag);
+        r.setStartAfter(last);
+        r.collapse(true);
+      } else {
+        // a paragraph of its own: the one the cursor is in is split there
+        let blk = node === A ? null : node.closest && node.closest('p,h1,h2,h3,pre,div');
+        if (blk && (blk === A || !A.contains(blk))) blk = null;
+        let tail = null;
+        if (blk) {
+          const rest = document.createRange();
+          rest.setStart(r.startContainer, r.startOffset);
+          rest.setEnd(blk, blk.childNodes.length);
+          tail = blk.cloneNode(false);
+          tail.appendChild(rest.extractContents());
+        } else {
+          blk = document.createElement('p');
+          r.insertNode(blk);
+        }
+        const empty = (b) => !b.textContent.trim() && !b.querySelector('img,.ex-formula,table');
+        let after = blk;
+        list.forEach((x) => {
+          const p = document.createElement('p');
+          p.appendChild(this._pictureEl(x));
+          after.after(p);
+          after = p;
+        });
+        if (empty(blk)) blk.remove();
+        let next = tail && !empty(tail) ? tail : null;
+        if (!next) {
+          next = document.createElement('p');
+          next.innerHTML = '<br>';
+        }
+        after.after(next);
+        r.selectNodeContents(next);
+        r.collapse(true);
+      }
+      s.removeAllRanges();
+      s.addRange(r);
+      this._range = r.cloneRange();
+      this.record();
+      this._good = { html: A.innerHTML, sel: this._sel() };
+      this._changed();
+      this._format('picture');
+    }
+    async _removePicture(img) {
+      if (!(await MG.confirmBox('Take the picture out?', '<p>This takes the picture out of your answer. If you change your mind, Undo (Ctrl+Z) brings it back.</p>', 'Take it out', { cancel: 'Keep it' }))) return;
+      if (!img.isConnected) return;
+      this.flush();
+      const p = img.parentElement;
+      if (p && p !== this.area && p.tagName === 'P' && p.childNodes.length === 1) p.remove();
+      else img.remove();
+      this.record();
+      this._changed();
+      this._format('picture');
+      this.focus();
+    }
+    /** the pictures of the answer (or of root) shown, from the attempt; one that isn't there any more goes */
+    _showPictures(root) {
+      (root || this.area).querySelectorAll('img.ex-image').forEach((im) => {
+        const u = this.o.images ? this.o.images.url(im.getAttribute('data-img')) : '';
+        if (!u) im.remove();
+        else if (im.getAttribute('src') !== u) im.setAttribute('src', u);
+      });
+    }
+    /** pictures in what is pasted (copied in the exam): from this attempt, or brought from another with the copy */
+    _pastedPictures(frag) {
+      const t = document.createElement('template');
+      t.innerHTML = frag;
+      t.content.querySelectorAll('img.ex-image').forEach((im) => {
+        const id = im.getAttribute('data-img');
+        if (this.o.images && !this.o.images.has(id) && CLIP.images[id]) {
+          const kept = this.o.images.add(CLIP.images[id], id);
+          if (kept && kept !== id) im.setAttribute('data-img', kept);
+        }
+      });
+      this._showPictures(t.content);
+      const d = document.createElement('div');
+      d.appendChild(t.content);
+      return d.innerHTML;
+    }
     async _pasteButton() {
       this.focus();
       if (this.o.clipboard !== 'any') {
         // (only what was copied in the exam can be pasted, so the button pastes that: it does not read the computer's
         // clipboard)
-        if (!clipKey(CLIP.text) && !CLIP.html) return this._note('Nothing has been copied in this exam yet: select some text and press Ctrl+C.');
+        if (!clipKey(CLIP.text) && !CLIP.html) return this._note('You haven’t copied anything in this exam yet. Select some text and press Ctrl+C first.');
         return this.insertPasted(CLIP.html, CLIP.text);
       }
       try {
@@ -1675,12 +2074,12 @@
         if (navigator.clipboard && navigator.clipboard.readText) return this.insertPasted('', await navigator.clipboard.readText());
         throw new Error('no clipboard');
       } catch (e) {
-        this._note('Your browser does not let the page read the clipboard: use Ctrl+V (⌘+V on a Mac) to paste.');
+        this._note('Your browser won’t let the page read the clipboard, so use Ctrl+V (⌘+V on a Mac) to paste instead.');
       }
     }
     insertPasted(html, text) {
       if (this.readonly) return;
-      if (!html && !text) return this._note('Only text can be pasted into an answer. Use the drawing tool for a diagram.');
+      if (!html && !text) return this._note(this.o.images ? 'Only text can be pasted into an answer. To add a picture, use Insert picture.' : 'Only text can be pasted into an answer. Use the drawing tool for a diagram.');
       this.focus();
       this.flush();
       let frag = this.mode !== 'plain' && html ? cleanHTML(html, { foreign: true }) : textToHTML(text);
@@ -1689,6 +2088,7 @@
       tmp.innerHTML = frag;
       if (tmp.children.length === 1 && tmp.firstElementChild.tagName === 'P') frag = tmp.firstElementChild.innerHTML;
       if (this.mode === 'plain') frag = esc(text || tmp.textContent).replace(/\n/g, '<br>');
+      else if (frag.indexOf('ex-image') >= 0) frag = this._pastedPictures(frag);
       const max = this._limit();
       if (max) {
         const avail = max - this.words();
@@ -1696,7 +2096,7 @@
         if (wordsOfHTML(frag) > avail) {
           if (avail <= 0) return this._atLimit();
           frag = esc(firstWords(plain.replace(/\s+/g, ' '), avail));
-          this._note(`Only the first ${avail} words were pasted: the limit is ${max} words.`);
+          this._note(`Only the first ${avail} words were pasted in, because the limit is ${max} words.`);
         }
       }
       if (!frag) return;
@@ -1815,6 +2215,11 @@
       }
       CLIP.text = text;
       CLIP.html = html;
+      // (pictures copied go with the copy, so that they can be pasted into another attempt too)
+      CLIP.images = {};
+      picRefs(html, new Set()).forEach((id) => {
+        if (this.att.images && this.att.images[id]) CLIP.images[id] = this.att.images[id];
+      });
       // (the same text goes on the computer's clipboard – what the browser would put there can differ in its spaces,
       // or its bullets – so that a paste can be recognised as what was copied here)
       if (!e.clipboardData) return;
@@ -1852,6 +2257,9 @@
     }
     _onDrop(e) {
       if (!this._clipKept() || this._dragFromExam || !this._inExam(e.target)) return;
+      // (picture files dropped into an answer that may have pictures: the answer adds them, as Insert picture does)
+      const dt = e.dataTransfer;
+      if (dt && dt.files && dt.files.length && this.ed && this.ed.o.images && this.ed.area.contains(e.target)) return;
       e.preventDefault();
       e.stopImmediatePropagation();
       this._pasteRefused(e.target);
@@ -1863,8 +2271,93 @@
         this.ed.el.classList.remove('ex-limit-flash');
         void this.ed.el.offsetWidth;
         this.ed.el.classList.add('ex-limit-flash');
-      } else toast(msg + ' (Text copied from outside the exam cannot be pasted in.)', 'warn', 4500);
+      } else toast(msg + ' (Text copied from outside the exam can’t be pasted in.)', 'warn', 4500);
       bus.emit('exam:paste', { paper: this.att.paper.id, q: this.qcur && this.qcur.id, refused: true });
+    }
+    /* ---------------- pictures (kept once, with the attempt) ---------------- */
+    _picturesAllowed(q) {
+      const paper = this.att.paper;
+      return (q.toolbar || paper.toolbar || 'default') === 'default' && paper.pictures !== false && q.pictures !== false;
+    }
+    _pictureStore() {
+      const att = this.att;
+      return {
+        has: (id) => !!(att.images && att.images[id]),
+        url: (id) => this._pictureURL(att, id),
+        add: (rec, id) => this._addPicture(att, rec, id),
+        files: () => this._workbenchPictures(),
+        blob: (path) => this.fs.toBlob(path)
+      };
+    }
+    /** the pictures in the student's files (the microscope's photographs, a picture of a diagram or a chart that they
+        saved…), the newest first */
+    _workbenchPictures() {
+      const fs = this.fs, home = MG.app && MG.app.HOME;
+      if (!fs || !fs.entries || !home) return [];
+      const out = [];
+      for (const [path, e] of fs.entries) {
+        if (!e || e.kind === 'dir' || !path.startsWith(home + '/') || /\/\./.test(path.slice(home.length))) continue;
+        if (!/\.(png|jpe?g|gif|webp)$/i.test(path)) continue;
+        out.push({ path, name: path.slice(path.lastIndexOf('/') + 1), where: fs.pretty(path), time: e.mtime || 0 });
+      }
+      return out.sort((a, b) => b.time - a.time).slice(0, 48);
+    }
+    /** a blob: address for a picture of the attempt ('' when it has none of that id), made once */
+    _pictureURL(att, id) {
+      const r = PIC_ID.test(id || '') && att.images && att.images[id];
+      if (!r) return '';
+      if (!this._picURLs || this._picURLs.att !== att) {
+        if (this._picURLs) this._picURLs.map.forEach((u) => URL.revokeObjectURL(u));
+        this._picURLs = { att, map: new Map() };
+      }
+      let u = this._picURLs.map.get(id);
+      if (!u) {
+        u = URL.createObjectURL(b64ToBlob(r.data, r.type));
+        this._picURLs.map.set(id, u);
+      }
+      return u;
+    }
+    /** keeps a picture with the attempt → its id (that of the same picture, when it is there already); null when
+        there is no room (PIC.totalMB, after the pictures that nothing uses any more have gone) */
+    _addPicture(att, rec, id) {
+      att.images = att.images || {};
+      const same = Object.keys(att.images).find((k) => att.images[k] && att.images[k].data.length === rec.data.length && att.images[k].data === rec.data);
+      if (same) return same;
+      const total = () => Object.values(att.images).reduce((n, x) => n + ((x && x.data) || '').length, 0);
+      const max = PIC.totalMB * 1048576 * (4 / 3);
+      if (total() + rec.data.length > max) {
+        this._prunePictures(att, true);
+        if (total() + rec.data.length > max) return null;
+      }
+      if (!(id && PIC_ID.test(id) && !att.images[id])) {
+        do id = newPicId();
+        while (att.images[id]);
+      }
+      att.images[id] = { type: rec.type, data: rec.data, w: rec.w, h: rec.h };
+      this._dirty = true;
+      return id;
+    }
+    /** the pictures that no answer, and no backup copy of one, uses (and, with live, nothing in the open answer and
+        its undo either) go */
+    _prunePictures(att, live) {
+      if (!att.images) return;
+      const used = new Set();
+      Object.values(att.answers || {}).forEach((a) => picRefs(a && a.html, used));
+      Object.values(att.backups || {}).forEach((list) => (list || []).forEach((b) => picRefs(b && b.html, used)));
+      if (live && this.ed && this.att === att) {
+        picRefs(this.ed.area.innerHTML, used);
+        (this.ed.hist || []).forEach((s) => picRefs(s.html, used));
+      }
+      Object.keys(att.images).forEach((id) => {
+        if (used.has(id)) return;
+        delete att.images[id];
+        this._dirty = true;
+        const m = this._picURLs && this._picURLs.att === att ? this._picURLs.map : null;
+        if (m && m.has(id)) {
+          URL.revokeObjectURL(m.get(id));
+          m.delete(id);
+        }
+      });
     }
     now() {
       return Date.now() + this.skew;
@@ -1923,9 +2416,10 @@
     async _read(path) {
       const t = await this.fs.readText(path);
       const a = JSON.parse(t);
-      if (!a || !a.paper || !Array.isArray(a.paper.questions)) throw new Error('This is not an attempt of exam practice.');
+      if (!a || !a.paper || !Array.isArray(a.paper.questions)) throw new Error('This file isn’t an attempt from Supervision work.');
       a.answers = a.answers || {};
       a.backups = a.backups || {};
+      a.images = a.images || {};
       a.settings = a.settings || {};
       return a;
     }
@@ -1976,7 +2470,7 @@
       else if (s === 'error') el.innerHTML = IC.notSaved + '<span>Not saved</span>';
       else el.innerHTML = IC.saved + '<span>Saved</span>';
       el.className = 'ex-status ' + (s || 'saved');
-      el.title = s === 'error' ? 'Your answer could not be saved: the browser may be out of space. Download your answers.' : when ? `Saved in this browser at ${fmtClock(when)}:${pad2(when.getSeconds())}` : 'Saved in this browser';
+      el.title = s === 'error' ? 'Your answer couldn’t be saved, perhaps because the browser is out of space. Download your answers to keep them safe.' : when ? `Saved in this browser at ${fmtClock(when)}:${pad2(when.getSeconds())}` : 'Saved in this browser';
     }
 
     /* ---------------- the start view ---------------- */
@@ -2007,43 +2501,74 @@
       this._savePrefs();
       const V = this.view;
       V.classList.add('ex-home');
-      const num = h('input', { type: 'text', value: this.prefs.candidate || '', maxlength: 20, autocomplete: 'off', spellcheck: 'false', placeholder: 'e.g. 1234A' });
-      const name = h('input', { type: 'text', value: this.prefs.name || '', maxlength: 60, autocomplete: 'off', placeholder: 'optional' });
-      const keep = () => {
+      const num = h('input', { type: 'text', value: this.prefs.candidate || '', maxlength: 20, autocomplete: 'off', spellcheck: 'false', placeholder: 'optional' });
+      const name = h('input', { type: 'text', value: fullName(), maxlength: 60, autocomplete: 'name', placeholder: 'e.g. Ada Lovelace' });
+      num.addEventListener('input', () => {
         this.prefs.candidate = num.value.trim();
-        this.prefs.name = name.value.trim();
         this._savePrefs();
+      });
+      // (the student's name is the site's: the same on every supervision's page, and on the button at the top)
+      const keepName = () => {
+        if (name.value.trim() === fullName()) return;
+        MG.user.setFullName(name.value);
+        if (MG.user.set && MG.user.suggest) MG.user.set(MG.user.suggest(name.value) || MG.user.DEFAULT);
       };
-      num.addEventListener('input', keep);
-      name.addEventListener('input', keep);
+      name.addEventListener('input', MG.debounce(keepName, 500));
+      name.addEventListener('change', keepName);
+      const SITE_HI = handInOf({ handIn: true });
       V.append(
-        h('header.ex-hhead', h('h2', 'Exam practice'), h('p', 'Write answers as you will in an online exam: one question at a time, with a word count, a timer, a calculator and a page to check your answers before you submit them. Everything is saved as you type, in this browser.')),
-        h('div.ex-cand', h('label', h('span', 'Candidate number'), num), h('label', h('span', 'Name'), name), h('p.hint', 'They appear at the top of the exam and on your downloads. In a real exam you would use your candidate number.'))
+        h('header.ex-hhead', h('h2', 'Supervision work'), h('p', `This is the work set for your supervisions. You write it here just as you will in the online exam, one question at a time, with a word count, a clock and a calculator, and with a page for checking your answers before you submit them. Everything is saved in this browser as you type. When you’ve finished a piece of work that has to be handed in, submit it, ${SITE_HI ? `then hand it in from its page. It goes straight to ${possessive(SITE_HI.to)} ${SITE_HI.drive}.` : 'then download it as a Word document and send it to your supervisor.'}`)),
+        h('div.ex-cand', h('label', h('span', 'Your name'), name), h('label', h('span', 'Candidate number'), num), h('p.hint', 'Your name goes on the Word document you hand in. In the real exam, you’ll use your candidate number instead.'))
       );
       const attempts = await this._attempts();
       // (the papers themselves, for the number of questions – information pages are not questions – and the marks)
       await Promise.all(this.papers.map((p) => this._paper(p.id).then((x) => (p.full = x), () => null)));
       if (tok !== this._tok) return;
       const inProg = (id) => attempts.find((a) => a.att && a.att.paper.id === id && !a.att.submitted);
-      // the papers
-      const list = h('div.ex-papers');
-      if (!this.papers.length) list.appendChild(h('p.muted', this._indexError ? `The list of papers could not be loaded (${this._indexError}).` : 'There are no papers yet.'));
-      this.papers.forEach((p) => {
-        const going = inProg(p.id);
-        const b = h('button.btn' + (going ? '' : '.primary'), { type: 'button', 'aria-label': `${going ? 'Continue' : 'Start'}: ${p.title}` }, going ? 'Continue' : 'Start');
+      const handedIn = (id) => attempts.find((a) => a.att && a.att.paper.id === id && a.att.submitted);
+      // the papers: this supervision's first (the work to hand in before the rest), then the practice papers, then
+      // the other supervisions'
+      const WEEK = +(document.body && document.body.dataset.week) || 0;
+      const card = (p) => {
+        const going = inProg(p.id), done = handedIn(p.id);
+        const b = h('button.btn' + (going || done ? '' : '.primary'), { type: 'button', 'aria-label': `${going ? 'Continue' : 'Start'}: ${p.title}` }, going ? 'Continue' : done ? 'Open' : 'Start');
         b.addEventListener('click', () => this.openPaper(p.id));
         const qs = p.full ? p.full.questions.filter((q) => q.type !== 'info') : null;
         const nq = qs ? qs.length : p.questions || 0;
         const marks = qs ? qs.reduce((s, q) => s + (+q.marks || 0), 0) : 0;
-        const meta = [p.minutes ? `${p.minutes} minutes` : 'No time limit', plural(nq, 'question'), marks ? plural(marks, 'mark') : ''].filter(Boolean).join(' · ');
-        list.appendChild(h('div.ex-card', { dataset: { paper: p.id } }, h('h4', p.title), p.description ? h('p', p.description) : null, h('p.ex-cmeta', meta), h('div.ex-cact', b, going ? h('span.ex-pill', 'In progress') : null)));
-      });
+        const meta = [timeText(p.full || p), plural(nq, 'question'), marks ? plural(marks, 'mark') : ''].filter(Boolean).join(' · ');
+        const badge = p.week ? (p.required ? h('span.ex-badge.req', 'To hand in') : h('span.ex-badge.opt', 'Optional')) : null;
+        // (a supervision's paper that is handed in through the site: handed in, or submitted and still to hand in)
+        const st = p.week && handInOf(p.full) ? paperState(p.id) : null;
+        const pill = !done ? null : st && st.handedIn ? h('span.ex-pill.ok', `Handed in ${fmtDate(new Date(st.handedIn))}`)
+          : st ? h('span.ex-pill.warn', 'Submitted · not handed in yet') : h('span.ex-pill.ok', `Submitted ${fmtDate(new Date(done.att.submitted))}`);
+        return h('div.ex-card' + (p.required ? '.ex-required' : ''), { dataset: { paper: p.id } }, badge, h('h4', p.title), p.description ? h('p', p.description) : null, h('p.ex-cmeta', meta),
+          h('div.ex-cact', b, going ? h('span.ex-pill', 'In progress') : null, pill));
+      };
+      const listOf = (ps) => {
+        const list = h('div.ex-papers');
+        ps.forEach((p) => list.appendChild(card(p)));
+        return list;
+      };
+      if (!this.papers.length) V.appendChild(h('p.muted', this._indexError ? `The list of papers couldn’t be loaded (${this._indexError}).` : 'There are no papers yet.'));
+      const mine = this.papers.filter((p) => WEEK && p.week === WEEK).sort((a, b) => (b.required ? 1 : 0) - (a.required ? 1 : 0) || (a.order || 0) - (b.order || 0));
+      const practice = this.papers.filter((p) => !p.week);
+      const others = this.papers.filter((p) => p.week && p.week !== WEEK).sort((a, b) => a.week - b.week || (a.order || 0) - (b.order || 0));
+      if (WEEK) {
+        V.appendChild(h('h3', `Supervision ${WEEK}`));
+        V.appendChild(mine.length ? listOf(mine) : h('p.muted', 'The work for this supervision isn’t here yet.'));
+      }
+      if (practice.length) V.append(h('h3', WEEK ? 'Practice papers' : 'Papers'), listOf(practice));
+      if (others.length) {
+        const det = h('details.ex-others', h('summary', `The other supervisions’ papers (${others.length})`), listOf(others));
+        V.appendChild(det);
+      }
       const free = h('button.btn', { type: 'button' }, 'Write an essay…');
       free.addEventListener('click', () => this.newEssay());
-      V.append(h('h3', 'Practice papers'), list, h('h3', 'An essay of your own'), h('p.ex-sub2', 'Give it a title, and if you like a word limit and a time limit: for a weekly essay, or to practise writing to time.'), free);
+      V.append(h('h3', 'An essay of your own'), h('p.ex-sub2', 'Give it a title and, if you like, a word limit and a time limit, so that you can practise writing to time.'), free);
       // the attempts
       V.appendChild(h('h3', 'My attempts'));
-      if (!attempts.length) V.appendChild(h('p.muted', 'None yet. Your attempts are kept in Files, in the folder essays.'));
+      if (!attempts.length) V.appendChild(h('p.muted', 'None yet. Your attempts are kept in Files, in the essays folder.'));
       else {
         const tb = h('tbody');
         attempts.forEach(({ path, att, error }) => {
@@ -2052,7 +2577,7 @@
             return;
           }
           const answered = this._answeredCount(att), total = this._questions(att).filter((q) => q.type !== 'info').length;
-          const status = att.submitted ? `Submitted ${fmtWhen(att.submitted)}` : att.timeUp ? 'Time is up – not submitted' : 'In progress';
+          const status = att.submitted ? `Submitted ${fmtWhen(att.submitted)}` : att.timeUp ? 'Time’s up, but not submitted yet' : 'In progress';
           const acts = h('td.ex-acts');
           const add = (label, fn, cls) => {
             const b = h('button.btn.small' + (cls || ''), { type: 'button' }, label);
@@ -2067,7 +2592,7 @@
         });
         V.appendChild(h('div.ex-tablewrap', h('table.ex-list', h('thead', h('tr', h('th', 'Paper'), h('th', 'Status'), h('th', 'Answers'), h('th', h('span.sr-only', 'Actions')))), tb)));
       }
-      V.appendChild(h('p.hint', 'Exam practice copies the way an online exam system works, so that you can get used to it. It is not the real system, and nothing is sent to your examiners: download your answers if you need to hand them in.'));
+      V.appendChild(h('p.hint', `Supervision work copies the way the online exam system works, so that you get used to it before your exams. It isn’t the real exam system, though. ${SITE_HI ? `Your work stays in this browser unless you hand it in, and then it goes to ${possessive(SITE_HI.to)} ${SITE_HI.drive}.` : 'Nothing is sent to your supervisor from here, so download your work as a Word document and send it yourself.'}`));
     }
     async _delete(path, att) {
       if (!(await MG.confirmBox('Delete this attempt?', `<p>Delete your attempt at <b>${esc(att.paper.title)}</b> (${esc(fmtWhen(att.started))})? Its answers will be lost.</p>`, 'Delete', { danger: true }))) return;
@@ -2091,16 +2616,18 @@
       const attempts = await this._attempts();
       if (tok !== this._tok) return;
       const going = attempts.find((a) => a.att && a.att.paper.id === paper.id && !a.att.submitted);
+      // (the last attempt submitted: a supervision's paper offers it again, to download and hand in)
+      const done = attempts.find((a) => a.att && a.att.paper.id === paper.id && a.att.submitted);
       bus.emit('exam:open', { paper: paper.id, title: paper.title });
-      this._startPage(paper, going);
+      this._startPage(paper, going, done);
     }
-    _startPage(paper, going) {
+    _startPage(paper, going, done) {
       const V = this.view;
       V.classList.add('ex-startpage');
       const qs = paper.questions.filter((q) => q.type !== 'info');
       const marks = qs.reduce((s, q) => s + (+q.marks || 0), 0);
       const dl = h('dl.ex-facts',
-        h('dt', 'Time allowed'), h('dd', paper.minutes ? `${paper.minutes} minutes` : 'No time limit'),
+        h('dt', 'Time allowed'), h('dd', paper.minutes ? `${paper.minutes} minutes` : paper.suggestedMinutes ? `No time limit, but we suggest about ${paper.suggestedMinutes} minutes. The clock at the top shows how long you’ve been writing.` : 'No time limit'),
         h('dt', 'Questions'), h('dd', String(qs.length)),
         marks ? [h('dt', 'Marks'), h('dd', String(marks))] : null,
         h('dt', 'Spelling checker'), h('dd', paper.spellcheck ? 'On (you can switch it off)' : 'Off (you can switch it on)'));
@@ -2113,15 +2640,36 @@
         const again = h('button.btn', { type: 'button' }, 'Start again (a new attempt)');
         again.addEventListener('click', () => this._start(paper));
         const nq = this._questions(going.att).filter((q) => q.type !== 'info').length;
-        acts.append(h('p', `You have an attempt in progress, started ${fmtWhen(going.att.started)}: ${this._answeredCount(going.att)} of ${nq} ${nq === 1 ? 'question' : 'questions'} answered.`), c, again);
+        const na = this._answeredCount(going.att);
+        acts.append(h('p', `You have an attempt in progress, which you started at ${fmtWhen(going.att.started)}.${nq === 1 ? (na ? '' : ' You haven’t written anything in it yet.') : na ? ` So far you’ve answered ${na} of its ${nq} questions.` : ` You haven’t answered any of its ${nq} questions yet.`}`), c, again);
       } else {
-        const s = h('button.btn.primary', { type: 'button' }, 'Start');
-        s.addEventListener('click', () => this._start(paper));
-        acts.append(s);
+        const sent = done && paper.week ? done : null;
+        const s = h('button.btn' + (sent ? '' : '.primary'), { type: 'button' }, sent ? 'Start a new attempt' : 'Start');
+        s.addEventListener('click', async () => {
+          if ((paper.required || paper.handIn) && !fullName() && MG.app.nameDialog) await MG.app.nameDialog({ title: `Your name, for your ${workOf(paper)}`, why: 'Your name goes at the top of the Word document you hand in, so that your supervisor knows whose work it is. It’s only kept in this browser. You can leave it out for now and add it later, before you hand your work in.', cancel: 'Not now' });
+          this._start(paper);
+        });
+        if (sent) {
+          // (a supervision's paper that has been submitted: handing it in, and what was submitted)
+          const words = this._questions(sent.att).filter((q) => q.type === 'essay' || q.type === 'short').reduce((n, q) => n + ((sent.att.answers[q.id] || {}).words || 0), 0);
+          const see = h('button.btn', { type: 'button' }, 'See what you submitted');
+          see.addEventListener('click', () => this.openFile(sent.path));
+          const said = h('p', `You submitted this at ${fmtWhen(sent.att.submitted)}${words ? ` (${plural(words, 'word')})` : ''}.`);
+          const panel = this._handInPanel(sent.att, { title: 'Hand it in' });
+          if (panel) acts.append(said, panel, h('div.ex-startmore', see, s));
+          else {
+            const word = h('button.btn.primary', { type: 'button', html: IC.download + '<span>Download the Word document</span>' });
+            word.addEventListener('click', () => this.download(sent.att, 'docx'));
+            acts.append(said, word, see, s);
+          }
+        } else acts.append(s);
       }
       const ins = h('div.ex-instr');
       ins.innerHTML = paper.instructions ? cleanTrusted(paper.instructions) : '';
-      V.append(h('div.ex-startcard', h('p.ex-kicker', 'Exam practice'), h('h2', paper.title), paper.description ? h('p', paper.description) : null, dl, ins, paper.minutes ? h('p.hint', `The time starts when you press Start, and keeps running if you leave the page. ${paper.autoSubmit ? 'Your answers are submitted when the time is up.' : 'When the time is up your answers are locked, and you submit them.'}`) : null, acts, h('div.ex-startback', back)));
+      const HI = handInOf(paper);
+      const hand = HI ? h('div.ex-handin', h('h3', 'To hand in'), h('p', `Once you’ve submitted it, you hand it in from here, straight to ${possessive(HI.to)} ${HI.drive}.${HI.password ? ' You’ll need the hand-in password you were given, which isn’t on this site.' : ''}`))
+        : handInHTML(paper) ? h('div.ex-handin', { html: '<h3>To hand in</h3>' + cleanTrusted(handInHTML(paper)) }) : null;
+      V.append(h('div.ex-startcard', h('p.ex-kicker', paper.week ? `Supervision ${paper.week}${paper.required ? ' · to hand in' : ' · optional'}` : 'Supervision work'), h('h2', paper.title), paper.description ? h('p', paper.description) : null, dl, ins, hand, paper.minutes ? h('p.hint', `The clock starts when you press Start, and it keeps running if you leave the page. ${paper.autoSubmit ? 'Your answers are submitted for you when the time is up.' : 'When the time is up, your answers are locked, and you can then submit them.'}`) : null, acts, h('div.ex-startback', back)));
     }
     _start(paper) {
       const now = this.now();
@@ -2129,7 +2677,7 @@
       const att = {
         format: 'bms-exam-attempt-1',
         paper,
-        candidate: { number: this.prefs.candidate || '', name: this.prefs.name || '' },
+        candidate: { number: this.prefs.candidate || '', name: fullName() || this.prefs.name || '' },
         started: new Date(now).toISOString(),
         deadline: paper.minutes ? new Date(now + paper.minutes * 60000).toISOString() : null,
         submitted: null,
@@ -2137,11 +2685,13 @@
         current: 0,
         answers: {},
         backups: {},
+        images: {},
         settings: { spellcheck: paper.spellcheck != null ? !!paper.spellcheck : !!CFG.spellcheckDefault }
       };
       this.path = path;
       this.att = att;
       this._write();
+      if (paper.week) mark(paper.id, 'started');
       bus.emit('exam:start', { paper: paper.id });
       this.play(att, path);
     }
@@ -2156,10 +2706,10 @@
       const ok = h('button.btn.primary', { type: 'submit' }, 'Start writing');
       const cancel = h('button.btn', { type: 'button' }, 'Cancel');
       const form = h('form.ex-form',
-        h('label.wide', h('span', 'Title (the question you are answering)'), title),
+        h('label.wide', h('span', 'Title (the question you’re answering)'), title),
         h('label', h('span', 'Word limit'), words), h('label.check', hard, ' Stop me at the limit'),
         h('label', h('span', 'Time limit (minutes)'), mins), h('label.check', spell, ' Spelling checker on'),
-        h('label.check.wide', paste, ' Let me paste text from outside the exam (in an exam in Inspera’s exam browser you can paste only what you copied in the exam)'),
+        h('label.check.wide', paste, ' Let me paste text from outside the exam (in Inspera’s exam browser, you can only paste what you copied in the exam)'),
         h('div.prompt-actions', cancel, ok));
       const m = dialog('An essay of your own', form);
       cancel.addEventListener('click', () => m.close());
@@ -2187,7 +2737,7 @@
       try {
         att = await this._read(p);
       } catch (e) {
-        toast(`${esc(this.fs.pretty(p))} could not be opened: ${esc(e.message)}`, 'error');
+        toast(`${esc(this.fs.pretty(p))} couldn’t be opened: ${esc(e.message)}`, 'error');
         return;
       }
       this._saveNow();
@@ -2252,6 +2802,8 @@
       this._renderResources();
       this._status('saved');
       // the clock and autosave
+      this._lastTick = null;
+      this._lastMins = null;
       this._tickNow();
       this._tick = setInterval(() => this._tickNow(), 1000);
       this._auto = setInterval(() => this._saveNow(), Math.max(2, +CFG.autosaveSeconds || 5) * 1000);
@@ -2280,8 +2832,27 @@
         return;
       }
       if (left == null) {
-        el.textContent = 'No time limit';
-        el.className = 'ex-timer';
+        // (the time spent writing: while the attempt is open, in view and the page is visible)
+        const att = this.att, now = Date.now();
+        const live = this.root.offsetParent && document.visibilityState !== 'hidden';
+        if (live && this._lastTick) att.activeMs = (att.activeMs || 0) + Math.min(5000, Math.max(0, now - this._lastTick));
+        this._lastTick = now;
+        const mins = Math.floor((att.activeMs || 0) / 60000);
+        if (mins !== this._lastMins) {
+          this._lastMins = mins;
+          this._dirty = true;
+        }
+        const S = +att.paper.suggestedMinutes || 0;
+        const spent = mins < 1 ? 'under a minute' : plural(mins, 'minute');
+        el.textContent = this.prefs.hideTime ? 'Time hidden' : S ? (mins < S ? `${mins} of about ${S} minutes` : `${spent} (about ${S} suggested)`) : `Writing for ${spent}`;
+        el.title = S ? `There’s no time limit, but we suggest about ${S} minutes, which is the time you’d have in the exam. This clock counts the time you’ve spent writing.` : 'There’s no time limit. This clock counts the time you’ve spent writing.';
+        el.className = 'ex-timer' + (S && mins >= S ? ' soon' : '');
+        if (S && mins >= S && !att.suggestedReached) {
+          att.suggestedReached = true;
+          this._dirty = true;
+          bus.emit('exam:suggested', { paper: att.paper.id, minutes: S });
+          toast(`<b>That’s ${S} minutes</b>, the time you’d have for this in the exam. Finish your sentence and write your conclusion, or carry on if you need to, as there’s no time limit here.`, 'warn', 9000);
+        }
         return;
       }
       el.textContent = this.prefs.hideTime ? 'Time hidden' : fmtRemaining(left);
@@ -2298,7 +2869,7 @@
       this._lock(true);
       if (!already) bus.emit('exam:timeup', { paper: att.paper.id });
       // (the student may be in another tab, looking at a slide: say so there)
-      if (!already && !this.root.offsetParent) toast(`<b>Exam practice:</b> the time for “${esc(att.paper.title)}” is up.${att.paper.autoSubmit ? ' Your answers have been submitted.' : ''}`, 'warn', 9000);
+      if (!already && !this.root.offsetParent) toast(`<b>Time’s up</b> for “${esc(att.paper.title)}”.${att.paper.autoSubmit ? ' Your answers have been submitted.' : ' Go back to Supervision work to submit your answers.'}`, 'warn', 9000);
       this._write();
       if (att.paper.autoSubmit && !att.submitted) return this._submit(true);
       this.submissionPage();
@@ -2433,7 +3004,9 @@
           onBlur: () => this._saveNow(),
           onFormat: (cmd) => bus.emit('exam:format', { cmd }),
           onBackups: () => this._backups(q),
-          onExpand: () => this._expand()
+          onExpand: () => this._expand(),
+          images: this._picturesAllowed(q) ? this._pictureStore() : null,
+          onPictures: (n, source) => bus.emit('exam:picture', { paper: this.att.paper.id, q: q.id, n, source })
         }));
         wrap.appendChild(ed.el);
       } else if (q.type === 'numeric') {
@@ -2449,7 +3022,7 @@
         const note = h('span.ex-numnote', { 'aria-live': 'polite' });
         inp.addEventListener('blur', () => {
           const v = inp.value.trim();
-          note.textContent = v && !Number.isFinite(parseNumber(v)) ? 'This does not look like a number.' : '';
+          note.textContent = v && !Number.isFinite(parseNumber(v)) ? 'This doesn’t look like a number.' : '';
           this._saveNow();
         });
         wrap.appendChild(h('div.ex-numrow', h('label', inp, q.units ? h('span.ex-units', q.units) : null), note));
@@ -2571,8 +3144,8 @@
           b.addEventListener('click', () => MG.Calculator && MG.Calculator.toggle());
         } else if (r.type === 'slide') {
           const label = r.label || 'Slide';
-          b = h('button.ex-resbtn', { type: 'button', title: `${label}: opens the slide in the Microscope tab (come back to Exam practice afterwards)`, 'aria-label': `${label} (opens the Microscope)`, html: IC.slide + `<span>${esc(label)}</span>` });
-          b.addEventListener('click', () => (MG.actions && MG.actions.scope ? MG.actions.scope(r.spec) : toast('The microscope is not part of this page.', 'warn')));
+          b = h('button.ex-resbtn', { type: 'button', title: `${label}: opens the slide in the Microscope tab (come back to Supervision work afterwards)`, 'aria-label': `${label} (opens the Microscope)`, html: IC.slide + `<span>${esc(label)}</span>` });
+          b.addEventListener('click', () => (MG.actions && MG.actions.scope ? MG.actions.scope(r.spec) : toast('The microscope isn’t part of this page.', 'warn')));
         } else if (r.type === 'link' && /^https?:\/\//.test(r.url || '')) {
           const label = r.label || r.url;
           b = h('a.ex-resbtn', { href: r.url, target: '_blank', rel: 'noopener', title: label, 'aria-label': `${label} (opens in a new browser tab)`, html: IC.link + `<span>${esc(label)}</span>` });
@@ -2595,7 +3168,7 @@
       const a = this.att.answers[q.id] || {};
       const list = (this.att.backups[q.id] || []).slice().reverse();
       const body = h('div.ex-backups');
-      body.appendChild(h('p', 'A copy of your answer is kept every five minutes while you write, for this attempt. If something goes wrong, you can go back to one. Restoring a copy keeps your current answer as a copy first.'));
+      body.appendChild(h('p', 'While you write, a copy of your answer is kept every five minutes, for this attempt. If something goes wrong, you can go back to one of them. Restoring a copy saves your current answer as a copy first, so you won’t lose it.'));
       const now = h('button.btn.small', { type: 'button' }, 'Keep a copy now');
       now.addEventListener('click', () => {
         this._collect();
@@ -2621,6 +3194,7 @@
             if (this.ed) {
               this.ed.flush();
               this.ed.area.innerHTML = cleanHTML(b.html);
+              this.ed._showPictures();
               this.ed.record();
               this.ed._good = { html: this.ed.area.innerHTML, sel: null };
               this.ed._changed();
@@ -2725,11 +3299,12 @@
     keyboardHelp() {
       MG.modal('Keyboard help', `<ul class="ex-keys">
 <li>To get to the toolbar from your answer, press <kbd>Alt</kbd>+<kbd>F10</kbd> (on a Mac, <kbd>Fn</kbd>+<kbd>Option</kbd>+<kbd>F10</kbd>). Move along it with <kbd>←</kbd> and <kbd>→</kbd>, press <kbd>Enter</kbd> to use a button, and <kbd>Esc</kbd> to go back to your answer.</li>
-<li><kbd>Ctrl</kbd>+<kbd>B</kbd> bold, <kbd>Ctrl</kbd>+<kbd>I</kbd> italic, <kbd>Ctrl</kbd>+<kbd>U</kbd> underline (<kbd>⌘</kbd> on a Mac).</li>
-<li><kbd>Ctrl</kbd>+<kbd>Z</kbd> undo, <kbd>Ctrl</kbd>+<kbd>Y</kbd> redo; <kbd>Ctrl</kbd>+<kbd>C</kbd>, <kbd>Ctrl</kbd>+<kbd>X</kbd> and <kbd>Ctrl</kbd>+<kbd>V</kbd> copy, cut and paste.${this.att && this.att.paper.clipboard === 'any' ? '' : ' As in Inspera’s exam browser, you can paste only what you copied in this exam (from your answers or the questions): text copied anywhere else cannot be pasted in.'}</li>
-<li>In a list, <kbd>Tab</kbd> and <kbd>Shift</kbd>+<kbd>Tab</kbd> indent and outdent an item. Right-click in a table for its rows and columns.</li>
+<li><kbd>Ctrl</kbd>+<kbd>B</kbd>, <kbd>Ctrl</kbd>+<kbd>I</kbd> and <kbd>Ctrl</kbd>+<kbd>U</kbd> make text bold, italic or underlined. On a Mac, use <kbd>⌘</kbd> instead of <kbd>Ctrl</kbd>.</li>
+<li><kbd>Ctrl</kbd>+<kbd>Z</kbd> undoes and <kbd>Ctrl</kbd>+<kbd>Y</kbd> redoes, and <kbd>Ctrl</kbd>+<kbd>C</kbd>, <kbd>Ctrl</kbd>+<kbd>X</kbd> and <kbd>Ctrl</kbd>+<kbd>V</kbd> copy, cut and paste.${this.att && this.att.paper.clipboard === 'any' ? '' : ' As in Inspera’s exam browser, you can only paste what you copied in this exam, from your answers or the questions. Text copied anywhere else can’t be pasted in.'}</li>
+<li>In a list, <kbd>Tab</kbd> and <kbd>Shift</kbd>+<kbd>Tab</kbd> indent and outdent an item. Right-click in a table to add or delete rows and columns.</li>
 <li>Double-click a formula or a drawing to change it. <kbd>Esc</kbd> leaves the expanded view.</li>
-<li>The calculator: type a calculation and press <kbd>Enter</kbd>; <kbd>↑</kbd> brings back the earlier ones, <kbd>Esc</kbd> clears it.</li>
+<li><b>Insert picture</b> adds a picture from your files in the workbench, such as a photograph you took with the microscope, or from your computer, such as a photo of a diagram you drew on paper. You can also drag a picture file into your answer. Type a caption under it if you like. To take a picture out, double-click it.</li>
+<li>In the calculator, type a calculation and press <kbd>Enter</kbd>. <kbd>↑</kbd> brings back your earlier ones, and <kbd>Esc</kbd> clears it.</li>
 </ul>`);
     }
 
@@ -2758,7 +3333,7 @@
       const fl = qs.filter((x) => (att.answers[x.q.id] || {}).flag);
       if (kind === 'submission') {
         const box = h('div.ex-subhead');
-        if (att.timeUp && !att.submitted) box.appendChild(h('div.ex-timeup', { role: 'alert' }, h('b', 'Time is up.'), ' Your answers can no longer be changed. Press Submit now to hand them in.'));
+        if (att.timeUp && !att.submitted) box.appendChild(h('div.ex-timeup', { role: 'alert' }, h('b', 'Time is up.'), ' You can’t change your answers any more, but you can still submit them with Submit now.'));
         box.append(h('h2', 'Ready to submit?'), h('p', not.length ? `You have ${plural(not.length, 'unattempted question')}.` : 'You have attempted all questions in this test.'));
         const sub = h('button.btn.primary.ex-submit', { type: 'button', html: IC.send + '<span>Submit now</span>' });
         sub.addEventListener('click', () => this._confirmSubmit());
@@ -2806,7 +3381,8 @@
     }
     async _confirmSubmit() {
       const n = this._questions().filter((q) => q.type !== 'info' && !this._attempted(q)).length;
-      const ok = await MG.confirmBox('Submit your answers?', `<p>${n ? `You have <b>${plural(n, 'unattempted question')}</b>. ` : ''}After you submit, you cannot change your answers in this attempt.</p>`, 'Submit now', { cancel: 'Go back' });
+      const HI = handInOf(this.att.paper);
+      const ok = await MG.confirmBox('Submit your answers?', `<p>${n ? `You haven’t answered <b>${plural(n, 'question')}</b>. ` : ''}Once you’ve submitted, you can’t change your answers in this attempt.</p>${HI ? `<p>Then you hand it in on the next page, and it goes straight to ${esc(possessive(HI.to))} ${esc(HI.drive)}.</p>` : ''}`, 'Submit now', { cancel: 'Go back' });
       if (ok) this._submit();
     }
     _submit(auto) {
@@ -2814,9 +3390,11 @@
       this._collect();
       att.submitted = new Date(this.now()).toISOString();
       att.autoSubmitted = !!auto;
+      this._prunePictures(att);
       this._dirty = true;
       this._write();
       if (MG.project && MG.project.flush) MG.project.flush();
+      if (att.paper.week) mark(att.paper.id, 'submitted');
       bus.emit('exam:submit', { paper: att.paper.id, answered: this._answeredCount(att), total: this._questions(att).filter((q) => q.type !== 'info').length });
       this.receipt(att, this.path);
     }
@@ -2844,13 +3422,157 @@
       const back = h('button.btn', { type: 'button', html: IC.back + '<span>All papers</span>' });
       back.addEventListener('click', () => this.home());
       const essays = this._questions(att).filter((q) => q.type === 'essay' || q.type === 'short');
+      const HI = handInOf(att.paper);
+      let hand = this._handInPanel(att, { title: 'Now hand it in' });
+      if (hand) dl.classList.remove('primary');
+      else if (handInHTML(att.paper)) {
+        const word = h('button.btn.primary', { type: 'button', html: IC.download + '<span>Download the Word document</span>' });
+        word.addEventListener('click', () => this.download(att, 'docx'));
+        hand = h('div.ex-handin', { html: '<h3>Now hand it in</h3>' + cleanTrusted(handInHTML(att.paper)) });
+        hand.appendChild(h('p', word));
+        dl.classList.remove('primary');
+      }
       V.appendChild(h('div.ex-receipt',
         h('div.ex-tick', { 'aria-hidden': 'true', html: IC.check }),
         h('h2', `You submitted at ${fmtClock(when)} on ${fmtDate(when)}`),
         h('p', h('b', att.paper.title), ` · ${this._answeredCount(att)} of ${total} ${total === 1 ? 'question' : 'questions'} answered${att.autoSubmitted ? ' · submitted when the time ran out' : ''}`),
         essays.length ? h('p.muted', essays.map((q) => `${q.title || 'Essay'}: ${plural((att.answers[q.id] || {}).words || 0, 'word')}`).join(' · ')) : null,
+        hand,
         h('div.ex-recacts', dl, save, rev, again, back),
-        h('p.hint', `Your attempt is kept in Files: ${this.fs.pretty(path)}. Nothing has been sent anywhere: to hand your answers in, download them.`)));
+        h('p.hint', `Your attempt is kept in Files: ${this.fs.pretty(path)}. ${HI ? `When you hand it in, the Word document goes to ${possessive(HI.to)} ${HI.drive} and nowhere else.` : 'Nothing has been sent anywhere. To hand your work in, download it and send it yourself.'}`)));
+    }
+    /** handing in a submitted paper, through the hand-in script (config.js: handIn.script): the student types the
+        hand-in password, and the site sends the Word document to the script, which saves it in the supervisor's
+        Google Drive and sends back a receipt. What has been done is kept with the paper (MG.siteStore 'paper:<id>':
+        downloaded, handedIn, receipt, file, folder), for the landing page and the steps of the instructions. */
+    _handInPanel(att, opts = {}) {
+      const HI = handInOf(att.paper);
+      if (!HI) return null;
+      const wrap = h('div.ex-hi-wrap');
+      const show = () => {
+        wrap.innerHTML = '';
+        wrap.appendChild(this._handInBox(att, HI, opts, show));
+      };
+      show();
+      return wrap;
+    }
+    _handInBox(att, HI, opts, show) {
+      const id = att.paper.id;
+      const where = `${possessive(HI.to)} ${HI.drive}`;
+      const W = workOf(att.paper);
+      const box = h('section.ex-handin.ex-hi', { 'aria-label': 'Hand it in' });
+      const copy = (label) => {
+        const b = h('button.btn', { type: 'button', html: IC.download + `<span>${esc(label)}</span>` });
+        b.addEventListener('click', () => this.download(att, 'docx'));
+        return b;
+      };
+      const st = paperState(id);
+      if (st.handedIn) {
+        box.classList.add('handed');
+        const again = h('button.linkbtn', { type: 'button' }, 'Hand it in again');
+        again.addEventListener('click', async () => {
+          if (!(await MG.confirmBox('Hand it in again?', `<p>You’ve already handed this in. Handing it in again sends ${esc(HI.to)} a second copy, and the first one is kept too.</p>`, 'Hand it in again', { cancel: 'Keep it as it is' }))) return;
+          setPaperState(id, { handedIn: null, receipt: null, file: null, folder: null });
+          show();
+        });
+        box.append(h('h3.ex-hi-h', h('span.ex-hi-ok', { 'aria-hidden': 'true', html: IC.check }), `Handed in to ${HI.to}`),
+          h('p', `It arrived in ${where} at ${fmtWhen(st.handedIn)}.${st.receipt ? ` Your receipt number is ${st.receipt}.` : ''}`),
+          st.file ? h('p.muted', 'It was saved as ', h('code.ex-hi-file', st.file), st.folder ? ` in the folder ${st.folder}.` : '.') : null,
+          h('p.ex-hi-acts', copy('Download your copy'), again));
+        return box;
+      }
+      const pw = h('input.ex-hi-pw', { type: 'password', autocomplete: 'off', spellcheck: 'false', 'aria-label': 'The hand-in password', placeholder: 'The hand-in password' });
+      const go = h('button.btn.primary.ex-hi-go', { type: 'submit', html: IC.send + '<span>Hand it in</span>' });
+      const msg = h('p.ex-hi-msg', { role: 'status', 'aria-live': 'polite' });
+      const form = h('form.ex-hi-form', pw, go);
+      const say = (kind, html) => {
+        msg.className = 'ex-hi-msg' + (kind ? ' ' + kind : '');
+        msg.innerHTML = html;
+      };
+      form.addEventListener('submit', async (ev) => {
+        ev.preventDefault();
+        if (HI.password && !pw.value.trim()) {
+          say('no', `Please type in the hand-in password that ${esc(HI.to)} gave you.`);
+          pw.focus();
+          return;
+        }
+        const c = att.candidate || {};
+        if (!(c.name || fullName()) && MG.app.nameDialog) await MG.app.nameDialog({ title: `Your name, for your ${W}`, why: `Your name goes at the top of your ${W} and on its file, so that ${HI.to} knows whose work it is. It’s only kept in this browser.`, cancel: 'Not now' });
+        if (!(c.name || fullName())) {
+          say('no', `Please add your name first, so that it goes on your ${W}. You’ll find <b>Your name</b> at the top of the page.`);
+          return;
+        }
+        go.disabled = true;
+        pw.disabled = true;
+        go.querySelector('span').textContent = 'Handing it in…';
+        say('', `Sending your ${W} to ${esc(where)}… It can take up to half a minute.`);
+        const r = await this._sendHandIn(att, HI, pw.value);
+        go.disabled = false;
+        pw.disabled = false;
+        go.querySelector('span').textContent = 'Hand it in';
+        if (r.ok) {
+          setPaperState(id, { handedIn: r.time || new Date().toISOString(), receipt: r.receipt || '', file: r.file || '', folder: r.folder || '' });
+          bus.emit('exam:handin', { paper: id, step: 'confirmed', receipt: r.receipt || '' });
+          toast(`<b>Handed in</b> to ${esc(HI.to)}${r.receipt ? ` (receipt ${esc(r.receipt)})` : ''}.`, 'ok', 5000);
+          show();
+          return;
+        }
+        bus.emit('exam:handin', { paper: id, step: 'failed', error: r.error || '' });
+        const still = ` If it still won’t go, download a copy (below) and send it to ${esc(HI.to)} another way.`;
+        if (r.error === 'password') {
+          say('no', `That isn’t the right hand-in password. Check it with ${esc(HI.to)} and try again.`);
+          pw.select();
+          pw.focus();
+        } else if (r.error === 'network') {
+          say('no', `Your ${W} couldn’t be sent, because ${esc(where)} didn’t respond. Check that you’re online and try again.${still}`);
+        } else if (r.error === 'size') {
+          say('no', `${esc(r.message)} Please download a copy (below) and send it to ${esc(HI.to)} another way.`);
+        } else {
+          // (the hand-in's own messages say what to do: wait, try again, or tell the supervisor)
+          say('no', `${esc(r.message || `Your ${W} couldn’t be handed in. Try again in a moment.`)}${still}`);
+        }
+      });
+      box.append(h('h3.ex-hi-h', opts.title || 'Now hand it in'),
+        h('p.ex-hi-lede', `Your ${W} goes straight from here to ${where}.${HI.password ? ' Type in the hand-in password you were given, then press Hand it in.' : ''}`),
+        form, msg,
+        h('p.ex-hi-small', copy('Download a copy for yourself')));
+      return box;
+    }
+    /** sends the Word document of a submitted attempt to the hand-in script; its reply: {ok, receipt, file, folder,
+        time} or {ok: false, error, message} */
+    async _sendHandIn(att, HI, password) {
+      let body;
+      try {
+        const { blob, name } = await this._docx(att);
+        if (blob.size > 10 * 1048576) return { ok: false, error: 'size', message: `With its pictures, your ${workOf(att.paper)} is too big to hand in (${(blob.size / 1048576).toFixed(1)} MB, and the limit is 10 MB).` };
+        const c = att.candidate || {};
+        const words = this._questions(att).filter((q) => q.type === 'essay' || q.type === 'short').reduce((n, q) => n + ((att.answers[q.id] || {}).words || 0), 0);
+        body = JSON.stringify({ v: 1, password, paper: att.paper.id, week: att.paper.week || 0, title: att.paper.title, name: c.name || fullName(), number: c.number || '',
+          words, submitted: att.submitted, site: location.origin + location.pathname, file: { name, type: DOCX_TYPE, data: await base64Of(blob) } });
+      } catch (e) {
+        return { ok: false, error: 'local', message: `Your ${workOf(att.paper)} couldn’t be made into a Word document (${e.message || e}). Try again in a moment.` };
+      }
+      const ctl = typeof AbortController === 'function' ? new AbortController() : null;
+      const timer = ctl ? setTimeout(() => ctl.abort(), 60000) : null;
+      try {
+        let res;
+        try {
+          // (a JSON string, sent as text/plain: a "simple" request, which needs no CORS preflight – Apps Script can't
+          // answer one – and no cookies, so that a student's own Google sign-in plays no part)
+          res = await fetch(HI.script, { method: 'POST', body, redirect: 'follow', credentials: 'omit', signal: ctl ? ctl.signal : undefined });
+        } catch (e) {
+          return { ok: false, error: 'network', message: String((e && e.message) || e) };
+        }
+        let r = null;
+        try {
+          r = await res.json();
+        } catch (e) {
+          r = null;
+        }
+        return r && typeof r === 'object' ? r : { ok: false, error: 'reply', message: `The hand-in service sent back a reply that couldn’t be read (${res.status}). Please try again in a moment.` };
+      } finally {
+        if (timer) clearTimeout(timer);
+      }
     }
     _downloadMenu(anchor, att) {
       MG.popmenu(anchor, [
@@ -2862,15 +3584,17 @@
     }
     _fileBase(att) {
       const c = att.candidate || {};
-      return [slug(att.paper.title), c.number ? slug(c.number) : ''].filter(Boolean).join('-');
+      const name = c.name || fullName();
+      return [slug(att.paper.title), name ? slug(name) : '', c.number ? slug(c.number) : ''].filter(Boolean).join('-');
     }
     /** the submission as HTML (the body: headings, the questions, the answers) */
     exportBody(att, opts = {}) {
       const c = att.candidate || {};
-      const who = [c.number && `Candidate ${c.number}`, c.name].filter(Boolean).join(' · ');
+      const who = [c.name || fullName(), c.number && `Candidate ${c.number}`].filter(Boolean).join(' · ');
       let x = `<h1 class="title">${esc(att.paper.title)}</h1>`;
       if (who) x += `<p class="meta">${esc(who)}</p>`;
-      x += `<p class="meta">Started ${esc(fmtWhen(att.started))}${att.submitted ? ' · submitted ' + esc(fmtWhen(att.submitted)) : ' · not submitted'}. Exam practice, BMS workbench.</p>`;
+      const spent = att.activeMs ? ` · about ${plural(Math.max(1, Math.round(att.activeMs / 60000)), 'minute')} spent writing` : '';
+      x += `<p class="meta">Started ${esc(fmtWhen(att.started))}${att.submitted ? ' · submitted ' + esc(fmtWhen(att.submitted)) : ' · not submitted'}${esc(spent)}. ${att.paper.week ? 'Supervision ' + esc(String(att.paper.week)) + ', ' : ''}${esc(SITE_NAME())}.</p>`;
       this._questions(att).forEach((q, i) => {
         if (q.type === 'info') return;
         const n = this._questions(att).slice(0, i + 1).filter((z) => z.type !== 'info').length;
@@ -2878,7 +3602,7 @@
         x += `<h2>Question ${n}${q.title ? ': ' + esc(q.title) : ''}</h2>`;
         if (q.text) x += `<div class="qtext">${cleanTrusted(q.text)}</div>`;
         if (q.type === 'essay' || q.type === 'short') {
-          x += `<h3>Answer</h3>${a.html ? cleanHTML(a.html) : '<p><i>(no answer)</i></p>'}`;
+          x += `<h3>Answer</h3>${a.html ? withPictures(cleanHTML(a.html), att) : '<p><i>(no answer)</i></p>'}`;
           x += `<p class="meta">Words: ${a.words || 0}${q.words && q.words.max ? ' (limit ' + q.words.max + ')' : ''}</p>`;
         } else if (q.type === 'numeric') {
           x += `<p><b>Answer:</b> ${a.value != null && String(a.value).trim() ? esc(String(a.value).trim()) + (q.units ? ' ' + esc(q.units) : '') : '<i>(no answer)</i>'}</p>`;
@@ -2914,19 +3638,28 @@
       d.querySelectorAll('h2').forEach((x) => x.before(document.createTextNode('\n')));
       return plainText(d).replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim() + '\n';
     }
+    /** the Word document of an attempt: {blob, name} */
+    async _docx(att) {
+      if (!MG.Docx) await MG.loadScript('assets/js/docx.js');
+      const c = att.candidate || {};
+      const blob = await MG.Docx.fromHTML(this.exportBody(att), { title: att.paper.title, creator: [c.name || fullName(), c.number].filter(Boolean).join(' ') });
+      return { blob, name: this._fileBase(att) + '.docx' };
+    }
     async download(att, format) {
       const base = this._fileBase(att);
       try {
         if (format === 'docx' || format === 'docx-file') {
-          if (!MG.Docx) await MG.loadScript('assets/js/docx.js');
           const c = att.candidate || {};
-          const blob = await MG.Docx.fromHTML(this.exportBody(att), { title: att.paper.title, creator: [c.number, c.name].filter(Boolean).join(' ') });
+          // (work to hand in needs the student's name on it: ask for it if there is none)
+          if (format === 'docx' && (att.paper.required || att.paper.handIn) && !(c.name || fullName()) && MG.app.nameDialog) await MG.app.nameDialog({ title: `Your name, for your ${workOf(att.paper)}`, why: 'Your name goes at the top of the Word document, so that your supervisor knows whose work it is. It’s only kept in this browser.', cancel: 'Download without it' });
+          const { blob } = await this._docx(att);
           if (format === 'docx-file') {
             const p = await MG.app.saveToFiles(base + '.docx', blob, { folder: '~/essays', ask: false });
             if (p) bus.emit('exam:download', { paper: att.paper.id, format: 'docx-file', path: p });
             return p;
           }
-          MG.downloadBlob(blob, base + '.docx');
+          MG.downloadBlob(blob, this._fileBase(att) + '.docx');
+          if (att.paper.week) mark(att.paper.id, 'downloaded');
         } else if (format === 'html') {
           MG.downloadText(this.exportDocument(att), base + '.html', 'text/html');
         } else if (format === 'txt') {
@@ -2937,7 +3670,7 @@
         bus.emit('exam:download', { paper: att.paper.id, format });
       } catch (e) {
         console.error(e);
-        toast('The download could not be made: ' + esc(e.message || e), 'error');
+        toast('The download couldn’t be made: ' + esc(e.message || e), 'error');
       }
     }
     _print(att) {
@@ -2952,7 +3685,7 @@
           f.contentWindow.focus();
           f.contentWindow.print();
         } catch (e) {
-          toast('Printing did not start: use Download → Web page, open it and print it.', 'warn', 7000);
+          toast('Printing didn’t start. Instead, choose Download → Web page, then open the page and print it from there.', 'warn', 7000);
         }
         setTimeout(() => f.remove(), 60000);
       }, 250);
@@ -2987,10 +3720,10 @@
   }
 
   const EXPORT_CSS = `body{font-family:Calibri,Carlito,Arial,sans-serif;max-width:800px;margin:30px auto;padding:0 20px;color:#222;line-height:1.5}
-h1{font-size:24px;color:#3b1c42;margin:0 0 6px}h2{font-size:18px;margin:28px 0 8px;border-bottom:1px solid #ccc;padding-bottom:3px}h3{font-size:15px;margin:16px 0 6px}
+h1{font-size:24px;color:#13304a;margin:0 0 6px}h2{font-size:18px;margin:28px 0 8px;border-bottom:1px solid #ccc;padding-bottom:3px}h3{font-size:15px;margin:16px 0 6px}
 .meta{color:#666;font-size:13px;margin:2px 0}.qtext{color:#555;font-style:italic}.qtext img{max-width:100%}
 table{border-collapse:collapse;margin:8px 0}td,th{border:1px solid #999;padding:4px 8px;vertical-align:top}th{background:#eee}
-img.ex-drawing{max-width:100%;height:auto;border:1px solid #ddd}.ex-formula{font-family:'Cambria Math','STIX Two Math',Cambria,serif}
+img.ex-drawing{max-width:100%;height:auto;border:1px solid #ddd}img.ex-image{display:block;width:auto;height:auto;max-width:100%;max-height:22cm;margin:6px 0;border:1px solid #ddd;break-inside:avoid}.ex-formula{font-family:'Cambria Math','STIX Two Math',Cambria,serif}
 .mfrac{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 .1em}.mnum{border-bottom:1px solid currentColor;padding:0 .15em}.mden{padding:0 .15em}
 .msqrt{display:inline-flex;align-items:flex-start}.mrad{border-top:1px solid currentColor;padding:0 .1em}.mroot{font-size:.65em;margin-right:-.3em}
 .msubsup{display:inline-flex;flex-direction:column;vertical-align:middle;font-size:.75em;line-height:1}.mo{padding:0 .2em}.mfn{padding-right:.15em}

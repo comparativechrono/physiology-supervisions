@@ -7,6 +7,9 @@
    "title": "Getting to know exam practice",
    "kind": "practice",
    "minutes": 20,
+   "suggestedMinutes": null,
+   "week": null,
+   "required": false,
    "questions": 3,
    "description": "A short paper to try everything out: an information page, a short essay, a calculation and a multiple-choice question.",
    "order": 1
@@ -17,6 +20,9 @@
    "title": "Practice essay (45 minutes)",
    "kind": "practice",
    "minutes": 45,
+   "suggestedMinutes": null,
+   "week": null,
+   "required": false,
    "questions": 1,
    "description": "One essay of up to 1000 words, written to time, as in an exam. Your answer is submitted when the time is up.",
    "order": 2
@@ -27,6 +33,9 @@
    "title": "Calculations",
    "kind": "practice",
    "minutes": 40,
+   "suggestedMinutes": null,
+   "week": null,
+   "required": false,
    "questions": 8,
    "description": "Eight calculations of the lab and of physiology: magnification, dilutions, cell counts, flow and resistance, time constants and the Nernst equation.",
    "order": 3

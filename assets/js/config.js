@@ -1,16 +1,18 @@
 /* =====================================================================
-   Settings for the BMS workbench.
+   Settings for the physiology supervisions (built on the BMS workbench).
    You can change these settings by editing this file and uploading it
    again; nothing else needs to change.
    ===================================================================== */
 window.MG_CONFIG = {
-  courseTitle: 'BMS workbench',
-  courseSubtitle: 'The microscope, anatomy, recordings, the organ bath, models, exam practice and R, in your browser',
+  /* (the title and subtitle of each page are written by build/make_page.py, from build/supervisions.py) */
+  courseTitle: null,
+  courseSubtitle: null,
 
-  /* The prefix for everything the page saves in the browser (files, answers, essays and settings). Practicals made
-     from this workbench that are hosted at the same address (for example, GitHub Pages sites of one account) and have
-     the same prefix share the student's files and essays; give a practical its own prefix to keep them apart. */
-  storePrefix: 'bmswb',
+  /* The prefix for everything the pages save in the browser (files, answers, essays and settings). All the pages of
+     this site share it, so a student's files and essays are the same on every supervision's page. It is neither the
+     BMS workbench's (bmswb) nor the BMS supervisions' (bmssup), so that the sites keep their files apart although
+     GitHub Pages serves them all from the same address (comparativechrono.github.io). */
+  storePrefix: 'physsup',
   hostname: 'workbench',
 
   /* Model answers are shown with a "Show answer" button under each question. Set this to false to hide
@@ -26,12 +28,28 @@ window.MG_CONFIG = {
   objectives: [1, 2, 4, 10, 20, 40],
   micronsPerScreenPixelAt20x: 0.5,
 
-  /* Exam practice. The papers are in exams/ (exams/index.json lists them). spellcheckDefault: whether the browser's
+  /* Supervision work. The papers are in exams/ (exams/index.json lists them). spellcheckDefault: whether the browser's
      spelling checker is on when a student starts a paper (it is usually off in real exams; students can switch it).
      autosaveSeconds: how often an answer that is being typed is saved. */
   examBase: 'exams/',
   spellcheckDefault: false,
   autosaveSeconds: 5,
+
+  /* Where students hand in the work they submit in Supervision work (a paper with "handIn": true uses this; a paper
+     can name its own). The hand-in password is given to the students by their supervisor: it is not on this site, and
+     it must never be put here.
+     script: the address of the hand-in script (handin/Code.gs), published as a Google Apps Script web app from the
+       supervisor's Google account (handin/README.md says how). The site sends the Word document to it, with the
+       password that the student types; it checks the password, saves the document in the supervisor's Google Drive
+       and sends back a receipt. This site has a hand-in script of its own, not the BMS supervisions' one, so that
+       the physiology work, its password and its list are kept apart from theirs. Until its address (ending in /exec)
+       is put here, nothing is handed in through the site: students can still download their work as a Word document.
+     to: who the work goes to; password: whether students need a password. */
+  handIn: {
+    to: 'Tim Hearn',
+    password: true,
+    script: ''
+  },
 
   /* The examples of the Diagrams and Circuits tabs. */
   examplesBase: 'examples/',

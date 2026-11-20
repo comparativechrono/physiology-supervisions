@@ -1,20 +1,20 @@
 /* =====================================================================
-   Exam practice (exam.js) and the calculator (calc.js).
-   The exam has colours of its own (plum), and five contrast settings and three text sizes that the student can
-   choose; everything in the exam is sized in em, from --ex-fs.
+   Supervision work (exam.js) and the calculator (calc.js).
+   The exam has colours of its own (the site's navy; the BMS workbench's are plum), and five contrast settings and
+   three text sizes that the student can choose; everything in the exam is sized in em, from --ex-fs.
    ===================================================================== */
 :root {
-  --ex-acc: #5b2d66;
-  --ex-acc-2: #4a2454;
-  --ex-acc-soft: #f3e8f5;
+  --ex-acc: #1f4d73;
+  --ex-acc-2: #173d5c;
+  --ex-acc-soft: #e6eff6;
   --ex-acc-ink: #ffffff;
-  --ex-bg: #f3f1f5;
+  --ex-bg: #f1f4f7;
   --ex-panel: #ffffff;
-  --ex-panel-2: #faf8fb;
+  --ex-panel-2: #f8fafc;
   --ex-ink: #18212f;
   --ex-muted: #5f6577;
-  --ex-line: #e2dce7;
-  --ex-line-2: #c9bfd1;
+  --ex-line: #dce4ea;
+  --ex-line-2: #bfcdd9;
   --ex-red: #a4161a;
   --ex-flag: #c2410c;
   --ex-focus: #0b6b8a;
@@ -192,12 +192,16 @@
 .ex-area [data-indent='7'], .ex-review [data-indent='7'] { margin-left: 14em; }
 .ex-area [data-indent='8'], .ex-review [data-indent='8'] { margin-left: 16em; }
 .ex-area table, .ex-review table { border-collapse: collapse; margin: 0.4em 0 0.8em; max-width: 100%; }
-.ex-area td, .ex-area th, .ex-review td, .ex-review th { border: 1px solid #8d8496; padding: 0.25em 0.5em; min-width: 3em; vertical-align: top; }
+.ex-area td, .ex-area th, .ex-review td, .ex-review th { border: 1px solid #8b97a3; padding: 0.25em 0.5em; min-width: 3em; vertical-align: top; }
 .ex-area th, .ex-review th { background: var(--ex-acc-soft); font-weight: 700; text-align: left; }
 .ex-area img.ex-drawing, .ex-review img.ex-drawing { max-width: 100%; height: auto; border: 1px solid var(--ex-line); border-radius: 4px; vertical-align: top; background: #fff; }
 .ex-area img.ex-drawing { cursor: pointer; }
+/* pictures from the student's computer: on a line of their own, as wide as the answer at most */
+.ex-area img.ex-image, .ex-review img.ex-image { display: block; width: auto; height: auto; max-width: 100%; max-height: 60vh; margin: 6px 0; border: 1px solid var(--ex-line); border-radius: 4px; background: #fff; }
+.ex-area img.ex-image { cursor: pointer; }
 .ex-edfoot { display: flex; align-items: center; gap: 8px; padding: 0.3em 0.75em; border-top: 1px solid var(--ex-line); font-size: 0.82em; color: var(--ex-muted); min-height: 2em; position: sticky; bottom: calc(-1 * var(--ex-padbot, 0px)); z-index: 2; background: var(--ex-panel); border-radius: 0 0 8px 8px; }
 .ex-ednote { color: var(--ex-red); font-weight: 600; }
+.ex-ednote.ok { color: var(--good, #2c7a4b); }
 .ex-wc { font-variant-numeric: tabular-nums; white-space: nowrap; }
 .ex-wc.over { color: var(--ex-red); font-weight: 800; }
 .ex-wc.under { color: #8a5a00; }
@@ -317,6 +321,16 @@
 .ex-sgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(38px, 1fr)); gap: 4px; }
 .ex-sgrid button { height: 38px; border: 1px solid var(--line-2); background: #fff; border-radius: 6px; cursor: pointer; font-size: 18px; }
 .ex-sgrid button:hover, .ex-sgrid button:focus-visible { border-color: var(--ex-acc); background: var(--ex-acc-soft); outline: none; }
+/* Insert picture: the pictures in the workbench's files */
+.ex-picdlg > p { margin: 0 0 10px; }
+.ex-picgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; max-height: min(55vh, 460px); overflow: auto; padding: 2px; margin-bottom: 12px; }
+.ex-picitem { display: flex; flex-direction: column; gap: 3px; padding: 6px; border: 1px solid var(--line-2); border-radius: 8px; background: #fff; color: var(--ink); cursor: pointer; text-align: left; font: inherit; min-width: 0; }
+.ex-picitem:hover, .ex-picitem:focus-visible { border-color: var(--ex-acc); background: var(--ex-acc-soft); outline: none; }
+.ex-picthumb { display: block; aspect-ratio: 4 / 3; border-radius: 5px; overflow: hidden; background: #f1f2f5; }
+.ex-picthumb img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.ex-picitem.broken .ex-picthumb { background: repeating-linear-gradient(45deg, #f1f2f5 0 8px, #e6e8ee 8px 16px); }
+.ex-picname { font-size: 0.82rem; font-weight: 600; overflow-wrap: anywhere; }
+.ex-picwhere { font-size: 0.74rem; color: var(--muted); overflow-wrap: anywhere; }
 .ex-ftop { display: flex; justify-content: flex-end; margin-bottom: 8px; }
 .ex-fex { border: 1px solid var(--line-2); border-radius: 7px; padding: 4px 8px; background: #fff; }
 .ex-fpal { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
@@ -391,42 +405,82 @@
 /* =====================================================================
    The calculator (calc.js): a window of its own that can be moved
    ===================================================================== */
-.calc { position: fixed; z-index: 95; width: 296px; max-width: calc(100vw - 8px); background: #261a2b; color: #f4eef6; border-radius: 14px; box-shadow: 0 14px 40px rgba(20, 8, 26, 0.45); padding: 0 10px 10px; font-family: var(--font); user-select: none; }
+.calc { position: fixed; z-index: 95; width: 296px; max-width: calc(100vw - 8px); background: #142433; color: #eef4f8; border-radius: 14px; box-shadow: 0 14px 40px rgba(20, 8, 26, 0.45); padding: 0 10px 10px; font-family: var(--font); user-select: none; }
 .calc[hidden] { display: none; }
 .calc-head { display: flex; align-items: center; gap: 6px; padding: 8px 2px 6px; cursor: move; touch-action: none; border-radius: 10px; }
 .calc-head:focus-visible { outline: 2px solid #9ad4ea; outline-offset: 0; }
 .calc-head b { font-size: 0.86rem; letter-spacing: 0.02em; }
 .calc-grow { flex: 1; }
 .calc-mem { font-size: 0.7rem; font-weight: 800; background: #f0b94a; color: #2b1a00; border-radius: 4px; padding: 0 5px; }
-.calc-mode, .calc-hbtn, .calc-x { border: 1px solid #4d3a55; background: #35263c; color: #f4eef6; border-radius: 6px; height: 26px; min-width: 30px; padding: 0 6px; font-size: 0.72rem; font-weight: 700; cursor: pointer; display: inline-grid; place-items: center; }
-.calc-mode:hover, .calc-hbtn:hover, .calc-x:hover { background: #46334f; }
-.calc-hbtn[aria-pressed='true'] { background: #5b2d66; border-color: #8a5a96; }
+.calc-mode, .calc-hbtn, .calc-x { border: 1px solid #34506a; background: #1f374c; color: #eef4f8; border-radius: 6px; height: 26px; min-width: 30px; padding: 0 6px; font-size: 0.72rem; font-weight: 700; cursor: pointer; display: inline-grid; place-items: center; }
+.calc-mode:hover, .calc-hbtn:hover, .calc-x:hover { background: #29445d; }
+.calc-hbtn[aria-pressed='true'] { background: #1f4d73; border-color: #4f7ea3; }
 .calc-in { width: 100%; border: 0; border-radius: 8px 8px 0 0; padding: 8px 10px 4px; background: #e9f0e3; color: #1d2418; font-family: var(--mono); font-size: 0.95rem; user-select: text; }
 .calc-in:focus { outline: 2px solid #9ad4ea; outline-offset: 0; }
 .calc-in::placeholder { color: #6d7766; }
 .calc-out { background: #e9f0e3; color: #11160d; border-radius: 0 0 8px 8px; padding: 0 10px 6px; text-align: right; font-family: var(--mono); font-size: 1.45rem; font-weight: 600; min-height: 2.2rem; overflow-x: auto; white-space: nowrap; user-select: text; }
 .calc-out.err { color: #a4161a; font-size: 0.95rem; font-weight: 600; white-space: normal; padding-top: 6px; }
 .calc-out sup { font-size: 0.6em; }
-.calc-hist { list-style: none; margin: 6px 0 0; padding: 4px; max-height: 150px; overflow: auto; background: #1b1220; border-radius: 8px; }
+.calc-hist { list-style: none; margin: 6px 0 0; padding: 4px; max-height: 150px; overflow: auto; background: #0e1a26; border-radius: 8px; }
 .calc-hist[hidden] { display: none; }
-.calc-hist li button { width: 100%; display: flex; justify-content: space-between; gap: 10px; border: 0; background: none; color: #e9dcee; padding: 3px 6px; border-radius: 5px; cursor: pointer; font-family: var(--mono); font-size: 0.78rem; text-align: left; }
-.calc-hist li button:hover { background: #35263c; }
+.calc-hist li button { width: 100%; display: flex; justify-content: space-between; gap: 10px; border: 0; background: none; color: #dde8f0; padding: 3px 6px; border-radius: 5px; cursor: pointer; font-family: var(--mono); font-size: 0.78rem; text-align: left; }
+.calc-hist li button:hover { background: #1f374c; }
 .calc-hist li button span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .calc-hist li button b { white-space: nowrap; color: #fff; }
-.calc-none { color: #b9a9bf; font-size: 0.78rem; padding: 3px 6px; }
+.calc-none { color: #a9bccb; font-size: 0.78rem; padding: 3px 6px; }
 .calc-memrow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; margin: 8px 0 5px; }
 .calc-pad { display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px; }
-.calc-k { height: 34px; border: 0; border-radius: 7px; background: #3d2c45; color: #f4eef6; font-size: 0.86rem; font-weight: 600; cursor: pointer; box-shadow: 0 2px 0 #1b1220; font-family: var(--font); }
-.calc-k:hover { background: #4c3856; }
-.calc-k:active { transform: translateY(1px); box-shadow: 0 1px 0 #1b1220; }
+.calc-k { height: 34px; border: 0; border-radius: 7px; background: #24405a; color: #eef4f8; font-size: 0.86rem; font-weight: 600; cursor: pointer; box-shadow: 0 2px 0 #0e1a26; font-family: var(--font); }
+.calc-k:hover { background: #2d4d6b; }
+.calc-k:active { transform: translateY(1px); box-shadow: 0 1px 0 #0e1a26; }
 .calc-k:focus-visible { outline: 2px solid #9ad4ea; outline-offset: 1px; }
-.calc-k.num { background: #f2edf4; color: #22152a; font-size: 1rem; }
+.calc-k.num { background: #edf2f6; color: #13222f; font-size: 1rem; }
 .calc-k.num:hover { background: #ffffff; }
-.calc-k.op { background: #6b3a78; }
-.calc-k.op:hover { background: #7d4a8a; }
-.calc-k.fn { background: #8a5a96; }
+.calc-k.op { background: #2f6893; }
+.calc-k.op:hover { background: #3a78a6; }
+.calc-k.fn { background: #4f7ea3; }
 .calc-k.ac { background: #b3261e; }
 .calc-k.ac:hover { background: #c9342b; }
 .calc-k.eq { background: #0b6b8a; font-size: 1.05rem; }
 .calc-k.eq:hover { background: #0d7fa3; }
-.calc-k.mem { height: 26px; background: #2f2236; font-size: 0.74rem; color: #d9c8df; }
+.calc-k.mem { height: 26px; background: #1a3043; font-size: 0.74rem; color: #c8d8e4; }
+
+/* ---------------- the supervisions: work to hand in, by supervision ---------------- */
+.ex-badge { align-self: flex-start; font-size: 0.72rem; font-weight: 750; letter-spacing: 0.03em; text-transform: uppercase; padding: 2px 8px; border-radius: 6px; }
+.ex-badge.req { background: #a63a1e; color: #fff; }
+.ex-badge.opt { background: var(--ex-acc-soft); color: var(--ex-acc); }
+.ex-card.ex-required { border: 2px solid #a63a1e; box-shadow: 0 2px 10px rgba(166, 58, 30, 0.12); }
+.ex-pill.ok { background: #e3f4ea; color: #146c43; }
+details.ex-others { margin: 16px 0 4px; }
+details.ex-others > summary { cursor: pointer; font-weight: 650; color: var(--ex-ink); padding: 4px 0; }
+details.ex-others > .ex-papers { margin-top: 8px; }
+.ex-handin { text-align: left; margin: 16px 0 8px; padding: 12px 16px; border-left: 4px solid #a63a1e; background: #fcf1ec; border-radius: 0 10px 10px 0; line-height: 1.55; }
+.ex-handin h3 { margin: 0 0 6px; font-size: 1rem; color: #a63a1e; }
+.ex-handin p { margin: 6px 0; }
+.ex-handin ol, .ex-handin ul { margin: 6px 0; padding-left: 1.3em; }
+
+/* handing in (a supervision's paper): the hand-in password, and one button that sends it to the hand-in script */
+.ex-hi { padding: 14px 18px 12px; }
+.ex-hi .ex-hi-h { display: flex; align-items: center; gap: 8px; margin: 0 0 4px; font-size: 1.05rem; }
+.ex-hi .ex-hi-lede { margin: 0 0 10px; color: var(--ink-2); }
+.ex-hi .btn { display: inline-flex; align-items: center; gap: 6px; }
+.ex-hi-file { overflow-wrap: anywhere; }
+.ex-hi .muted { color: var(--muted); font-size: 0.86rem; }
+.ex-hi.handed { border-left-color: var(--good, #2c7a4b); background: #eef8f1; }
+.ex-hi.handed .ex-hi-h { color: var(--good, #2c7a4b); }
+.ex-hi-ok { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--good, #2c7a4b); color: #fff; }
+.ex-hi-ok svg { width: 15px; height: 15px; }
+.ex-hi-acts { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.ex-hi-form { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 10px 0 4px; }
+.ex-hi-pw { flex: 1 1 220px; min-width: 0; box-sizing: border-box; font: inherit; font-size: 1rem; padding: 8px 11px; border: 1px solid var(--line-2, #c9c3cf); border-radius: 8px; background: #fff; }
+.ex-hi-pw:focus { outline: 2px solid #f2cbbd; border-color: #a63a1e; }
+.ex-hi-go { flex: none; }
+.ex-hi-msg { margin: 6px 0 2px; font-weight: 600; }
+.ex-hi-msg:empty { display: none; }
+.ex-hi-msg.no { color: var(--bad, #b42318); }
+.ex-hi-small { margin: 10px 0 0; font-size: 0.9rem; display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.ex-pill.warn { background: #fff2d8; color: #8a5a00; }
+.ex-startmore { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+@media (max-width: 560px) {
+  .ex-hi { padding: 12px 12px 10px; }
+}

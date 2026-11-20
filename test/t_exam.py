@@ -5,6 +5,7 @@ submission page, submitting, the downloads (the Word file is opened with zipfile
 numerical answers, a free essay, the list of attempts, the calculator against Python, the events, and the layout at
 desktop and phone widths.
 Run:  python3 test/t_exam.py   (screenshots in test/out/exam-*.png)"""
+import base64
 import io
 import json
 import math
@@ -114,7 +115,8 @@ def no_errors(what):
 # ====================================================================== the papers (the files themselves)
 index = json.load(open(os.path.join(SITE, 'exams', 'index.json'), encoding='utf-8'))
 papers = {x['id']: json.load(open(os.path.join(SITE, 'exams', x['file']), encoding='utf-8')) for x in index['papers']}
-check(set(papers) == {'tour', 'practice-essay', 'calculations'}, f'three papers are listed in exams/index.json: {sorted(papers)}')
+check({'tour', 'practice-essay', 'calculations'} <= set(papers), f'the three practice papers are listed in exams/index.json: {sorted(papers)}')
+check(all(papers[k].get('week') for k in set(papers) - {'tour', 'practice-essay', 'calculations'}), 'the other papers belong to a supervision (week)')
 for pid, paper in papers.items():
     qs = paper['questions']
     ids = [q['id'] for q in qs]
@@ -152,15 +154,25 @@ check(abs(t['questions'][2]['answer'] - 3.0e3 / (20e3 / 50)) < 1e-9, 'the answer
 
 # ====================================================================== the start view
 p.js("() => MG.app.showWorkbench('exam')")
-p.wait(f"() => {E} && document.querySelectorAll('.ex-card').length === 3", timeout=30000)
-cards = p.js("() => Array.from(document.querySelectorAll('.ex-card')).map(c => [c.querySelector('h4').textContent, c.querySelector('.ex-cmeta').textContent])")
+p.wait(f"() => {E} && document.querySelectorAll('.ex-card').length >= 3", timeout=30000)
+# (the workbench's guide is no supervision's page: the practice papers are listed, and the supervisions' papers are kept
+# out of the way, in a closed list of their own)
+cards = p.js("() => Array.from(document.querySelectorAll('.ex-card')).filter(c => !c.closest('details')).map(c => [c.querySelector('h4').textContent, c.querySelector('.ex-cmeta').textContent])")
+others = p.js("() => Array.from(document.querySelectorAll('details.ex-others .ex-card')).map(c => c.dataset.paper)")
+# (the supervisions' papers in exams/index.json – those with a week, in the order of their supervisions; none until a
+# supervision's work is added)
+want = [x['id'] for x in sorted([x for x in index['papers'] if x.get('week')], key=lambda x: (x['week'], x.get('order') or 0))]
+check(others == want and not p.js("() => !!(document.querySelector('details.ex-others') || {}).open"),
+      f'the supervisions’ papers ({len(want)} so far) are listed apart, closed: {others}')
 check(cards == [['Getting to know exam practice', '20 minutes · 3 questions · 13 marks'], ['Practice essay (45 minutes)', '45 minutes · 1 question · 25 marks'],
                 ['Calculations', '40 minutes · 8 questions · 16 marks']], f'the papers are listed with their time, questions and marks: {cards}')
 check(has('.ex-home button.btn') and 'None yet' in text('.ex-home'), 'there is a free essay, and no attempts yet')
-P.fill('.ex-cand input >> nth=0', 'B4827')
-P.fill('.ex-cand input >> nth=1', 'Ada Lovelace')
+# (the name comes first: it goes on the work handed in, and every page of the site shares it)
+P.fill('.ex-cand input >> nth=0', 'Ada Lovelace')
+P.locator('.ex-cand input >> nth=0').blur()
+P.fill('.ex-cand input >> nth=1', 'B4827')
 sleep()
-check(p.js("() => MG.store.get('exam').candidate") == 'B4827' and p.js("() => MG.store.get('exam').name") == 'Ada Lovelace', 'the candidate number and name are kept')
+check(p.js("() => MG.store.get('exam').candidate") == 'B4827' and p.js("() => MG.user.fullName()") == 'Ada Lovelace', 'the candidate number is kept, and the name is the site’s')
 p.shot('exam-home')
 
 # ====================================================================== paper 1: the start page
@@ -440,6 +452,112 @@ P.click('.ex-draw button:has-text("Clear")')
 P.click('.ex-draw button:has-text("Save and close")')
 sleep(0.2)
 check(count('.ex-area img.ex-drawing') == 1, 'Clear, then Save and close, takes the drawing away')
+# pictures from the computer (Insert picture, or a picture file dropped in): made smaller, each on a line of its own
+MAKEPIC = """([w, hh, type, q]) => { const c = document.createElement('canvas'); c.width = w; c.height = hh; const g = c.getContext('2d');
+  if (type === 'image/jpeg') { const gr = g.createLinearGradient(0, 0, w, hh); gr.addColorStop(0, '#2a6'); gr.addColorStop(1, '#a26'); g.fillStyle = gr; g.fillRect(0, 0, w, hh);
+    for (let i = 0; i < 400; i++) { g.fillStyle = `hsl(${i * 37 % 360},60%,50%)`; g.beginPath(); g.arc((i * 97) % w, (i * 53) % hh, 20 + i % 40, 0, 7); g.fill(); } }
+  else { g.strokeStyle = '#123'; g.lineWidth = 4; g.strokeRect(20, 20, w - 40, hh - 40); g.font = '28px sans-serif'; g.fillStyle = '#c00'; g.fillText('Thirst loop', 40, 80); }
+  return c.toDataURL(type, q).split(',')[1]; }"""
+PHOTO = base64.b64decode(p.js(MAKEPIC, [4000, 3000, 'image/jpeg', 0.95]))   # (as a phone's photo is: large)
+DIAG = base64.b64decode(p.js(MAKEPIC, [420, 260, 'image/png', None]))       # (a diagram with a transparent background)
+
+
+def choose(files):
+    with P.expect_file_chooser() as fc:
+        tb('picture')
+    fc.value.set_files(files)
+    return fc.value
+
+
+def pics():
+    return p.js("""() => [...document.querySelectorAll('.ex-area img.ex-image')].map(i => ({ id: i.getAttribute('data-img'), w: +i.getAttribute('width'), h: +i.getAttribute('height'),
+        src: i.getAttribute('src').slice(0, 5), shown: i.complete && i.naturalWidth > 0, alone: i.parentElement.tagName === 'P' && i.parentElement.childNodes.length === 1 }))""")
+
+
+new_paragraph_at_end()
+check(p.js("() => (document.querySelector('.ex-tb [data-cmd=picture]') || {}).title") == 'Insert picture (from your computer)', 'the toolbar has Insert picture')
+fc = choose([{'name': 'photo.jpg', 'mimeType': 'image/jpeg', 'buffer': PHOTO}, {'name': 'loop.png', 'mimeType': 'image/png', 'buffer': DIAG}])
+check(fc.is_multiple(), 'Insert picture opens the computer’s file chooser, for one picture or several')
+p.wait("() => document.querySelectorAll('.ex-area img.ex-image').length === 2", timeout=20000)
+sleep(0.4)
+pc = pics()
+check([(x['w'], x['h'], x['src'], x['shown'], x['alone']) for x in pc] == [(1600, 1200, 'blob:', True, True), (420, 260, 'blob:', True, True)],
+      f'the pictures are put in, each on a line of its own; the 4000 × 3000 photo made 1600 × 1200: {pc}')
+im = att('Object.fromEntries(Object.entries(a.images).map(([k, v]) => [k, [v.type, v.w, v.h, Math.round(v.data.length * 3 / 4)]]))')
+check(im[pc[0]['id']][0] == 'image/jpeg' and im[pc[0]['id']][3] < 700 * 1024 and im[pc[1]['id']][0] == 'image/png',
+      f'the photo is kept as a JPEG of less than 700 KB (it was {len(PHOTO) // 1024} KB), and the diagram as a PNG: {list(im.values())}')
+check(text('.ex-ednote') == '2 pictures added. You can type a caption under each.' and p.js("() => document.querySelector('.ex-ednote').classList.contains('ok')"),
+      f'a note says so: {text(".ex-ednote")}')
+check(ev('exam:format', "d.cmd === 'picture'") == 1, 'exam:format fired (picture)')
+w0 = p.js(f"() => {E}.ed.words()")
+P.keyboard.type('Figure 1. The thirst loop.')
+sleep(0.2)
+check(p.js("() => { const i = document.querySelectorAll('.ex-area img.ex-image')[1]; return i.parentElement.nextElementSibling.textContent; }") == 'Figure 1. The thirst loop.',
+      'the cursor is on a new line under the pictures, for a caption')
+check(p.js(f"() => {E}.ed.words()") == w0 + 5, 'the pictures add no words; the caption’s do')
+html = p.js(f"() => {E}.ed.getHTML()")
+check(f'data-img="{pc[0]["id"]}"' in html and 'blob:' not in html and p.js(f"(h) => Object.values({E}.att.images).every(v => !h.includes(v.data.slice(0, 60)))", html),
+      'the answer keeps only the pictures’ ids (their data is kept once, with the attempt)')
+# files that aren't pictures, and a picture that can't be opened
+choose([{'name': 'notes.txt', 'mimeType': 'text/plain', 'buffer': b'some notes'}])
+sleep(0.4)
+check(text('.ex-ednote') == 'Only pictures, such as PNG, JPEG, GIF or WebP files, can be added to an answer.' and len(pics()) == 2, f'a file that isn’t a picture is refused: {text(".ex-ednote")}')
+choose([{'name': 'broken.jpg', 'mimeType': 'image/jpeg', 'buffer': b'this is not a JPEG'}])
+p.wait("() => /couldn’t be opened/.test(document.querySelector('.ex-ednote').textContent)", timeout=10000)
+check(text('.ex-ednote') == 'broken.jpg couldn’t be opened. Try saving it as a JPEG or PNG and adding that instead.' and len(pics()) == 2, 'a picture that can’t be opened says so')
+# dropped in: as Insert picture
+DROPFILE = """([b64, name, type]) => { const A = document.querySelector('.ex-area'); const bin = atob(b64); const u = new Uint8Array(bin.length);
+    for (let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i); const dt = new DataTransfer(); dt.items.add(new File([u], name, { type }));
+    const r = A.lastElementChild.getBoundingClientRect();
+    A.dispatchEvent(new DragEvent('drop', { dataTransfer: dt, bubbles: true, cancelable: true, clientX: r.left + 4, clientY: r.top + 4 })); }"""
+refused = ev('exam:paste', 'd.refused === true')
+p.js(DROPFILE, [base64.b64encode(DIAG).decode(), 'dropped.png', 'image/png'])
+p.wait("() => document.querySelectorAll('.ex-area img.ex-image').length === 3", timeout=10000)
+check(ev('exam:paste', 'd.refused === true') == refused and text('.ex-ednote').startswith('Picture added.'), 'a picture file dropped into the answer goes in, as with Insert picture')
+check(pics()[2]['id'] == pics()[1]['id'] and len(att('Object.keys(a.images)')) == 2, 'the same picture, added again, is kept once')
+tb('undo')
+sleep(0.2)
+check(len(pics()) == 2, 'Undo takes it out')
+tb('redo')
+sleep(0.3)
+check(len(pics()) == 3 and pics()[2]['shown'], 'and Redo puts it back')
+P.dblclick('.ex-area img.ex-image >> nth=2')
+sleep(0.2)
+check('Take the picture out?' in (text('.modal') or ''), 'double-clicking a picture asks whether to take it out')
+P.click('.modal button:has-text("Keep it")')
+sleep(0.2)
+check(len(pics()) == 3, 'Keep it keeps it')
+P.dblclick('.ex-area img.ex-image >> nth=2')
+sleep(0.2)
+P.click('.modal button:has-text("Take it out")')
+sleep(0.2)
+check(len(pics()) == 2, 'Take it out takes it out')
+# at most 10 in an answer
+caret_end()
+choose([{'name': f'small{i}.png', 'mimeType': 'image/png', 'buffer': DIAG} for i in range(9)])
+p.wait("() => document.querySelectorAll('.ex-area img.ex-image').length === 10", timeout=20000)
+sleep(0.3)
+check('An answer can have up to 10 pictures, so only 8 pictures were added.' in text('.ex-ednote'), f'an answer can have up to 10 pictures: {text(".ex-ednote")}')
+choose([{'name': 'one-more.png', 'mimeType': 'image/png', 'buffer': DIAG}])
+sleep(0.4)
+check(len(pics()) == 10 and text('.ex-ednote') == 'An answer can have up to 10 pictures.', 'and no more')
+tb('undo')
+sleep(0.3)
+check(len(pics()) == 2, 'Undo takes the eight out again')
+# copied and pasted in the exam: the same picture
+COPY_PIC = """() => { const i = document.querySelector('.ex-area img.ex-image'); const r = document.createRange(); r.selectNode(i);
+    const g = getSelection(); g.removeAllRanges(); g.addRange(r); i.dispatchEvent(new ClipboardEvent('copy', { clipboardData: new DataTransfer(), bubbles: true, cancelable: true })); }"""
+p.js(COPY_PIC)
+new_paragraph_at_end()
+p.js("() => { const r = document.createRange(); r.selectNodeContents(document.querySelector('.ex-area').lastElementChild); r.collapse(true); const g = getSelection(); g.removeAllRanges(); g.addRange(r); }")
+p.js(PASTE, {'html': p.js("() => document.querySelector('.ex-area img.ex-image').outerHTML"), 'text': ''})
+sleep(0.3)
+pc2 = pics()
+check(len(pc2) == 3 and pc2[2]['id'] == pc2[0]['id'] and pc2[2]['shown'], f'a picture copied in the exam can be pasted, and shows: {[x["id"] for x in pc2]}')
+tb('undo')
+sleep(0.2)
+check(len(pics()) == 2, 'Undo takes the pasted copy out')
+no_errors('pictures')
 # a formula
 new_paragraph_at_end('The flow is ')
 tb('formula')
@@ -584,7 +702,7 @@ check(p.js("() => document.activeElement.dataset.cmd") == 'bold', 'the right arr
 P.keyboard.press('Escape')
 check(p.js("() => document.activeElement.classList.contains('ex-area')"), 'Esc goes back to the answer')
 cmds = sorted(set(e[1]['cmd'] for e in evs() if e[0] == 'exam:format'))
-want = ['backup', 'bold', 'copy', 'drawing', 'expand', 'formula', 'heading', 'indent', 'italic', 'ol', 'outdent', 'paste', 'redo', 'removeFormat', 'restore',
+want = ['backup', 'bold', 'copy', 'drawing', 'expand', 'formula', 'heading', 'indent', 'italic', 'ol', 'outdent', 'paste', 'picture', 'redo', 'removeFormat', 'restore',
         'special', 'subscript', 'superscript', 'table', 'ul', 'underline', 'undo']
 check(all(c in cmds for c in want), f'exam:format fired for every button: missing {[c for c in want if c not in cmds]}')
 wc = p.js(f"() => {E}.ed.words()")
@@ -667,6 +785,10 @@ saved = p.js("async () => JSON.parse(await MG.app.fs.readText('~/essays/tour-1.e
 check('Alveoli' in saved['answers']['tissue']['html'] and saved['answers']['scale-bar']['value'] == '7.5' and saved['answers']['scale-bar']['flag'] is True,
       'the answers and the flags are saved in the file')
 check(ev('exam:saved', "d.path === '/home/user/essays/tour-1.exam.json'") >= 1, 'exam:saved fired with the path')
+used = set(re.findall(r'data-img="([a-z0-9]+)"', saved['answers']['tissue']['html']))
+raw = p.js("async () => await MG.app.fs.readText('~/essays/tour-1.exam.json')")
+check(len(used) == 2 and used <= set(saved['images']) and all(raw.count(saved['images'][i]['data'][:80]) == 1 for i in used),
+      'the file keeps each picture once: the answer and its backup copies hold only their ids')
 caret_end()
 P.keyboard.type(' Saved before the reload.')
 sleep(0.1)
@@ -681,6 +803,8 @@ p.js(EVJS)
 p.js("() => MG.app.showWorkbench('exam')")
 p.wait(f"() => {E} && document.querySelector('.ex-player .ex-area')", timeout=30000)
 check('Saved before the reload' in area_html() and text('.ex-qn') == '1', 'after a reload the attempt is open again, at the same question, with the answer')
+pc3 = p.js("() => [...document.querySelectorAll('.ex-area img.ex-image')].map(i => i.complete && i.naturalWidth > 0 && i.getAttribute('src').startsWith('blob:'))")
+check(pc3 == [True, True], f'and its pictures: {pc3}')
 check(att('a.deadline') == deadline, 'the deadline is the same')
 left = p.js(f"() => Date.parse({E}.att.deadline) - {E}.now()")
 check(text('.ex-timer') == p.js("(ms) => MG.examUtil.fmtRemaining(ms)", left) and left < 20 * 60000, f'the clock carried on: {text(".ex-timer")}')
@@ -746,13 +870,16 @@ p.shot('exam-timeup')
 # ====================================================================== submitting
 P.click('.ex-submit')
 sleep(0.15)
-check(visible('.modal') and 'cannot change your answers' in text('.modal'), 'Submit now asks first')
+check(visible('.modal') and 'can’t change your answers' in text('.modal'), 'Submit now asks first')
 P.click('.modal button:has-text("Submit now")')
 p.wait("() => document.querySelector('.ex-receipt')")
 rh = text('.ex-receipt h2')
 check(re.fullmatch(r'You submitted at \d\d:\d\d on \d{1,2} (January|February|March|April|May|June|July|August|September|October|November|December) \d{4}', rh), f'the receipt: {rh}')
 check(ev('exam:submit', "d.paper === 'tour' && d.answered === 3 && d.total === 3") == 1, 'exam:submit fired with the numbers of questions')
 check(att('!!a.submitted') is True, 'the attempt is submitted')
+kept = att('Object.keys(a.images).sort()')
+refs = sorted(set(re.findall(r'data-img="([a-z0-9]+)"', att('JSON.stringify(a.answers) + JSON.stringify(a.backups)').replace('\\"', '"'))))
+check(kept == refs and len(kept) >= 2, f'submitting keeps only the pictures that are used: {len(kept)} of them')
 p.shot('exam-receipt')
 
 
@@ -767,13 +894,13 @@ def download(label, name):
 
 
 dpath, dname = download('Word document', 'exam-tour.docx')
-check(dname == 'getting-to-know-exam-practice-b4827.docx', f'the Word file is named after the paper and the candidate: {dname}')
+check(dname == 'getting-to-know-exam-practice-ada-lovelace-b4827.docx', f'the Word file is named after the paper and the candidate: {dname}')
 z = zipfile.ZipFile(dpath)
 names = z.namelist()
 doc = z.read('word/document.xml').decode('utf-8')
 plain = re.sub(r'<[^>]+>', '', doc)
 check(all(n in names for n in ['[Content_Types].xml', 'word/document.xml', 'word/styles.xml', 'word/numbering.xml', 'word/media/image1.png']), f'the .docx has its parts: {names}')
-check('Getting to know exam practice' in plain and 'Alveoli are' in plain and 'Saved before the reload' in plain and 'B4827' in plain, 'the Word file has the title, the candidate and the answer')
+check('Getting to know exam practice' in plain and 'Alveoli are' in plain and 'Saved before the reload' in plain and 'B4827' in plain and 'Ada Lovelace' in plain, 'the Word file has the title, the candidate and the answer')
 bold = re.findall(r'<w:r><w:rPr>(?:(?!</w:rPr>).)*<w:b/>(?:(?!</w:rPr>).)*</w:rPr><w:t[^>]*>([^<]*)</w:t>', doc)
 check('thin' in bold, f'"thin" is a bold run: {bold[:8]}')
 check('<w:i/>' in doc and '<w:u w:val="single"/>' in doc and '<w:vertAlign w:val="subscript"/>' in doc and '<w:vertAlign w:val="superscript"/>' in doc,
@@ -791,6 +918,11 @@ for n in names:
             bad.append(f'{n}: {ex}')
 check(not bad, f'every part of the Word file is well-formed XML: {bad}')
 check('<w:drawing>' in doc and z.read('word/media/image1.png')[:4] == b'\x89PNG', 'the drawing is a picture in Word')
+check(z.read('word/media/image2.jpeg')[:3] == b'\xff\xd8\xff' and z.read('word/media/image3.png')[:4] == b'\x89PNG' and doc.count('name="Picture ') == 2 and doc.count('descr="A picture"') == 2,
+      'the two pictures are pictures in Word too (the photo a JPEG, the diagram a PNG), with their alternative text')
+ext = [(int(a), int(b)) for a, b in re.findall(r'<wp:extent cx="(\d+)" cy="(\d+)"/>', doc)]
+check(len(ext) == 3 and ext[1] == (6 * 914400, round(6 * 914400 * 1200 / 1600)) and ext[2] == (420 * 9525, 260 * 9525),
+      f'the photo is 6 inches wide (the width of the page), the diagram its own size: {ext[1:]}')
 check('τ = RC' in plain, 'the formula is written as text')
 check('Heading2' in doc and 'Structure' in plain, 'the heading is a heading')
 check(ev('exam:download', "d.format === 'docx'") == 1, 'exam:download fired (docx)')
@@ -798,11 +930,13 @@ hpath, hname = download('Web page', 'exam-tour.html')
 html = open(hpath, encoding='utf-8').read()
 check(hname.endswith('.html') and '<h1 class="title">Getting to know exam practice</h1>' in html and '<b>thin</b>' in html and 'ex-formula' in html and '<table' in html,
       'the web page has the title, the formatting, the formula and the table')
+check(len(re.findall(r'<img class="ex-image" data-img="[a-z0-9]+" [^>]*src="data:image/(?:jpeg|png);base64,', html)) == 2, 'and the pictures, in the page itself')
 tpath, tname = download('Plain text', 'exam-tour.txt')
 txt = open(tpath, encoding='utf-8').read()
 check(tname.endswith('.txt') and 'Alveoli are thin walled' in txt and '1. first point' in txt and 'τ = RC' in txt and '[drawing]' in txt and 'Answer: 7.5 µm' in txt,
       'the text file has the answers (lists numbered, formula as text)')
-order = [txt.find(x) for x in ['Alveoli are thin', 'Resistance in Ω', 'Vessel', '[drawing]', 'The flow is', 'pasted from the clipboard']]
+check(txt.count('[picture]') == 2 and 'Figure 1. The thirst loop.' in txt, 'in the text file, the pictures are [picture], with their caption')
+order = [txt.find(x) for x in ['Alveoli are thin', 'Resistance in Ω', 'Vessel', '[drawing]', '[picture]', 'Figure 1. The thirst loop.', 'The flow is', 'pasted from the clipboard']]
 check(order == sorted(order) and order[0] > 0 and re.search(r'The flow is\s+τ = RC', txt), f'everything is in the order it was written: {order}')
 P.click('.ex-recacts .btn.primary')
 P.click('.popmenu button:has-text("Print")')
@@ -810,8 +944,8 @@ sleep(0.6)
 check(p.js("() => { const f = document.querySelector('.ex-printframe'); return !!f && f.contentDocument.body.textContent.includes('Alveoli are thin'); }"), 'Print, or save as PDF prints the submission (a page of its own)')
 check(ev('exam:download', "d.format === 'pdf'") == 1 and ev('exam:download', "d.format === 'html'") == 1 and ev('exam:download', "d.format === 'txt'") == 1, 'exam:download fired for each format')
 P.click('.ex-recacts button:has-text("Save a Word copy")')
-p.wait("() => MG.app.fs.exists('~/essays/getting-to-know-exam-practice-b4827.docx')", timeout=10000)
-check(ev('exam:download', "d.format === 'docx-file' && d.path === '/home/user/essays/getting-to-know-exam-practice-b4827.docx'") == 1, 'Save a Word copy in my files saves it in ~/essays')
+p.wait("() => MG.app.fs.exists('~/essays/getting-to-know-exam-practice-ada-lovelace-b4827.docx')", timeout=10000)
+check(ev('exam:download', "d.format === 'docx-file' && d.path === '/home/user/essays/getting-to-know-exam-practice-ada-lovelace-b4827.docx'") == 1, 'Save a Word copy in my files saves it in ~/essays')
 # the review
 P.click('.ex-recacts button:has-text("Review my answers")')
 p.wait("() => document.querySelector('.ex-review')")
@@ -819,6 +953,7 @@ rv = text('.ex-review')
 check('Guidance' in rv and '✓ Right' in rv and 'The answer is 7.5 µm' in rv and 'The answer is B' in rv, 'the review shows the guidance and the right answers')
 check(text('.ex-score') == 'Marked automatically: 3 of 3 marks', f'the numerical and multiple-choice questions are marked: {text(".ex-score")}')
 check(p.js("() => document.querySelector('.ex-review .ex-area, .ex-review [contenteditable=true]') === null"), 'the review cannot be changed')
+check(p.js("() => [...document.querySelectorAll('.ex-review img.ex-image')].map(i => i.complete && i.naturalWidth > 0)") == [True, True], 'the review shows the pictures')
 p.shot('exam-review')
 P.click('.ex-revbar button:has-text("Back")')
 p.wait("() => document.querySelector('.ex-receipt')")
@@ -879,7 +1014,7 @@ no_errors('calculations')
 # ====================================================================== paper 2: submitted when the time is up
 p.js(f"() => {E}.openPaper('practice-essay')")
 p.wait("() => document.querySelector('.ex-startcard h2') && document.querySelector('.ex-startcard h2').textContent.startsWith('Practice essay')")
-check('Your answers are submitted when the time is up' in text('.ex-startcard'), 'the start page says the answers are submitted when the time is up')
+check('Your answers are submitted for you when the time is up' in text('.ex-startcard'), 'the start page says the answers are submitted when the time is up')
 P.click('.ex-startacts .btn.primary')
 p.wait("() => document.querySelector('.ex-area')")
 check(words_text() == 'Words: 0/1000' and text('.ex-timer') == '45 minutes remaining', 'the essay: 0 of 1000 words, 45 minutes')
@@ -905,7 +1040,7 @@ P.check(f'{DLG} label:has-text("Let me paste text from outside the exam") input'
 P.click(f'{DLG} button:has-text("Start writing")')
 p.wait("() => document.querySelector('.ex-area') && document.querySelector('.ex-qt').textContent.startsWith('How do')")
 fe = [text('.ex-timer'), words_text(), text('.ex-qt')]
-check(fe == ['No time limit', 'Words: 0/200', 'How do red blood cells carry oxygen?'], f'a free essay: its title, no time limit, a word limit of 200: {fe}')
+check(fe == ['Writing for under a minute', 'Words: 0/200', 'How do red blood cells carry oxygen?'], f'a free essay: its title, no time limit (the clock counts the time spent writing), a word limit of 200: {fe}')
 fe = [att('a.paper.id'), ev('exam:start', "d.paper === 'essay-how-do-red-blood-cells-carry-oxygen'"), p.js(f"() => {E}.path")]
 check(fe == ['essay-how-do-red-blood-cells-carry-oxygen', 1, '/home/user/essays/essay-how-do-red-blood-cells-carry-oxygen-1.exam.json'], f'it is an attempt of its own: {fe}')
 caret_end()
@@ -955,7 +1090,7 @@ check(not p.js("() => MG.app.fs.exists('~/essays/essay-how-do-red-blood-cells-ca
 with P.expect_download() as d:
     P.click('.ex-list tbody tr:has-text("Calculations") button:has-text("Download")')
     P.click('.popmenu button:has-text("Plain text")')
-check(d.value.suggested_filename == 'calculations-b4827.txt', f'an attempt can be downloaded from the list: {d.value.suggested_filename}')
+check(d.value.suggested_filename == 'calculations-ada-lovelace-b4827.txt', f'an attempt can be downloaded from the list: {d.value.suggested_filename}')
 # a file opened from Files goes to its place
 p.js("() => MG.app.openFile('~/essays/tour-1.exam.json')")
 p.wait("() => document.querySelector('.ex-receipt')")
