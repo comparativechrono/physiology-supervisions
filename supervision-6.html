@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supervision 6 – Physiology supervisions</title>
+<meta name="description" content="Supervision 6 of NST IB Physiology covers the body’s fluid compartments, glomerular filtration and clearance, and how the kidney makes dilute or concentrated urine. There’s an essay to hand in, on the evidence for how urine is made, and optional exercises in the workbench.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2313304a'/%3E%3Cpath d='M3.5 17.5h5.2l1.6-2.6 1.6 2.6h1.3l1 2.4 2.4-13.4 2.4 15.5 1.4-4.5h1.6l1.9-3 1.9 3h2.7' fill='none' stroke='%23ff8a65' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<script src="assets/js/isolation.js"></script>
+<link rel="stylesheet" href="assets/vendor/codemirror/codemirror.css">
+<link rel="stylesheet" href="assets/css/app.css">
+<link rel="stylesheet" href="assets/css/wb.css">
+<link rel="stylesheet" href="assets/css/bms.css">
+<link rel="stylesheet" href="assets/css/r.css">
+<link rel="stylesheet" href="assets/css/rstudio.css">
+<link rel="stylesheet" href="assets/css/files.css">
+<link rel="stylesheet" href="assets/css/viewer.css">
+<link rel="stylesheet" href="assets/css/scope.css">
+<link rel="stylesheet" href="assets/css/flow.css">
+<link rel="stylesheet" href="assets/css/circuit.css">
+<link rel="stylesheet" href="assets/css/exam.css">
+<link rel="stylesheet" href="assets/css/anatomy.css">
+<link rel="stylesheet" href="assets/css/recorder.css">
+<link rel="stylesheet" href="assets/css/organbath.css">
+<link rel="stylesheet" href="assets/css/sims.css">
+</head>
+<body data-page="supervision-6" data-title="Supervision 6" data-week="6">
+<div class="app">
+
+  <header class="topbar">
+    <button class="btn top-toggle" id="tutToggle" type="button" title="Hide the instructions so that the workbench fills the window (Ctrl+\)" aria-controls="tut" aria-expanded="true"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M16 10l-2 2 2 2"/></svg></button>
+    <a class="brand" href="index.html" title="All the supervisions">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#1c4061"/><path d="M3.5 17.5h5.2l1.6-2.6 1.6 2.6h1.3l1 2.4 2.4-13.4 2.4 15.5 1.4-4.5h1.6l1.9-3 1.9 3h2.7" fill="none" stroke="#ff8a65" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div>
+        <div class="brand-title">Physiology supervisions</div>
+        <div class="brand-sub">Supervision 6: body fluids, filtration and water</div>
+      </div>
+    </a>
+    <div class="spacer"></div>
+    <div class="progress-wrap" title="The steps you have done and the questions you have answered (saved in this browser)"><span class="progress-label">0% done</span><div class="progress"><i></i></div></div>
+    <span class="store-status" id="storeStatus" title="Your files are saved in this browser, on this computer"></span>
+    <button class="btn" id="userBtn" type="button" title="Your name, as it appears in the workbench"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span class="user-name">Your name</span></button>
+    <button class="btn" id="projectBtn" type="button" title="Download all your files, add files, or start afresh"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v1H7l-4 9z"/><path d="M3 19l3.5-8H22l-3.5 8z"/></svg><span>My files</span></button>
+    <button class="btn" id="answersBtn" type="button"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg><span>My answers</span></button>
+    <button class="btn" id="helpBtn" type="button" title="How this page works"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.2 9a2.9 2.9 0 0 1 5.6 1c0 2-2.8 2.6-2.8 4M12 17.5h.01"/></svg><span>Help</span></button>
+    <button class="btn" id="fullBtn" type="button" title="Full screen"><span>Full screen</span></button>
+  </header>
+
+  <div class="main">
+    <aside class="tut" id="tut" aria-label="Instructions">
+      <nav class="ch-nav" aria-label="Chapters"></nav>
+<!--CHAPTERS-->
+<section class="chapter" id="s6-week" data-num="0" data-title="This week" data-bench="exam">
+  <h1>Supervision 6: body fluids, filtration and water</h1>
+  <div class="meta-row"><span class="pill time">≈ 5 min</span></div>
+  <p class="lede">This week’s lectures are about the body’s fluid compartments, how the kidney filters 180 litres of plasma a day and reabsorbs almost all of it, how clearance measures what it does, and how it makes urine more or less concentrated than plasma.</p>
+
+<div class="handin-box">
+  <div class="hb-k">To hand in this week</div>
+  <p class="hb-title">“What is the evidence that the kidneys produce urine by a process of ultrafiltration, followed by fluid reabsorption, involving expenditure by the tubule cells?”</p>
+  <ul><li>You write the essay in <b>Supervision work</b>, as you will in the online exam. Plan it first, then write it in continuous prose, in your own words.</li><li>It’s one of the titles in the handout, and it asks for evidence: the experiments of all three lectures. Chapter 3 is about how to use experimental evidence in an essay.</li><li>Once you’ve submitted it, <b>hand it in</b> from the same page before your supervision. You’ll need the <b>hand-in password</b> I give you, and your work then goes straight into my Google Drive.</li></ul>
+  <p class="hb-acts"><button class="do showme" type="button" data-goto="s6-write">how to write it and hand it in</button> <button class="do showme" type="button" data-exam="s6-essay">open the essay</button></p>
+</div>
+
+<h2 id="w6-plan">The week, step by step</h2>
+<ol class="plan">
+<li>If you’d like to, start with <b>two short exercises</b>. They’re optional, and take about half an hour altogether. In chapter 1 you find renal corpuscles and proximal tubules in the <b>Microscope</b>, and measure one. In chapter 2 you use <b>R</b> to answer an exam question from the days of IA Physiology: why the clearances of glucose, inulin and PAH come together at high plasma concentrations. <button class="do showme" type="button" data-goto="s6-cortex">start</button></li>
+<li>Then <b>write your essay</b> and hand it in (chapter 3). <button class="do showme" type="button" data-goto="s6-write">go there</button></li>
+<li>Chapter 4 has the handout’s other titles on these lectures, for revision. You can hand one in for feedback if you’d like to, but you don’t have to. <button class="do showme" type="button" data-goto="s6-more">go there</button></li>
+</ol>
+<div class="activity">
+  <div class="act-t">Before you start</div>
+  <ol class="steps">
+    <li data-task="w6-name" data-check="named">Check that your name is at the top of the page. If it says <b>Your name</b>, click it and add yours. It goes at the top of the work you hand in, and every supervision’s page shares it.</li>
+  </ol>
+</div>
+<h2>How this page works</h2>
+<ul>
+<li>The steps tick themselves off as you do them, the buttons do things for you in the workbench on the right, and every question has a <b>model answer</b> you can look at once you’ve had a go.</li>
+<li>Chapters 1, 2 and 4 are optional, so their steps don’t count towards finishing the page. The rest do.</li>
+<li>If you haven’t used one of the workbench’s tabs before, the <a href="workbench.html" target="_blank" rel="noopener">workbench guide</a> shows you how it works.</li>
+</ul>
+
+</section>
+
+<section class="chapter" id="s6-cortex" data-num="1" data-title="The renal cortex" data-bench="scope" hidden>
+  <h1>Optional: the renal cortex</h1>
+  <div class="meta-row"><span class="pill time">≈ 15 min</span></div>
+  <p class="lede">Find a renal corpuscle and a proximal tubule in the Microscope, measure the corpuscle, and work out what each glomerulus filters.</p>
+<div class="optional whole">
+
+<div class="callout info">
+  <div class="co-t">Optional, about 15 minutes</div>
+  <p>This exercise isn’t part of the work to hand in, and its steps don’t count towards finishing the page. It goes with the first lecture, on the structure of the kidney and filtration.</p>
+</div>
+
+<div class="activity">
+  <div class="act-t">The renal cortex</div>
+  <ol class="steps">
+    <li data-task="cx-open" data-auto="scope:open slide=kidney-cortex">Open the renal cortex at 4× <button class="do showme" type="button" data-scope="kidney-cortex@2.9,1.1,4x">show me</button>.</li>
+    <li data-task="cx-glom" data-auto="scope:find slide=kidney-cortex target=glomerulus ok=true">Find a renal corpuscle and click on it <button class="do showme" type="button" data-scope-find="kidney-cortex:glomerulus">find it</button>: a knot of capillaries, the glomerulus, in a cup, Bowman’s capsule.</li>
+    <li data-task="cx-bow" data-auto="scope:find slide=kidney-cortex target=bowmans-space ok=true">Find Bowman’s space, between the glomerulus and the capsule, where the filtrate collects <button class="do showme" type="button" data-scope-find="kidney-cortex:bowmans-space">find it</button>.</li>
+    <li data-task="cx-pct" data-auto="scope:find slide=kidney-cortex target=pct ok=true">Find a proximal convoluted tubule <button class="do showme" type="button" data-scope-find="kidney-cortex:pct">find it</button>. Its cells are tall and stain pink, and its lumen looks fuzzy, because of the brush border.</li>
+    <li data-task="cx-measure" data-auto="scope:measure slide=kidney-cortex kind=length">Measure the diameter of a renal corpuscle with the measuring tool <button class="do showme" type="button" data-scope-tool="measure">show me</button>.</li>
+  </ol>
+</div>
+<div class="q" data-q="cx-q-each" data-accept="num:62.5±8" data-placeholder="nL per minute">
+  <div class="q-text">Your renal corpuscle is probably about 200 µm across. A human kidney has about a million of them, so the two kidneys about two million. If the GFR is 125 mL/min, how much does each glomerulus filter, in nanolitres a minute?</div>
+  <div class="q-model">125 mL/min ÷ 2,000,000 = 62.5 × 10<sup>−6</sup> mL/min, about 60 nL a minute for each glomerulus (the number of nephrons varies a lot between people, so this is only a guide). That’s why micropuncture, collecting nanolitres of fluid from single nephrons, was the key to finding out what the tubules do.</div>
+</div>
+<div class="q" data-q="cx-q-pct">
+  <div class="q-text">The cells of the proximal tubule stain pink with eosin largely because they’re packed with mitochondria, and they have a brush border of microvilli. How do these features fit what the proximal tubule does, and what has this to do with the “expenditure by the tubule cells” in your essay’s title?</div>
+  <div class="q-model">The proximal tubule reabsorbs about two-thirds of the filtered water and Na<sup>+</sup>, and nearly all the glucose, amino acids and much of the bicarbonate. The brush border gives a huge apical surface area for the transporters (Na<sup>+</sup>-glucose cotransporters, Na<sup>+</sup>/H<sup>+</sup> exchangers). The mitochondria provide ATP for the basolateral Na<sup>+</sup>/K<sup>+</sup>-ATPase, which keeps the cell’s Na<sup>+</sup> low, so Na<sup>+</sup> enters across the apical membrane down its gradient, bringing other solutes with it, and water follows osmotically. So reabsorption is driven by active transport, and it costs energy: the kidneys use 7–10% of the body’s O<sub>2</sub> at rest, and their O<sub>2</sub> consumption rises in proportion to the Na<sup>+</sup> they reabsorb. In stopped-flow perfusions, metabolic poisons (2,4-dinitrophenol) and ouabain cut the reabsorption of fluid from the proximal tubule by about two-thirds (Schatzmann and colleagues, 1958).</div>
+</div>
+
+</div>
+</section>
+
+<section class="chapter" id="s6-clear" data-num="2" data-title="Clearance in R" data-bench="rstudio" hidden>
+  <h1>Optional: clearance and the transport maximum</h1>
+  <div class="meta-row"><span class="pill time">≈ 15 min</span></div>
+  <p class="lede">Work out the clearances of inulin, glucose and PAH over a range of plasma concentrations, and answer an old exam question.</p>
+<div class="optional whole">
+
+<div class="callout info">
+  <div class="co-t">Optional, about 15 minutes</div>
+  <p>This exercise isn’t part of the work to hand in, and its steps don’t count towards finishing the page. It goes with the second lecture, on clearance and the transport maximum.</p>
+</div>
+
+<p>Dr Sage’s slides include “an exam question from the good old days (of IA Physiology)”: <i>why is it that at high plasma concentrations the clearances of glucose, inulin and para-aminohippuric acid are similar?</i> You can see the answer by working out the three clearances in R, over a wide range of plasma concentrations. All three are freely filtered. Inulin is neither reabsorbed nor secreted, glucose is reabsorbed by a carrier with a transport maximum (T<sub>max</sub>), and PAH is secreted by one.</p>
+<div class="activity">
+  <div class="act-t">Three clearances, in R</div>
+  <ol class="steps">
+    <li data-task="cl-values" data-auto="r:input kind=rstudio line~tm_pah &lt;- 80">Set the values: a GFR of 125 mL/min, an effective renal plasma flow of 650 mL/min, and the T<sub>max</sub> of glucose (375 mg/min, from the handout) and of PAH (about 80 mg/min): <code>gfr &lt;- 125; erpf &lt;- 650; tm_glucose &lt;- 375; tm_pah &lt;- 80</code> <button class="do showme" type="button" data-rcon="gfr &lt;- 125; erpf &lt;- 650; tm_glucose &lt;- 375; tm_pah &lt;- 80">show me</button></li>
+    <li data-task="cl-p" data-auto="r:input kind=rstudio line~P &lt;- seq">A range of plasma concentrations, in mg/mL: <code>P &lt;- seq(0.05, 10, by = 0.05)</code> <button class="do showme" type="button" data-rcon="P &lt;- seq(0.05, 10, by = 0.05)">show me</button></li>
+    <li data-task="cl-calc" data-auto="r:input kind=rstudio line~pmax(0">Work out the clearances of glucose and PAH. Clearance is the rate of excretion divided by the plasma concentration. Glucose excreted is what is filtered (GFR × P) beyond the T<sub>max</sub>; PAH excreted is what is filtered plus what is secreted, up to all of the plasma that flows past the tubules: <code>glucose &lt;- pmax(0, gfr * P - tm_glucose) / P; pah &lt;- pmin(erpf * P, gfr * P + tm_pah) / P</code> <button class="do showme" type="button" data-rcon="glucose &lt;- pmax(0, gfr * P - tm_glucose) / P; pah &lt;- pmin(erpf * P, gfr * P + tm_pah) / P">show me</button></li>
+    <li data-task="cl-plot" data-auto="r:input kind=rstudio line~matplot">Plot all three <code>matplot(P, cbind(gfr, glucose, pah), type = &quot;l&quot;, lty = 1:3, col = 1, xlab = &quot;Plasma concentration (mg/mL)&quot;, ylab = &quot;Clearance (mL/min)&quot;)</code> <button class="do showme" type="button" data-rcon="matplot(P, cbind(gfr, glucose, pah), type = &quot;l&quot;, lty = 1:3, col = 1, xlab = &quot;Plasma concentration (mg/mL)&quot;, ylab = &quot;Clearance (mL/min)&quot;)">show me</button>, and add a legend <code>legend(&quot;right&quot;, c(&quot;inulin&quot;, &quot;glucose&quot;, &quot;PAH&quot;), lty = 1:3)</code> <button class="do showme" type="button" data-rcon="legend(&quot;right&quot;, c(&quot;inulin&quot;, &quot;glucose&quot;, &quot;PAH&quot;), lty = 1:3)">show me</button>.</li>
+    <li data-task="cl-end" data-auto="r:input kind=rstudio line~tail(glucose">What are the three clearances at the highest concentration, 10 mg/mL? <code>round(c(inulin = gfr, glucose = tail(glucose, 1), pah = tail(pah, 1)), 1)</code> <button class="do showme" type="button" data-rcon="round(c(inulin = gfr, glucose = tail(glucose, 1), pah = tail(pah, 1)), 1)">show me</button></li>
+  </ol>
+</div>
+<div class="q" data-q="cl-q-why">
+  <div class="q-text">Why do the three clearances converge at high plasma concentrations? Answer the old exam question.</div>
+  <div class="q-model">At 10 mg/mL they’re 125 (inulin), 87.5 (glucose) and 133 mL/min (PAH), and they’d come closer still at higher concentrations. Inulin’s clearance is the GFR whatever its concentration, because it’s only filtered. Glucose is filtered and reabsorbed by carriers that saturate at their T<sub>max</sub>; at high concentrations the filtered load is far above the T<sub>max</sub>, so the reabsorbed part becomes a small fraction of what’s filtered, and the clearance rises towards the GFR. PAH is filtered and secreted by carriers that also saturate; at low concentrations nearly all of it is cleared from the plasma flowing past the tubules (its clearance is the effective renal plasma flow, 650 mL/min), but at high concentrations the secreted part becomes small beside what is filtered, so its clearance falls towards the GFR. Carrier-mediated transport is limited, filtration isn’t, so at high concentrations filtration dominates for all three.</div>
+</div>
+<div class="q" data-q="cl-q-threshold" data-accept="num:3±0.1" data-placeholder="mg/mL">
+  <div class="q-text">In this model, at what plasma glucose concentration, in mg/mL, does glucose first appear in the urine? The handout says glucose appears at about 2 mg/mL in a real person. Why the difference?</div>
+  <div class="q-model">In the model, glucose is excreted once the filtered load exceeds the T<sub>max</sub>: GFR × P > 375, so P > 375 / 125 = 3 mg/mL (about 17 mM). Real kidneys show splay: the curves of reabsorption and excretion bend gradually instead of meeting the T<sub>max</sub> sharply, because nephrons differ (in length, in the number of carriers, and in their GFR), so some saturate at lower plasma concentrations than others. Glucose therefore starts to appear in the urine at a lower concentration, the renal threshold, of about 2 mg/mL (10–11 mM). That’s why glucosuria is a sign of poorly controlled diabetes.</div>
+</div>
+
+</div>
+</section>
+
+<section class="chapter" id="s6-write" data-num="3" data-title="Write your essay" data-bench="exam" hidden>
+  <h1>Write your essay, and hand it in</h1>
+  <p class="lede">This is the work to hand in this week. You write it in Supervision work, as you will in the online exam, and then hand it in from the same page.</p>
+
+<p class="essay-title">“What is the evidence that the kidneys produce urine by a process of ultrafiltration, followed by fluid reabsorption, involving expenditure by the tubule cells?”</p>
+
+<h2 id="es6-title">Using experimental evidence</h2>
+<p>This title asks for <b>evidence</b>, so an essay that describes how the kidney works, however accurately, misses the point. Every paragraph should rest on an experiment or an observation, and say what it shows. A useful pattern, for each piece of evidence:</p>
+<ol class="plan">
+<li><b>The claim</b> it supports: “The fluid in Bowman’s space is an ultrafiltrate of plasma.”</li>
+<li><b>The experiment</b>, briefly: who, on what, and what they did. “Wearn and Richards (1924) collected fluid from Bowman’s capsule of frogs by micropuncture.”</li>
+<li><b>The result</b>, with a number if there is one. “It had the composition of plasma, but almost no protein.”</li>
+<li><b>The inference</b>: why the result supports the claim, and what else it rules out.</li>
+<li><b>Its limits</b>, where they matter: frogs aren’t mammals; one nephron isn’t the whole kidney.</li>
+</ol>
+<p>The title has three claims, so the essay can take them in turn: <b>ultrafiltration</b> (micropuncture of the capsule; the dependence of filtration on pressure; the structure of the barrier), <b>reabsorption</b> (GFR, measured with inulin, is 125 mL/min but urine flow about 1; changes in the composition of the fluid along the tubule; inulin concentration rising along the proximal tubule while the osmolality stays the same; the split-oil-drop experiments), and <b>expenditure by the tubule cells</b> (reabsorption against gradients, metabolic poisons and ouabain cutting fluid reabsorption, the O<sub>2</sub> the kidney consumes).</p>
+<div class="q" data-q="es6-q-evidence" data-type="mcq">
+  <div class="q-text">Which sentence uses evidence best?</div>
+  <div class="mcq"><label data-why="It’s true, but it’s a statement of fact, not evidence. How do we know?"><input type="radio"> <span>“The proximal tubule reabsorbs about two-thirds of the filtrate.”</span></label><label data-correct data-why="Yes. It gives the measurement, the reason inulin is a valid marker, and the inference, and the inference follows from the numbers."><input type="radio"> <span>“In micropuncture samples, the concentration of inulin rises about three-fold along the proximal tubule while the osmolality stays equal to plasma’s. Inulin isn’t reabsorbed, so about two-thirds of the filtered water, and with it an isosmotic amount of solute, must have been reabsorbed by the end of the proximal tubule.”</span></label><label data-why="No. It’s vague: which experiments, and what did they show?"><input type="radio"> <span>“Many experiments have shown that the kidney reabsorbs water.”</span></label></div>
+</div>
+<div class="q" data-q="es6-q-energy" data-type="mcq">
+  <div class="q-text">Schatzmann and colleagues (1958) perfused single proximal tubules with fluid held between oil drops. In 20 minutes, 27% of the fluid was reabsorbed normally, but only about 10% with 2,4-dinitrophenol or with ouabain. What does this show?</div>
+  <div class="mcq"><label data-correct data-why="Yes. DNP uncouples oxidative phosphorylation, and ouabain blocks the Na&lt;sup&gt;+&lt;/sup&gt;/K&lt;sup&gt;+&lt;/sup&gt;-ATPase; both cut reabsorption by about two-thirds. So the tubule cells spend energy to reabsorb, and that energy goes into pumping Na&lt;sup&gt;+&lt;/sup&gt;: water follows the solute osmotically. Some reabsorption remains, which a good essay could discuss."><input type="radio"> <span>That fluid reabsorption depends on metabolism and on the Na<sup>+</sup>/K<sup>+</sup>-ATPase: active transport of Na<sup>+</sup> drives the reabsorption of water</span></label><label data-why="No. There’s no water pump. The poisons stop Na&lt;sup&gt;+&lt;/sup&gt; transport, and water follows the solute."><input type="radio"> <span>That water is pumped actively across the tubule</span></label><label data-why="No. These were perfusions of single tubules, so filtration wasn’t involved; the energy for filtration comes from the heart, as the pressure in the glomerular capillaries."><input type="radio"> <span>That ultrafiltration needs energy</span></label></div>
+</div>
+
+<h2>Before you start</h2>
+<ul>
+<li>Look back at the feedback on your earlier work, and pick one thing to do better this time.</li>
+<li>Make sure you have the <b>hand-in password</b> I gave you, because you’ll need it at the end. You won’t find it anywhere on this site.</li>
+<li>Your work saves itself in this browser as you type, so you can stop and come back to it. Submit it once it’s finished.</li>
+<li>Name experiments by their authors and dates where you can, as in the lectures, but don’t worry if you can’t remember a date: what was done and what it showed matter more.</li>
+</ul>
+<div class="activity">
+  <div class="act-t">Write it, and hand it in</div>
+  <ol class="steps">
+    <li data-task="es6-start" data-auto="exam:start paper=s6-essay" data-check="paper:s6-essay.started">Open the essay <button class="do showme" type="button" data-exam="s6-essay">show me</button>, read its first page, and press <b>Start</b> when you’re ready to write.</li>
+    <li data-task="es6-write" data-auto="exam:words paper=s6-essay words&gt;299">Plan, then write. Take the title’s three claims in turn, and make each paragraph rest on a piece of evidence: the experiment, the result and what it shows.</li>
+    <li data-task="es6-submit" data-auto="exam:submit paper=s6-essay" data-check="paper:s6-essay.submitted">When you’ve finished, go to the submission page (the ✓ tile at the bottom right), check your work and submit it.</li>
+    <li data-task="es6-send" data-auto="exam:handin paper=s6-essay step=confirmed" data-check="paper:s6-essay.handedIn">Hand it in on the page that comes up next. Type in the hand-in password and press <b>Hand it in</b>. The page shows you a receipt once your work has arrived.</li>
+    <li data-task="es6-word" data-auto="exam:download paper=s6-essay format=docx" data-check="paper:s6-essay.downloaded">To keep a copy, press <b>Download your copy</b>. Before you hand in, the same button is under the password box, and it’s called <b>Download a copy for yourself</b>. The copy is saved as a Word document, usually in your Downloads folder.</li>
+  </ol>
+</div>
+<div class="callout info">
+  <div class="co-t">Handing in</div>
+  <p>Your work goes straight from this page into my Google Drive, and you don’t need a Google account for that. The hand-in password I give you stops anyone else from handing work in, so please keep it to yourself. Once it has arrived, the page tells you so and gives you a receipt. If it can’t be handed in, the page will tell you why. If you try again and it still won’t go, download a copy and send it to me some other way.</p>
+</div>
+<div class="callout info">
+  <div class="co-t">After you’ve handed it in</div>
+  <p>Once you’ve submitted, <b>Review my answers</b> shows you the ground a good answer covers. Read it after you’ve handed your work in, and make a note of what you’d add or change. That’s what we’ll talk about in the supervision.</p><p>Your work is kept in this browser, in Files → <code>essays</code>. It won’t be there on another computer, and some shared computers clear it when you log out, so download a copy before you finish.</p>
+</div>
+<div class="q" data-q="es6-q-next">
+  <div class="q-text">Once you’ve read the guidance, which of your paragraphs described the kidney without giving the evidence for what it said?</div>
+  <div class="q-model">There’s no single right answer here, so bring yours to the supervision. Essays on this title most often slip from evidence into description, especially on reabsorption, and give the experiments without saying what each one rules in or out.</div>
+</div>
+
+</section>
+
+<section class="chapter" id="s6-more" data-num="4" data-title="Revision titles" data-bench="exam" hidden>
+  <h1>Revision titles</h1>
+  <p class="lede">This chapter is optional. It has more essay titles on this week’s lectures, for revision. You can hand one in for feedback if you’d like to.</p>
+<h2 id="m6-rev">Essay titles for revision</h2>
+<p>These are the handout’s other titles on this week’s lectures, the old IA question from the second lecture’s slides (which you answered in R in chapter 2, if you did it), and two of the handout’s three quotations. It’s worth noting them down.</p>
+<ol class="titles"><li>What are the functions of the kidney? To what extent are these functions regulated entirely within the kidney?</li><li>Contrast the functions of the proximal and distal tubules of the kidney.</li><li>How is the kidney able to vary the osmotic pressure of the urine?</li><li>How do the kidneys form an ultrafiltrate of the plasma? How are the effects of changes in arterial blood pressure minimised?</li><li>Why is it that at high plasma concentrations the clearances of glucose, inulin and para-aminohippuric acid are similar?</li><li><i>Not drunk is he who from the floor<br>Can rise alone and still drink more;<br>But drunk is he, who prostrate lies,<br>Without the power to drink or rise.</i><br>(Thomas Love Peacock, <i>The Misfortunes of Elphin</i>, 1829)<br><br>What is the physiological connection?</li><li><i>Hermit hoar, in solemn cell,<br>wearing out life’s evening gray;<br>smite thy bosom, sage and tell,<br>What is bliss, and which the way?<br>Thus I spoke; and speaking sigh’d;<br>-Scare repressed the starting tear;-<br>When the smiling sage reply’d-<br>- Come, my lad, and drink some beer.</i><br>(Samuel Johnson, 1777)<br><br>What is the physiological connection?</li></ol>
+<p>The handout’s titles on the next two renal lectures (extracellular fluid volume, sodium, calcium and potassium), and its third quotation, are in Supervision 7.</p>
+<p>Planning an answer to each one (your argument, your evidence, and the order you’d put them in) is good revision. If you’d like feedback on one, write it in Supervision work <button class="do showme" type="button" data-exam="s6-revision">open them</button> and <b>hand it in</b>, in the same way as the work for this week. That’s optional: choose the title you want to write, and leave the others blank. After you submit, the guidance shows you the ground each title should cover.</p>
+<div class="optional">
+<h2>Practice</h2>
+<div class="activity">
+  <div class="act-t">If you want the practice</div>
+  <ol class="steps">
+    <li data-task="m6-plan">Plan an answer to one of the revision titles. Sum up your position in a sentence, then jot down the three or four points, with the evidence for each, that would support it.</li>
+    <li data-task="m6-rev" data-auto="exam:submit paper=s6-revision">Write one of them up in Supervision work, submit it, and hand it in if you’d like my feedback on it.</li>
+  </ol>
+</div>
+</div>
+</section>
+<!--/CHAPTERS-->
+    </aside>
+
+    <div class="splitter" role="separator" aria-orientation="vertical" title="Drag to resize, or double-click to reset"></div>
+
+    <section class="bench" aria-label="Workbench">
+      <div class="wb-tabs" role="tablist">
+        <button class="wb-tab rail-btn" type="button" id="tutRail" title="Show the instructions (Ctrl+\)" hidden><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M13 10l2 2-2 2"/></svg><span>Instructions</span></button>
+        <button class="wb-tab on" type="button" role="tab" data-wb="exam" title="Supervision work: the essay and the questions set for your supervision, written as in the online exam"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 3H6.5A2.5 2.5 0 0 0 4 5.5v13A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5V9z"/><path d="M14 3v6h6"/><path d="M8 13h8M8 17h5"/></svg><span class="lbl">Supervision work</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="scope" title="A virtual microscope with slides of human tissues"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9.5 2.8l3.6 1.4-3 7.6-3.6-1.4z"/><path d="M7.7 12.4l-.9 2.2"/><path d="M4 16.5h9"/><path d="M13.6 7.6a6.5 6.5 0 0 1 1.9 11.2"/><path d="M5 21h14"/><path d="M15.5 18.8V21"/></svg><span class="lbl">Microscope</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="anatomy" title="The anatomy of the human body in 3D (from Z-Anatomy)"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="4.6" r="2.3"/><path d="M12 7.6v6.6M6.2 10.6L12 8.8l5.8 1.8M8.8 21l3.2-6.8 3.2 6.8"/></svg><span class="lbl">Anatomy</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="viewer" title="Proteins and other molecules in 3D"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="6" cy="7" r="2.6"/><circle cx="18" cy="7" r="2.6"/><circle cx="12" cy="17.5" r="2.6"/><path d="M8.6 7h6.8M7.3 9.3l3.4 5.9M16.7 9.3l-3.4 5.9"/></svg><span class="lbl">Molecules</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="recorder" title="A chart recorder with real recordings of people (the ECG, heart sounds, blood pressure, breathing, muscle and the brain), from PhysioNet"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M6 13h2.5l1.5-4.5 2.5 8 1.8-5.5 1 2H18"/></svg><span class="lbl">Recorder</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="bath" title="An organ bath: isolated tissues, drugs and concentration–response curves"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5.5 3h13"/><path d="M7 3v13.5A4.5 4.5 0 0 0 11.5 21h1a4.5 4.5 0 0 0 4.5-4.5V3"/><path d="M12 3v4.5"/><rect x="10.7" y="7.5" width="2.6" height="6" rx="1.3"/><path d="M9.3 17.6h.01M14.4 16.4h.01M11.8 18.9h.01"/></svg><span class="lbl">Organ bath</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="flow" title="Flow diagrams of physiological control, with a simulator"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="5" rx="1.2"/><rect x="14" y="3" width="7" height="5" rx="1.2"/><rect x="14" y="16" width="7" height="5" rx="1.2"/><path d="M10 5.5h4M17.5 8v8M14 18.5H7.5a1.5 1.5 0 0 1-1.5-1.5V8"/></svg><span class="lbl">Diagrams</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="circuit" title="Electrical circuits, and the circuit models of physiology"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2 12h3.5l1.7-4 2.6 8 2.6-8 2.6 8 1.7-4H22"/></svg><span class="lbl">Circuits</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="sims" title="Interactive simulations from PhET (University of Colorado Boulder)"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h8.5M16.5 6H20M4 12h2.5M10.5 12H20M4 18h10.5M18.5 18H20"/><circle cx="14.5" cy="6" r="2"/><circle cx="8.5" cy="12" r="2"/><circle cx="16.5" cy="18" r="2"/></svg><span class="lbl">Simulations</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="rstudio" title="RStudio, for analysing data in R"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16M3 12h18"/></svg><span class="lbl">RStudio</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="editor" title="Your files"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v1H7l-4 9z"/><path d="M3 19l3.5-8H22l-3.5 8z"/></svg><span class="lbl">Files</span><span class="dot"></span></button>
+        <button class="bench-close" type="button" aria-label="Back to the instructions" title="Back to the instructions">✕<span class="lbl">Instructions</span></button>
+      </div>
+      <div class="wb-body">
+        <div class="wb-pane" data-wb="scope" hidden><div id="scopeRoot"></div></div>
+        <div class="wb-pane" data-wb="anatomy" hidden><div id="anatRoot"></div></div>
+        <div class="wb-pane" data-wb="viewer" hidden><div id="viewerRoot"></div></div>
+        <div class="wb-pane" data-wb="recorder" hidden><div id="recRoot"></div></div>
+        <div class="wb-pane" data-wb="bath" hidden><div id="bathRoot"></div></div>
+        <div class="wb-pane" data-wb="flow" hidden><div id="flowRoot"></div></div>
+        <div class="wb-pane" data-wb="circuit" hidden><div id="circuitRoot"></div></div>
+        <div class="wb-pane" data-wb="sims" hidden><div id="simsRoot"></div></div>
+        <div class="wb-pane" data-wb="exam"><div id="examRoot"></div></div>
+        <div class="wb-pane" data-wb="rstudio" hidden><div id="rsRoot"></div></div>
+        <div class="wb-pane" data-wb="editor" hidden><div id="edRoot"></div></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<button class="bench-fab" type="button" aria-label="Open the workbench"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16M3 12h18"/></svg>Workbench</button>
+<noscript><p style="padding:20px">This page needs JavaScript.</p></noscript>
+
+<script>window.BMS_STARTERS = [];
+window.BMS_STARTERS_VERSION = 1;</script>
+<script>window.BMS_PAGE = {"week": 6, "page": "supervision-6.html", "title": "Supervision 6", "site": "Physiology supervisions"};</script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/core.js"></script>
+<script src="assets/js/icons.js"></script>
+<script src="assets/js/vfs.js"></script>
+<script src="assets/js/project.js"></script>
+<script src="assets/vendor/codemirror/codemirror.js"></script>
+<script src="assets/vendor/codemirror/r.js"></script>
+<script src="assets/vendor/codemirror/markdown.js"></script>
+<script src="assets/vendor/codemirror/yaml.js"></script>
+<script src="assets/vendor/codemirror/shell.js"></script>
+<script src="assets/vendor/codemirror/javascript.js"></script>
+<script src="assets/vendor/codemirror/python.js"></script>
+<script src="assets/vendor/codemirror/overlay.js"></script>
+<script src="assets/vendor/codemirror/multiplex.js"></script>
+<script src="assets/vendor/codemirror/yaml-frontmatter.js"></script>
+<script src="assets/vendor/codemirror/rmarkdown.js"></script>
+<script src="assets/vendor/codemirror/matchbrackets.js"></script>
+<script src="assets/vendor/codemirror/closebrackets.js"></script>
+<script src="assets/vendor/codemirror/comment.js"></script>
+<script src="assets/vendor/codemirror/searchcursor.js"></script>
+<script src="assets/vendor/codemirror/active-line.js"></script>
+<script src="assets/vendor/codemirror/runmode.js"></script>
+<script src="assets/vendor/dompurify/purify.min.js"></script>
+<script src="assets/vendor/marked/marked.min.js"></script>
+<script src="assets/js/rsession.js"></script>
+<script src="assets/js/rui.js"></script>
+<script src="assets/js/dataview.js"></script>
+<script src="assets/js/knit.js"></script>
+<script src="assets/js/rstudio.js"></script>
+<script src="assets/js/rsource.js"></script>
+<script src="assets/js/shiny.js"></script>
+<script src="assets/js/pdfview.js"></script>
+<script src="assets/js/editor.js"></script>
+<script src="assets/js/page.js"></script>
+<script src="assets/js/tutorial.js"></script>
+<script src="assets/js/workbench.js"></script>
+</body>
+</html>

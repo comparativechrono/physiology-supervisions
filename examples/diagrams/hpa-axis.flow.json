@@ -1,0 +1,140 @@
+{
+ "format": "bms-flow-1",
+ "title": "The hypothalamic–pituitary–adrenal axis",
+ "description": "Stress makes the hypothalamus release corticotropin-releasing hormone (CRH) into the portal vessels; CRH makes the corticotrophs of the anterior pituitary release ACTH; ACTH makes the zona fasciculata of the adrenal cortex release cortisol. Cortisol feeds back on both the hypothalamus and the pituitary (long-loop negative feedback). The levels are relative to their resting levels (1). Run it, then knock out the adrenal cortex (as in Addison’s disease), or fix cortisol at a high level (as in a patient taking a glucocorticoid drug), and run it again.",
+ "group": "Hormones",
+ "order": 7,
+ "nodes": [
+  {
+   "id": "stim",
+   "text": "Stress (from 2 hours)",
+   "role": "stimulus",
+   "shape": "flag",
+   "color": "orange",
+   "x": 170,
+   "y": 70,
+   "w": 230,
+   "h": 52,
+   "kind": "step",
+   "start": 2,
+   "size": 1,
+   "plot": true
+  },
+  {
+   "id": "rh",
+   "text": "CRH (hypothalamus)",
+   "role": "quantity",
+   "shape": "round",
+   "color": "purple",
+   "x": 170,
+   "y": 210,
+   "w": 210,
+   "h": 58,
+   "rest": 1,
+   "unit": "",
+   "tau": 0.2,
+   "plot": true
+  },
+  {
+   "id": "th",
+   "text": "ACTH (anterior pituitary)",
+   "role": "quantity",
+   "shape": "round",
+   "color": "pink",
+   "x": 170,
+   "y": 360,
+   "w": 210,
+   "h": 58,
+   "rest": 1,
+   "unit": "",
+   "tau": 0.4,
+   "plot": true
+  },
+  {
+   "id": "tg",
+   "text": "Cortisol (adrenal cortex)",
+   "role": "quantity",
+   "shape": "round",
+   "color": "teal",
+   "x": 170,
+   "y": 510,
+   "w": 210,
+   "h": 58,
+   "rest": 1,
+   "unit": "",
+   "tau": 1.5,
+   "plot": true
+  },
+  {
+   "id": "eff",
+   "text": "Effects: glucose, protein, fat, immune system",
+   "role": "label",
+   "shape": "label",
+   "color": "white",
+   "x": 470,
+   "y": 510,
+   "w": 190,
+   "h": 40
+  }
+ ],
+ "edges": [
+  {
+   "id": "e1",
+   "from": "stim",
+   "to": "rh",
+   "sign": "+"
+  },
+  {
+   "id": "e2",
+   "from": "rh",
+   "to": "th",
+   "sign": "+"
+  },
+  {
+   "id": "e3",
+   "from": "th",
+   "to": "tg",
+   "sign": "+"
+  },
+  {
+   "id": "e4",
+   "from": "tg",
+   "to": "rh",
+   "sign": "-",
+   "gain": 0.6,
+   "dashed": true,
+   "bend": -260,
+   "label": "long loop"
+  },
+  {
+   "id": "e5",
+   "from": "tg",
+   "to": "th",
+   "sign": "-",
+   "gain": 0.4,
+   "dashed": true,
+   "bend": -130
+  },
+  {
+   "id": "e6",
+   "from": "th",
+   "to": "rh",
+   "sign": "-",
+   "gain": 0.2,
+   "dashed": true,
+   "bend": 110,
+   "label": "short loop"
+  },
+  {
+   "id": "e7",
+   "from": "tg",
+   "to": "eff",
+   "sign": "0"
+  }
+ ],
+ "sim": {
+  "duration": 24,
+  "timeUnit": "h",
+  "clampZero": true
+ }
+}

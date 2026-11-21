@@ -1,0 +1,50 @@
+{
+ "id": "s2-revision",
+ "week": 2,
+ "required": false,
+ "order": 2,
+ "title": "Supervision 2 revision essays",
+ "description": "Four more essay titles on this week’s lectures. Write one for practice, and hand it in if you’d like feedback on it.",
+ "minutes": null,
+ "suggestedMinutes": null,
+ "autoSubmit": false,
+ "spellcheck": false,
+ "showWordCount": true,
+ "clipboard": "exam",
+ "handIn": true,
+ "instructions": "<p><b>Optional, for revision.</b> These essay titles go with this week’s lectures. Only the Supervision 2 short answers has to be handed in.</p><ul><li><b>Choose one</b> and write it here, as you would in the exam. Leave the others blank: you can still submit.</li><li><b>Handing in.</b> If you’d like my feedback on it, hand it in once you’ve submitted, in the same way as the work for this week. It goes into the same folder in my Google Drive.</li><li>Planning an answer to each of the others (your argument, your evidence and the order you’d put them in) is good revision too.</li><li>After you submit, <b>Review my answers</b> shows you the ground each title covers.</li><li><b>Pasting.</b> As in the exam, you can copy and paste within your work, but you can’t paste in text copied from anywhere else. Write everything in your own words.</li></ul>",
+ "questions": [
+  {
+   "id": "baro",
+   "type": "essay",
+   "title": "Baroreceptors and blood pressure",
+   "lines": 18,
+   "text": "<p>Discuss the roles of the high-pressure and low-pressure baroreceptors in the control of arterial blood pressure.</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul>\n<li><b>What is controlled.</b> Mean ABP is the principal controlled variable: it drives flow to every tissue, whose local control then shares it out. ABP = CO × TPR, CO = VR = (MSFP − RAP) / RvR.</li>\n<li><b>High-pressure baroreceptors</b> (carotid sinus, aortic arch): stretch receptors, sensitive to the mean pressure and its rate of change; the afferents (glossopharyngeal, vagus) go to the nucleus tractus solitarius; the effects are on heart rate, contractility, TPR and MSFP, within seconds. They buffer short-term changes, reset over days, and aren’t needed for the long-term mean (sinoaortic denervation).</li>\n<li><b>Low-pressure receptors</b> (great veins, atria): sense filling and so volume. They act on the sympathetic outflow to the kidney, on ADH, renin and ANP, so they link short-term control to the long-term control of volume by the kidneys.</li>\n<li><b>Chemoreceptors and non-feedback control</b>: central command in exercise, the defence (alerting) response, the diving reflex.</li>\n<li><b>How they work together</b> in standing, exercise and haemorrhage, and where each matters most. A strong conclusion distinguishes buffering from setting the level.</li></ul>"
+  },
+  {
+   "id": "stress",
+   "type": "essay",
+   "title": "Haemorrhage and hypoxia",
+   "lines": 18,
+   "text": "<p>Compare the cardiovascular responses to haemorrhage and to hypoxia.</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul>\n<li><b>Frame the comparison.</b> Both are threats to O<sub>2</sub> delivery (flow × content): haemorrhage lowers the flow, hypoxia the content. Use the equations of the circulation to show which terms change.</li>\n<li><b>Haemorrhage.</b> MSFP falls; the response is to restore pressure and volume, over seconds (baroreflex), minutes (autotransfusion, reverse stress relaxation), hours (kidneys, thirst) and days (proteins, red cells).</li>\n<li><b>Hypoxia.</b> Two opposite responses: the primary chemoreceptor response (bradycardia and vasoconstriction, conserving O<sub>2</sub>, as in diving) and the secondary response through lung stretch receptors (higher CO, as at altitude).</li>\n<li><b>Similarities.</b> Sympathetic vasoconstriction that spares the brain and heart; local control of flow in vital organs; erythropoietin in both, in the longer term.</li>\n<li><b>Differences</b> in what is sensed, the effect on CO, and what the body is trying to achieve. A good essay explains why each response suits its stress.</li></ul>"
+  },
+  {
+   "id": "htn",
+   "type": "essay",
+   "title": "Hypertension",
+   "lines": 18,
+   "text": "<p>Discuss the causes and consequences of hypertension, and the physiological basis of its treatment.</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul>\n<li><b>Definition and frame.</b> Above 140/90 mmHg. Hypertension needs a raised TPR and/or MSFP (ABP = CO × TPR; CO = (MSFP − RAP) / RvR); 90% is essential (genetic factors, age), 10% secondary (kidney disease, the commonest; phaeochromocytoma).</li>\n<li><b>Why the kidneys.</b> The baroreceptors don’t set the long-term mean; the kidneys do, through salt and water excretion and the renin–angiotensin system (Dr Sage’s lectures).</li>\n<li><b>Consequences.</b> Not bursting vessels (weightlifters reach 400 mmHg), but endothelial damage and atherosclerosis; concentric hypertrophy (more O<sub>2</sub> demand, diastolic dysfunction, arrhythmia), then dilatation and systolic failure; stroke, heart disease, dementia.</li>\n<li><b>Treatment</b> from the equations: lower MSFP (diuretics, ACE inhibitors), lower TPR (Ca<sup>2+</sup> channel blockers such as nifedipine); exercise and other lifestyle changes. Hypertension is asymptomatic and the drugs have side effects, so adherence matters.</li>\n<li><b>Evidence.</b> Testing treatments needs good design: the Symplicity HTN-1 and -2 trials of renal denervation were unblinded and used office pressures; HTN-3, blinded and sham-controlled, found no benefit over the sham.</li></ul>"
+  },
+  {
+   "id": "shock",
+   "type": "essay",
+   "title": "Circulatory shock",
+   "lines": 18,
+   "text": "<p>How can an understanding of cardiovascular physiology help to distinguish the causes of circulatory shock, and guide its treatment?</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul>\n<li><b>Definition.</b> Shock is a cardiac output inadequate for the tissues’ aerobic metabolism: hypotension and tachycardia with signs of poor perfusion (low urine output, confusion, loss of consciousness). Not the media’s meaning.</li>\n<li><b>The three kinds</b> from the equations: hypovolaemic (lost volume, MSFP down), cardiogenic (the heart fails) and distributive (lost vascular tone and leaky vessels: sepsis, anaphylaxis, spinal cord injury), which lowers MSFP and TPR.</li>\n<li><b>Telling them apart.</b> Low ABP with low RAP (central venous pressure) points to too little returning: hypovolaemic or distributive. Low ABP with high RAP points to the heart. Sepsis can combine both, so RAP must be watched as treatment goes on.</li>\n<li><b>Why it matters for treatment.</b> Fluid helps when RAP is low, and harms when the heart has failed; vasopressors for distributive shock; the normal compensations (vasoconstriction, fluid retention) help in hypovolaemia and harm in heart failure.</li>\n<li><b>A conclusion</b> on how the physiology lets a clinician reason from a few measurements to the cause.</li></ul>"
+  }
+ ]
+}

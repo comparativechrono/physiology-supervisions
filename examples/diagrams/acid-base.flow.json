@@ -1,0 +1,182 @@
+{
+ "format": "bms-flow-1",
+ "title": "Acid–base balance: fast lungs, slow kidneys",
+ "description": "A sustained extra load of non-volatile acid (sulphuric acid from a diet rich in protein, say, or ketoacids in a fast) starts at 6 hours. The acid is buffered by plasma HCO₃⁻, which falls, so the [H⁺] of the blood rises. The chemoreceptors drive ventilation up within minutes, which lowers the PCO₂ (respiratory compensation). Over days, the kidneys make more new HCO₃⁻ (from glutamine, excreting the NH₄⁺), which replaces the HCO₃⁻ used up. Every level is relative to normal (1): an [H⁺] of 1 is 40 nM (pH 7.4), 1.1 is 44 nM (pH 7.35) and 1.4 is 56 nM (pH 7.25); HCO₃⁻ 1 is 24 mM and PCO₂ 1 is 40 mmHg. Run it. Then block the arrow from [H⁺] to the kidneys, so that only the lungs respond, and run it again. Then unblock it, fix the ventilation at its normal level (1), so that only the kidneys respond, and run it once more. (A simple, linear model: it shows how the two systems share the work, not exact values.)",
+ "group": "Feedback",
+ "order": 8,
+ "nodes": [
+  {
+   "id": "acid",
+   "text": "Acid load (from 6 hours)",
+   "role": "stimulus",
+   "shape": "flag",
+   "color": "orange",
+   "x": 160,
+   "y": 80,
+   "w": 220,
+   "h": 52,
+   "kind": "step",
+   "start": 6,
+   "size": 1,
+   "plot": true
+  },
+  {
+   "id": "hco3",
+   "text": "Plasma HCO₃⁻",
+   "role": "quantity",
+   "shape": "round",
+   "color": "blue",
+   "x": 160,
+   "y": 250,
+   "w": 190,
+   "h": 56,
+   "rest": 1,
+   "unit": "",
+   "tau": 0.2,
+   "plot": true
+  },
+  {
+   "id": "h",
+   "text": "[H⁺] of the blood",
+   "role": "quantity",
+   "shape": "round",
+   "color": "red",
+   "x": 480,
+   "y": 250,
+   "w": 190,
+   "h": 56,
+   "rest": 1,
+   "unit": "",
+   "tau": 0.02,
+   "plot": true
+  },
+  {
+   "id": "vent",
+   "text": "Ventilation",
+   "role": "quantity",
+   "shape": "round",
+   "color": "teal",
+   "x": 800,
+   "y": 110,
+   "w": 180,
+   "h": 56,
+   "rest": 1,
+   "unit": "",
+   "tau": 0.1,
+   "plot": true
+  },
+  {
+   "id": "pco2",
+   "text": "Arterial PCO₂",
+   "role": "quantity",
+   "shape": "round",
+   "color": "purple",
+   "x": 800,
+   "y": 390,
+   "w": 180,
+   "h": 56,
+   "rest": 1,
+   "unit": "",
+   "tau": 0.05,
+   "plot": true
+  },
+  {
+   "id": "kid",
+   "text": "New HCO₃⁻ from the kidneys",
+   "role": "quantity",
+   "shape": "round",
+   "color": "green",
+   "x": 320,
+   "y": 470,
+   "w": 240,
+   "h": 56,
+   "rest": 1,
+   "unit": "",
+   "tau": 240,
+   "plot": true
+  },
+  {
+   "id": "note-lungs",
+   "text": "The lungs: within minutes",
+   "role": "label",
+   "shape": "label",
+   "color": "white",
+   "x": 940,
+   "y": 250,
+   "w": 150,
+   "h": 44
+  },
+  {
+   "id": "note-kidneys",
+   "text": "The kidneys: over days",
+   "role": "label",
+   "shape": "label",
+   "color": "white",
+   "x": 620,
+   "y": 500,
+   "w": 170,
+   "h": 44
+  }
+ ],
+ "edges": [
+  {
+   "id": "e-acid",
+   "from": "acid",
+   "to": "hco3",
+   "sign": "-",
+   "gain": 0.4,
+   "label": "buffered"
+  },
+  {
+   "id": "e-hco3",
+   "from": "hco3",
+   "to": "h",
+   "sign": "-",
+   "gain": 1
+  },
+  {
+   "id": "e-pco2",
+   "from": "pco2",
+   "to": "h",
+   "sign": "+",
+   "gain": 1
+  },
+  {
+   "id": "e-chemo",
+   "from": "h",
+   "to": "vent",
+   "sign": "+",
+   "gain": 2.6,
+   "label": "chemoreceptors"
+  },
+  {
+   "id": "e-vent",
+   "from": "vent",
+   "to": "pco2",
+   "sign": "-",
+   "gain": 1,
+   "label": "CO₂ blown off"
+  },
+  {
+   "id": "e-kid",
+   "from": "h",
+   "to": "kid",
+   "sign": "+",
+   "gain": 50,
+   "label": "glutamine used, NH₄⁺ excreted"
+  },
+  {
+   "id": "e-new",
+   "from": "kid",
+   "to": "hco3",
+   "sign": "+",
+   "gain": 0.4
+  }
+ ],
+ "sim": {
+  "duration": 144,
+  "timeUnit": "h",
+  "clampZero": true,
+  "changeAt": 6
+ }
+}

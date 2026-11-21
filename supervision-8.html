@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supervision 8 – Physiology supervisions</title>
+<meta name="description" content="Supervision 8 of NST IB Physiology covers acid–base balance and its disorders, and draws the respiratory and renal lectures together. There’s an essay to hand in, on the lungs and the kidneys in regulating pH, and optional exercises in the workbench.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2313304a'/%3E%3Cpath d='M3.5 17.5h5.2l1.6-2.6 1.6 2.6h1.3l1 2.4 2.4-13.4 2.4 15.5 1.4-4.5h1.6l1.9-3 1.9 3h2.7' fill='none' stroke='%23ff8a65' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<script src="assets/js/isolation.js"></script>
+<link rel="stylesheet" href="assets/vendor/codemirror/codemirror.css">
+<link rel="stylesheet" href="assets/css/app.css">
+<link rel="stylesheet" href="assets/css/wb.css">
+<link rel="stylesheet" href="assets/css/bms.css">
+<link rel="stylesheet" href="assets/css/r.css">
+<link rel="stylesheet" href="assets/css/rstudio.css">
+<link rel="stylesheet" href="assets/css/files.css">
+<link rel="stylesheet" href="assets/css/viewer.css">
+<link rel="stylesheet" href="assets/css/scope.css">
+<link rel="stylesheet" href="assets/css/flow.css">
+<link rel="stylesheet" href="assets/css/circuit.css">
+<link rel="stylesheet" href="assets/css/exam.css">
+<link rel="stylesheet" href="assets/css/anatomy.css">
+<link rel="stylesheet" href="assets/css/recorder.css">
+<link rel="stylesheet" href="assets/css/organbath.css">
+<link rel="stylesheet" href="assets/css/sims.css">
+</head>
+<body data-page="supervision-8" data-title="Supervision 8" data-week="8">
+<div class="app">
+
+  <header class="topbar">
+    <button class="btn top-toggle" id="tutToggle" type="button" title="Hide the instructions so that the workbench fills the window (Ctrl+\)" aria-controls="tut" aria-expanded="true"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M16 10l-2 2 2 2"/></svg></button>
+    <a class="brand" href="index.html" title="All the supervisions">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#1c4061"/><path d="M3.5 17.5h5.2l1.6-2.6 1.6 2.6h1.3l1 2.4 2.4-13.4 2.4 15.5 1.4-4.5h1.6l1.9-3 1.9 3h2.7" fill="none" stroke="#ff8a65" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div>
+        <div class="brand-title">Physiology supervisions</div>
+        <div class="brand-sub">Supervision 8: pH, the lungs and the kidneys</div>
+      </div>
+    </a>
+    <div class="spacer"></div>
+    <div class="progress-wrap" title="The steps you have done and the questions you have answered (saved in this browser)"><span class="progress-label">0% done</span><div class="progress"><i></i></div></div>
+    <span class="store-status" id="storeStatus" title="Your files are saved in this browser, on this computer"></span>
+    <button class="btn" id="userBtn" type="button" title="Your name, as it appears in the workbench"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span class="user-name">Your name</span></button>
+    <button class="btn" id="projectBtn" type="button" title="Download all your files, add files, or start afresh"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v1H7l-4 9z"/><path d="M3 19l3.5-8H22l-3.5 8z"/></svg><span>My files</span></button>
+    <button class="btn" id="answersBtn" type="button"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg><span>My answers</span></button>
+    <button class="btn" id="helpBtn" type="button" title="How this page works"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.2 9a2.9 2.9 0 0 1 5.6 1c0 2-2.8 2.6-2.8 4M12 17.5h.01"/></svg><span>Help</span></button>
+    <button class="btn" id="fullBtn" type="button" title="Full screen"><span>Full screen</span></button>
+  </header>
+
+  <div class="main">
+    <aside class="tut" id="tut" aria-label="Instructions">
+      <nav class="ch-nav" aria-label="Chapters"></nav>
+<!--CHAPTERS-->
+<section class="chapter" id="s8-week" data-num="0" data-title="This week" data-bench="exam">
+  <h1>Supervision 8: pH, the lungs and the kidneys</h1>
+  <div class="meta-row"><span class="pill time">≈ 5 min</span></div>
+  <p class="lede">This week’s lecture is about how the kidneys regulate their secretion of H<sup>+</sup>, how the body gets rid of non-volatile acid, and what happens in acidosis and alkalosis. It’s the last lecture of the course, and it draws the respiratory and renal lectures together.</p>
+
+<div class="handin-box">
+  <div class="hb-k">To hand in this week</div>
+  <p class="hb-title">“Discuss the relative importance of respiratory system and kidneys in regulating plasma pH.”</p>
+  <ul><li>You write the essay in <b>Supervision work</b>, as you will in the online exam. Plan it first, then write it in continuous prose, in your own words.</li><li>It’s one of the titles in the pH handout. It needs the respiratory lectures as well as the renal ones, and it asks you to weigh the two systems, not just to describe them: chapter 3 is about how to do that.</li><li>Once you’ve submitted it, <b>hand it in</b> from the same page before your supervision. You’ll need the <b>hand-in password</b> I give you, and your work then goes straight into my Google Drive.</li></ul>
+  <p class="hb-acts"><button class="do showme" type="button" data-goto="s8-write">how to write it and hand it in</button> <button class="do showme" type="button" data-exam="s8-essay">open the essay</button></p>
+</div>
+
+<h2 id="w8-plan">The week, step by step</h2>
+<ol class="plan">
+<li>If you’d like to, start with <b>two short exercises</b>. They’re optional, and take about half an hour altogether. In chapter 1 you use <b>R</b> to see why the bicarbonate buffer works so well although its pK is 6.1, and to draw a pH–bicarbonate diagram of three acid–base disturbances. In chapter 2 you run a <b>diagram</b> in which the lungs and the kidneys share the work of regulating pH, and take each away in turn. <button class="do showme" type="button" data-goto="s8-r">start</button></li>
+<li>Then <b>write your essay</b> and hand it in (chapter 3). <button class="do showme" type="button" data-goto="s8-write">go there</button></li>
+<li>Chapter 4 has the pH handout’s other titles, for revision. You can hand one in for feedback if you’d like to, but you don’t have to. <button class="do showme" type="button" data-goto="s8-more">go there</button></li>
+</ol>
+<div class="callout tip">
+  <div class="co-t">Looking back</div>
+  <p>This week has only one lecture, and its title draws on much of the course, so it’s a good time to look back:</p>
+<ul>
+<li><b>Supervision 5</b>: the control of breathing (the central and peripheral chemoreceptors, and what each senses), the transport of CO<sub>2</sub> and haemoglobin as a buffer, and altitude, where a respiratory alkalosis is compensated by the kidneys. <a href="supervision-5.html">Open it</a></li>
+<li><b>Supervision 7</b>: the first pH lecture (buffers, the Henderson–Hasselbalch equation, and how the tubules handle H<sup>+</sup>, HCO<sub>3</sub><sup>−</sup> and NH<sub>4</sub><sup>+</sup>), and potassium and aldosterone, which affect acid–base balance too. <a href="supervision-7.html">Open it</a></li>
+<li><b>Supervision 1</b>: heavy exercise, where lactic acid adds a metabolic acidosis that the lungs compensate for. <a href="supervision-1.html">Open it</a></li>
+</ul>
+</div>
+<div class="activity">
+  <div class="act-t">Before you start</div>
+  <ol class="steps">
+    <li data-task="w8-name" data-check="named">Check that your name is at the top of the page. If it says <b>Your name</b>, click it and add yours. It goes at the top of the work you hand in, and every supervision’s page shares it.</li>
+  </ol>
+</div>
+<h2>How this page works</h2>
+<ul>
+<li>The steps tick themselves off as you do them, the buttons do things for you in the workbench on the right, and every question has a <b>model answer</b> you can look at once you’ve had a go.</li>
+<li>Chapters 1, 2 and 4 are optional, so their steps don’t count towards finishing the page. The rest do.</li>
+<li>If you haven’t used one of the workbench’s tabs before, the <a href="workbench.html" target="_blank" rel="noopener">workbench guide</a> shows you how it works.</li>
+</ul>
+
+</section>
+
+<section class="chapter" id="s8-r" data-num="1" data-title="pH in R" data-bench="rstudio" hidden>
+  <h1>Optional: pH, PCO₂ and bicarbonate</h1>
+  <div class="meta-row"><span class="pill time">≈ 15 min</span></div>
+  <p class="lede">Use the Henderson–Hasselbalch equation in R to see why the bicarbonate buffer works so well, and draw three acid–base disturbances on a pH–bicarbonate diagram.</p>
+<div class="optional whole">
+
+<div class="callout info">
+  <div class="co-t">Optional, about 15 minutes</div>
+  <p>This exercise isn’t part of the work to hand in, and its steps don’t count towards finishing the page. It goes with the second pH lecture, and the first.</p>
+</div>
+
+<p>The Henderson–Hasselbalch equation for the bicarbonate buffer links the three things measured in a sample of arterial blood: pH = 6.1 + log<sub>10</sub>([HCO<sub>3</sub><sup>−</sup>] / (0.03 × PCO<sub>2</sub>)), with HCO<sub>3</sub><sup>−</sup> in mM and PCO<sub>2</sub> in mmHg (0.03 is the solubility of CO<sub>2</sub>, in mM per mmHg).</p>
+<div class="activity">
+  <div class="act-t">pH, PCO₂ and bicarbonate in R</div>
+  <ol class="steps">
+    <li data-task="ab-fn" data-auto="r:input kind=rstudio line~ph &lt;- function">Write the equation as a function <code>ph &lt;- function(hco3, pco2) 6.1 + log10(hco3 / (0.03 * pco2))</code> <button class="do showme" type="button" data-rcon="ph &lt;- function(hco3, pco2) 6.1 + log10(hco3 / (0.03 * pco2))">show me</button>, and try it with normal values <code>ph(24, 40)</code> <button class="do showme" type="button" data-rcon="ph(24, 40)">show me</button>.</li>
+    <li data-task="ab-acid" data-auto="r:input kind=rstudio line~closed =">Add 10 mmol of a strong acid to each litre of ECF. It reacts with HCO<sub>3</sub><sup>−</sup>, which falls from 24 to 14 mM, and makes 10 mM of CO<sub>2</sub>. Compare the pH in a <b>closed</b> system, where the CO<sub>2</sub> stays; an <b>open</b> one, where the lungs keep the PCO<sub>2</sub> at 40 mmHg; and one with <b>respiratory compensation</b>, where the PCO<sub>2</sub> falls by 1.2 mmHg for each mM that HCO<sub>3</sub><sup>−</sup> fell, to 28 mmHg: <code>c(closed = 6.1 + log10(14 / (0.03 * 40 + 10)), open = ph(14, 40), compensated = ph(14, 28))</code> <button class="do showme" type="button" data-rcon="c(closed = 6.1 + log10(14 / (0.03 * 40 + 10)), open = ph(14, 40), compensated = ph(14, 28))">show me</button></li>
+    <li data-task="ab-plot" data-auto="r:input kind=rstudio line~matplot">Draw a pH–bicarbonate diagram: a range of pH <code>pH &lt;- seq(7, 7.7, by = 0.01)</code> <button class="do showme" type="button" data-rcon="pH &lt;- seq(7, 7.7, by = 0.01)">show me</button>, and the line for each of three PCO<sub>2</sub>s (an isobar) <code>matplot(pH, outer(10^(pH - 6.1), 0.03 * c(20, 40, 80)), type = &quot;l&quot;, lty = 1:3, col = 1, xlab = &quot;pH&quot;, ylab = &quot;Plasma bicarbonate (mM)&quot;)</code> <button class="do showme" type="button" data-rcon="matplot(pH, outer(10^(pH - 6.1), 0.03 * c(20, 40, 80)), type = &quot;l&quot;, lty = 1:3, col = 1, xlab = &quot;pH&quot;, ylab = &quot;Plasma bicarbonate (mM)&quot;)">show me</button>, with a legend <code>legend(&quot;topleft&quot;, c(&quot;PCO2 20 mmHg&quot;, &quot;40 mmHg&quot;, &quot;80 mmHg&quot;), lty = 1:3)</code> <button class="do showme" type="button" data-rcon="legend(&quot;topleft&quot;, c(&quot;PCO2 20 mmHg&quot;, &quot;40 mmHg&quot;, &quot;80 mmHg&quot;), lty = 1:3)">show me</button>.</li>
+    <li data-task="ab-points" data-auto="r:input kind=rstudio line~points(">Mark the normal state and the two acidoses on it <code>points(c(ph(24, 40), ph(14, 40), ph(14, 28)), c(24, 14, 14), pch = 19)</code> <button class="do showme" type="button" data-rcon="points(c(ph(24, 40), ph(14, 40), ph(14, 28)), c(24, 14, 14), pch = 19)">show me</button>.</li>
+    <li data-task="ab-alt" data-auto="r:input kind=rstudio line~acute =">At altitude, hyperventilation lowers the PCO<sub>2</sub> to 30 mmHg; over a few days, the kidneys excrete HCO<sub>3</sub><sup>−</sup>, which falls by about 4 mM for each 10 mmHg fall in PCO<sub>2</sub>: <code>c(acute = ph(24, 30), compensated = ph(20, 30))</code> <button class="do showme" type="button" data-rcon="c(acute = ph(24, 30), compensated = ph(20, 30))">show me</button></li>
+    <li data-task="ab-mcq" data-auto="r:input kind=rstudio line~ph(40, 80)">The lecture’s question: a pH of 7.30, HCO<sub>3</sub><sup>−</sup> 40 mM and PCO<sub>2</sub> 80 mmHg. Check that they fit together <code>ph(40, 80)</code> <button class="do showme" type="button" data-rcon="ph(40, 80)">show me</button>.</li>
+  </ol>
+</div>
+<div class="q" data-q="ab-q-open">
+  <div class="q-text">The pK of the bicarbonate buffer is 6.1, far from 7.4, so in a beaker it would be a poor buffer. What do your three numbers show about why it works so well in the body?</div>
+  <div class="q-model">In a closed system the pH falls to about 6.2, which is fatal: the CO<sub>2</sub> made from the HCO<sub>3</sub><sup>−</sup> stays, so the ratio of HCO<sub>3</sub><sup>−</sup> to CO<sub>2</sub> collapses from 20 to about 1.25. In the body the system is open: the lungs remove the CO<sub>2</sub> and hold the PCO<sub>2</sub> at 40 mmHg, so the pH falls only to about 7.17 (physiological buffering). The chemoreceptors then drive ventilation up, the PCO<sub>2</sub> falls to about 28 mmHg, and the pH rises to about 7.32 (respiratory compensation). The kidneys finish the job by making new HCO<sub>3</sub><sup>−</sup>, to replace what was used up. The buffer is powerful because both of its members are regulated: CO<sub>2</sub> by the lungs, HCO<sub>3</sub><sup>−</sup> by the kidneys. (In the body, about half of an acid load is buffered at first by phosphate and proteins, which this calculation leaves out.)</div>
+</div>
+<div class="q" data-q="ab-q-alt" data-accept="num:7.45±0.015" data-placeholder="pH">
+  <div class="q-text">At altitude, what is the pH once the kidneys have compensated? Give it to two decimal places.</div>
+  <div class="q-model">About 7.45, from 7.53. The hyperventilation driven by hypoxia (through the peripheral chemoreceptors) lowers the PCO<sub>2</sub>, a respiratory alkalosis, which itself limits the hyperventilation, because the central chemoreceptors sense the alkaline CSF. Over a few days the kidneys excrete HCO<sub>3</sub><sup>−</sup> (they secrete less H<sup>+</sup>, and the type B intercalated cells secrete HCO<sub>3</sub><sup>−</sup>), so the pH returns towards normal and ventilation can rise further: ventilatory acclimatisation. On your diagram, the point moves along the isobar for the low PCO<sub>2</sub>.</div>
+</div>
+<div class="q" data-q="ab-q-mcq" data-type="mcq">
+  <div class="q-text">A pH of 7.30, HCO<sub>3</sub><sup>−</sup> 40 mM and PCO<sub>2</sub> 80 mmHg is characteristic of:</div>
+  <div class="mcq"><label data-correct data-why="Yes. The PCO&lt;sub&gt;2&lt;/sub&gt; is high (the primary disturbance is respiratory: hypoventilation, as in chronic lung disease), and the pH is low, so it’s an acidosis. The HCO&lt;sub&gt;3&lt;/sub&gt;&lt;sup&gt;−&lt;/sup&gt; is well above 24 mM: the kidneys have made new HCO&lt;sub&gt;3&lt;/sub&gt;&lt;sup&gt;−&lt;/sup&gt; over days, bringing the pH most of the way back. Without them, a PCO&lt;sub&gt;2&lt;/sub&gt; of 80 mmHg with 24 mM HCO&lt;sub&gt;3&lt;/sub&gt;&lt;sup&gt;−&lt;/sup&gt; would give a pH of about 7.10."><input type="radio"> <span>Compensated (chronic) respiratory acidosis</span></label><label data-why="No. A metabolic alkalosis would have a high pH. Here the pH is low, and the primary change is the high PCO&lt;sub&gt;2&lt;/sub&gt;."><input type="radio"> <span>Compensated (chronic) metabolic alkalosis</span></label><label data-why="No. In an acute respiratory acidosis the HCO&lt;sub&gt;3&lt;/sub&gt;&lt;sup&gt;−&lt;/sup&gt; is near normal; a value of 40 mM takes days of renal compensation."><input type="radio"> <span>Primary (acute) respiratory acidosis</span></label><label data-why="No. All three values are abnormal."><input type="radio"> <span>Normal acid–base balance</span></label></div>
+</div>
+
+</div>
+</section>
+
+<section class="chapter" id="s8-flow" data-num="2" data-title="The lungs and the kidneys" data-bench="flow" hidden>
+  <h1>Optional: the lungs and the kidneys</h1>
+  <div class="meta-row"><span class="pill time">≈ 15 min</span></div>
+  <p class="lede">Run a diagram of an acid load in which the lungs and the kidneys share the work of regulating pH, then take away each in turn.</p>
+<div class="optional whole">
+
+<div class="callout info">
+  <div class="co-t">Optional, about 15 minutes</div>
+  <p>This exercise isn’t part of the work to hand in, and its steps don’t count towards finishing the page. It goes with the second pH lecture, and the respiratory lectures on the control of breathing.</p>
+</div>
+
+<p>The diagram is a simple model of a sustained extra load of non-volatile acid, which starts at 6 hours and goes on. Every level is relative to normal (1): an [H<sup>+</sup>] of 1 is 40 nM (pH 7.4), 1.1 is 44 nM (pH 7.35) and 1.4 is 56 nM (pH 7.25).</p>
+<div class="activity">
+  <div class="act-t">The lungs and the kidneys</div>
+  <ol class="steps">
+    <li data-task="fl-open" data-auto="flow:open example=acid-base">Open the diagram <button class="do showme" type="button" data-flow="example:acid-base">show me</button>. Follow the arrows: the acid uses up plasma HCO<sub>3</sub><sup>−</sup>, so the [H<sup>+</sup>] rises; the [H<sup>+</sup>] drives ventilation through the chemoreceptors, and the kidneys’ production of new HCO<sub>3</sub><sup>−</sup>.</li>
+    <li data-task="fl-run" data-auto="flow:run name~acid blocked=0 knocked=0">Press <b>Run</b> <button class="do showme" type="button" data-flow-run="1">show me</button>, and watch the graphs: the first few hours, and then the days that follow. Dragging the slider under the graphs shows you the diagram at any moment of the run.</li>
+    <li data-task="fl-lungs" data-auto="flow:run name~acid blocked=1 knocked=0">Now let only the lungs respond. Right-click the arrow from <b>[H⁺] of the blood</b> to the kidneys (or press and hold it), choose <b>Block this arrow</b>, and run it again.</li>
+    <li data-task="fl-kidneys" data-auto="flow:run name~acid blocked=0 knocked&gt;0">Now let only the kidneys respond. Unblock that arrow (right-click it again). Then click the box <b>Ventilation</b>, choose <b>Fixed: it ignores its inputs</b> in the panel on the right, set <b>Fixed at</b> to 1 (its normal level), and run it again.</li>
+  </ol>
+</div>
+<div class="q" data-q="fl-q-both">
+  <div class="q-text">In the first run, what happened in the first hour, and what happened over the next few days?</div>
+  <div class="q-model">Within an hour, the [H<sup>+</sup>] rose by about 11% (to a pH of about 7.35), ventilation rose by nearly 30% and the PCO<sub>2</sub> fell by nearly 30%: the lungs respond in minutes, but they only limit the change in pH, they don’t correct it. Over the following days, the kidneys’ production of new HCO<sub>3</sub><sup>−</sup> rose (to nearly twice normal), so the plasma HCO<sub>3</sub><sup>−</sup> recovered, the [H<sup>+</sup>] returned almost to normal, and as it did so, ventilation and the PCO<sub>2</sub> returned towards normal too. The lungs compensate, quickly and partly; the kidneys correct, slowly and almost completely, and then the respiratory compensation is no longer needed.</div>
+</div>
+<div class="q" data-q="fl-q-alone">
+  <div class="q-text">Compare the runs with the lungs alone and with the kidneys alone. What does each show, and what does this simple model leave out?</div>
+  <div class="q-model">With the lungs alone, the [H<sup>+</sup>] stays about 11% high for as long as the acid load lasts, with ventilation about 30% above normal: compensation, but no correction, and at a cost (the work of breathing; a low PCO<sub>2</sub> constricts the cerebral vessels; and the PCO<sub>2</sub> can’t fall much below 10–15 mmHg however hard you breathe). With the kidneys alone, the [H<sup>+</sup>] rises by nearly 40% (to a pH of about 7.25) before the kidneys bring it back, over a day or two. So the lungs protect against the first, rapid change, and the kidneys restore the HCO<sub>3</sub><sup>−</sup>. The model leaves out a lot: it’s linear (the real Henderson–Hasselbalch relationship isn’t); the buffers other than HCO<sub>3</sub><sup>−</sup>, inside and outside cells; the liver’s switch from urea to glutamine; the limits of renal compensation (real compensation takes three to five days, and in ketoacidosis the acid can come faster than the kidneys can deal with it); and that the lungs excrete 12–15 mol of CO<sub>2</sub> a day, while the kidneys are needed every day to make the HCO<sub>3</sub><sup>−</sup> that the normal 70 mmol of non-volatile acid uses up, so in renal failure an acidosis develops without any extra load.</div>
+</div>
+
+</div>
+</section>
+
+<section class="chapter" id="s8-write" data-num="3" data-title="Write your essay" data-bench="exam" hidden>
+  <h1>Write your essay, and hand it in</h1>
+  <p class="lede">This is the work to hand in this week. You write it in Supervision work, as you will in the online exam, and then hand it in from the same page.</p>
+
+<p class="essay-title">“Discuss the relative importance of respiratory system and kidneys in regulating plasma pH.”</p>
+
+<h2 id="es8-title">Weighing, not listing</h2>
+<p>A title that asks for “the relative importance” of two things wants a judgement, and an essay that describes what the lungs do and then what the kidneys do, and stops, hasn’t answered it. Decide on your answer before you write, and build the essay to support it.</p>
+<ol class="plan">
+<li><b>Choose your criteria.</b> How fast does each act? How much can it handle? Does it correct a disturbance, or only limit it? What does each deal with: volatile acid (CO<sub>2</sub>), non-volatile acid, base? What happens when each fails?</li>
+<li><b>Weigh the two on each criterion, with evidence.</b> Disorders are the evidence here: what happens in respiratory failure, in renal failure, at altitude, in ketoacidosis, after vomiting.</li>
+<li><b>Say where the answer depends on the circumstances</b>, and what it depends on: the timescale, and the source of the disturbance.</li>
+<li><b>Conclude with your judgement</b>, which should follow from what you’ve written, not be a surprise.</li>
+</ol>
+<div class="q" data-q="es8-q-judge" data-type="mcq">
+  <div class="q-text">Which of these sentences, from the conclusion of an essay on this title, makes a judgement?</div>
+  <div class="mcq"><label data-why="It’s true, but it’s a description. Which matters more, and when?"><input type="radio"> <span>“The lungs regulate PCO<sub>2</sub> and the kidneys regulate HCO<sub>3</sub><sup>−</sup>.”</span></label><label data-why="That avoids the question. It’s the sentence most essays on this title end with."><input type="radio"> <span>“Both systems are important in regulating plasma pH.”</span></label><label data-correct data-why="Yes. It weighs the two, says on what grounds and over what timescale, and could be argued with, which is what a judgement is."><input type="radio"> <span>“Minute to minute, the lungs matter more, since they remove 12–15 mol of CO<sub>2</sub> a day and compensate within minutes; but only the kidneys can restore the HCO<sub>3</sub><sup>−</sup> that non-volatile acid uses up, so over days, and in renal failure, the kidneys are indispensable.”</span></label></div>
+</div>
+<div class="q" data-q="es8-q-evidence" data-type="mcq">
+  <div class="q-text">Which piece of evidence best supports the claim that the kidneys are essential for pH regulation?</div>
+  <div class="mcq"><label data-why="That supports the importance of the lungs, not of the kidneys."><input type="radio"> <span>The lungs excrete far more acid, as CO<sub>2</sub>, than the kidneys do</span></label><label data-correct data-why="Yes. It shows what happens without them, and why: no other organ can make new HCO&lt;sub&gt;3&lt;/sub&gt;&lt;sup&gt;−&lt;/sup&gt; (by catabolising glutamine) on that scale."><input type="radio"> <span>In renal failure, a metabolic acidosis develops even on a normal diet, because the remaining nephrons can’t make enough new HCO<sub>3</sub><sup>−</sup> to replace what the daily load of non-volatile acid uses up</span></label><label data-why="This is part of an argument about how the kidneys get rid of acid (not as free H&lt;sup&gt;+&lt;/sup&gt;: at pH 4.5 it would take about 2300 L of urine a day), but on its own it doesn’t show that they’re essential."><input type="radio"> <span>The minimum pH of urine is about 4.5</span></label></div>
+</div>
+
+<h2>Before you start</h2>
+<ul>
+<li>Look back at the feedback on your earlier work, and pick one thing to do better this time.</li>
+<li>Make sure you have the <b>hand-in password</b> I gave you, because you’ll need it at the end. You won’t find it anywhere on this site.</li>
+<li>Your work saves itself in this browser as you type, so you can stop and come back to it. Submit it once it’s finished.</li>
+<li>It’s worth noting the controversy in the handout about how the body gets rid of non-volatile acid: whether the kidneys excrete it, as NH<sub>4</sub><sup>+</sup> and titratable acid, or mostly make new HCO<sub>3</sub><sup>−</sup> while the lungs excrete the acid as CO<sub>2</sub>. It bears directly on this title.</li>
+</ul>
+<div class="activity">
+  <div class="act-t">Write it, and hand it in</div>
+  <ol class="steps">
+    <li data-task="es8-start" data-auto="exam:start paper=s8-essay" data-check="paper:s8-essay.started">Open the essay <button class="do showme" type="button" data-exam="s8-essay">show me</button>, read its first page, and press <b>Start</b> when you’re ready to write.</li>
+    <li data-task="es8-write" data-auto="exam:words paper=s8-essay words&gt;299">Plan, then write. Decide on your judgement first, choose the criteria you’ll weigh the two systems by, support each with evidence from disorders, and end with your judgement.</li>
+    <li data-task="es8-submit" data-auto="exam:submit paper=s8-essay" data-check="paper:s8-essay.submitted">When you’ve finished, go to the submission page (the ✓ tile at the bottom right), check your work and submit it.</li>
+    <li data-task="es8-send" data-auto="exam:handin paper=s8-essay step=confirmed" data-check="paper:s8-essay.handedIn">Hand it in on the page that comes up next. Type in the hand-in password and press <b>Hand it in</b>. The page shows you a receipt once your work has arrived.</li>
+    <li data-task="es8-word" data-auto="exam:download paper=s8-essay format=docx" data-check="paper:s8-essay.downloaded">To keep a copy, press <b>Download your copy</b>. Before you hand in, the same button is under the password box, and it’s called <b>Download a copy for yourself</b>. The copy is saved as a Word document, usually in your Downloads folder.</li>
+  </ol>
+</div>
+<div class="callout info">
+  <div class="co-t">Handing in</div>
+  <p>Your work goes straight from this page into my Google Drive, and you don’t need a Google account for that. The hand-in password I give you stops anyone else from handing work in, so please keep it to yourself. Once it has arrived, the page tells you so and gives you a receipt. If it can’t be handed in, the page will tell you why. If you try again and it still won’t go, download a copy and send it to me some other way.</p>
+</div>
+<div class="callout info">
+  <div class="co-t">After you’ve handed it in</div>
+  <p>Once you’ve submitted, <b>Review my answers</b> shows you the ground a good answer covers. Read it after you’ve handed your work in, and make a note of what you’d add or change. That’s what we’ll talk about in the supervision.</p><p>Your work is kept in this browser, in Files → <code>essays</code>. It won’t be there on another computer, and some shared computers clear it when you log out, so download a copy before you finish.</p>
+</div>
+<div class="q" data-q="es8-q-next">
+  <div class="q-text">Once you’ve read the guidance, did your essay come to a judgement? If not, what would yours be?</div>
+  <div class="q-model">There’s no single right answer here, so bring yours to the supervision. A clear position, argued with evidence, matters more than which one you take.</div>
+</div>
+
+</section>
+
+<section class="chapter" id="s8-more" data-num="4" data-title="Revision titles" data-bench="exam" hidden>
+  <h1>Revision titles</h1>
+  <p class="lede">This chapter is optional. It has more essay titles on this week’s lecture, for revision. You can hand one in for feedback if you’d like to.</p>
+<h2 id="m8-rev">Essay titles for revision</h2>
+<p>These are the pH handout’s other titles. The first is how the handout’s first title should read. Several of them need the renal and respiratory lectures as well, so they make good synoptic revision. It’s worth noting them down.</p>
+<ol class="titles"><li>By what mechanisms is the pH of the blood regulated?</li><li>How may acidosis arise? How is it compensated for?</li><li>Discuss the mechanisms that regulate cellular and extracellular pH.</li><li>Discuss the role of the kidney in acid–base balance, contrasting the functions of the proximal and distal parts of the nephron.</li><li>How is the pH in the various extracellular fluid compartments regulated? Illustrate your answer with reference to one named example of an acidosis and one named example of an alkalosis.</li></ol>
+<p>For the rest of the course, the revision titles are in the earlier supervisions: Supervisions 1 and 2 (the cardiovascular system), 3 (endocrinology), 4 and 5 (respiration), and 6 and 7 (the kidney).</p>
+<p>Planning an answer to each one (your argument, your evidence, and the order you’d put them in) is good revision. If you’d like feedback on one, write it in Supervision work <button class="do showme" type="button" data-exam="s8-revision">open them</button> and <b>hand it in</b>, in the same way as the work for this week. That’s optional: choose the title you want to write, and leave the others blank. After you submit, the guidance shows you the ground each title should cover.</p>
+<div class="optional">
+<h2>Practice</h2>
+<div class="activity">
+  <div class="act-t">If you want the practice</div>
+  <ol class="steps">
+    <li data-task="m8-plan">Plan an answer to one of the revision titles. Sum up your position in a sentence, then jot down the three or four points, with the evidence for each, that would support it.</li>
+    <li data-task="m8-rev" data-auto="exam:submit paper=s8-revision">Write one of them up in Supervision work, submit it, and hand it in if you’d like my feedback on it.</li>
+  </ol>
+</div>
+</div>
+</section>
+<!--/CHAPTERS-->
+    </aside>
+
+    <div class="splitter" role="separator" aria-orientation="vertical" title="Drag to resize, or double-click to reset"></div>
+
+    <section class="bench" aria-label="Workbench">
+      <div class="wb-tabs" role="tablist">
+        <button class="wb-tab rail-btn" type="button" id="tutRail" title="Show the instructions (Ctrl+\)" hidden><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M13 10l2 2-2 2"/></svg><span>Instructions</span></button>
+        <button class="wb-tab on" type="button" role="tab" data-wb="exam" title="Supervision work: the essay and the questions set for your supervision, written as in the online exam"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 3H6.5A2.5 2.5 0 0 0 4 5.5v13A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5V9z"/><path d="M14 3v6h6"/><path d="M8 13h8M8 17h5"/></svg><span class="lbl">Supervision work</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="scope" title="A virtual microscope with slides of human tissues"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9.5 2.8l3.6 1.4-3 7.6-3.6-1.4z"/><path d="M7.7 12.4l-.9 2.2"/><path d="M4 16.5h9"/><path d="M13.6 7.6a6.5 6.5 0 0 1 1.9 11.2"/><path d="M5 21h14"/><path d="M15.5 18.8V21"/></svg><span class="lbl">Microscope</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="anatomy" title="The anatomy of the human body in 3D (from Z-Anatomy)"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="4.6" r="2.3"/><path d="M12 7.6v6.6M6.2 10.6L12 8.8l5.8 1.8M8.8 21l3.2-6.8 3.2 6.8"/></svg><span class="lbl">Anatomy</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="viewer" title="Proteins and other molecules in 3D"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="6" cy="7" r="2.6"/><circle cx="18" cy="7" r="2.6"/><circle cx="12" cy="17.5" r="2.6"/><path d="M8.6 7h6.8M7.3 9.3l3.4 5.9M16.7 9.3l-3.4 5.9"/></svg><span class="lbl">Molecules</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="recorder" title="A chart recorder with real recordings of people (the ECG, heart sounds, blood pressure, breathing, muscle and the brain), from PhysioNet"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M6 13h2.5l1.5-4.5 2.5 8 1.8-5.5 1 2H18"/></svg><span class="lbl">Recorder</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="bath" title="An organ bath: isolated tissues, drugs and concentration–response curves"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5.5 3h13"/><path d="M7 3v13.5A4.5 4.5 0 0 0 11.5 21h1a4.5 4.5 0 0 0 4.5-4.5V3"/><path d="M12 3v4.5"/><rect x="10.7" y="7.5" width="2.6" height="6" rx="1.3"/><path d="M9.3 17.6h.01M14.4 16.4h.01M11.8 18.9h.01"/></svg><span class="lbl">Organ bath</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="flow" title="Flow diagrams of physiological control, with a simulator"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="5" rx="1.2"/><rect x="14" y="3" width="7" height="5" rx="1.2"/><rect x="14" y="16" width="7" height="5" rx="1.2"/><path d="M10 5.5h4M17.5 8v8M14 18.5H7.5a1.5 1.5 0 0 1-1.5-1.5V8"/></svg><span class="lbl">Diagrams</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="circuit" title="Electrical circuits, and the circuit models of physiology"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2 12h3.5l1.7-4 2.6 8 2.6-8 2.6 8 1.7-4H22"/></svg><span class="lbl">Circuits</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="sims" title="Interactive simulations from PhET (University of Colorado Boulder)"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h8.5M16.5 6H20M4 12h2.5M10.5 12H20M4 18h10.5M18.5 18H20"/><circle cx="14.5" cy="6" r="2"/><circle cx="8.5" cy="12" r="2"/><circle cx="16.5" cy="18" r="2"/></svg><span class="lbl">Simulations</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="rstudio" title="RStudio, for analysing data in R"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16M3 12h18"/></svg><span class="lbl">RStudio</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="editor" title="Your files"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v1H7l-4 9z"/><path d="M3 19l3.5-8H22l-3.5 8z"/></svg><span class="lbl">Files</span><span class="dot"></span></button>
+        <button class="bench-close" type="button" aria-label="Back to the instructions" title="Back to the instructions">✕<span class="lbl">Instructions</span></button>
+      </div>
+      <div class="wb-body">
+        <div class="wb-pane" data-wb="scope" hidden><div id="scopeRoot"></div></div>
+        <div class="wb-pane" data-wb="anatomy" hidden><div id="anatRoot"></div></div>
+        <div class="wb-pane" data-wb="viewer" hidden><div id="viewerRoot"></div></div>
+        <div class="wb-pane" data-wb="recorder" hidden><div id="recRoot"></div></div>
+        <div class="wb-pane" data-wb="bath" hidden><div id="bathRoot"></div></div>
+        <div class="wb-pane" data-wb="flow" hidden><div id="flowRoot"></div></div>
+        <div class="wb-pane" data-wb="circuit" hidden><div id="circuitRoot"></div></div>
+        <div class="wb-pane" data-wb="sims" hidden><div id="simsRoot"></div></div>
+        <div class="wb-pane" data-wb="exam"><div id="examRoot"></div></div>
+        <div class="wb-pane" data-wb="rstudio" hidden><div id="rsRoot"></div></div>
+        <div class="wb-pane" data-wb="editor" hidden><div id="edRoot"></div></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<button class="bench-fab" type="button" aria-label="Open the workbench"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16M3 12h18"/></svg>Workbench</button>
+<noscript><p style="padding:20px">This page needs JavaScript.</p></noscript>
+
+<script>window.BMS_STARTERS = [];
+window.BMS_STARTERS_VERSION = 1;</script>
+<script>window.BMS_PAGE = {"week": 8, "page": "supervision-8.html", "title": "Supervision 8", "site": "Physiology supervisions"};</script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/core.js"></script>
+<script src="assets/js/icons.js"></script>
+<script src="assets/js/vfs.js"></script>
+<script src="assets/js/project.js"></script>
+<script src="assets/vendor/codemirror/codemirror.js"></script>
+<script src="assets/vendor/codemirror/r.js"></script>
+<script src="assets/vendor/codemirror/markdown.js"></script>
+<script src="assets/vendor/codemirror/yaml.js"></script>
+<script src="assets/vendor/codemirror/shell.js"></script>
+<script src="assets/vendor/codemirror/javascript.js"></script>
+<script src="assets/vendor/codemirror/python.js"></script>
+<script src="assets/vendor/codemirror/overlay.js"></script>
+<script src="assets/vendor/codemirror/multiplex.js"></script>
+<script src="assets/vendor/codemirror/yaml-frontmatter.js"></script>
+<script src="assets/vendor/codemirror/rmarkdown.js"></script>
+<script src="assets/vendor/codemirror/matchbrackets.js"></script>
+<script src="assets/vendor/codemirror/closebrackets.js"></script>
+<script src="assets/vendor/codemirror/comment.js"></script>
+<script src="assets/vendor/codemirror/searchcursor.js"></script>
+<script src="assets/vendor/codemirror/active-line.js"></script>
+<script src="assets/vendor/codemirror/runmode.js"></script>
+<script src="assets/vendor/dompurify/purify.min.js"></script>
+<script src="assets/vendor/marked/marked.min.js"></script>
+<script src="assets/js/rsession.js"></script>
+<script src="assets/js/rui.js"></script>
+<script src="assets/js/dataview.js"></script>
+<script src="assets/js/knit.js"></script>
+<script src="assets/js/rstudio.js"></script>
+<script src="assets/js/rsource.js"></script>
+<script src="assets/js/shiny.js"></script>
+<script src="assets/js/pdfview.js"></script>
+<script src="assets/js/editor.js"></script>
+<script src="assets/js/page.js"></script>
+<script src="assets/js/tutorial.js"></script>
+<script src="assets/js/workbench.js"></script>
+</body>
+</html>

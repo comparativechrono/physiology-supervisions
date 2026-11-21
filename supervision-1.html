@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supervision 1 – Physiology supervisions</title>
+<meta name="description" content="Supervision 1 of NST IB Physiology covers capillary exchange, the control of the arterioles and what sets the cardiac output. There’s an essay to hand in, on the circulation in exercise, and optional exercises in the workbench.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2313304a'/%3E%3Cpath d='M3.5 17.5h5.2l1.6-2.6 1.6 2.6h1.3l1 2.4 2.4-13.4 2.4 15.5 1.4-4.5h1.6l1.9-3 1.9 3h2.7' fill='none' stroke='%23ff8a65' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<script src="assets/js/isolation.js"></script>
+<link rel="stylesheet" href="assets/vendor/codemirror/codemirror.css">
+<link rel="stylesheet" href="assets/css/app.css">
+<link rel="stylesheet" href="assets/css/wb.css">
+<link rel="stylesheet" href="assets/css/bms.css">
+<link rel="stylesheet" href="assets/css/r.css">
+<link rel="stylesheet" href="assets/css/rstudio.css">
+<link rel="stylesheet" href="assets/css/files.css">
+<link rel="stylesheet" href="assets/css/viewer.css">
+<link rel="stylesheet" href="assets/css/scope.css">
+<link rel="stylesheet" href="assets/css/flow.css">
+<link rel="stylesheet" href="assets/css/circuit.css">
+<link rel="stylesheet" href="assets/css/exam.css">
+<link rel="stylesheet" href="assets/css/anatomy.css">
+<link rel="stylesheet" href="assets/css/recorder.css">
+<link rel="stylesheet" href="assets/css/organbath.css">
+<link rel="stylesheet" href="assets/css/sims.css">
+</head>
+<body data-page="supervision-1" data-title="Supervision 1" data-week="1">
+<div class="app">
+
+  <header class="topbar">
+    <button class="btn top-toggle" id="tutToggle" type="button" title="Hide the instructions so that the workbench fills the window (Ctrl+\)" aria-controls="tut" aria-expanded="true"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M16 10l-2 2 2 2"/></svg></button>
+    <a class="brand" href="index.html" title="All the supervisions">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#1c4061"/><path d="M3.5 17.5h5.2l1.6-2.6 1.6 2.6h1.3l1 2.4 2.4-13.4 2.4 15.5 1.4-4.5h1.6l1.9-3 1.9 3h2.7" fill="none" stroke="#ff8a65" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div>
+        <div class="brand-title">Physiology supervisions</div>
+        <div class="brand-sub">Supervision 1: capillaries, arterioles and cardiac output</div>
+      </div>
+    </a>
+    <div class="spacer"></div>
+    <div class="progress-wrap" title="The steps you have done and the questions you have answered (saved in this browser)"><span class="progress-label">0% done</span><div class="progress"><i></i></div></div>
+    <span class="store-status" id="storeStatus" title="Your files are saved in this browser, on this computer"></span>
+    <button class="btn" id="userBtn" type="button" title="Your name, as it appears in the workbench"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span class="user-name">Your name</span></button>
+    <button class="btn" id="projectBtn" type="button" title="Download all your files, add files, or start afresh"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v1H7l-4 9z"/><path d="M3 19l3.5-8H22l-3.5 8z"/></svg><span>My files</span></button>
+    <button class="btn" id="answersBtn" type="button"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg><span>My answers</span></button>
+    <button class="btn" id="helpBtn" type="button" title="How this page works"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.2 9a2.9 2.9 0 0 1 5.6 1c0 2-2.8 2.6-2.8 4M12 17.5h.01"/></svg><span>Help</span></button>
+    <button class="btn" id="fullBtn" type="button" title="Full screen"><span>Full screen</span></button>
+  </header>
+
+  <div class="main">
+    <aside class="tut" id="tut" aria-label="Instructions">
+      <nav class="ch-nav" aria-label="Chapters"></nav>
+<!--CHAPTERS-->
+<section class="chapter" id="s1-week" data-num="0" data-title="This week" data-bench="exam">
+  <h1>Supervision 1: capillaries, arterioles and cardiac output</h1>
+  <div class="meta-row"><span class="pill time">≈ 5 min</span></div>
+  <p class="lede">This week’s lectures are about how blood reaches the tissues: exchange across the capillaries, how the arterioles share out the flow, and what sets the cardiac output. Your essay puts them together, in the biggest challenge the circulation meets every day: exercise.</p>
+
+<div class="handin-box">
+  <div class="hb-k">To hand in this week</div>
+  <p class="hb-title">“Discuss the cardiovascular adjustments that occur in whole body exercise.”</p>
+  <ul><li>You write the essay in <b>Supervision work</b>, as you will in the online exam. Plan it first, then write it in continuous prose, in your own words.</li><li>It draws on all three of this week’s lectures, and on what Dr Fraser says about exercise in his fifth.</li><li>Once you’ve submitted it, <b>hand it in</b> from the same page before your supervision. You’ll need the <b>hand-in password</b> I give you, and your work then goes straight into my Google Drive.</li></ul>
+  <p class="hb-acts"><button class="do showme" type="button" data-goto="s1-write">how to write it and hand it in</button> <button class="do showme" type="button" data-exam="s1-essay">open the essay</button></p>
+</div>
+
+<h2 id="w1-plan">The week, step by step</h2>
+<ol class="plan">
+<li>If you’d like to, start with <b>two short exercises</b>. They’re optional, and take about half an hour altogether. In chapter 1 you repeat, in the <b>Organ bath</b>, the experiment that discovered what the endothelium does to the smooth muscle under it, and take it a step further. In chapter 2 you run Dr Fraser’s equations as a model of the circulation in the <b>Circuits</b> tab, and find out what has to change for the cardiac output to rise five-fold in exercise. Both give you material for your essay. <button class="do showme" type="button" data-goto="s1-endo">start</button></li>
+<li>Then <b>write your essay</b> and hand it in (chapter 3). <button class="do showme" type="button" data-goto="s1-write">go there</button></li>
+<li>Chapter 4 has three more essay titles on this week’s lectures, for revision. You can hand one in for feedback if you’d like to, but you don’t have to. <button class="do showme" type="button" data-goto="s1-more">go there</button></li>
+</ol>
+<div class="activity">
+  <div class="act-t">Before you start</div>
+  <ol class="steps">
+    <li data-task="w1-name" data-check="named">Check that your name is at the top of the page. If it says <b>Your name</b>, click it and add yours. It goes at the top of the work you hand in, and every supervision’s page shares it.</li>
+  </ol>
+</div>
+<h2>How this page works</h2>
+<ul>
+<li>The steps tick themselves off as you do them, the buttons do things for you in the workbench on the right, and every question has a <b>model answer</b> you can look at once you’ve had a go.</li>
+<li>Chapters 1, 2 and 4 are optional, so their steps don’t count towards finishing the page. The rest do.</li>
+<li>If you haven’t used one of the workbench’s tabs before, the <a href="workbench.html" target="_blank" rel="noopener">workbench guide</a> shows you how it works.</li>
+</ul>
+
+</section>
+
+<section class="chapter" id="s1-endo" data-num="1" data-title="The endothelium" data-bench="bath" hidden>
+  <h1>Optional: what the endothelium does to arterioles</h1>
+  <div class="meta-row"><span class="pill time">≈ 15 min</span></div>
+  <p class="lede">Repeat, in the Organ bath, the experiment that showed that the endothelium relaxes the muscle under it, and find out how.</p>
+<div class="optional whole">
+
+<div class="callout info">
+  <div class="co-t">Optional, about 15 minutes</div>
+  <p>This exercise isn’t part of the work to hand in, and its steps don’t count towards finishing the page. It goes with Dr Fraser’s second lecture, on the control of arteriolar smooth muscle.</p>
+</div>
+
+<p>In 1980 Robert Furchgott and John Zawadzki noticed that acetylcholine relaxed rings of rabbit aorta only if their endothelium hadn’t been rubbed off by accident. The endothelium, they concluded, releases something that relaxes the muscle under it. You can see the same thing in the <b>Organ bath</b>, and then find out what that something is. The ring here comes from a rat, and everyone gets the same one, so your numbers will match mine. An aorta has no tone of its own in the bath, so you contract it first with phenylephrine, an agonist at the α<sub>1</sub>-adrenoceptors that sympathetic noradrenaline acts on.</p>
+<div class="activity">
+  <div class="act-t">An intact ring</div>
+  <ol class="steps">
+    <li data-task="en-ring" data-auto="bath:setup tissue=aorta endothelium=true">Set up the ring of rat aorta <button class="do showme" type="button" data-bath="aorta?seed=4">show me</button>. It runs 20 times faster than real time, because the aorta responds slowly.</li>
+    <li data-task="en-pe" data-auto="bath:add drug=phenylephrine">Contract it with phenylephrine at 10<sup>−6</sup> M <button class="do showme" type="button" data-bath-do="add phenylephrine 1e-6">show me</button>, and skip to the plateau <button class="do showme" type="button" data-bath-do="plateau">show me</button>.</li>
+    <li data-task="en-ach" data-auto="bath:response drug=acetylcholine condition=control pct&gt;50">Now add acetylcholine at 10<sup>−6</sup> M <button class="do showme" type="button" data-bath-do="add acetylcholine 1e-6">show me</button>, skip to the plateau again, and wash the bath out <button class="do showme" type="button" data-bath-do="wash">show me</button>. Washing measures the response: the table under the chart shows what fraction of the phenylephrine tone relaxed.</li>
+  </ol>
+</div>
+<div class="activity">
+  <div class="act-t">The same ring, unable to make nitric oxide</div>
+  <ol class="steps">
+    <li data-task="en-lname" data-auto="bath:antagonist drug=lname">Put L-NAME, which inhibits nitric oxide synthase, into the solution you wash the bath with, at 10<sup>−4</sup> M <button class="do showme" type="button" data-bath-do="antagonist lname 1e-4">show me</button>. Give it 20 minutes to act <button class="do showme" type="button" data-bath-do="wait 1200">show me</button>.</li>
+    <li data-task="en-lname-ach" data-auto="bath:add drug=acetylcholine condition~L-NAME">Contract the ring with phenylephrine again <button class="do showme" type="button" data-bath-do="add phenylephrine 1e-6">show me</button>, skip to the plateau, then add acetylcholine at 10<sup>−6</sup> M again <button class="do showme" type="button" data-bath-do="add acetylcholine 1e-6">show me</button> and skip to the plateau.</li>
+    <li data-task="en-snp" data-auto="bath:response drug=nitroprusside condition~L-NAME pct&gt;50">Without washing, add sodium nitroprusside, which releases nitric oxide itself, at 10<sup>−7</sup> M <button class="do showme" type="button" data-bath-do="add nitroprusside 1e-7">show me</button>. Skip to the plateau and wash. The table now has both responses in L-NAME.</li>
+  </ol>
+</div>
+<div class="q" data-q="en-q-what">
+  <div class="q-text">What did acetylcholine do before and after L-NAME, and what did nitroprusside do? What do the three results show, taken together?</div>
+  <div class="q-model">Before L-NAME, acetylcholine relaxed about four-fifths of the phenylephrine tone (about 83%). After 20 minutes in L-NAME it relaxed less than a fifth (17 to 19%), yet nitroprusside then relaxed over 90% of it. So acetylcholine relaxes the muscle by making the endothelium produce nitric oxide: block nitric oxide synthase and the relaxation largely goes. The muscle itself can still relax perfectly well, as nitroprusside shows, because it gives the muscle nitric oxide directly, which activates soluble guanylyl cyclase, raises cGMP and lowers the Ca<sup>2+</sup> sensitivity and Ca<sup>2+</sup> of the muscle. (Acetylcholine acts on M<sub>3</sub> receptors of the endothelium, which raise its Ca<sup>2+</sup> and so activate eNOS.) A ring whose endothelium has been rubbed off behaves like the ring in L-NAME, which is the original observation. That a little relaxation survives L-NAME is consistent with the endothelium having other dilators too, such as prostacyclin and endothelium-derived hyperpolarisation.</div>
+</div>
+<div class="q" data-q="en-q-k" data-type="mcq">
+  <div class="q-text">In the organ bath, KCl at 60 mM contracts the aorta. Yet in exercising muscle, a rise in interstitial K<sup>+</sup> to about 10 mM within seconds dilates the arterioles, and is one of the main causes of the fast phase of functional hyperaemia. Why the difference?</div>
+  <div class="mcq"><label data-correct data-why="Yes. Raised K&lt;sup&gt;+&lt;/sup&gt; activates K&lt;sub&gt;IR&lt;/sub&gt; channels and speeds up the Na&lt;sup&gt;+&lt;/sup&gt;/K&lt;sup&gt;+&lt;/sup&gt;-ATPase, and together they hyperpolarise the cell, close its voltage-gated Ca&lt;sup&gt;2+&lt;/sup&gt; channels and relax it. Blocking either (with barium or ouabain) cuts the dilatation by about 60%. At 60 mM, though, E&lt;sub&gt;K&lt;/sub&gt; is so much less negative that the cell depolarises whatever its channels do, and the Ca&lt;sup&gt;2+&lt;/sup&gt; channels open."><input type="radio"> <span>A small rise in K<sup>+</sup> hyperpolarises arteriolar smooth muscle, through inward-rectifier K<sup>+</sup> channels and the Na<sup>+</sup>/K<sup>+</sup>-ATPase. A large rise depolarises it</span></label><label data-why="No. The mechanism is in the smooth muscle itself, and it doesn’t depend on nitric oxide."><input type="radio"> <span>K<sup>+</sup> releases nitric oxide from the endothelium of arterioles but not of the aorta</span></label><label data-why="No. All smooth muscle has K&lt;sup&gt;+&lt;/sup&gt; channels. What differs is how far the K&lt;sup&gt;+&lt;/sup&gt; rises."><input type="radio"> <span>The aorta has no K<sup>+</sup> channels</span></label></div>
+</div>
+<div class="q" data-q="en-q-ex">
+  <div class="q-text">Nitric oxide is one of many dilators released in exercising muscle. Yet blocking nitric oxide synthase alone changes the size of exercise hyperaemia surprisingly little. Why might that be, and what does it mean for how you write about the mechanisms in your essay?</div>
+  <div class="q-model">The maintained phase of exercise hyperaemia has several causes acting at once: K<sup>+</sup>, adenosine (acting on A<sub>2A</sub> receptors, cAMP and K<sub>ATP</sub> channels), ATP and nitric oxide released from red cells as they give up their O<sub>2</sub>, β<sub>2</sub>-adrenoceptor activation by circulating adrenaline, and nitric oxide from endothelium stimulated by the faster flow. They’re redundant: if one is blocked, the others make a bigger contribution, and some changes (a fall in P<sub>O<sub>2</sub></sub>, say) alter the others. So an experiment that blocks one mediator and sees little change doesn’t show that the mediator does nothing. In the essay, distinguish the fast phase, whose causes are clear (K<sup>+</sup> and the muscle pump), from the maintained phase, whose causes overlap, and say what kind of evidence there is for each, rather than listing dilators as if each were the cause.</div>
+</div>
+
+</div>
+</section>
+
+<section class="chapter" id="s1-model" data-num="2" data-title="A model of exercise" data-bench="circuit" hidden>
+  <h1>Optional: exercise in a model of the circulation</h1>
+  <div class="meta-row"><span class="pill time">≈ 15 min</span></div>
+  <p class="lede">Run Dr Fraser’s two equations as a model of the circulation, and find out what has to change for the cardiac output to rise five-fold without the right atrial pressure falling.</p>
+<div class="optional whole">
+
+<div class="callout info">
+  <div class="co-t">Optional, about 15 minutes</div>
+  <p>This exercise isn’t part of the work to hand in, and its steps don’t count towards finishing the page. It goes with Dr Fraser’s third lecture, on the determinants of cardiac output, and his fifth, on exercise.</p>
+</div>
+
+<p>Dr Fraser’s two equations make a model of the circulation that you can run. The <b>mean systemic filling pressure</b> (MSFP) is a pressure source, which drives venous return to the right atrium through the <b>resistance to venous return</b> (RvR), so that VR = (MSFP − RAP) / RvR. The heart is a flow source, which pumps into the arteries whatever flow you set. The blood flows back through the arterioles, the <b>total peripheral resistance</b> (TPR), so that ABP = CO × TPR. The tab shows pressures in mmHg, flows in mL/s (5 L/min is 83.3 mL/s) and resistances in mmHg·s/mL.</p>
+<div class="callout tip">
+  <div class="co-t">A model, not a body</div>
+  <p>The veins of this model are rigid, so venous return keeps rising however far the heart pulls RAP down. Real veins collapse once the pressure in them falls 1 or 2 mmHg below zero. A real heart also sets its own output: by Starling’s law it pumps what returns to it, which keeps RAP close to zero. Here you set its output yourself.</p>
+</div>
+<div class="activity">
+  <div class="act-t">Rest, then exercise</div>
+  <ol class="steps">
+    <li data-task="md-open" data-auto="circuit:run name~Guyton">Open the model <button class="do showme" type="button" data-circuit="example:exercise-circulation">show me</button> and run it <button class="do showme" type="button" data-circuit-run="1">show me</button>. Venous return and cardiac output are both 83.3 mL/s (5 L/min), RAP is close to 0 mmHg, and ABP is 93 mmHg.</li>
+    <li data-task="md-muscle" data-auto="circuit:switch label~Exercising on=true">Start exercising: click the switch <b>Exercising muscles</b> to close it. That puts the working muscles’ dilated arterioles alongside the others, and TPR falls to a fifth of its resting value. Watch ABP.</li>
+    <li data-task="md-heart" data-auto="circuit:measure kind=ammeter label~Cardiac value&gt;400">Can the heart put this right on its own? Click the <b>Heart</b>, and in the panel on the right set its flow to 417 mL/s, five times its resting output. Watch RAP.</li>
+    <li data-task="md-veins" data-auto="circuit:switch label~pump on=true">Now the veins. Click <b>Mean systemic filling pressure</b> and raise it from 7 to 17.5 mmHg, as sympathetic venoconstriction would. Then close the switch <b>Muscle pump</b>, which halves RvR.</li>
+  </ol>
+</div>
+<div class="q" data-q="md-q-heart">
+  <div class="q-text">With the muscles dilated, ABP fell to about 19 mmHg. With the heart pumping 417 mL/s on its own, ABP was back to 93 mmHg, but what happened to RAP, and why couldn’t a real heart do this? What finally brought RAP back to zero?</div>
+  <div class="q-model">ABP = CO × TPR, so with the output unchanged ABP fell to a fifth, about 19 mmHg. Pumping five times as much restores ABP, but RAP falls to about −28 mmHg, because with MSFP and RvR unchanged, VR = (MSFP − RAP) / RvR can only rise five-fold if RAP falls that far: (7 + 28) / 0.084 = 417 mL/s. Real veins collapse long before that, so a heart that pumps harder can’t draw more blood out of them, which is why pacing the heart faster barely raises the cardiac output. Raising MSFP 2.5-fold (venoconstriction) and halving RvR (the muscle pump) lets venous return rise 2.5 × 2 = 5-fold with RAP back at zero. In the body, Starling’s law holds RAP near zero and the output follows venous return; the heart’s faster rate and greater contractility let it pump the larger return without RAP rising.</div>
+</div>
+<div class="q" data-q="md-q-sv" data-accept="num:1.67±0.15" data-placeholder="times">
+  <div class="q-text">Dr Fraser’s handout says that in intense exercise the cardiac output can rise about five-fold, with the heart rate rising about three-fold. By roughly how many times must the stroke volume rise?</div>
+  <div class="q-model">CO = HR × SV, so SV must rise by 5 / 3 ≈ 1.7 times. The handout’s figures of a three-fold rise in rate and a 50% rise in stroke volume give 3 × 1.5 = 4.5, close to five-fold. Stroke volume can rise because venous return and filling rise with it, and because sympathetic stimulation makes each beat more forceful, so the ventricle empties further.</div>
+</div>
+<div class="q" data-q="md-q-control" data-type="mcq">
+  <div class="q-text">In exercise, mean arterial pressure rises slightly, although TPR falls to a fifth. What drives the increase in sympathetic activity and the fall in cardiac vagal activity that achieve this?</div>
+  <div class="mcq"><label data-why="No. If the baroreflex drove it, pressure would have to fall first and stay a little low. Instead it rises, and the heart rate can rise before exercise starts."><input type="radio"> <span>Mainly the baroreflex, responding to the fall in pressure as the muscles dilate</span></label><label data-correct data-why="Yes. With the neuromuscular junction blocked by curare, trying to exercise still raises the heart rate, and the rise follows the effort perceived, not the work done. The heart rate even rises in anticipation. The baroreflex still works, but around a higher pressure, which is why the pressure rises a little and stays stable."><input type="radio"> <span>Central command from the brain, with feedback from the muscles and joints, while the baroreflex is reset to a higher set point</span></label><label data-why="No. Adrenaline helps, and dilates muscle arterioles through β&lt;sub&gt;2&lt;/sub&gt;-adrenoceptors, but the fast changes in heart rate and venous tone are neural."><input type="radio"> <span>Adrenaline from the adrenal medulla alone</span></label></div>
+</div>
+
+</div>
+</section>
+
+<section class="chapter" id="s1-write" data-num="3" data-title="Write your essay" data-bench="exam" hidden>
+  <h1>Write your essay, and hand it in</h1>
+  <p class="lede">This is the work to hand in this week. You write it in Supervision work, as you will in the online exam, and then hand it in from the same page.</p>
+
+<p class="essay-title">“Discuss the cardiovascular adjustments that occur in whole body exercise.”</p>
+
+<h2 id="es1-title">What “discuss” asks of you</h2>
+<p>“Discuss” asks for an argument, not a list. A good essay on this title doesn’t just describe each change in exercise. It explains why each one is needed, how it comes about, and how the changes fit together into one response. A useful way in is to see the whole response as solving one problem: the working muscles dilate their arterioles to get the blood they need, and the rest of the circulation has to cope with the consequences.</p>
+<ul>
+<li><b>In the muscles.</b> How does their blood flow rise, and how fast? What do the fast and the maintained phases of functional hyperaemia depend on, and how good is the evidence for each? What happens at the capillaries?</li>
+<li><b>In the whole circulation.</b> What does that do to TPR, and so to ABP? What must the cardiac output do, and how do venous return, the heart rate and the stroke volume rise to match it? Chapter 2 has numbers.</li>
+<li><b>The control.</b> What drives the changes in sympathetic and vagal activity, and why couldn’t the baroreflex do it alone? What happens to the blood flow to other organs: the gut, the kidneys, the skin, the heart and the brain?</li>
+<li><b>The argument.</b> What, in the end, limits how hard a fit person can exercise? Is it the same for someone with heart failure? An essay that ends on a well-argued point like this is better than one that just stops.</li>
+</ul>
+
+<h2 id="es1-slips">Three common slips</h2>
+<p>Each of these sentences is the kind that essays on this title often contain. Is each one right? If not, what’s wrong with it?</p>
+<div class="q" data-q="es1-q-symp" data-type="mcq">
+  <div class="q-text">“During exercise, the sympathetic nervous system dilates the arterioles of the working muscles, which increases their blood flow.”</div>
+  <div class="mcq"><label data-why="Not quite. Sympathetic nerves constrict arterioles, through α&lt;sub&gt;1&lt;/sub&gt;-adrenoceptors. The working muscles dilate theirs by local mechanisms, despite the sympathetic activity."><input type="radio"> <span>It’s right. Sympathetic activity rises in exercise, and it dilates the arterioles of muscle</span></label><label data-correct data-why="Yes. K&lt;sup&gt;+&lt;/sup&gt;, adenosine and other local factors dilate the working muscles’ arterioles, and they overcome sympathetic vasoconstriction there. Elsewhere (the gut, the kidneys, inactive muscle) sympathetic vasoconstriction diverts blood towards the working muscles and holds up TPR. In humans, sympathetic cholinergic vasodilator nerves probably play no part, although they do in cats."><input type="radio"> <span>Functional hyperaemia is local. Sympathetic vasoconstriction acts elsewhere, and even partly opposes it in the muscles</span></label><label data-why="No. Sympathetic cholinergic vasodilator nerves dilate muscle arterioles in cats, but probably not in humans."><input type="radio"> <span>It’s right, but the transmitter is acetylcholine, not noradrenaline</span></label></div>
+</div>
+<div class="q" data-q="es1-q-abp" data-type="mcq">
+  <div class="q-text">“Because total peripheral resistance falls, arterial blood pressure falls during exercise.”</div>
+  <div class="mcq"><label data-why="Not quite. That would be true only if the cardiac output didn’t change."><input type="radio"> <span>It’s right: ABP = CO × TPR, and TPR falls</span></label><label data-correct data-why="Yes. TPR can fall to a fifth, but the cardiac output rises about five-fold, and central command resets the baroreflex, so mean pressure rises a little. Systolic pressure rises more, because the stroke volume and the force of ejection rise."><input type="radio"> <span>Mean ABP rises slightly, because the cardiac output rises more than TPR falls, and the baroreflex is reset to a higher set point</span></label><label data-why="No. The response is set in motion by central command, even before exercise starts. The pressure doesn’t have to fall first."><input type="radio"> <span>ABP falls at first, and the baroreflex then brings it back to normal</span></label></div>
+</div>
+<div class="q" data-q="es1-q-o2" data-type="mcq">
+  <div class="q-text">“In exercise, more oxygen reaches the muscles only because their blood flow rises.”</div>
+  <div class="mcq"><label data-why="Not quite. That’s O&lt;sub&gt;2&lt;/sub&gt; delivery, but the muscles can also take more out of each litre of blood that reaches them."><input type="radio"> <span>It’s right: O<sub>2</sub> delivery is flow × the O<sub>2</sub> content of arterial blood</span></label><label data-correct data-why="Yes. By Fick’s principle, O&lt;sub&gt;2&lt;/sub&gt; uptake = flow × (arterial − venous O&lt;sub&gt;2&lt;/sub&gt; content). More capillaries are perfused, so the distances for diffusion are shorter and the area larger, and the local rise in P&lt;sub&gt;CO&lt;sub&gt;2&lt;/sub&gt;&lt;/sub&gt;, H&lt;sup&gt;+&lt;/sup&gt; and temperature shifts the dissociation curve to the right (the Bohr effect), so haemoglobin gives up more of its O&lt;sub&gt;2&lt;/sub&gt;."><input type="radio"> <span>The muscles also extract more of the O<sub>2</sub> from each litre of blood, so their O<sub>2</sub> uptake rises more than their flow</span></label><label data-why="No. Myoglobin buffers the O&lt;sub&gt;2&lt;/sub&gt; supply for a few seconds, but its store is tiny compared with what the blood brings."><input type="radio"> <span>The muscles’ O<sub>2</sub> uptake rises only because their myoglobin releases its store</span></label></div>
+</div>
+
+<h2>Before you start</h2>
+<ul>
+<li>Look back at the feedback on your earlier work, and pick one thing to do better this time.</li>
+<li>Make sure you have the <b>hand-in password</b> I gave you, because you’ll need it at the end. You won’t find it anywhere on this site.</li>
+<li>Your work saves itself in this browser as you type, so you can stop and come back to it. Submit it once it’s finished.</li>
+<li>A diagram can help: Guyton’s curves at rest and in exercise, say, or a flow diagram of how the medulla controls the heart and the vessels. Draw it with <b>Insert drawing</b> (the pencil), or draw it on paper and add a photo of it with <b>Insert picture</b>. Type a caption under it, and refer to it in your text.</li>
+<li>Equations: type a simple one straight into your text, such as ABP = CO × TPR (× is among the special characters, under <b>Ω</b>). For one with a fraction, use the formula tool, <b>Σ</b>. Say what each equation means, and then use it.</li>
+</ul>
+<div class="activity">
+  <div class="act-t">Write it, and hand it in</div>
+  <ol class="steps">
+    <li data-task="es1-start" data-auto="exam:start paper=s1-essay" data-check="paper:s1-essay.started">Open the essay <button class="do showme" type="button" data-exam="s1-essay">show me</button>, read its first page, and press <b>Start</b> when you’re ready to write.</li>
+    <li data-task="es1-write" data-auto="exam:words paper=s1-essay words&gt;299">Plan, then write. Aim for an introduction that says what your essay will argue, paragraphs that each make one point and show how it helps to answer the question, and a conclusion that draws them together.</li>
+    <li data-task="es1-submit" data-auto="exam:submit paper=s1-essay" data-check="paper:s1-essay.submitted">When you’ve finished, go to the submission page (the ✓ tile at the bottom right), check your work and submit it.</li>
+    <li data-task="es1-send" data-auto="exam:handin paper=s1-essay step=confirmed" data-check="paper:s1-essay.handedIn">Hand it in on the page that comes up next. Type in the hand-in password and press <b>Hand it in</b>. The page shows you a receipt once your work has arrived.</li>
+    <li data-task="es1-word" data-auto="exam:download paper=s1-essay format=docx" data-check="paper:s1-essay.downloaded">To keep a copy, press <b>Download your copy</b>. Before you hand in, the same button is under the password box, and it’s called <b>Download a copy for yourself</b>. The copy is saved as a Word document, usually in your Downloads folder.</li>
+  </ol>
+</div>
+<div class="callout info">
+  <div class="co-t">Handing in</div>
+  <p>Your work goes straight from this page into my Google Drive, and you don’t need a Google account for that. The hand-in password I give you stops anyone else from handing work in, so please keep it to yourself. Once it has arrived, the page tells you so and gives you a receipt. If it can’t be handed in, the page will tell you why. If you try again and it still won’t go, download a copy and send it to me some other way.</p>
+</div>
+<div class="callout info">
+  <div class="co-t">After you’ve handed it in</div>
+  <p>Once you’ve submitted, <b>Review my answers</b> shows you the ground a good answer covers. Read it after you’ve handed your work in, and make a note of what you’d add or change. That’s what we’ll talk about in the supervision.</p><p>Your work is kept in this browser, in Files → <code>essays</code>. It won’t be there on another computer, and some shared computers clear it when you log out, so download a copy before you finish.</p>
+</div>
+<div class="q" data-q="es1-q-next">
+  <div class="q-text">Once you’ve read the guidance, which part of the response did your essay explain best, and which did it only describe?</div>
+  <div class="q-model">There’s no single right answer here, so bring yours to the supervision. Essays on this title most often describe the changes in the heart and the vessels without saying what drives them, or list local dilators without distinguishing the fast and the maintained phases of hyperaemia. Look for the places where you wrote what happens, and ask whether you also said why, and what the evidence is.</div>
+</div>
+
+</section>
+
+<section class="chapter" id="s1-more" data-num="4" data-title="Revision titles" data-bench="exam" hidden>
+  <h1>Revision titles</h1>
+  <p class="lede">This chapter is optional. It has three more essay titles on this week’s lectures, for revision. You can hand one in for feedback if you’d like to.</p>
+<h2 id="m1-rev">Essay titles for revision</h2>
+<p>These three titles go with this week’s three lectures, one with each. It’s worth noting them down: they’re the kind of title you could meet in the exam.</p>
+<ol class="titles"><li>Discuss the factors that determine the exchange of solutes and water between the plasma and the interstitial fluid. Why does oedema develop?</li><li>How is the blood flow to each tissue matched to its needs, while arterial blood pressure is maintained?</li><li>What determines cardiac output?</li></ol>
+<p>Dr Fraser’s handout doesn’t suggest titles, so these are mine. Each needs the equations of the circulation, used to argue.</p>
+<p>Planning an answer to each one (your argument, your evidence, and the order you’d put them in) is good revision. If you’d like feedback on one, write it in Supervision work <button class="do showme" type="button" data-exam="s1-revision">open them</button> and <b>hand it in</b>, in the same way as the work for this week. That’s optional: choose the title you want to write, and leave the others blank. After you submit, the guidance shows you the ground each title should cover.</p>
+<div class="optional">
+<h2>Practice</h2>
+<div class="activity">
+  <div class="act-t">If you want the practice</div>
+  <ol class="steps">
+    <li data-task="m1-plan">Plan an answer to one of the revision titles. Sum up your position in a sentence, then jot down the three or four points, with the evidence for each, that would support it.</li>
+    <li data-task="m1-rev" data-auto="exam:submit paper=s1-revision">Write one of them up in Supervision work, submit it, and hand it in if you’d like my feedback on it.</li>
+  </ol>
+</div>
+</div>
+</section>
+<!--/CHAPTERS-->
+    </aside>
+
+    <div class="splitter" role="separator" aria-orientation="vertical" title="Drag to resize, or double-click to reset"></div>
+
+    <section class="bench" aria-label="Workbench">
+      <div class="wb-tabs" role="tablist">
+        <button class="wb-tab rail-btn" type="button" id="tutRail" title="Show the instructions (Ctrl+\)" hidden><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M13 10l2 2-2 2"/></svg><span>Instructions</span></button>
+        <button class="wb-tab on" type="button" role="tab" data-wb="exam" title="Supervision work: the essay and the questions set for your supervision, written as in the online exam"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 3H6.5A2.5 2.5 0 0 0 4 5.5v13A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5V9z"/><path d="M14 3v6h6"/><path d="M8 13h8M8 17h5"/></svg><span class="lbl">Supervision work</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="scope" title="A virtual microscope with slides of human tissues"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9.5 2.8l3.6 1.4-3 7.6-3.6-1.4z"/><path d="M7.7 12.4l-.9 2.2"/><path d="M4 16.5h9"/><path d="M13.6 7.6a6.5 6.5 0 0 1 1.9 11.2"/><path d="M5 21h14"/><path d="M15.5 18.8V21"/></svg><span class="lbl">Microscope</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="anatomy" title="The anatomy of the human body in 3D (from Z-Anatomy)"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="4.6" r="2.3"/><path d="M12 7.6v6.6M6.2 10.6L12 8.8l5.8 1.8M8.8 21l3.2-6.8 3.2 6.8"/></svg><span class="lbl">Anatomy</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="viewer" title="Proteins and other molecules in 3D"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="6" cy="7" r="2.6"/><circle cx="18" cy="7" r="2.6"/><circle cx="12" cy="17.5" r="2.6"/><path d="M8.6 7h6.8M7.3 9.3l3.4 5.9M16.7 9.3l-3.4 5.9"/></svg><span class="lbl">Molecules</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="recorder" title="A chart recorder with real recordings of people (the ECG, heart sounds, blood pressure, breathing, muscle and the brain), from PhysioNet"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M6 13h2.5l1.5-4.5 2.5 8 1.8-5.5 1 2H18"/></svg><span class="lbl">Recorder</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="bath" title="An organ bath: isolated tissues, drugs and concentration–response curves"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5.5 3h13"/><path d="M7 3v13.5A4.5 4.5 0 0 0 11.5 21h1a4.5 4.5 0 0 0 4.5-4.5V3"/><path d="M12 3v4.5"/><rect x="10.7" y="7.5" width="2.6" height="6" rx="1.3"/><path d="M9.3 17.6h.01M14.4 16.4h.01M11.8 18.9h.01"/></svg><span class="lbl">Organ bath</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="flow" title="Flow diagrams of physiological control, with a simulator"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="5" rx="1.2"/><rect x="14" y="3" width="7" height="5" rx="1.2"/><rect x="14" y="16" width="7" height="5" rx="1.2"/><path d="M10 5.5h4M17.5 8v8M14 18.5H7.5a1.5 1.5 0 0 1-1.5-1.5V8"/></svg><span class="lbl">Diagrams</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="circuit" title="Electrical circuits, and the circuit models of physiology"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2 12h3.5l1.7-4 2.6 8 2.6-8 2.6 8 1.7-4H22"/></svg><span class="lbl">Circuits</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="sims" title="Interactive simulations from PhET (University of Colorado Boulder)"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h8.5M16.5 6H20M4 12h2.5M10.5 12H20M4 18h10.5M18.5 18H20"/><circle cx="14.5" cy="6" r="2"/><circle cx="8.5" cy="12" r="2"/><circle cx="16.5" cy="18" r="2"/></svg><span class="lbl">Simulations</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="rstudio" title="RStudio, for analysing data in R"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16M3 12h18"/></svg><span class="lbl">RStudio</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="editor" title="Your files"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v1H7l-4 9z"/><path d="M3 19l3.5-8H22l-3.5 8z"/></svg><span class="lbl">Files</span><span class="dot"></span></button>
+        <button class="bench-close" type="button" aria-label="Back to the instructions" title="Back to the instructions">✕<span class="lbl">Instructions</span></button>
+      </div>
+      <div class="wb-body">
+        <div class="wb-pane" data-wb="scope" hidden><div id="scopeRoot"></div></div>
+        <div class="wb-pane" data-wb="anatomy" hidden><div id="anatRoot"></div></div>
+        <div class="wb-pane" data-wb="viewer" hidden><div id="viewerRoot"></div></div>
+        <div class="wb-pane" data-wb="recorder" hidden><div id="recRoot"></div></div>
+        <div class="wb-pane" data-wb="bath" hidden><div id="bathRoot"></div></div>
+        <div class="wb-pane" data-wb="flow" hidden><div id="flowRoot"></div></div>
+        <div class="wb-pane" data-wb="circuit" hidden><div id="circuitRoot"></div></div>
+        <div class="wb-pane" data-wb="sims" hidden><div id="simsRoot"></div></div>
+        <div class="wb-pane" data-wb="exam"><div id="examRoot"></div></div>
+        <div class="wb-pane" data-wb="rstudio" hidden><div id="rsRoot"></div></div>
+        <div class="wb-pane" data-wb="editor" hidden><div id="edRoot"></div></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<button class="bench-fab" type="button" aria-label="Open the workbench"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16M3 12h18"/></svg>Workbench</button>
+<noscript><p style="padding:20px">This page needs JavaScript.</p></noscript>
+
+<script>window.BMS_STARTERS = [];
+window.BMS_STARTERS_VERSION = 1;</script>
+<script>window.BMS_PAGE = {"week": 1, "page": "supervision-1.html", "title": "Supervision 1", "site": "Physiology supervisions"};</script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/core.js"></script>
+<script src="assets/js/icons.js"></script>
+<script src="assets/js/vfs.js"></script>
+<script src="assets/js/project.js"></script>
+<script src="assets/vendor/codemirror/codemirror.js"></script>
+<script src="assets/vendor/codemirror/r.js"></script>
+<script src="assets/vendor/codemirror/markdown.js"></script>
+<script src="assets/vendor/codemirror/yaml.js"></script>
+<script src="assets/vendor/codemirror/shell.js"></script>
+<script src="assets/vendor/codemirror/javascript.js"></script>
+<script src="assets/vendor/codemirror/python.js"></script>
+<script src="assets/vendor/codemirror/overlay.js"></script>
+<script src="assets/vendor/codemirror/multiplex.js"></script>
+<script src="assets/vendor/codemirror/yaml-frontmatter.js"></script>
+<script src="assets/vendor/codemirror/rmarkdown.js"></script>
+<script src="assets/vendor/codemirror/matchbrackets.js"></script>
+<script src="assets/vendor/codemirror/closebrackets.js"></script>
+<script src="assets/vendor/codemirror/comment.js"></script>
+<script src="assets/vendor/codemirror/searchcursor.js"></script>
+<script src="assets/vendor/codemirror/active-line.js"></script>
+<script src="assets/vendor/codemirror/runmode.js"></script>
+<script src="assets/vendor/dompurify/purify.min.js"></script>
+<script src="assets/vendor/marked/marked.min.js"></script>
+<script src="assets/js/rsession.js"></script>
+<script src="assets/js/rui.js"></script>
+<script src="assets/js/dataview.js"></script>
+<script src="assets/js/knit.js"></script>
+<script src="assets/js/rstudio.js"></script>
+<script src="assets/js/rsource.js"></script>
+<script src="assets/js/shiny.js"></script>
+<script src="assets/js/pdfview.js"></script>
+<script src="assets/js/editor.js"></script>
+<script src="assets/js/page.js"></script>
+<script src="assets/js/tutorial.js"></script>
+<script src="assets/js/workbench.js"></script>
+</body>
+</html>

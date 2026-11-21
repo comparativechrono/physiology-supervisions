@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supervision 2 – Physiology supervisions</title>
+<meta name="description" content="Supervision 2 of NST IB Physiology covers the control of arterial blood pressure, the circulation in haemorrhage and hypoxia, and hypertension, heart failure and shock. There are four short answers to hand in, and optional exercises in the workbench.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2313304a'/%3E%3Cpath d='M3.5 17.5h5.2l1.6-2.6 1.6 2.6h1.3l1 2.4 2.4-13.4 2.4 15.5 1.4-4.5h1.6l1.9-3 1.9 3h2.7' fill='none' stroke='%23ff8a65' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<script src="assets/js/isolation.js"></script>
+<link rel="stylesheet" href="assets/vendor/codemirror/codemirror.css">
+<link rel="stylesheet" href="assets/css/app.css">
+<link rel="stylesheet" href="assets/css/wb.css">
+<link rel="stylesheet" href="assets/css/bms.css">
+<link rel="stylesheet" href="assets/css/r.css">
+<link rel="stylesheet" href="assets/css/rstudio.css">
+<link rel="stylesheet" href="assets/css/files.css">
+<link rel="stylesheet" href="assets/css/viewer.css">
+<link rel="stylesheet" href="assets/css/scope.css">
+<link rel="stylesheet" href="assets/css/flow.css">
+<link rel="stylesheet" href="assets/css/circuit.css">
+<link rel="stylesheet" href="assets/css/exam.css">
+<link rel="stylesheet" href="assets/css/anatomy.css">
+<link rel="stylesheet" href="assets/css/recorder.css">
+<link rel="stylesheet" href="assets/css/organbath.css">
+<link rel="stylesheet" href="assets/css/sims.css">
+</head>
+<body data-page="supervision-2" data-title="Supervision 2" data-week="2">
+<div class="app">
+
+  <header class="topbar">
+    <button class="btn top-toggle" id="tutToggle" type="button" title="Hide the instructions so that the workbench fills the window (Ctrl+\)" aria-controls="tut" aria-expanded="true"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M16 10l-2 2 2 2"/></svg></button>
+    <a class="brand" href="index.html" title="All the supervisions">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#1c4061"/><path d="M3.5 17.5h5.2l1.6-2.6 1.6 2.6h1.3l1 2.4 2.4-13.4 2.4 15.5 1.4-4.5h1.6l1.9-3 1.9 3h2.7" fill="none" stroke="#ff8a65" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div>
+        <div class="brand-title">Physiology supervisions</div>
+        <div class="brand-sub">Supervision 2: blood pressure, stress and failure</div>
+      </div>
+    </a>
+    <div class="spacer"></div>
+    <div class="progress-wrap" title="The steps you have done and the questions you have answered (saved in this browser)"><span class="progress-label">0% done</span><div class="progress"><i></i></div></div>
+    <span class="store-status" id="storeStatus" title="Your files are saved in this browser, on this computer"></span>
+    <button class="btn" id="userBtn" type="button" title="Your name, as it appears in the workbench"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span class="user-name">Your name</span></button>
+    <button class="btn" id="projectBtn" type="button" title="Download all your files, add files, or start afresh"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v1H7l-4 9z"/><path d="M3 19l3.5-8H22l-3.5 8z"/></svg><span>My files</span></button>
+    <button class="btn" id="answersBtn" type="button"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg><span>My answers</span></button>
+    <button class="btn" id="helpBtn" type="button" title="How this page works"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.2 9a2.9 2.9 0 0 1 5.6 1c0 2-2.8 2.6-2.8 4M12 17.5h.01"/></svg><span>Help</span></button>
+    <button class="btn" id="fullBtn" type="button" title="Full screen"><span>Full screen</span></button>
+  </header>
+
+  <div class="main">
+    <aside class="tut" id="tut" aria-label="Instructions">
+      <nav class="ch-nav" aria-label="Chapters"></nav>
+<!--CHAPTERS-->
+<section class="chapter" id="s2-week" data-num="0" data-title="This week" data-bench="exam">
+  <h1>Supervision 2: blood pressure, stress and failure</h1>
+  <div class="meta-row"><span class="pill time">≈ 5 min</span></div>
+  <p class="lede">This week’s lectures are about how the arterial blood pressure is controlled, how the circulation copes with exercise, haemorrhage and hypoxia, and what happens when the control fails: hypertension, heart failure and shock. This week you hand in short answers rather than an essay.</p>
+
+<div class="handin-box">
+  <div class="hb-k">To hand in this week</div>
+  <p class="hb-title">Four short-answer questions</p>
+  <ul><li><ol class="titles"><li>Explain why removing the arterial baroreceptors (sinoaortic denervation) does not cause a sustained rise in mean arterial blood pressure. What does it change?</li><li>Outline the responses to the loss of about 15% of the blood volume, in the order in which they occur.</li><li>Distinguish the primary and secondary chemoreceptor responses to hypoxia. Why does the cardiovascular response to hypoxia in a breath-hold dive differ from that on ascent to high altitude?</li><li>Using Guyton’s curves, explain why the body’s normal responses to a low arterial blood pressure can make heart failure worse.</li></ol></li><li>Each is marked out of five. You answer them in <b>Supervision work</b>, in bullet points, as you would in the exam. Chapter 3 says what makes a short answer score well.</li><li>Once you’ve submitted it, <b>hand it in</b> from the same page before your supervision. You’ll need the <b>hand-in password</b> I give you, and your work then goes straight into my Google Drive.</li></ul>
+  <p class="hb-acts"><button class="do showme" type="button" data-goto="s2-write">how to write it and hand it in</button> <button class="do showme" type="button" data-exam="s2-saqs">open the questions</button></p>
+</div>
+
+<h2 id="w2-plan">The week, step by step</h2>
+<ol class="plan">
+<li>If you’d like to, start with <b>two short exercises</b>. They’re optional, and take about half an hour altogether. In chapter 1 you watch the baroreflex at work, in the <b>Recorder</b>, as a young man stands up. In chapter 2 you bleed and then weaken the heart of Dr Fraser’s model of the circulation, in the <b>Circuits</b> tab, and see why the right atrial pressure tells the two apart. Both go with the questions you hand in. <button class="do showme" type="button" data-goto="s2-stand">start</button></li>
+<li>Then <b>answer the four questions</b> and hand them in (chapter 3). <button class="do showme" type="button" data-goto="s2-write">go there</button></li>
+<li>Chapter 4 has four essay titles on this week’s lectures, for revision. You can hand one in for feedback if you’d like to, but you don’t have to. <button class="do showme" type="button" data-goto="s2-more">go there</button></li>
+</ol>
+<div class="activity">
+  <div class="act-t">Before you start</div>
+  <ol class="steps">
+    <li data-task="w2-name" data-check="named">Check that your name is at the top of the page. If it says <b>Your name</b>, click it and add yours. It goes at the top of the work you hand in, and every supervision’s page shares it.</li>
+  </ol>
+</div>
+<h2>How this page works</h2>
+<ul>
+<li>The steps tick themselves off as you do them, the buttons do things for you in the workbench on the right, and every question has a <b>model answer</b> you can look at once you’ve had a go.</li>
+<li>Chapters 1, 2 and 4 are optional, so their steps don’t count towards finishing the page. The rest do.</li>
+<li>If you haven’t used one of the workbench’s tabs before, the <a href="workbench.html" target="_blank" rel="noopener">workbench guide</a> shows you how it works.</li>
+</ul>
+
+</section>
+
+<section class="chapter" id="s2-stand" data-num="1" data-title="Standing up" data-bench="recorder" hidden>
+  <h1>Optional: the baroreflex as someone stands up</h1>
+  <div class="meta-row"><span class="pill time">≈ 15 min</span></div>
+  <p class="lede">Measure, in the Recorder, how the blood pressure falls when someone stands up, and how the baroreflex brings it back.</p>
+<div class="optional whole">
+
+<div class="callout info">
+  <div class="co-t">Optional, about 15 minutes</div>
+  <p>This exercise isn’t part of the work to hand in, and its steps don’t count towards finishing the page. It goes with Dr Fraser’s fourth lecture, on the control of arterial blood pressure, and with postural hypotension in his clinical lecture.</p>
+</div>
+
+<p>When you stand up, about half a litre of blood pools in the veins of your legs. In this recording a healthy young man stood up by himself from lying flat on a tilt table (the table didn’t move), with his blood pressure measured beat by beat at a finger, and an ECG.</p>
+<div class="activity">
+  <div class="act-t">The baroreflex, beat by beat</div>
+  <ol class="steps">
+    <li data-task="st-open" data-auto="rec:open id=bp-standing">Open the recording, from 16 s before he stands up to 34 s after <button class="do showme" type="button" data-rec="bp-standing@25,75">show me</button>. A flag marks the moment he stands up, and his heart rate is at the bottom. The pressure rises for a beat or two just before the flag, as he braces himself to get up.</li>
+    <li data-task="st-before" data-auto="rec:measure id=bp-standing signal=bp to&lt;41 dt&gt;0.5 dt&lt;1.3">Choose the <b>Calipers</b> <button class="do showme" type="button" data-rec-tool="calipers">show me</button>. Drag across one beat of the blood pressure from before he stands up, from the lowest point of one pulse to the lowest point of the next, choosing a beat before 37 s. The bar above the traces shows the minimum pressure (the diastolic), the maximum (the systolic) and the mean.</li>
+    <li data-task="st-low" data-auto="rec:measure id=bp-standing signal=bp from&gt;42 to&lt;50 dt&gt;0.4 dt&lt;1.3">Do the same for a beat at the lowest pressure, a few seconds after he stands up.</li>
+  </ol>
+</div>
+<div class="q" data-q="st-q-fall">
+  <div class="q-text">By how much did his mean pressure fall, and how long did it take to come back? In terms of ABP = CO × TPR and VR = (MSFP − RAP) / RvR, why did it fall?</div>
+  <div class="q-model">His mean pressure fell from about 65 mmHg (a beat of about 97/53) to about 51 mmHg (about 84/38) within a few seconds, and it was back within about ten seconds of his standing up. He stood up by himself, so in the first seconds the leg muscles that lifted him dilated their arterioles, as at the start of exercise, and TPR fell. Then, as he stayed upright, about half a litre of blood pooled in the veins of his legs, where the hydrostatic pressure is now high. That blood no longer contributes to filling the heart: venous return and RAP fall, by Starling’s law each beat ejects less, and CO falls.</div>
+</div>
+<div class="q" data-q="st-q-reflex">
+  <div class="q-text">His heart rate rose from about 77 to about 105 a minute within about ten seconds. Which receptors detected the change, by what pathway did the heart rate rise, and what else did the reflex do? Why did the pressure then overshoot for a few beats?</div>
+  <div class="q-model">The arterial baroreceptors of the carotid sinus and aortic arch fired less as the pressure fell, and so did the low-pressure receptors of the great veins and atria as central blood volume fell. Less inhibition of the medullary vasomotor areas meant less vagal activity to the sinoatrial node (the fast part of the rise in rate, within a beat or two) and more sympathetic activity: to the heart (rate and contractility), to the arterioles (raising TPR) and to the veins (raising MSFP, and so venous return). The pressure overshot to about 130/70 mmHg because the reflex has delays: the sympathetic constriction of the vessels builds up over several seconds and outlasts the fall it was correcting, so the baroreflex then worked the other way, and his heart rate fell back for a few beats, before both settled, with his heart rate higher than when he lay down.</div>
+</div>
+<div class="q" data-q="st-q-pot" data-type="mcq">
+  <div class="q-text">Postural hypotension is a fall in pressure on standing that the reflex doesn’t correct fast enough. Dr Fraser points out that its key symptom comes from the brain, whereas in a long-lasting hypotension, such as after a haemorrhage, the brain is usually spared. Why the difference?</div>
+  <div class="mcq"><label data-correct data-why="Yes. Standing adds a hydrostatic fall of pressure between the heart and the brain, so a transient fall in ABP briefly lowers cerebral perfusion pressure below what autoregulation can cope with: dizziness or syncope. When hypotension lasts, generalised sympathetic vasoconstriction of the gut, kidney, skin and muscle spares the brain, heart and lungs, whose flow is controlled locally."><input type="radio"> <span>In postural hypotension the brain is above the heart, and its perfusion pressure falls before the reflex can act; in prolonged hypotension, sympathetic vasoconstriction elsewhere diverts flow to the brain, whose own vessels it hardly constricts</span></label><label data-why="No. It works, but only over a range of perfusion pressure, and on standing the pressure at the level of the brain can fall below it for a few seconds."><input type="radio"> <span>Cerebral autoregulation doesn’t work in postural hypotension</span></label><label data-why="No, the opposite: cerebral vessels are hardly constricted by sympathetic activity, which is why sympathetic vasoconstriction elsewhere diverts flow towards the brain."><input type="radio"> <span>The brain has more sympathetic innervation than other organs</span></label></div>
+</div>
+
+</div>
+</section>
+
+<section class="chapter" id="s2-model" data-num="2" data-title="Shock and failure" data-bench="circuit" hidden>
+  <h1>Optional: haemorrhage and heart failure in a model</h1>
+  <div class="meta-row"><span class="pill time">≈ 15 min</span></div>
+  <p class="lede">Bleed, and then weaken the heart of the model of the circulation, and find out why the right atrial pressure tells the two kinds of shock apart.</p>
+<div class="optional whole">
+
+<div class="callout info">
+  <div class="co-t">Optional, about 15 minutes</div>
+  <p>This exercise isn’t part of the work to hand in, and its steps don’t count towards finishing the page. It goes with Dr Fraser’s fifth lecture, on haemorrhage, and his clinical lecture, on heart failure and shock.</p>
+</div>
+
+<p>This is the model of the circulation from Supervision 1: MSFP drives venous return through RvR, so that VR = (MSFP − RAP) / RvR, the heart (a flow source) pumps whatever you set, and ABP = CO × TPR. Pressures are in mmHg, flows in mL/s (83.3 mL/s is 5 L/min). A real heart pumps what returns to it (Starling’s law), so in the body RAP stays close to zero; here you set the heart’s output yourself, which lets you see what the body has to do.</p>
+<div class="activity">
+  <div class="act-t">A haemorrhage</div>
+  <ol class="steps">
+    <li data-task="md-open" data-auto="circuit:run name~Guyton">Open the model <button class="do showme" type="button" data-circuit="example:exercise-circulation">show me</button> and run it <button class="do showme" type="button" data-circuit-run="1">show me</button>. At rest, 83.3 mL/s returns and is pumped, RAP is about 0 mmHg and ABP 93 mmHg.</li>
+    <li data-task="md-bleed" data-auto="circuit:measure kind=voltmeter label~MSFP value&gt;3 value&lt;4">Lose about a tenth of the blood. Only about the last fifth of the blood volume stretches the vessels’ walls, so without venoconstriction that roughly halves MSFP. Click <b>Mean systemic filling pressure</b> and set it to 3.5 mmHg.</li>
+    <li data-task="md-bleed-co" data-auto="circuit:measure kind=ammeter label~Cardiac value&gt;41 value&lt;42.5">With the heart still pumping 83.3 mL/s, RAP is now negative, which real veins wouldn’t allow. Click the <b>Heart</b> and set the output that brings RAP back to zero: 41.7 mL/s.</li>
+  </ol>
+</div>
+<div class="activity">
+  <div class="act-t">A failing heart</div>
+  <ol class="steps">
+    <li data-task="md-fail" data-auto="circuit:measure kind=ammeter label~Cardiac value&gt;49 value&lt;51">Now put the volume back (MSFP 7 mmHg) and weaken the heart instead. Set the <b>Heart</b> to 50 mL/s (3 L/min), as a failing heart that can’t pump more.</li>
+    <li data-task="md-fail-msfp" data-auto="circuit:measure kind=voltmeter label~MSFP value&gt;13.5 value&lt;14.5">The body sees a low pressure and responds as it would to any fall in pressure: venoconstriction, and the kidneys retain salt and water, which raises the blood volume. Raise MSFP to 14 mmHg, and keep the heart at 50 mL/s. Watch RAP.</li>
+  </ol>
+</div>
+<div class="q" data-q="md-q-shock">
+  <div class="q-text">Compare the haemorrhage (MSFP 3.5 mmHg, heart at 41.7 mL/s) with the failing heart (heart at 50 mL/s, MSFP 14 mmHg). What are ABP and RAP in each? How would measuring RAP help a doctor tell hypovolaemic from cardiogenic shock?</div>
+  <div class="q-model">After the haemorrhage, the output that keeps RAP at zero is only 41.7 mL/s (2.5 L/min), so ABP = CO × TPR falls to about 46.5 mmHg, with RAP about 0. With the failing heart, ABP is also low, about 55.8 mmHg (50 mL/s × 1.116), but RAP is high: about 2.8 mmHg with MSFP at 7, and about 9.8 mmHg once MSFP rises to 14. So both are shock (a low pressure and cardiac output), but in hypovolaemic shock RAP (or central venous pressure) is low, because there isn’t enough blood returning, and in cardiogenic shock it’s high, because the heart can’t pump what returns. That decides the treatment: fluid for the first, and not for the second, where more volume would only raise RAP further.</div>
+</div>
+<div class="q" data-q="md-q-fail">
+  <div class="q-text">In the failing heart, raising MSFP from 7 to 14 mmHg didn’t raise the cardiac output at all; it only raised RAP. Why is that a problem, and what does it suggest about how heart failure should be treated?</div>
+  <div class="q-model">VR = (MSFP − RAP) / RvR, and if the heart can’t pump more, the output stays at 50 mL/s, so a higher MSFP can only be balanced by a higher RAP: RAP = MSFP − CO × RvR = 14 − 4.2 = 9.8 mmHg. In a real failing heart the Starling curve is flattened, so a large rise in RAP gives only a small rise in output. Raised venous and atrial pressures raise capillary pressure upstream (it follows venous pressure), so fluid filters into the tissues and lungs: oedema, a hallmark of heart failure. Arteriolar constriction also raises TPR, which makes a failing heart work harder and can lower its output further. So the body’s normal responses to a low pressure make heart failure worse, and most drugs for it block them: diuretics and ACE inhibitors (or angiotensin receptor blockers) lower volume and MSFP, β-blockers reduce sympathetic drive, and vasodilators lower TPR.</div>
+</div>
+
+</div>
+</section>
+
+<section class="chapter" id="s2-write" data-num="3" data-title="Your short answers" data-bench="exam" hidden>
+  <h1>Answer the questions, and hand them in</h1>
+  <p class="lede">This is the work to hand in this week: four short-answer questions, written in Supervision work and handed in from the same page.</p>
+
+<p>This week you hand in four short answers instead of an essay. A short-answer question is marked against a list of points, so it rewards precision and coverage rather than argument. Each of these is marked out of five.</p>
+
+<h2 id="es2-saq">Answering a short-answer question</h2>
+<ol class="plan">
+<li><b>Read the verb.</b> “Explain” wants mechanisms (why); “outline” wants the main points, in order; “distinguish” wants the differences, side by side.</li>
+<li><b>Count the marks.</b> Five marks means at least five separate, precise points. Bullet points are fine, and quicker to mark.</li>
+<li><b>Make each point earn its mark.</b> A mechanism with its direction (“less vagal activity to the sinoatrial node raises the heart rate”), a number (“0.5–1 L of tissue fluid”), or an equation used (“RAP = MSFP − CO × RvR”) is worth more than a general statement (“the body compensates”).</li>
+<li><b>Answer the question that’s asked.</b> Don’t write everything you know about the topic. A diagram can save words, if it’s labelled.</li>
+</ol>
+<div class="callout tip">
+  <div class="co-t">Two answers to the same question</div>
+  <p><b>“Outline the responses to a haemorrhage.”</b></p><p><b>Answer A:</b> “The baroreceptors detect the fall in blood pressure. The sympathetic nervous system is activated, and the heart rate and blood pressure increase. The kidneys retain water.”</p><p><b>Answer B:</b> “• Lost volume lowers MSFP, so venous return, CO and ABP fall. • Seconds: arterial and low-pressure baroreceptors fire less; less vagal and more sympathetic activity raise heart rate, contractility, TPR and (by venoconstriction) MSFP. • Minutes: lower capillary pressure draws 0.5–1 L of tissue fluid into the blood (autotransfusion), so the haematocrit falls. • Tens of minutes: renin, angiotensin II, aldosterone and ADH, with thirst, restore volume. • Days: plasma proteins (24–48 h) and red cells (erythropoietin, 5–7 days).”</p><p>A has three points, none of them wrong, but none precise. B has more than five, each a mechanism with its direction and its timescale, and a number where one helps. That’s what earns the marks.</p>
+</div>
+<div class="q" data-q="es2-q-points" data-type="mcq">
+  <div class="q-text">One of the questions asks you to explain why removing the arterial baroreceptors doesn’t raise the mean pressure for long. Which of these is the strongest single point?</div>
+  <div class="mcq"><label data-why="It’s true, but it doesn’t answer the question, and it would earn nothing."><input type="radio"> <span>“The baroreceptors are important in controlling blood pressure.”</span></label><label data-correct data-why="Yes. That’s the point the question turns on, stated precisely. A good answer would then add the evidence: after denervation the mean pressure is near normal, but much more variable."><input type="radio"> <span>“The baroreflex buffers moment-to-moment changes, but the long-term level of the pressure is set mainly by the kidneys, through the excretion of salt and water.”</span></label><label data-why="No. That’s what the question asks you to explain doesn’t happen, at least not for long."><input type="radio"> <span>“Without baroreceptors, the pressure goes up.”</span></label></div>
+</div>
+
+<h2>Before you start</h2>
+<ul>
+<li>Look back at the feedback on your earlier work, and pick one thing to do better this time.</li>
+<li>Make sure you have the <b>hand-in password</b> I gave you, because you’ll need it at the end. You won’t find it anywhere on this site.</li>
+<li>Your work saves itself in this browser as you type, so you can stop and come back to it. Submit it once it’s finished.</li>
+</ul>
+<div class="activity">
+  <div class="act-t">Write it, and hand it in</div>
+  <ol class="steps">
+    <li data-task="es2-start" data-auto="exam:start paper=s2-saqs" data-check="paper:s2-saqs.started">Open the questions <button class="do showme" type="button" data-exam="s2-saqs">show me</button>, read its first page, and press <b>Start</b> when you’re ready to write.</li>
+    <li data-task="es2-write" data-auto="exam:words paper=s2-saqs words&gt;79">Answer each question in bullet points. Aim for at least five precise points for each one.</li>
+    <li data-task="es2-submit" data-auto="exam:submit paper=s2-saqs" data-check="paper:s2-saqs.submitted">When you’ve finished, go to the submission page (the ✓ tile at the bottom right), check your work and submit it.</li>
+    <li data-task="es2-send" data-auto="exam:handin paper=s2-saqs step=confirmed" data-check="paper:s2-saqs.handedIn">Hand it in on the page that comes up next. Type in the hand-in password and press <b>Hand it in</b>. The page shows you a receipt once your work has arrived.</li>
+    <li data-task="es2-word" data-auto="exam:download paper=s2-saqs format=docx" data-check="paper:s2-saqs.downloaded">To keep a copy, press <b>Download your copy</b>. Before you hand in, the same button is under the password box, and it’s called <b>Download a copy for yourself</b>. The copy is saved as a Word document, usually in your Downloads folder.</li>
+  </ol>
+</div>
+<div class="callout info">
+  <div class="co-t">Handing in</div>
+  <p>Your work goes straight from this page into my Google Drive, and you don’t need a Google account for that. The hand-in password I give you stops anyone else from handing work in, so please keep it to yourself. Once it has arrived, the page tells you so and gives you a receipt. If it can’t be handed in, the page will tell you why. If you try again and it still won’t go, download a copy and send it to me some other way.</p>
+</div>
+<div class="callout info">
+  <div class="co-t">After you’ve handed it in</div>
+  <p>Once you’ve submitted, <b>Review my answers</b> shows you the points each answer is marked against. Read it after you’ve handed your work in, and make a note of what you’d add or change. That’s what we’ll talk about in the supervision.</p><p>Your work is kept in this browser, in Files → <code>essays</code>. It won’t be there on another computer, and some shared computers clear it when you log out, so download a copy before you finish.</p>
+</div>
+<div class="q" data-q="es2-q-next">
+  <div class="q-text">Once you’ve read the marking points, which of your answers would have scored least, and what was it missing: a mechanism, a number, or the point the question turned on?</div>
+  <div class="q-model">There’s no single right answer here, so bring yours to the supervision. Short answers most often lose marks by staying general (“the body compensates”), by describing what happens without saying how, or by answering a broader question than the one set.</div>
+</div>
+
+</section>
+
+<section class="chapter" id="s2-more" data-num="4" data-title="Revision titles" data-bench="exam" hidden>
+  <h1>Revision titles</h1>
+  <p class="lede">This chapter is optional. It has four essay titles on this week’s lectures, for revision. You can hand one in for feedback if you’d like to.</p>
+<h2 id="m2-rev">Essay titles for revision</h2>
+<p>These four titles go with this week’s three lectures. It’s worth noting them down: they’re the kind of title you could meet in the exam.</p>
+<ol class="titles"><li>Discuss the roles of the high-pressure and low-pressure baroreceptors in the control of arterial blood pressure.</li><li>Compare the cardiovascular responses to haemorrhage and to hypoxia.</li><li>Discuss the causes and consequences of hypertension, and the physiological basis of its treatment.</li><li>How can an understanding of cardiovascular physiology help to distinguish the causes of circulatory shock, and guide its treatment?</li></ol>
+<p>Dr Fraser’s handouts don’t suggest titles, so these are mine. Each needs the equations of the circulation, used to argue.</p>
+<p>Planning an answer to each one (your argument, your evidence, and the order you’d put them in) is good revision. If you’d like feedback on one, write it in Supervision work <button class="do showme" type="button" data-exam="s2-revision">open them</button> and <b>hand it in</b>, in the same way as the work for this week. That’s optional: choose the title you want to write, and leave the others blank. After you submit, the guidance shows you the ground each title should cover.</p>
+<div class="optional">
+<h2>Practice</h2>
+<div class="activity">
+  <div class="act-t">If you want the practice</div>
+  <ol class="steps">
+    <li data-task="m2-plan">Plan an answer to one of the revision titles. Sum up your position in a sentence, then jot down the three or four points, with the evidence for each, that would support it.</li>
+    <li data-task="m2-rev" data-auto="exam:submit paper=s2-revision">Write one of them up in Supervision work, submit it, and hand it in if you’d like my feedback on it.</li>
+  </ol>
+</div>
+</div>
+</section>
+<!--/CHAPTERS-->
+    </aside>
+
+    <div class="splitter" role="separator" aria-orientation="vertical" title="Drag to resize, or double-click to reset"></div>
+
+    <section class="bench" aria-label="Workbench">
+      <div class="wb-tabs" role="tablist">
+        <button class="wb-tab rail-btn" type="button" id="tutRail" title="Show the instructions (Ctrl+\)" hidden><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M13 10l2 2-2 2"/></svg><span>Instructions</span></button>
+        <button class="wb-tab on" type="button" role="tab" data-wb="exam" title="Supervision work: the essay and the questions set for your supervision, written as in the online exam"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 3H6.5A2.5 2.5 0 0 0 4 5.5v13A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5V9z"/><path d="M14 3v6h6"/><path d="M8 13h8M8 17h5"/></svg><span class="lbl">Supervision work</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="scope" title="A virtual microscope with slides of human tissues"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9.5 2.8l3.6 1.4-3 7.6-3.6-1.4z"/><path d="M7.7 12.4l-.9 2.2"/><path d="M4 16.5h9"/><path d="M13.6 7.6a6.5 6.5 0 0 1 1.9 11.2"/><path d="M5 21h14"/><path d="M15.5 18.8V21"/></svg><span class="lbl">Microscope</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="anatomy" title="The anatomy of the human body in 3D (from Z-Anatomy)"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="4.6" r="2.3"/><path d="M12 7.6v6.6M6.2 10.6L12 8.8l5.8 1.8M8.8 21l3.2-6.8 3.2 6.8"/></svg><span class="lbl">Anatomy</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="viewer" title="Proteins and other molecules in 3D"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="6" cy="7" r="2.6"/><circle cx="18" cy="7" r="2.6"/><circle cx="12" cy="17.5" r="2.6"/><path d="M8.6 7h6.8M7.3 9.3l3.4 5.9M16.7 9.3l-3.4 5.9"/></svg><span class="lbl">Molecules</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="recorder" title="A chart recorder with real recordings of people (the ECG, heart sounds, blood pressure, breathing, muscle and the brain), from PhysioNet"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M6 13h2.5l1.5-4.5 2.5 8 1.8-5.5 1 2H18"/></svg><span class="lbl">Recorder</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="bath" title="An organ bath: isolated tissues, drugs and concentration–response curves"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5.5 3h13"/><path d="M7 3v13.5A4.5 4.5 0 0 0 11.5 21h1a4.5 4.5 0 0 0 4.5-4.5V3"/><path d="M12 3v4.5"/><rect x="10.7" y="7.5" width="2.6" height="6" rx="1.3"/><path d="M9.3 17.6h.01M14.4 16.4h.01M11.8 18.9h.01"/></svg><span class="lbl">Organ bath</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="flow" title="Flow diagrams of physiological control, with a simulator"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="5" rx="1.2"/><rect x="14" y="3" width="7" height="5" rx="1.2"/><rect x="14" y="16" width="7" height="5" rx="1.2"/><path d="M10 5.5h4M17.5 8v8M14 18.5H7.5a1.5 1.5 0 0 1-1.5-1.5V8"/></svg><span class="lbl">Diagrams</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="circuit" title="Electrical circuits, and the circuit models of physiology"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2 12h3.5l1.7-4 2.6 8 2.6-8 2.6 8 1.7-4H22"/></svg><span class="lbl">Circuits</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="sims" title="Interactive simulations from PhET (University of Colorado Boulder)"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h8.5M16.5 6H20M4 12h2.5M10.5 12H20M4 18h10.5M18.5 18H20"/><circle cx="14.5" cy="6" r="2"/><circle cx="8.5" cy="12" r="2"/><circle cx="16.5" cy="18" r="2"/></svg><span class="lbl">Simulations</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="rstudio" title="RStudio, for analysing data in R"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16M3 12h18"/></svg><span class="lbl">RStudio</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="editor" title="Your files"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v1H7l-4 9z"/><path d="M3 19l3.5-8H22l-3.5 8z"/></svg><span class="lbl">Files</span><span class="dot"></span></button>
+        <button class="bench-close" type="button" aria-label="Back to the instructions" title="Back to the instructions">✕<span class="lbl">Instructions</span></button>
+      </div>
+      <div class="wb-body">
+        <div class="wb-pane" data-wb="scope" hidden><div id="scopeRoot"></div></div>
+        <div class="wb-pane" data-wb="anatomy" hidden><div id="anatRoot"></div></div>
+        <div class="wb-pane" data-wb="viewer" hidden><div id="viewerRoot"></div></div>
+        <div class="wb-pane" data-wb="recorder" hidden><div id="recRoot"></div></div>
+        <div class="wb-pane" data-wb="bath" hidden><div id="bathRoot"></div></div>
+        <div class="wb-pane" data-wb="flow" hidden><div id="flowRoot"></div></div>
+        <div class="wb-pane" data-wb="circuit" hidden><div id="circuitRoot"></div></div>
+        <div class="wb-pane" data-wb="sims" hidden><div id="simsRoot"></div></div>
+        <div class="wb-pane" data-wb="exam"><div id="examRoot"></div></div>
+        <div class="wb-pane" data-wb="rstudio" hidden><div id="rsRoot"></div></div>
+        <div class="wb-pane" data-wb="editor" hidden><div id="edRoot"></div></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<button class="bench-fab" type="button" aria-label="Open the workbench"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16M3 12h18"/></svg>Workbench</button>
+<noscript><p style="padding:20px">This page needs JavaScript.</p></noscript>
+
+<script>window.BMS_STARTERS = [];
+window.BMS_STARTERS_VERSION = 1;</script>
+<script>window.BMS_PAGE = {"week": 2, "page": "supervision-2.html", "title": "Supervision 2", "site": "Physiology supervisions"};</script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/core.js"></script>
+<script src="assets/js/icons.js"></script>
+<script src="assets/js/vfs.js"></script>
+<script src="assets/js/project.js"></script>
+<script src="assets/vendor/codemirror/codemirror.js"></script>
+<script src="assets/vendor/codemirror/r.js"></script>
+<script src="assets/vendor/codemirror/markdown.js"></script>
+<script src="assets/vendor/codemirror/yaml.js"></script>
+<script src="assets/vendor/codemirror/shell.js"></script>
+<script src="assets/vendor/codemirror/javascript.js"></script>
+<script src="assets/vendor/codemirror/python.js"></script>
+<script src="assets/vendor/codemirror/overlay.js"></script>
+<script src="assets/vendor/codemirror/multiplex.js"></script>
+<script src="assets/vendor/codemirror/yaml-frontmatter.js"></script>
+<script src="assets/vendor/codemirror/rmarkdown.js"></script>
+<script src="assets/vendor/codemirror/matchbrackets.js"></script>
+<script src="assets/vendor/codemirror/closebrackets.js"></script>
+<script src="assets/vendor/codemirror/comment.js"></script>
+<script src="assets/vendor/codemirror/searchcursor.js"></script>
+<script src="assets/vendor/codemirror/active-line.js"></script>
+<script src="assets/vendor/codemirror/runmode.js"></script>
+<script src="assets/vendor/dompurify/purify.min.js"></script>
+<script src="assets/vendor/marked/marked.min.js"></script>
+<script src="assets/js/rsession.js"></script>
+<script src="assets/js/rui.js"></script>
+<script src="assets/js/dataview.js"></script>
+<script src="assets/js/knit.js"></script>
+<script src="assets/js/rstudio.js"></script>
+<script src="assets/js/rsource.js"></script>
+<script src="assets/js/shiny.js"></script>
+<script src="assets/js/pdfview.js"></script>
+<script src="assets/js/editor.js"></script>
+<script src="assets/js/page.js"></script>
+<script src="assets/js/tutorial.js"></script>
+<script src="assets/js/workbench.js"></script>
+</body>
+</html>

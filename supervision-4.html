@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supervision 4 – Physiology supervisions</title>
+<meta name="description" content="Supervision 4 of NST IB Physiology covers compliance, surfactant and airway resistance, the pulmonary circulation, and the matching of ventilation and perfusion. There’s an essay to hand in, on ventilation–perfusion matching, and optional exercises in the workbench.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2313304a'/%3E%3Cpath d='M3.5 17.5h5.2l1.6-2.6 1.6 2.6h1.3l1 2.4 2.4-13.4 2.4 15.5 1.4-4.5h1.6l1.9-3 1.9 3h2.7' fill='none' stroke='%23ff8a65' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<script src="assets/js/isolation.js"></script>
+<link rel="stylesheet" href="assets/vendor/codemirror/codemirror.css">
+<link rel="stylesheet" href="assets/css/app.css">
+<link rel="stylesheet" href="assets/css/wb.css">
+<link rel="stylesheet" href="assets/css/bms.css">
+<link rel="stylesheet" href="assets/css/r.css">
+<link rel="stylesheet" href="assets/css/rstudio.css">
+<link rel="stylesheet" href="assets/css/files.css">
+<link rel="stylesheet" href="assets/css/viewer.css">
+<link rel="stylesheet" href="assets/css/scope.css">
+<link rel="stylesheet" href="assets/css/flow.css">
+<link rel="stylesheet" href="assets/css/circuit.css">
+<link rel="stylesheet" href="assets/css/exam.css">
+<link rel="stylesheet" href="assets/css/anatomy.css">
+<link rel="stylesheet" href="assets/css/recorder.css">
+<link rel="stylesheet" href="assets/css/organbath.css">
+<link rel="stylesheet" href="assets/css/sims.css">
+</head>
+<body data-page="supervision-4" data-title="Supervision 4" data-week="4">
+<div class="app">
+
+  <header class="topbar">
+    <button class="btn top-toggle" id="tutToggle" type="button" title="Hide the instructions so that the workbench fills the window (Ctrl+\)" aria-controls="tut" aria-expanded="true"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M16 10l-2 2 2 2"/></svg></button>
+    <a class="brand" href="index.html" title="All the supervisions">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#1c4061"/><path d="M3.5 17.5h5.2l1.6-2.6 1.6 2.6h1.3l1 2.4 2.4-13.4 2.4 15.5 1.4-4.5h1.6l1.9-3 1.9 3h2.7" fill="none" stroke="#ff8a65" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div>
+        <div class="brand-title">Physiology supervisions</div>
+        <div class="brand-sub">Supervision 4: lung mechanics, the pulmonary circulation and V/Q</div>
+      </div>
+    </a>
+    <div class="spacer"></div>
+    <div class="progress-wrap" title="The steps you have done and the questions you have answered (saved in this browser)"><span class="progress-label">0% done</span><div class="progress"><i></i></div></div>
+    <span class="store-status" id="storeStatus" title="Your files are saved in this browser, on this computer"></span>
+    <button class="btn" id="userBtn" type="button" title="Your name, as it appears in the workbench"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span class="user-name">Your name</span></button>
+    <button class="btn" id="projectBtn" type="button" title="Download all your files, add files, or start afresh"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v1H7l-4 9z"/><path d="M3 19l3.5-8H22l-3.5 8z"/></svg><span>My files</span></button>
+    <button class="btn" id="answersBtn" type="button"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg><span>My answers</span></button>
+    <button class="btn" id="helpBtn" type="button" title="How this page works"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.2 9a2.9 2.9 0 0 1 5.6 1c0 2-2.8 2.6-2.8 4M12 17.5h.01"/></svg><span>Help</span></button>
+    <button class="btn" id="fullBtn" type="button" title="Full screen"><span>Full screen</span></button>
+  </header>
+
+  <div class="main">
+    <aside class="tut" id="tut" aria-label="Instructions">
+      <nav class="ch-nav" aria-label="Chapters"></nav>
+<!--CHAPTERS-->
+<section class="chapter" id="s4-week" data-num="0" data-title="This week" data-bench="exam">
+  <h1>Supervision 4: lung mechanics, the pulmonary circulation and V/Q</h1>
+  <div class="meta-row"><span class="pill time">≈ 5 min</span></div>
+  <p class="lede">This week’s lectures are about what it takes to move air into the lungs (compliance, surfactant and airway resistance), the low-pressure circulation that takes blood through them, and how well the two are matched.</p>
+
+<div class="handin-box">
+  <div class="hb-k">To hand in this week</div>
+  <p class="hb-title">“Why are ventilation and perfusion not perfectly matched in the healthy lung? Discuss how the lung limits the mismatch, and when its response can do harm.”</p>
+  <ul><li>You write the essay in <b>Supervision work</b>, as you will in the online exam. Plan it first, then write it in continuous prose, in your own words.</li><li>The handout doesn’t suggest titles, so this one is mine. It builds on all three lectures. Chapter 3 is about using diagrams in an essay, which this title rewards.</li><li>Once you’ve submitted it, <b>hand it in</b> from the same page before your supervision. You’ll need the <b>hand-in password</b> I give you, and your work then goes straight into my Google Drive.</li></ul>
+  <p class="hb-acts"><button class="do showme" type="button" data-goto="s4-write">how to write it and hand it in</button> <button class="do showme" type="button" data-exam="s4-essay">open the essay</button></p>
+</div>
+
+<h2 id="w4-plan">The week, step by step</h2>
+<ol class="plan">
+<li>If you’d like to, start with <b>two short exercises</b>. They’re optional, and take about half an hour altogether. In chapter 1 you find the airways, vessels and alveoli of a human lung in the <b>Microscope</b>. In chapter 2 you use <b>R</b> to find out why blood from well-ventilated parts of the lung can’t make up for blood from poorly ventilated parts: the heart of your essay. <button class="do showme" type="button" data-goto="s4-lung">start</button></li>
+<li>Then <b>write your essay</b> and hand it in (chapter 3). <button class="do showme" type="button" data-goto="s4-write">go there</button></li>
+<li>Chapter 4 has four more essay titles on this week’s lectures, for revision. You can hand one in for feedback if you’d like to, but you don’t have to. <button class="do showme" type="button" data-goto="s4-more">go there</button></li>
+</ol>
+<div class="activity">
+  <div class="act-t">Before you start</div>
+  <ol class="steps">
+    <li data-task="w4-name" data-check="named">Check that your name is at the top of the page. If it says <b>Your name</b>, click it and add yours. It goes at the top of the work you hand in, and every supervision’s page shares it.</li>
+  </ol>
+</div>
+<h2>How this page works</h2>
+<ul>
+<li>The steps tick themselves off as you do them, the buttons do things for you in the workbench on the right, and every question has a <b>model answer</b> you can look at once you’ve had a go.</li>
+<li>Chapters 1, 2 and 4 are optional, so their steps don’t count towards finishing the page. The rest do.</li>
+<li>If you haven’t used one of the workbench’s tabs before, the <a href="workbench.html" target="_blank" rel="noopener">workbench guide</a> shows you how it works.</li>
+</ul>
+
+</section>
+
+<section class="chapter" id="s4-lung" data-num="1" data-title="The lung" data-bench="scope" hidden>
+  <h1>Optional: airways, vessels and alveoli</h1>
+  <div class="meta-row"><span class="pill time">≈ 15 min</span></div>
+  <p class="lede">Find the parts of a lung that set its resistance, its compliance and its blood supply, and work out why surfactant matters.</p>
+<div class="optional whole">
+
+<div class="callout info">
+  <div class="co-t">Optional, about 15 minutes</div>
+  <p>This exercise isn’t part of the work to hand in, and its steps don’t count towards finishing the page. It goes with the first and second lectures, on compliance, airway resistance and the pulmonary circulation.</p>
+</div>
+
+<p>This section of human lung has a bronchiole, the branch of the pulmonary artery that runs beside it, and alveoli all round. Some of the alveoli have collapsed, as is common in lung taken after death.</p>
+<div class="activity">
+  <div class="act-t">Airway, artery and alveoli</div>
+  <ol class="steps">
+    <li data-task="lu-open" data-auto="scope:open slide=lung">Open the lung at 2× <button class="do showme" type="button" data-scope="lung@2.15,1.78,2x">show me</button>.</li>
+    <li data-task="lu-br" data-auto="scope:find slide=lung target=bronchiole ok=true">Find the bronchiole <button class="do showme" type="button" data-scope-find="lung:bronchiole">find it</button>. It’s an airway with no cartilage in its wall, so nothing but the lung round it holds it open.</li>
+    <li data-task="lu-sm" data-auto="scope:find slide=lung target=airway-muscle ok=true">Find the smooth muscle in its wall <button class="do showme" type="button" data-scope-find="lung:airway-muscle">find it</button>.</li>
+    <li data-task="lu-pa" data-auto="scope:find slide=lung target=pulmonary-artery ok=true">Find the branch of the pulmonary artery beside it <button class="do showme" type="button" data-scope-find="lung:pulmonary-artery">find it</button>. Compare its wall with the lumen it surrounds.</li>
+    <li data-task="lu-alv" data-auto="scope:measure slide=lung kind=length">Find some alveoli <button class="do showme" type="button" data-scope-find="lung:alveoli">find it</button>, then measure the width of one open alveolus with the measuring tool <button class="do showme" type="button" data-scope-tool="measure">show me</button>.</li>
+  </ol>
+</div>
+<div class="q" data-q="lu-q-collapse">
+  <div class="q-text">The bronchiole has smooth muscle but no cartilage. What holds it open during a normal breath, and why can airways like it close during a forced expiration, or in emphysema?</div>
+  <div class="q-model">It’s held open by the radial traction of the lung tissue attached round it (the alveolar walls pull outwards on it, more strongly as the lung expands), and by the pressure inside it being higher than the pressure round it. In a forced expiration, pleural pressure rises above atmospheric, and the pressure inside the airway falls along its length towards the mouth because of airway resistance. At the equal pressure point the pressure inside equals the pressure outside; downstream of it, the airway is squeezed (dynamic compression), so pushing harder doesn’t raise the flow: expiratory flow becomes effort-independent. Cartilage stops this happening in the large airways, but bronchioles have none. In emphysema the alveolar walls that tether the bronchioles are destroyed, so they lose their radial traction and collapse earlier, trapping air; smooth muscle contraction (asthma) narrows them further.</div>
+</div>
+<div class="q" data-q="lu-q-laplace" data-accept="num:1400±60" data-placeholder="Pa">
+  <div class="q-text">A water-lined alveolus of radius 100 µm would need a pressure of P = 2T / r to stay open, where T, the surface tension of water, is 0.07 N/m. Work it out in pascals. (1 cmH<sub>2</sub>O is about 98 Pa.) What does surfactant do to this, and why does it matter for small alveoli?</div>
+  <div class="q-model">P = 2 × 0.07 / (100 × 10<sup>−6</sup>) = 1400 Pa, about 14 cmH<sub>2</sub>O, from surface tension alone. Surfactant (dipalmitoylphosphatidylcholine, from type II pneumocytes) lowers T, and lowers it more the more the surface is compressed, so as an alveolus shrinks in expiration its surface tension falls and the pressure needed to keep it open doesn’t rise as 1/r would predict. Without surfactant, small alveoli would empty into larger ones and collapse (atelectasis), the lungs would be much stiffer (less compliant), and fluid would be drawn into the alveoli. That’s respiratory distress in premature infants, who haven’t yet made enough surfactant.</div>
+</div>
+<div class="q" data-q="lu-q-pa" data-type="mcq">
+  <div class="q-text">The branch of the pulmonary artery has a thin wall for its size, compared with a systemic artery of the same diameter. Why?</div>
+  <div class="mcq"><label data-correct data-why="Yes. The whole cardiac output goes through the lungs, but their vascular resistance is about a tenth of the systemic one, so the right ventricle needs only a low pressure. A low pressure needs a thinner wall (Laplace, again). A low pressure also keeps capillary pressure below the colloid osmotic pressure, which protects the lungs from oedema."><input type="radio"> <span>The pulmonary circulation is a low-pressure circuit: mean pulmonary arterial pressure is about 15 mmHg, against about 95 mmHg in the aorta</span></label><label data-why="No. The O&lt;sub&gt;2&lt;/sub&gt; content of the blood has nothing to do with the pressure, or the wall."><input type="radio"> <span>The pulmonary artery carries deoxygenated blood, which needs less muscle to pump</span></label><label data-why="No. They do have some, and it contracts in hypoxia (hypoxic pulmonary vasoconstriction). In species with more of it, such as cattle, altitude causes serious pulmonary hypertension."><input type="radio"> <span>Pulmonary arteries have no smooth muscle at all</span></label></div>
+</div>
+
+</div>
+</section>
+
+<section class="chapter" id="s4-vq" data-num="2" data-title="V/Q in R" data-bench="rstudio" hidden>
+  <h1>Optional: why mismatch lowers the arterial PO₂</h1>
+  <div class="meta-row"><span class="pill time">≈ 15 min</span></div>
+  <p class="lede">Mix blood from a well-ventilated and a poorly ventilated part of the lung, in R, and find out why the good part can’t make up for the bad.</p>
+<div class="optional whole">
+
+<div class="callout info">
+  <div class="co-t">Optional, about 15 minutes</div>
+  <p>This exercise isn’t part of the work to hand in, and its steps don’t count towards finishing the page. It goes with the third lecture, on ventilation and perfusion matching.</p>
+</div>
+
+<p>Imagine a lung with only two units, each receiving half of the blood. One is well ventilated for its blood flow (a high V/Q), so its blood leaves at a PO<sub>2</sub> of 120 mmHg. The other is poorly ventilated (a low V/Q), and its blood leaves at 45 mmHg. What is the PO<sub>2</sub> of the arterial blood, once the two streams have mixed? It isn’t the average of the PO<sub>2</sub>s, because blood mixes by its O<sub>2</sub> content, not its PO<sub>2</sub>. You need the dissociation curve, and R.</p>
+<div class="activity">
+  <div class="act-t">Mixing blood from two units, in R</div>
+  <ol class="steps">
+    <li data-task="vq-sat" data-auto="r:input kind=rstudio line~sat &lt;- function">Write the oxygen–haemoglobin dissociation curve as a function. This is the Hill equation, with a P<sub>50</sub> of 26.8 mmHg: <code>sat &lt;- function(po2) po2^2.7 / (po2^2.7 + 26.8^2.7)</code> <button class="do showme" type="button" data-rcon="sat &lt;- function(po2) po2^2.7 / (po2^2.7 + 26.8^2.7)">show me</button></li>
+    <li data-task="vq-content" data-auto="r:input kind=rstudio line~content &lt;- function">Now the O<sub>2</sub> content, in mL per litre of blood, with 150 g/L of haemoglobin that carries 1.39 mL of O<sub>2</sub> per gram, plus what is dissolved (0.03 mL/L per mmHg): <code>content &lt;- function(po2, hb = 150) 1.39 * hb * sat(po2) + 0.03 * po2</code> <button class="do showme" type="button" data-rcon="content &lt;- function(po2, hb = 150) 1.39 * hb * sat(po2) + 0.03 * po2">show me</button></li>
+    <li data-task="vq-curve" data-auto="r:input kind=rstudio line~curve(content">Plot it <code>curve(content(x), 0, 150, xlab = &quot;PO2 (mmHg)&quot;, ylab = &quot;O2 content (mL per litre)&quot;)</code> <button class="do showme" type="button" data-rcon="curve(content(x), 0, 150, xlab = &quot;PO2 (mmHg)&quot;, ylab = &quot;O2 content (mL per litre)&quot;)">show me</button>. Notice where the curve is flat.</li>
+    <li data-task="vq-units" data-auto="r:input kind=rstudio line~mean(units">Work out the content of the blood leaving each unit <code>units &lt;- content(c(120, 45)); units</code> <button class="do showme" type="button" data-rcon="units &lt;- content(c(120, 45)); units">show me</button>, and of the two mixed in equal amounts <code>mixed &lt;- mean(units); mixed</code> <button class="do showme" type="button" data-rcon="mixed &lt;- mean(units); mixed">show me</button>.</li>
+    <li data-task="vq-po2" data-auto="r:input kind=rstudio line~uniroot">Find the PO<sub>2</sub> that gives the mixed content <code>uniroot(function(p) content(p) - mixed, c(1, 150))$root</code> <button class="do showme" type="button" data-rcon="uniroot(function(p) content(p) - mixed, c(1, 150))$root">show me</button>. (<code>uniroot</code> finds the PO<sub>2</sub> at which the content minus the mixed content is zero.)</li>
+  </ol>
+</div>
+<div class="q" data-q="vq-q-po2" data-accept="num:60±2" data-placeholder="mmHg">
+  <div class="q-text">What is the PO<sub>2</sub> of the mixed blood, to the nearest mmHg? Why is it so much lower than 82.5 mmHg, the average of the two units’ PO<sub>2</sub>s?</div>
+  <div class="q-model">About 60 mmHg. The blood from the well-ventilated unit, at 120 mmHg, is on the flat top of the curve: its haemoglobin is already about 98% saturated, so its content (about 208 mL/L) is hardly more than at a normal 100 mmHg. Raising its PO<sub>2</sub> further adds almost nothing. The blood from the poorly ventilated unit, at 45 mmHg, is on the steep part, at about 80% saturation and 169 mL/L. Mixed equally, the content is about 189 mL/L, which on the curve is a PO<sub>2</sub> of about 60 mmHg. So a high V/Q unit can’t make up for a low V/Q one: any mismatch lowers the arterial PO<sub>2</sub>, and the arterial PO<sub>2</sub> is lower than the average alveolar PO<sub>2</sub>, even in a healthy lung (by a few mmHg: a PO<sub>2</sub> of about 100 mmHg in the alveolar capillaries, and about 95 in the systemic arteries).</div>
+</div>
+<div class="q" data-q="vq-q-co2" data-type="mcq">
+  <div class="q-text">In the same lung, the CO<sub>2</sub> of the arterial blood can be kept normal, if the patient breathes harder. Why can high V/Q units make up for low ones for CO<sub>2</sub>, but not for O<sub>2</sub>?</div>
+  <div class="mcq"><label data-correct data-why="Yes. Blowing off more CO&lt;sub&gt;2&lt;/sub&gt; from the well-ventilated units lowers their blood’s CO&lt;sub&gt;2&lt;/sub&gt; content, and that offsets the high content from the poorly ventilated units. For O&lt;sub&gt;2&lt;/sub&gt;, extra ventilation raises the PO&lt;sub&gt;2&lt;/sub&gt; of the good units but hardly their content, because haemoglobin is already nearly saturated. That’s why V/Q mismatch typically causes hypoxaemia with a normal or low PCO&lt;sub&gt;2&lt;/sub&gt;."><input type="radio"> <span>The CO<sub>2</sub> dissociation curve is nearly a straight line over the range of PCO<sub>2</sub> in the body, so extra ventilation of the good units lowers their CO<sub>2</sub> content in proportion</span></label><label data-why="CO&lt;sub&gt;2&lt;/sub&gt; is more soluble and so diffuses faster, but that’s about diffusion across the barrier, not about how blood from different units mixes. Even with complete equilibration in every unit, the shapes of the two curves decide the result."><input type="radio"> <span>CO<sub>2</sub> diffuses about 20 times faster than O<sub>2</sub></span></label><label data-why="No. Arterial PCO&lt;sub&gt;2&lt;/sub&gt; depends directly on alveolar ventilation: it is the variable that ventilation is mainly controlled to keep constant."><input type="radio"> <span>CO<sub>2</sub> doesn’t depend on ventilation</span></label></div>
+</div>
+
+</div>
+</section>
+
+<section class="chapter" id="s4-write" data-num="3" data-title="Write your essay" data-bench="exam" hidden>
+  <h1>Write your essay, and hand it in</h1>
+  <p class="lede">This is the work to hand in this week. You write it in Supervision work, as you will in the online exam, and then hand it in from the same page.</p>
+
+<p class="essay-title">“Why are ventilation and perfusion not perfectly matched in the healthy lung? Discuss how the lung limits the mismatch, and when its response can do harm.”</p>
+
+<h2 id="es4-title">Using diagrams in an essay</h2>
+<p>This title has three parts: why the mismatch exists in a healthy lung, how the lung limits it, and when the lung’s response does harm. Several of its ideas are clearer as a diagram than in words, and a good diagram, used well, earns marks. Used badly, it wastes time. A diagram earns its place when:</p>
+<ul>
+<li><b>it shows something words can’t do as well</b>: a gradient from the top of the lung to the bottom, the shape of a curve, or how pressures compare in West’s zones;</li>
+<li><b>it’s labelled</b>: axes with their quantities and units, the regions named, the key numbers marked;</li>
+<li><b>it has a caption</b>, a sentence that says what it shows;</li>
+<li><b>the text refers to it and uses it</b>: “As Figure 1 shows, in zone 1 alveolar pressure exceeds arterial pressure, so…”. A diagram the text never mentions might as well not be there.</li>
+</ul>
+<p>Two or three diagrams are plenty. Some that would help with this title: the distribution of ventilation, blood flow and V/Q from the top of the lung to the bottom; West’s three zones, with P<sub>A</sub>, P<sub>a</sub> and P<sub>v</sub>; and the O<sub>2</sub> dissociation curve, with the two units of chapter 2 marked on it.</p>
+<div class="q" data-q="es4-q-diagram" data-type="mcq">
+  <div class="q-text">Which of these would be the best use of a diagram in this essay?</div>
+  <div class="mcq"><label data-why="It might look impressive, but it doesn’t help to answer the question. Nothing in the title turns on the anatomy of the upper airway."><input type="radio"> <span>A drawing of the whole respiratory system, from the nose to the alveoli</span></label><label data-correct data-why="Yes. It shows, at a glance, the point the argument turns on, it’s specific to the title, and the text uses it."><input type="radio"> <span>The O<sub>2</sub> dissociation curve with two lung units marked on it, one at a high V/Q and one at a low V/Q, with the text explaining why mixing their blood lowers the arterial PO<sub>2</sub></span></label><label data-why="Lung volumes don’t bear on V/Q matching, so a table of them takes time and earns nothing here."><input type="radio"> <span>A table of the lung volumes and capacities</span></label></div>
+</div>
+<ul>
+<li><b>Why the mismatch exists.</b> Both ventilation and blood flow increase from the top to the bottom of the upright lung, but for different reasons (the gradient of pleural pressure; hydrostatic pressure, and West’s zones), and blood flow increases more steeply. So V/Q falls from the top (about 3) to the bottom (about 0.6).</li>
+<li><b>Why it matters.</b> Chapter 2: low V/Q units lower the arterial PO<sub>2</sub>, and high V/Q units can’t make up for them. Venous admixture (the bronchial circulation, and low V/Q units at the bases) is why arterial PO<sub>2</sub> is lower than alveolar.</li>
+<li><b>How the lung limits it.</b> Hypoxic pulmonary vasoconstriction diverts blood from poorly ventilated regions; low PCO<sub>2</sub> constricts the airways of poorly perfused regions. Gravity, posture (prone positioning in ARDS) and disease all change the picture.</li>
+<li><b>When the response does harm.</b> In generalised hypoxia (altitude, lung disease) the same vasoconstriction becomes pulmonary hypertension: right ventricular strain and failure (brisket disease in cattle), and high-altitude pulmonary oedema.</li>
+</ul>
+
+<h2>Before you start</h2>
+<ul>
+<li>Look back at the feedback on your earlier work, and pick one thing to do better this time.</li>
+<li>Make sure you have the <b>hand-in password</b> I gave you, because you’ll need it at the end. You won’t find it anywhere on this site.</li>
+<li>Your work saves itself in this browser as you type, so you can stop and come back to it. Submit it once it’s finished.</li>
+<li>To draw a diagram, use <b>Insert drawing</b> (the pencil), or draw it on paper and add a photo of it with <b>Insert picture</b>. Type a caption under it, and refer to it in your text.</li>
+</ul>
+<div class="activity">
+  <div class="act-t">Write it, and hand it in</div>
+  <ol class="steps">
+    <li data-task="es4-start" data-auto="exam:start paper=s4-essay" data-check="paper:s4-essay.started">Open the essay <button class="do showme" type="button" data-exam="s4-essay">show me</button>, read its first page, and press <b>Start</b> when you’re ready to write.</li>
+    <li data-task="es4-write" data-auto="exam:words paper=s4-essay words&gt;299">Plan, then write. Use two or three labelled diagrams, each with a caption, and refer to each one in your text.</li>
+    <li data-task="es4-submit" data-auto="exam:submit paper=s4-essay" data-check="paper:s4-essay.submitted">When you’ve finished, go to the submission page (the ✓ tile at the bottom right), check your work and submit it.</li>
+    <li data-task="es4-send" data-auto="exam:handin paper=s4-essay step=confirmed" data-check="paper:s4-essay.handedIn">Hand it in on the page that comes up next. Type in the hand-in password and press <b>Hand it in</b>. The page shows you a receipt once your work has arrived.</li>
+    <li data-task="es4-word" data-auto="exam:download paper=s4-essay format=docx" data-check="paper:s4-essay.downloaded">To keep a copy, press <b>Download your copy</b>. Before you hand in, the same button is under the password box, and it’s called <b>Download a copy for yourself</b>. The copy is saved as a Word document, usually in your Downloads folder.</li>
+  </ol>
+</div>
+<div class="callout info">
+  <div class="co-t">Handing in</div>
+  <p>Your work goes straight from this page into my Google Drive, and you don’t need a Google account for that. The hand-in password I give you stops anyone else from handing work in, so please keep it to yourself. Once it has arrived, the page tells you so and gives you a receipt. If it can’t be handed in, the page will tell you why. If you try again and it still won’t go, download a copy and send it to me some other way.</p>
+</div>
+<div class="callout info">
+  <div class="co-t">After you’ve handed it in</div>
+  <p>Once you’ve submitted, <b>Review my answers</b> shows you the ground a good answer covers. Read it after you’ve handed your work in, and make a note of what you’d add or change. That’s what we’ll talk about in the supervision.</p><p>Your work is kept in this browser, in Files → <code>essays</code>. It won’t be there on another computer, and some shared computers clear it when you log out, so download a copy before you finish.</p>
+</div>
+<div class="q" data-q="es4-q-next">
+  <div class="q-text">Once you’ve read the guidance, did each of your diagrams make a point the text used? Which one could you have done without, and what was missing?</div>
+  <div class="q-model">There’s no single right answer here, so bring yours to the supervision. Diagrams in essays most often lose their value by being generic (a picture of the lungs), unlabelled, or never referred to in the text.</div>
+</div>
+
+</section>
+
+<section class="chapter" id="s4-more" data-num="4" data-title="Revision titles" data-bench="exam" hidden>
+  <h1>Revision titles</h1>
+  <p class="lede">This chapter is optional. It has four more essay titles on this week’s lectures, for revision. You can hand one in for feedback if you’d like to.</p>
+<h2 id="m4-rev">Essay titles for revision</h2>
+<p>These four titles go with this week’s three lectures. It’s worth noting them down: they’re the kind of title you could meet in the exam.</p>
+<ol class="titles"><li>What determines the compliance of the lungs? Discuss the importance of pulmonary surfactant, in health and in the premature newborn.</li><li>Discuss the factors that determine airway resistance, and explain why expiratory flow becomes independent of effort in a forced expiration.</li><li>Compare and contrast the pulmonary and systemic circulations.</li><li>Discuss the response of the pulmonary circulation to hypoxia, and its consequences at high altitude.</li></ol>
+<p>The handout doesn’t suggest titles, so these are mine, based on the course’s learning outcomes.</p>
+<p>Planning an answer to each one (your argument, your evidence, and the order you’d put them in) is good revision. If you’d like feedback on one, write it in Supervision work <button class="do showme" type="button" data-exam="s4-revision">open them</button> and <b>hand it in</b>, in the same way as the work for this week. That’s optional: choose the title you want to write, and leave the others blank. After you submit, the guidance shows you the ground each title should cover.</p>
+<div class="optional">
+<h2>Practice</h2>
+<div class="activity">
+  <div class="act-t">If you want the practice</div>
+  <ol class="steps">
+    <li data-task="m4-plan">Plan an answer to one of the revision titles. Sum up your position in a sentence, then jot down the three or four points, with the evidence for each, that would support it.</li>
+    <li data-task="m4-rev" data-auto="exam:submit paper=s4-revision">Write one of them up in Supervision work, submit it, and hand it in if you’d like my feedback on it.</li>
+  </ol>
+</div>
+</div>
+</section>
+<!--/CHAPTERS-->
+    </aside>
+
+    <div class="splitter" role="separator" aria-orientation="vertical" title="Drag to resize, or double-click to reset"></div>
+
+    <section class="bench" aria-label="Workbench">
+      <div class="wb-tabs" role="tablist">
+        <button class="wb-tab rail-btn" type="button" id="tutRail" title="Show the instructions (Ctrl+\)" hidden><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M13 10l2 2-2 2"/></svg><span>Instructions</span></button>
+        <button class="wb-tab on" type="button" role="tab" data-wb="exam" title="Supervision work: the essay and the questions set for your supervision, written as in the online exam"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 3H6.5A2.5 2.5 0 0 0 4 5.5v13A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5V9z"/><path d="M14 3v6h6"/><path d="M8 13h8M8 17h5"/></svg><span class="lbl">Supervision work</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="scope" title="A virtual microscope with slides of human tissues"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9.5 2.8l3.6 1.4-3 7.6-3.6-1.4z"/><path d="M7.7 12.4l-.9 2.2"/><path d="M4 16.5h9"/><path d="M13.6 7.6a6.5 6.5 0 0 1 1.9 11.2"/><path d="M5 21h14"/><path d="M15.5 18.8V21"/></svg><span class="lbl">Microscope</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="anatomy" title="The anatomy of the human body in 3D (from Z-Anatomy)"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="4.6" r="2.3"/><path d="M12 7.6v6.6M6.2 10.6L12 8.8l5.8 1.8M8.8 21l3.2-6.8 3.2 6.8"/></svg><span class="lbl">Anatomy</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="viewer" title="Proteins and other molecules in 3D"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="6" cy="7" r="2.6"/><circle cx="18" cy="7" r="2.6"/><circle cx="12" cy="17.5" r="2.6"/><path d="M8.6 7h6.8M7.3 9.3l3.4 5.9M16.7 9.3l-3.4 5.9"/></svg><span class="lbl">Molecules</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="recorder" title="A chart recorder with real recordings of people (the ECG, heart sounds, blood pressure, breathing, muscle and the brain), from PhysioNet"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M6 13h2.5l1.5-4.5 2.5 8 1.8-5.5 1 2H18"/></svg><span class="lbl">Recorder</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="bath" title="An organ bath: isolated tissues, drugs and concentration–response curves"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5.5 3h13"/><path d="M7 3v13.5A4.5 4.5 0 0 0 11.5 21h1a4.5 4.5 0 0 0 4.5-4.5V3"/><path d="M12 3v4.5"/><rect x="10.7" y="7.5" width="2.6" height="6" rx="1.3"/><path d="M9.3 17.6h.01M14.4 16.4h.01M11.8 18.9h.01"/></svg><span class="lbl">Organ bath</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="flow" title="Flow diagrams of physiological control, with a simulator"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="5" rx="1.2"/><rect x="14" y="3" width="7" height="5" rx="1.2"/><rect x="14" y="16" width="7" height="5" rx="1.2"/><path d="M10 5.5h4M17.5 8v8M14 18.5H7.5a1.5 1.5 0 0 1-1.5-1.5V8"/></svg><span class="lbl">Diagrams</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="circuit" title="Electrical circuits, and the circuit models of physiology"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2 12h3.5l1.7-4 2.6 8 2.6-8 2.6 8 1.7-4H22"/></svg><span class="lbl">Circuits</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="sims" title="Interactive simulations from PhET (University of Colorado Boulder)"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h8.5M16.5 6H20M4 12h2.5M10.5 12H20M4 18h10.5M18.5 18H20"/><circle cx="14.5" cy="6" r="2"/><circle cx="8.5" cy="12" r="2"/><circle cx="16.5" cy="18" r="2"/></svg><span class="lbl">Simulations</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="rstudio" title="RStudio, for analysing data in R"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16M3 12h18"/></svg><span class="lbl">RStudio</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="editor" title="Your files"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v1H7l-4 9z"/><path d="M3 19l3.5-8H22l-3.5 8z"/></svg><span class="lbl">Files</span><span class="dot"></span></button>
+        <button class="bench-close" type="button" aria-label="Back to the instructions" title="Back to the instructions">✕<span class="lbl">Instructions</span></button>
+      </div>
+      <div class="wb-body">
+        <div class="wb-pane" data-wb="scope" hidden><div id="scopeRoot"></div></div>
+        <div class="wb-pane" data-wb="anatomy" hidden><div id="anatRoot"></div></div>
+        <div class="wb-pane" data-wb="viewer" hidden><div id="viewerRoot"></div></div>
+        <div class="wb-pane" data-wb="recorder" hidden><div id="recRoot"></div></div>
+        <div class="wb-pane" data-wb="bath" hidden><div id="bathRoot"></div></div>
+        <div class="wb-pane" data-wb="flow" hidden><div id="flowRoot"></div></div>
+        <div class="wb-pane" data-wb="circuit" hidden><div id="circuitRoot"></div></div>
+        <div class="wb-pane" data-wb="sims" hidden><div id="simsRoot"></div></div>
+        <div class="wb-pane" data-wb="exam"><div id="examRoot"></div></div>
+        <div class="wb-pane" data-wb="rstudio" hidden><div id="rsRoot"></div></div>
+        <div class="wb-pane" data-wb="editor" hidden><div id="edRoot"></div></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<button class="bench-fab" type="button" aria-label="Open the workbench"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16M3 12h18"/></svg>Workbench</button>
+<noscript><p style="padding:20px">This page needs JavaScript.</p></noscript>
+
+<script>window.BMS_STARTERS = [];
+window.BMS_STARTERS_VERSION = 1;</script>
+<script>window.BMS_PAGE = {"week": 4, "page": "supervision-4.html", "title": "Supervision 4", "site": "Physiology supervisions"};</script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/core.js"></script>
+<script src="assets/js/icons.js"></script>
+<script src="assets/js/vfs.js"></script>
+<script src="assets/js/project.js"></script>
+<script src="assets/vendor/codemirror/codemirror.js"></script>
+<script src="assets/vendor/codemirror/r.js"></script>
+<script src="assets/vendor/codemirror/markdown.js"></script>
+<script src="assets/vendor/codemirror/yaml.js"></script>
+<script src="assets/vendor/codemirror/shell.js"></script>
+<script src="assets/vendor/codemirror/javascript.js"></script>
+<script src="assets/vendor/codemirror/python.js"></script>
+<script src="assets/vendor/codemirror/overlay.js"></script>
+<script src="assets/vendor/codemirror/multiplex.js"></script>
+<script src="assets/vendor/codemirror/yaml-frontmatter.js"></script>
+<script src="assets/vendor/codemirror/rmarkdown.js"></script>
+<script src="assets/vendor/codemirror/matchbrackets.js"></script>
+<script src="assets/vendor/codemirror/closebrackets.js"></script>
+<script src="assets/vendor/codemirror/comment.js"></script>
+<script src="assets/vendor/codemirror/searchcursor.js"></script>
+<script src="assets/vendor/codemirror/active-line.js"></script>
+<script src="assets/vendor/codemirror/runmode.js"></script>
+<script src="assets/vendor/dompurify/purify.min.js"></script>
+<script src="assets/vendor/marked/marked.min.js"></script>
+<script src="assets/js/rsession.js"></script>
+<script src="assets/js/rui.js"></script>
+<script src="assets/js/dataview.js"></script>
+<script src="assets/js/knit.js"></script>
+<script src="assets/js/rstudio.js"></script>
+<script src="assets/js/rsource.js"></script>
+<script src="assets/js/shiny.js"></script>
+<script src="assets/js/pdfview.js"></script>
+<script src="assets/js/editor.js"></script>
+<script src="assets/js/page.js"></script>
+<script src="assets/js/tutorial.js"></script>
+<script src="assets/js/workbench.js"></script>
+</body>
+</html>

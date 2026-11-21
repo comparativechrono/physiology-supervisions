@@ -1,0 +1,59 @@
+{
+ "id": "s2-saqs",
+ "week": 2,
+ "required": true,
+ "order": 1,
+ "title": "Supervision 2 short answers",
+ "description": "4 short-answer questions on this week’s lectures, all of them handed in.",
+ "minutes": null,
+ "suggestedMinutes": null,
+ "autoSubmit": false,
+ "spellcheck": false,
+ "showWordCount": true,
+ "clipboard": "exam",
+ "handIn": true,
+ "resources": [
+  {
+   "type": "calculator"
+  }
+ ],
+ "instructions": "<p><b>This is the work to hand in for Supervision 2.</b> There are four short-answer questions, on the control of blood pressure, haemorrhage, hypoxia and heart failure. Answer all four, then hand them in together.</p><ul><li><b>Marks.</b> Each question is marked out of 5. Answer in bullet points, and aim for at least 5 separate, precise points: a number, a mechanism or a piece of evidence is worth more than a general statement.</li><li><b>Calculations.</b> The calculator is at the top of the page. Show your working, and give units.</li><li><b>Equations.</b> Type simple ones into your text, as you’d write them by hand (× is among the special characters, under <b>Ω</b>). For one with a fraction, use the formula tool, <b>Σ</b>. Say what each equation means, and then use it.</li><li><b>Diagrams.</b> You can add diagrams, just as you can in the exam. Draw one with <b>Insert drawing</b> (the pencil), or use <b>Insert picture</b> to add a picture, such as a photo of a diagram you drew on paper. Type a caption under it. Your pictures go into the Word document with your work.</li><li><b>Pasting.</b> As in the exam, you can copy and paste within your work, but you can’t paste in text copied from anywhere else. Write everything in your own words.</li><li><b>Saving.</b> Your work is saved in this browser as you type, so you can stop and come back to it. It stays here until you submit it.</li><li><b>When you’ve finished</b>, go to the submission page (the ✓ tile at the bottom right), check your work and submit it. Then hand it in as described below.</li></ul>",
+ "questions": [
+  {
+   "id": "baro",
+   "type": "short",
+   "title": "Removing the baroreceptors",
+   "marks": 5,
+   "lines": 12,
+   "text": "<p>Explain why removing the arterial baroreceptors (sinoaortic denervation) does not cause a sustained rise in mean arterial blood pressure. What does it change?</p><p class=\"muted\">Answer in bullet points.</p>",
+   "guidance": "<p>Points a good answer makes. Each is worth about a mark.</p><ul><li><b>What the baroreflex does.</b> The carotid sinus and aortic arch baroreceptors fire faster as the pressure (and its rate of rise) increases, and through the medulla they reduce sympathetic and increase vagal activity: negative feedback on ABP, acting within seconds.</li><li><b>It buffers, rather than sets.</b> It opposes moment-to-moment changes (standing up, exercise, a sudden noise), but it adapts (resets) to a pressure that is sustained for days, so it can’t hold the long-term level.</li><li><b>The evidence.</b> After sinoaortic denervation, the mean pressure over 24 hours returns to near normal, but its variability is much greater: it swings with posture, activity and emotion.</li><li><b>What sets the long-term level.</b> The kidneys, through the excretion of salt and water (pressure natriuresis and the renin–angiotensin–aldosterone system), with the low-pressure (cardiopulmonary) receptors sensing volume. That’s why hypertension is sought in the kidney and in volume control, not in the baroreceptors.</li><li><b>A consequence.</b> Without the baroreflex, standing up can cause a large fall in pressure (postural hypotension), and stresses cause large rises.</li></ul>"
+  },
+  {
+   "id": "bleed",
+   "type": "short",
+   "title": "Haemorrhage",
+   "marks": 5,
+   "lines": 12,
+   "text": "<p>Outline the responses to the loss of about 15% of the blood volume, in the order in which they occur.</p><p class=\"muted\">Answer in bullet points.</p>",
+   "guidance": "<p>Points a good answer makes, in order. Each is worth about a mark.</p><ul><li><b>The problem.</b> Lost volume lowers MSFP (only the stressed volume, about the last fifth, sets it), so venous return, cardiac output and ABP fall.</li><li><b>Seconds.</b> The arterial and low-pressure baroreceptors fire less; pain and fear add drive from higher centres. Vagal activity falls and sympathetic activity rises: heart rate and contractility up, arteriolar constriction (TPR up, sparing the brain and heart), venoconstriction (MSFP back up). Adrenaline, angiotensin II and ADH add vasoconstriction.</li><li><b>Minutes.</b> Reverse stress relaxation of vascular smooth muscle; and, with capillary pressure lower, Starling forces favour reabsorption, so 0.5–1 L of tissue fluid moves into the blood (autotransfusion). The haematocrit falls, a more sensitive sign of blood loss than the pressure.</li><li><b>Tens of minutes to hours.</b> The kidneys conserve salt and water (renin–angiotensin–aldosterone, ADH, sympathetic nerves), and thirst and salt appetite restore volume by intake.</li><li><b>Days.</b> Plasma proteins are replaced by the liver (24–48 h), and red cells by erythropoiesis, driven by erythropoietin from the kidney (5–7 days and more).</li></ul>"
+  },
+  {
+   "id": "hypoxia",
+   "type": "short",
+   "title": "Two responses to hypoxia",
+   "marks": 5,
+   "lines": 12,
+   "text": "<p>Distinguish the primary and secondary chemoreceptor responses to hypoxia. Why does the cardiovascular response to hypoxia in a breath-hold dive differ from that on ascent to high altitude?</p><p class=\"muted\">Answer in bullet points.</p>",
+   "guidance": "<p>Points a good answer makes. Each is worth about a mark.</p><ul><li><b>The primary response.</b> Low P<sub>O<sub>2</sub></sub> detected by the carotid and aortic bodies, integrated in the medulla: bradycardia (vagal) and sympathetic vasoconstriction. Strong enough to overcome local metabolic vasodilatation, so blood goes to the brain and heart, which have little sympathetic vasoconstrictor innervation.</li><li><b>The secondary response.</b> If breathing is possible, hypoxia also increases the rate and depth of breathing; pulmonary stretch receptors (vagal afferents) then act on the medulla to raise the heart rate, cause venoconstriction (MSFP and so CO up) and a pattern of vasodilatation and constriction favouring vital tissues.</li><li><b>Diving.</b> No breathing, so only the primary response: the diving reflex conserves a fixed store of O<sub>2</sub> for the brain (heart rate down to 20–30 a minute in cold water in humans; much stronger in seals).</li><li><b>Altitude.</b> Breathing continues, so the secondary response dominates: the cardiac output rises, because O<sub>2</sub> delivery = flow × content, and more flow makes up for a lower content.</li><li><b>The logic.</b> The same stimulus (low P<sub>O<sub>2</sub></sub>) gives opposite responses, depending on whether the lungs are ventilating. (Chronic hypoxia, as in obstructive sleep apnoea, may raise the pressure long term by the same pathways.)</li></ul>"
+  },
+  {
+   "id": "failure",
+   "type": "short",
+   "title": "Heart failure",
+   "marks": 5,
+   "lines": 12,
+   "text": "<p>Using Guyton’s curves, explain why the body’s normal responses to a low arterial blood pressure can make heart failure worse.</p><p class=\"muted\">Answer in bullet points.</p>",
+   "guidance": "<p>Points a good answer makes. Each is worth about a mark. A sketch of the curves helps.</p><ul><li><b>The curves.</b> The cardiac function (Starling) curve plots CO against RAP; the venous return curve falls from MSFP on the RAP axis with a slope set by RvR. The output is where they cross.</li><li><b>In failure</b> the cardiac function curve is flattened (systolic or diastolic dysfunction), so the curves cross at a lower CO and a higher RAP. Cardiac failure can be defined as a cardiac output insufficient to maintain the body’s target ABP.</li><li><b>The normal response</b> to the low ABP: sympathetic venoconstriction and renal salt and water retention raise MSFP (the venous return curve moves up), and arteriolar constriction raises TPR.</li><li><b>Why it backfires.</b> On the flat cardiac function curve, a higher MSFP gives a large rise in RAP for a small rise in CO (CO = VR = (MSFP − RAP) / RvR, so if CO can’t rise, RAP must). High venous and capillary pressures cause oedema, in the lungs and the legs. A higher TPR raises the work and O<sub>2</sub> demand of the failing heart, and can lower its output further.</li><li><b>So treatment</b> blocks these responses: diuretics and ACE inhibitors (or receptor blockers) lower volume and MSFP, β-blockers reduce sympathetic drive, and vasodilators lower TPR.</li></ul>"
+  }
+ ]
+}

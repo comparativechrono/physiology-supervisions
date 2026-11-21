@@ -1,0 +1,59 @@
+{
+ "id": "s5-saqs",
+ "week": 5,
+ "required": true,
+ "order": 1,
+ "title": "Supervision 5 short answers",
+ "description": "4 short-answer questions on this week’s lectures, all of them handed in.",
+ "minutes": null,
+ "suggestedMinutes": null,
+ "autoSubmit": false,
+ "spellcheck": false,
+ "showWordCount": true,
+ "clipboard": "exam",
+ "handIn": true,
+ "resources": [
+  {
+   "type": "calculator"
+  }
+ ],
+ "instructions": "<p><b>This is the work to hand in for Supervision 5.</b> There are four short-answer questions, on gases in the blood, the control of breathing at altitude, and lung function tests. Answer all four, then hand them in together.</p><ul><li><b>Marks.</b> Each question is marked out of 5. Answer in bullet points, and aim for at least 5 separate, precise points: a number, a mechanism or a piece of evidence is worth more than a general statement.</li><li><b>Calculations.</b> The calculator is at the top of the page. Show your working, and give units.</li><li><b>Equations.</b> Type simple ones into your text, as you’d write them by hand (× is among the special characters, under <b>Ω</b>). For one with a fraction, use the formula tool, <b>Σ</b>. Say what each equation means, and then use it.</li><li><b>Diagrams.</b> You can add diagrams, just as you can in the exam. Draw one with <b>Insert drawing</b> (the pencil), or use <b>Insert picture</b> to add a picture, such as a photo of a diagram you drew on paper. Type a caption under it. Your pictures go into the Word document with your work.</li><li><b>Pasting.</b> As in the exam, you can copy and paste within your work, but you can’t paste in text copied from anywhere else. Write everything in your own words.</li><li><b>Saving.</b> Your work is saved in this browser as you type, so you can stop and come back to it. It stays here until you submit it.</li><li><b>When you’ve finished</b>, go to the submission page (the ✓ tile at the bottom right), check your work and submit it. Then hand it in as described below.</li></ul>",
+ "questions": [
+  {
+   "id": "content",
+   "type": "short",
+   "title": "Content and saturation",
+   "marks": 5,
+   "lines": 12,
+   "text": "<p>Distinguish between the oxygen content and the oxygen saturation of arterial blood. Why is carbon monoxide poisoning more dangerous than an anaemia that halves the oxygen-carrying capacity of the blood?</p><p class=\"muted\">Answer in bullet points.</p>",
+   "guidance": "<p>Points a good answer makes. Each is worth about a mark.</p><ul><li><b>Saturation</b>: the percentage of haemoglobin’s O<sub>2</sub>-binding sites that are occupied, set by the PO<sub>2</sub> (about 97.5% at 100 mmHg, 75% at 40 mmHg).</li><li><b>Content</b>: the volume of O<sub>2</sub> per litre of blood: 1.39 mL per gram of haemoglobin × the haemoglobin concentration × saturation, plus the dissolved O<sub>2</sub> (0.03 mL/L per mmHg: only 3 mL/L at 100 mmHg). About 200 mL/L normally. Content, not PO<sub>2</sub> or saturation, is what delivers O<sub>2</sub>.</li><li><b>Anaemia</b>: saturation and PO<sub>2</sub> are normal, the content is low; the curve keeps its shape, so the blood still unloads at the tissues’ PO<sub>2</sub> (about 25 mL/L between 100 and 40 mmHg, against about 49 normally).</li><li><b>Carbon monoxide</b> binds about 200 times more tightly than O<sub>2</sub>, occupying sites, and shifts the curve of the remaining haemoglobin to the left, so it gives up little O<sub>2</sub> at the tissues’ PO<sub>2</sub> (about 8 mL/L).</li><li><b>And it’s hidden</b>: arterial PO<sub>2</sub> and PCO<sub>2</sub> are normal, so there is no drive to breathe harder; the patient looks pink; a pulse oximeter reads carboxyhaemoglobin as oxyhaemoglobin and gives a normal saturation.</li></ul>"
+  },
+  {
+   "id": "co2",
+   "type": "short",
+   "title": "Carrying CO₂",
+   "marks": 5,
+   "lines": 12,
+   "text": "<p>Describe how carbon dioxide is carried in the blood, and explain the Haldane effect.</p><p class=\"muted\">Answer in bullet points.</p>",
+   "guidance": "<p>Points a good answer makes. Each is worth about a mark.</p><ul><li><b>As bicarbonate (about 70%)</b>: CO<sub>2</sub> + H<sub>2</sub>O ⇌ H<sub>2</sub>CO<sub>3</sub> ⇌ HCO<sub>3</sub><sup>−</sup> + H<sup>+</sup>, slow in plasma, fast in red cells with carbonic anhydrase; HCO<sub>3</sub><sup>−</sup> leaves the cell in exchange for Cl<sup>−</sup> (the chloride shift); the H<sup>+</sup> is buffered by haemoglobin.</li><li><b>Dissolved (5–10%)</b>: CO<sub>2</sub> is about 20 times more soluble than O<sub>2</sub>, so dissolved CO<sub>2</sub> is a real part of transport (about 32 mL per litre of plasma at 46 mmHg).</li><li><b>As carbamino compounds (about 20%)</b>, mostly carbaminohaemoglobin, bound to amine groups.</li><li><b>The Haldane effect</b>: deoxygenated blood carries more CO<sub>2</sub> at the same PCO<sub>2</sub>, because deoxyhaemoglobin is a weaker acid (a better buffer of H<sup>+</sup>, pulling the reaction towards bicarbonate) and forms carbamino compounds more readily.</li><li><b>Its importance</b>: in the tissues, as O<sub>2</sub> is unloaded, more CO<sub>2</sub> is loaded; in the lungs, oxygenation drives CO<sub>2</sub> off. It accounts for a large part of the CO<sub>2</sub> exchanged, with only a small difference in PCO<sub>2</sub> (40 against 46 mmHg). It’s the counterpart of the Bohr effect.</li></ul>"
+  },
+  {
+   "id": "altitude",
+   "type": "short",
+   "title": "Breathing at altitude",
+   "marks": 5,
+   "lines": 12,
+   "text": "<p>Explain how ventilation changes over the first few days after arrival at high altitude, and why.</p><p class=\"muted\">Answer in bullet points.</p>",
+   "guidance": "<p>Points a good answer makes. Each is worth about a mark.</p><ul><li><b>The stimulus</b>: the fraction of O<sub>2</sub> stays at 21%, but the barometric pressure is lower, so the inspired and arterial PO<sub>2</sub> fall; below about 60 mmHg, the peripheral chemoreceptors (carotid bodies) drive ventilation up.</li><li><b>The brake</b>: the extra ventilation lowers PaCO<sub>2</sub>, causing a respiratory alkalosis; the central chemoreceptors sense the rise in pH of the CSF and reduce the drive, so the first rise in ventilation is blunted.</li><li><b>Over days</b>: the kidneys excrete HCO<sub>3</sub><sup>−</sup> (metabolic compensation), and the HCO<sub>3</sub><sup>−</sup> of the CSF falls too, bringing the pH of blood and CSF back towards normal. That removes the brake, so ventilation rises further: ventilatory acclimatisation.</li><li><b>Use the Henderson–Hasselbalch equation</b>: pH = 6.1 + log([HCO<sub>3</sub><sup>−</sup>] / (0.03 × PCO<sub>2</sub>)); a lower PCO<sub>2</sub> raises pH until [HCO<sub>3</sub><sup>−</sup>] falls in proportion.</li><li><b>Other adjustments</b>: more 2,3-BPG (a right shift, helping unloading), then more erythropoietin and red cells; hypoxic pulmonary vasoconstriction, with the risk of high-altitude pulmonary oedema.</li></ul>"
+  },
+  {
+   "id": "spirometry",
+   "type": "short",
+   "title": "Two spirometry results",
+   "marks": 5,
+   "lines": 12,
+   "text": "<p>Patient X has an FEV<sub>1</sub> of 1.3 L and an FVC of 3.4 L. Patient Y has an FEV<sub>1</sub> of 2.0 L and an FVC of 2.3 L. Both have a low diffusing capacity for carbon monoxide. Interpret each result, and explain how each pattern arises.</p><p class=\"muted\">Answer in bullet points.</p>",
+   "guidance": "<p>Points a good answer makes. Each is worth about a mark.</p><ul><li><b>X</b>: FEV<sub>1</sub>/FVC = 1.3 / 3.4 = 0.38, below 0.7: an <b>obstructive</b> pattern. The air leaves slowly.</li><li><b>Its mechanism</b>, with the low diffusing capacity: emphysema (COPD). Lost elastic recoil and lost tethering of the small airways move the equal pressure point into them, so they collapse early in a forced expiration (effort-independent flow, air trapping, a high TLC); destroyed alveolar walls reduce the area for diffusion.</li><li><b>Y</b>: FEV<sub>1</sub>/FVC = 2.0 / 2.3 = 0.87, normal or high, with a small FVC: a <b>restrictive</b> pattern (a low TLC would confirm it).</li><li><b>Its mechanism</b>, with the low diffusing capacity: pulmonary fibrosis. Stiff, less compliant lungs have small volumes, but their strong recoil and open airways empty them fast; the thickened interstitium lengthens the path for diffusion (Fick’s law).</li><li><b>For more marks</b>: why carbon monoxide is used to measure diffusing capacity (it binds haemoglobin so tightly that its uptake is limited by diffusion, not by blood flow); in asthma the diffusing capacity is usually normal, and the obstruction reverses with a bronchodilator.</li></ul>"
+  }
+ ]
+}

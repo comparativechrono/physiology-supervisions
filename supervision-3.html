@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supervision 3 – Physiology supervisions</title>
+<meta name="description" content="Supervision 3 of NST IB Physiology covers calcium homeostasis, growth hormone and the IGFs, and the hypothalamic–pituitary–adrenal axis. There’s an essay to hand in, comparing growth hormone and cortisol, and optional exercises in the workbench.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2313304a'/%3E%3Cpath d='M3.5 17.5h5.2l1.6-2.6 1.6 2.6h1.3l1 2.4 2.4-13.4 2.4 15.5 1.4-4.5h1.6l1.9-3 1.9 3h2.7' fill='none' stroke='%23ff8a65' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<script src="assets/js/isolation.js"></script>
+<link rel="stylesheet" href="assets/vendor/codemirror/codemirror.css">
+<link rel="stylesheet" href="assets/css/app.css">
+<link rel="stylesheet" href="assets/css/wb.css">
+<link rel="stylesheet" href="assets/css/bms.css">
+<link rel="stylesheet" href="assets/css/r.css">
+<link rel="stylesheet" href="assets/css/rstudio.css">
+<link rel="stylesheet" href="assets/css/files.css">
+<link rel="stylesheet" href="assets/css/viewer.css">
+<link rel="stylesheet" href="assets/css/scope.css">
+<link rel="stylesheet" href="assets/css/flow.css">
+<link rel="stylesheet" href="assets/css/circuit.css">
+<link rel="stylesheet" href="assets/css/exam.css">
+<link rel="stylesheet" href="assets/css/anatomy.css">
+<link rel="stylesheet" href="assets/css/recorder.css">
+<link rel="stylesheet" href="assets/css/organbath.css">
+<link rel="stylesheet" href="assets/css/sims.css">
+</head>
+<body data-page="supervision-3" data-title="Supervision 3" data-week="3">
+<div class="app">
+
+  <header class="topbar">
+    <button class="btn top-toggle" id="tutToggle" type="button" title="Hide the instructions so that the workbench fills the window (Ctrl+\)" aria-controls="tut" aria-expanded="true"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M16 10l-2 2 2 2"/></svg></button>
+    <a class="brand" href="index.html" title="All the supervisions">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#1c4061"/><path d="M3.5 17.5h5.2l1.6-2.6 1.6 2.6h1.3l1 2.4 2.4-13.4 2.4 15.5 1.4-4.5h1.6l1.9-3 1.9 3h2.7" fill="none" stroke="#ff8a65" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div>
+        <div class="brand-title">Physiology supervisions</div>
+        <div class="brand-sub">Supervision 3: calcium, growth hormone and the adrenal gland</div>
+      </div>
+    </a>
+    <div class="spacer"></div>
+    <div class="progress-wrap" title="The steps you have done and the questions you have answered (saved in this browser)"><span class="progress-label">0% done</span><div class="progress"><i></i></div></div>
+    <span class="store-status" id="storeStatus" title="Your files are saved in this browser, on this computer"></span>
+    <button class="btn" id="userBtn" type="button" title="Your name, as it appears in the workbench"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span class="user-name">Your name</span></button>
+    <button class="btn" id="projectBtn" type="button" title="Download all your files, add files, or start afresh"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v1H7l-4 9z"/><path d="M3 19l3.5-8H22l-3.5 8z"/></svg><span>My files</span></button>
+    <button class="btn" id="answersBtn" type="button"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg><span>My answers</span></button>
+    <button class="btn" id="helpBtn" type="button" title="How this page works"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.2 9a2.9 2.9 0 0 1 5.6 1c0 2-2.8 2.6-2.8 4M12 17.5h.01"/></svg><span>Help</span></button>
+    <button class="btn" id="fullBtn" type="button" title="Full screen"><span>Full screen</span></button>
+  </header>
+
+  <div class="main">
+    <aside class="tut" id="tut" aria-label="Instructions">
+      <nav class="ch-nav" aria-label="Chapters"></nav>
+<!--CHAPTERS-->
+<section class="chapter" id="s3-week" data-num="0" data-title="This week" data-bench="exam">
+  <h1>Supervision 3: calcium, growth hormone and the adrenal gland</h1>
+  <div class="meta-row"><span class="pill time">≈ 5 min</span></div>
+  <p class="lede">This week’s lectures are about three hormone systems: the control of plasma calcium, growth hormone and the IGFs, and the hypothalamic–pituitary–adrenal axis. Your essay compares the two hormones that both raise blood glucose in a fast, for different reasons and on different timescales.</p>
+
+<div class="handin-box">
+  <div class="hb-k">To hand in this week</div>
+  <p class="hb-title">“Compare and contrast the metabolic roles of growth hormone and cortisol.”</p>
+  <ul><li>You write the essay in <b>Supervision work</b>, as you will in the online exam. Plan it first, then write it in continuous prose, in your own words.</li><li>It’s one of the titles in the lecture notes, and it draws on the second and third lectures. Chapter 3 is about how to write a comparison.</li><li>Once you’ve submitted it, <b>hand it in</b> from the same page before your supervision. You’ll need the <b>hand-in password</b> I give you, and your work then goes straight into my Google Drive.</li></ul>
+  <p class="hb-acts"><button class="do showme" type="button" data-goto="s3-write">how to write it and hand it in</button> <button class="do showme" type="button" data-exam="s3-essay">open the essay</button></p>
+</div>
+
+<h2 id="w3-plan">The week, step by step</h2>
+<ol class="plan">
+<li>If you’d like to, start with <b>two short exercises</b>. They’re optional, and take about half an hour altogether. In chapter 1 you find the zones of the adrenal cortex in the <b>Microscope</b>, then run the HPA axis as a diagram in the <b>Diagrams</b> tab, and break it as diseases and drugs do. In chapter 2 you look at growth hormone holding its receptors, and at the steroids, in the <b>Molecules</b> tab. <button class="do showme" type="button" data-goto="s3-hpa">start</button></li>
+<li>Then <b>write your essay</b> and hand it in (chapter 3). <button class="do showme" type="button" data-goto="s3-write">go there</button></li>
+<li>Chapter 4 has the other eight titles from the lecture notes, for revision. You can hand one in for feedback if you’d like to, but you don’t have to. <button class="do showme" type="button" data-goto="s3-more">go there</button></li>
+</ol>
+<div class="activity">
+  <div class="act-t">Before you start</div>
+  <ol class="steps">
+    <li data-task="w3-name" data-check="named">Check that your name is at the top of the page. If it says <b>Your name</b>, click it and add yours. It goes at the top of the work you hand in, and every supervision’s page shares it.</li>
+  </ol>
+</div>
+<h2>How this page works</h2>
+<ul>
+<li>The steps tick themselves off as you do them, the buttons do things for you in the workbench on the right, and every question has a <b>model answer</b> you can look at once you’ve had a go.</li>
+<li>Chapters 1, 2 and 4 are optional, so their steps don’t count towards finishing the page. The rest do.</li>
+<li>If you haven’t used one of the workbench’s tabs before, the <a href="workbench.html" target="_blank" rel="noopener">workbench guide</a> shows you how it works.</li>
+</ul>
+
+</section>
+
+<section class="chapter" id="s3-hpa" data-num="1" data-title="The HPA axis" data-bench="scope" hidden>
+  <h1>Optional: the adrenal gland and the HPA axis</h1>
+  <div class="meta-row"><span class="pill time">≈ 15 min</span></div>
+  <p class="lede">Find where cortisol is made, then run the hypothalamic–pituitary–adrenal axis as a diagram, and break it as Addison’s disease and glucocorticoid drugs do.</p>
+<div class="optional whole">
+
+<div class="callout info">
+  <div class="co-t">Optional, about 15 minutes</div>
+  <p>This exercise isn’t part of the work to hand in, and its steps don’t count towards finishing the page. It goes with the third lecture, on the hypothalamic–pituitary–adrenal axis.</p>
+</div>
+
+<h2 id="hp-gland">The adrenal gland</h2>
+<div class="activity">
+  <div class="act-t">Where cortisol is made</div>
+  <ol class="steps">
+    <li data-task="hp-open" data-auto="scope:open slide=adrenal-gland">Open the adrenal gland at 2× <button class="do showme" type="button" data-scope="adrenal-gland@1.6,2.4,2x">show me</button>. You’re looking at a slice across the gland: a capsule, the cortex inside it, and the medulla in the middle.</li>
+    <li data-task="hp-zf" data-auto="scope:find slide=adrenal-gland target=zona-fasciculata ok=true">Find the zona fasciculata, which makes cortisol, and click on it <button class="do showme" type="button" data-scope-find="adrenal-gland:zona-fasciculata">find it</button>. Its cells are in long columns, and look pale and foamy because they’re full of lipid droplets: cholesterol ester, the raw material of steroids.</li>
+    <li data-task="hp-med" data-auto="scope:find slide=adrenal-gland target=medulla ok=true">Now find the medulla <button class="do showme" type="button" data-scope-find="adrenal-gland:medulla">find it</button>.</li>
+  </ol>
+</div>
+<div class="q" data-q="hp-q-flow">
+  <div class="q-text">Blood flows inwards, from the capsule through the cortex to the veins of the medulla. Why might it matter that the chromaffin cells of the medulla receive blood that has just passed through the zona fasciculata?</div>
+  <div class="q-model">The blood reaching the medulla carries a high concentration of cortisol, much higher than in the general circulation. Cortisol induces PNMT, the enzyme that methylates noradrenaline to adrenaline, so the portal arrangement helps the medulla make adrenaline rather than noradrenaline. It ties the two parts of the gland, of different embryological origins (mesoderm and neural crest), into one stress organ: the medulla answers within seconds to sympathetic preganglionic nerves, and the cortex within minutes to ACTH.</div>
+</div>
+
+<h2 id="hp-axis">The axis as a diagram</h2>
+<p>The diagram has the three hormones of the axis, each at its resting level (1). Stress drives CRH from the hypothalamus, which drives ACTH, which drives cortisol, and cortisol feeds back on both the hypothalamus and the pituitary.</p>
+<div class="activity">
+  <div class="act-t">Run it, then break it</div>
+  <ol class="steps">
+    <li data-task="hp-run" data-auto="flow:run name~adrenal knocked=0">Open the diagram <button class="do showme" type="button" data-flow="example:hpa-axis">show me</button> and run it <button class="do showme" type="button" data-flow-run="1">show me</button>. Stress starts at 2 hours.</li>
+    <li data-task="hp-knock" data-auto="flow:run name~adrenal knocked&gt;0">Destroy the adrenal cortex, as in Addison’s disease. Click the box <b>Cortisol</b>, choose <b>Knocked out</b> for it in the panel on the right, and run it again. Then put it back to normal, choose <b>Fixed</b> for it instead, at a level of 3, as in a patient taking a glucocorticoid drug, and run it again.</li>
+  </ol>
+</div>
+<div class="q" data-q="hp-q-addison">
+  <div class="q-text">With the adrenal cortex knocked out, what happened to ACTH, and with cortisol fixed at 3? What would you see in a patient with each condition, and why?</div>
+  <div class="q-model">With no cortisol, there’s no negative feedback, so CRH and ACTH rise: ACTH settles at about 2.7 times its resting level in the diagram. In Addison’s disease the high ACTH (and other products of pro-opiomelanocortin, POMC, the precursor it’s cut from, including MSH) darkens the skin. The patient also lacks aldosterone, because the whole cortex is destroyed: salt loss, a low blood volume and pressure, and a high plasma K<sup>+</sup>. Without cortisol they can’t maintain blood glucose in a fast or exercise, nor vascular responsiveness to catecholamines (a permissive effect), so a stress such as an infection can cause a fatal collapse. With cortisol fixed at 3, the feedback suppresses ACTH to about a sixth of its resting level (0.17). In a patient on glucocorticoids, the low ACTH lets the zona fasciculata atrophy (ACTH is trophic to it), so stopping the drug suddenly leaves them without cortisol until the axis recovers, which can take months. That’s why the dose is tapered.</div>
+</div>
+<div class="q" data-q="hp-q-evidence" data-type="mcq">
+  <div class="q-text">Which observation from the lecture is the best evidence that cortisol controls ACTH by negative feedback?</div>
+  <div class="mcq"><label data-correct data-why="Yes. Removing one gland lowers cortisol, so ACTH rises and stimulates the remaining cortex to grow (ACTH is trophic). Giving cortisol suppresses ACTH, and the cortex atrophies. Both changes go in the direction feedback predicts, in opposite directions."><input type="radio"> <span>Removing one adrenal gland makes the other enlarge, slowly; repeated injections of cortisol make the adrenal cortex shrink</span></label><label data-why="No. That shows ACTH drives cortisol, the forward part of the axis, not that cortisol feeds back."><input type="radio"> <span>Cortisol is released in pulses that follow the pulses of ACTH</span></label><label data-why="No. The rhythm comes from the clock driving CRH, not from feedback."><input type="radio"> <span>Cortisol has a circadian rhythm, with a surge before waking</span></label></div>
+</div>
+
+</div>
+</section>
+
+<section class="chapter" id="s3-mol" data-num="2" data-title="Hormones in 3D" data-bench="viewer" hidden>
+  <h1>Optional: growth hormone and the steroids, in 3D</h1>
+  <div class="meta-row"><span class="pill time">≈ 15 min</span></div>
+  <p class="lede">See how one growth hormone molecule switches on a pair of receptors, and why the kidney can tell aldosterone from cortisol.</p>
+<div class="optional whole">
+
+<div class="callout info">
+  <div class="co-t">Optional, about 15 minutes</div>
+  <p>This exercise isn’t part of the work to hand in, and its steps don’t count towards finishing the page. It goes with the second and third lectures.</p>
+</div>
+
+<div class="activity">
+  <div class="act-t">Growth hormone and its receptors</div>
+  <ol class="steps">
+    <li data-task="mo-gh" data-auto="viewer:loaded id~3hhr">Open growth hormone with its receptors <button class="do showme" type="button" data-pdb="3HHR">show me</button>, and colour it by chain <button class="do showme" type="button" data-viewer="color chain">show me</button>. One chain is growth hormone, a bundle of four helices. The other two are the parts of two receptor molecules that stick out of the cell.</li>
+  </ol>
+</div>
+<div class="q" data-q="mo-q-gh">
+  <div class="q-text">One molecule of growth hormone binds two receptors, using two different sites on its surface. The lecture says that the receptors exist as pre-formed dimers. What does the hormone do to them, and how is the signal passed into the cell? Can you think how a drug might block the receptor using this structure?</div>
+  <div class="q-model">Growth hormone binds first through a high-affinity site (site 1) to one receptor, then through a second site (site 2) to the other. Because the two receptors are already paired, the hormone doesn’t bring them together so much as rotate and reposition them relative to each other. That moves their intracellular parts so that the JAK2 kinases bound to them phosphorylate each other and the receptor’s tyrosines, which recruits STAT5 and other signalling proteins (and the growth effects partly through IGF-1). A drug can exploit the two sites: pegvisomant is growth hormone with site 1 strengthened and site 2 disabled, so it occupies the receptor pair without activating it. It is used to treat acromegaly.</div>
+</div>
+<div class="activity">
+  <div class="act-t">The steroids</div>
+  <ol class="steps">
+    <li data-task="mo-gr" data-auto="viewer:loaded id~1m2z">Open the glucocorticoid receptor’s hormone-binding part, holding dexamethasone <button class="do showme" type="button" data-pdb="1M2Z">show me</button>, and show the drug as spheres <button class="do showme" type="button" data-viewer="show spheres DEX">show me</button>. It sits deep inside the protein, which closes round it.</li>
+    <li data-task="mo-cort" data-auto="viewer:molecule name=Aldosterone">Now compare cortisol <button class="do showme" type="button" data-viewer="clear; molecule cortisol; only ballstick; color cpk">show me</button> with aldosterone <button class="do showme" type="button" data-viewer="clear; molecule aldosterone; only ballstick; color cpk">show me</button>. Look at carbons 11 and 18: cortisol has an OH on carbon 11, and aldosterone has an aldehyde (CHO) on carbon 18 as well.</li>
+  </ol>
+</div>
+<div class="q" data-q="mo-q-mr">
+  <div class="q-text">The mineralocorticoid receptor binds cortisol as well as aldosterone, and there’s far more cortisol in the plasma. How do the cells of the collecting duct respond to aldosterone and not to cortisol? Why can eating a lot of liquorice raise the blood pressure?</div>
+  <div class="q-model">The cells of the distal tubule and collecting duct express 11β-hydroxysteroid dehydrogenase type 2 (11β-HSD2), which oxidises the 11-OH of cortisol to a keto group, making cortisone, which doesn’t bind the receptor. Aldosterone escapes, because its 18-aldehyde folds onto its 11-OH (forming a hemiacetal), which protects it from the enzyme. So the receptor in these cells sees aldosterone. Liquorice contains glycyrrhetinic acid, which inhibits 11β-HSD2: cortisol then occupies the mineralocorticoid receptor, the cells reabsorb too much Na<sup>+</sup> (and lose K<sup>+</sup>), extracellular volume rises, and so does the blood pressure, with renin and aldosterone suppressed (apparent mineralocorticoid excess).</div>
+</div>
+<div class="q" data-q="mo-q-steroid" data-type="mcq">
+  <div class="q-text">Cortisol binds a receptor inside the cell, and growth hormone a receptor in the membrane. What follows from that for how quickly each acts?</div>
+  <div class="mcq"><label data-correct data-why="Yes. The lecture notes say cortisol may take hours or days to act, as the hormone–receptor complex moves to the nucleus and changes gene expression. That’s why cortisol matters more in long fasts than in the first minutes of hypoglycaemia, where adrenaline and glucagon act fast. Growth hormone’s receptor activates JAK2 at once, but growth itself is slow."><input type="radio"> <span>Cortisol’s effects mostly take hours, because the receptor regulates gene transcription; growth hormone’s signalling starts within minutes, although its effects on growth take much longer</span></label><label data-why="Not quite. Crossing the membrane is fast, but what follows, changes in transcription and in protein levels, is slow."><input type="radio"> <span>Cortisol acts faster, because steroids cross membranes easily</span></label><label data-why="No. Neither is a fast-acting hormone in that sense; adrenaline is."><input type="radio"> <span>Both act within seconds</span></label></div>
+</div>
+
+</div>
+</section>
+
+<section class="chapter" id="s3-write" data-num="3" data-title="Write your essay" data-bench="exam" hidden>
+  <h1>Write your essay, and hand it in</h1>
+  <p class="lede">This is the work to hand in this week. You write it in Supervision work, as you will in the online exam, and then hand it in from the same page.</p>
+
+<p class="essay-title">“Compare and contrast the metabolic roles of growth hormone and cortisol.”</p>
+
+<h2 id="es3-title">Writing a comparison</h2>
+<p>“Compare and contrast” asks for similarities <i>and</i> differences, and the best essays also explain them: why two hormones that both raise blood glucose in a fast should differ in when, and how, they act. Two ways to organise it:</p>
+<ul>
+<li><b>Hormone by hormone</b>: all about growth hormone, then all about cortisol, then a comparison at the end. It’s easy to write, but the comparison tends to be squeezed into the last paragraph, or left to the reader.</li>
+<li><b>Point by point</b>: each paragraph takes one aspect (what triggers secretion, the effects on glucose, on fat, on protein, the timescale, what happens in excess or deficiency) and compares the two hormones on it. It’s harder to plan, but every paragraph compares, so it usually scores better.</li>
+</ul>
+<p>Whichever you choose, plan it as a table first: one row for each aspect, a column for each hormone, and a column for why they’re alike or differ. Then write from the table.</p>
+<ul>
+<li><b>What triggers them?</b> Both rise in hypoglycaemia and in stress or exercise. What else releases each one: amino acids, low free fatty acids, sleep, the time of day?</li>
+<li><b>Glucose, fat and protein.</b> Both antagonise insulin and spare glucose for the brain. Where do they differ, above all over protein?</li>
+<li><b>The paradox.</b> Growth hormone is released in fasting yet makes things grow. How does the body stop it promoting growth when there’s no food? (Insulin, IGF-1 and its binding proteins, FGF21, thyroid hormone.)</li>
+<li><b>Timescale and mechanism.</b> A membrane receptor and JAK2, against an intracellular receptor and transcription. Pulses, half-lives and binding proteins.</li>
+<li><b>What goes wrong.</b> Acromegaly and Cushing’s syndrome both cause diabetes. Deficiency of both, in a fast or strenuous exercise, can cause fatal hypoglycaemia.</li>
+</ul>
+<div class="q" data-q="es3-q-comp" data-type="mcq">
+  <div class="q-text">Which of these is the strongest sentence for a comparison essay?</div>
+  <div class="mcq"><label data-why="It states a similarity, but says nothing about how or why. Two facts side by side aren’t yet a comparison."><input type="radio"> <span>“Growth hormone raises blood glucose. Cortisol also raises blood glucose.”</span></label><label data-correct data-why="Yes. It names the shared role, the difference, the mechanism of each, and implies why it matters (growth hormone protects lean tissue; cortisol spends it). That’s a comparison doing work."><input type="radio"> <span>“Both hormones spare glucose for the brain in a fast, but in opposite ways for protein: growth hormone conserves muscle protein and draws on fat, whereas cortisol breaks down muscle protein to supply amino acids for gluconeogenesis.”</span></label><label data-why="It’s true, but it’s about one hormone only. Unless it’s used to explain a difference (cortisol acts slowly through transcription), it doesn’t compare anything."><input type="radio"> <span>“Cortisol is a steroid hormone made in the zona fasciculata from cholesterol.”</span></label></div>
+</div>
+
+<h2>Before you start</h2>
+<ul>
+<li>Look back at the feedback on your earlier work, and pick one thing to do better this time.</li>
+<li>Make sure you have the <b>hand-in password</b> I gave you, because you’ll need it at the end. You won’t find it anywhere on this site.</li>
+<li>Your work saves itself in this browser as you type, so you can stop and come back to it. Submit it once it’s finished.</li>
+<li>A table can go into the essay itself, if it helps (the table button in the toolbar). But don’t let a table replace the argument: the prose should still explain the differences.</li>
+</ul>
+<div class="activity">
+  <div class="act-t">Write it, and hand it in</div>
+  <ol class="steps">
+    <li data-task="es3-start" data-auto="exam:start paper=s3-essay" data-check="paper:s3-essay.started">Open the essay <button class="do showme" type="button" data-exam="s3-essay">show me</button>, read its first page, and press <b>Start</b> when you’re ready to write.</li>
+    <li data-task="es3-write" data-auto="exam:words paper=s3-essay words&gt;299">Plan, then write. Make every paragraph compare the two hormones on one aspect, and end with a conclusion that says what the comparison shows.</li>
+    <li data-task="es3-submit" data-auto="exam:submit paper=s3-essay" data-check="paper:s3-essay.submitted">When you’ve finished, go to the submission page (the ✓ tile at the bottom right), check your work and submit it.</li>
+    <li data-task="es3-send" data-auto="exam:handin paper=s3-essay step=confirmed" data-check="paper:s3-essay.handedIn">Hand it in on the page that comes up next. Type in the hand-in password and press <b>Hand it in</b>. The page shows you a receipt once your work has arrived.</li>
+    <li data-task="es3-word" data-auto="exam:download paper=s3-essay format=docx" data-check="paper:s3-essay.downloaded">To keep a copy, press <b>Download your copy</b>. Before you hand in, the same button is under the password box, and it’s called <b>Download a copy for yourself</b>. The copy is saved as a Word document, usually in your Downloads folder.</li>
+  </ol>
+</div>
+<div class="callout info">
+  <div class="co-t">Handing in</div>
+  <p>Your work goes straight from this page into my Google Drive, and you don’t need a Google account for that. The hand-in password I give you stops anyone else from handing work in, so please keep it to yourself. Once it has arrived, the page tells you so and gives you a receipt. If it can’t be handed in, the page will tell you why. If you try again and it still won’t go, download a copy and send it to me some other way.</p>
+</div>
+<div class="callout info">
+  <div class="co-t">After you’ve handed it in</div>
+  <p>Once you’ve submitted, <b>Review my answers</b> shows you the ground a good answer covers. Read it after you’ve handed your work in, and make a note of what you’d add or change. That’s what we’ll talk about in the supervision.</p><p>Your work is kept in this browser, in Files → <code>essays</code>. It won’t be there on another computer, and some shared computers clear it when you log out, so download a copy before you finish.</p>
+</div>
+<div class="q" data-q="es3-q-next">
+  <div class="q-text">Once you’ve read the guidance, which aspect of the comparison did your essay handle best, and where did it describe one hormone without comparing it with the other?</div>
+  <div class="q-model">There’s no single right answer here, so bring yours to the supervision. Comparison essays most often lose their way by describing each hormone in turn and leaving the comparison to the conclusion, or by listing similarities without explaining the differences.</div>
+</div>
+
+</section>
+
+<section class="chapter" id="s3-more" data-num="4" data-title="Revision titles" data-bench="exam" hidden>
+  <h1>Revision titles</h1>
+  <p class="lede">This chapter is optional. It has the other eight essay titles from the lecture notes, for revision. You can hand one in for feedback if you’d like to.</p>
+<h2 id="m3-rev">Essay titles for revision</h2>
+<p>These are the other titles in the lecture notes: three for each lecture. It’s worth noting them down; several are past Tripos questions.</p>
+<ol class="titles"><li>Compare the roles of parathyroid hormone, vitamin D and calcitonin in the regulation of blood calcium levels (NST 1B 1994).</li><li>What mechanisms contribute to the stability of the plasma concentration of free calcium ions? (NST 1B 1996)</li><li>Explain why parathyroid hormone, but not calcitonin, is essential for life (NST 1B 2000).</li><li>Discuss the theoretical problems that you might encounter in designing and interpreting an experiment to investigate the effects of a hormone on the body.</li><li>Discuss the actions of the hormones in the growth hormone / prolactin family (NST 1B 1999).</li><li>Is growth hormone inappropriately named?</li><li>Why do we have adrenal glands? (NST 1B 1993)</li><li>Discuss the roles of cortisol in times of stress.</li></ol>
+<p>The calcium titles go with the first lecture, and come back in the renal lectures, when you meet the kidney’s handling of calcium and phosphate.</p>
+<p>Planning an answer to each one (your argument, your evidence, and the order you’d put them in) is good revision. If you’d like feedback on one, write it in Supervision work <button class="do showme" type="button" data-exam="s3-revision">open them</button> and <b>hand it in</b>, in the same way as the work for this week. That’s optional: choose the title you want to write, and leave the others blank. After you submit, the guidance shows you the ground each title should cover.</p>
+<div class="optional">
+<h2>Practice</h2>
+<div class="activity">
+  <div class="act-t">If you want the practice</div>
+  <ol class="steps">
+    <li data-task="m3-plan">Plan an answer to one of the revision titles. Sum up your position in a sentence, then jot down the three or four points, with the evidence for each, that would support it.</li>
+    <li data-task="m3-rev" data-auto="exam:submit paper=s3-revision">Write one of them up in Supervision work, submit it, and hand it in if you’d like my feedback on it.</li>
+  </ol>
+</div>
+</div>
+</section>
+<!--/CHAPTERS-->
+    </aside>
+
+    <div class="splitter" role="separator" aria-orientation="vertical" title="Drag to resize, or double-click to reset"></div>
+
+    <section class="bench" aria-label="Workbench">
+      <div class="wb-tabs" role="tablist">
+        <button class="wb-tab rail-btn" type="button" id="tutRail" title="Show the instructions (Ctrl+\)" hidden><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M13 10l2 2-2 2"/></svg><span>Instructions</span></button>
+        <button class="wb-tab on" type="button" role="tab" data-wb="exam" title="Supervision work: the essay and the questions set for your supervision, written as in the online exam"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 3H6.5A2.5 2.5 0 0 0 4 5.5v13A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5V9z"/><path d="M14 3v6h6"/><path d="M8 13h8M8 17h5"/></svg><span class="lbl">Supervision work</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="scope" title="A virtual microscope with slides of human tissues"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9.5 2.8l3.6 1.4-3 7.6-3.6-1.4z"/><path d="M7.7 12.4l-.9 2.2"/><path d="M4 16.5h9"/><path d="M13.6 7.6a6.5 6.5 0 0 1 1.9 11.2"/><path d="M5 21h14"/><path d="M15.5 18.8V21"/></svg><span class="lbl">Microscope</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="anatomy" title="The anatomy of the human body in 3D (from Z-Anatomy)"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="4.6" r="2.3"/><path d="M12 7.6v6.6M6.2 10.6L12 8.8l5.8 1.8M8.8 21l3.2-6.8 3.2 6.8"/></svg><span class="lbl">Anatomy</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="viewer" title="Proteins and other molecules in 3D"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="6" cy="7" r="2.6"/><circle cx="18" cy="7" r="2.6"/><circle cx="12" cy="17.5" r="2.6"/><path d="M8.6 7h6.8M7.3 9.3l3.4 5.9M16.7 9.3l-3.4 5.9"/></svg><span class="lbl">Molecules</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="recorder" title="A chart recorder with real recordings of people (the ECG, heart sounds, blood pressure, breathing, muscle and the brain), from PhysioNet"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M6 13h2.5l1.5-4.5 2.5 8 1.8-5.5 1 2H18"/></svg><span class="lbl">Recorder</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="bath" title="An organ bath: isolated tissues, drugs and concentration–response curves"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5.5 3h13"/><path d="M7 3v13.5A4.5 4.5 0 0 0 11.5 21h1a4.5 4.5 0 0 0 4.5-4.5V3"/><path d="M12 3v4.5"/><rect x="10.7" y="7.5" width="2.6" height="6" rx="1.3"/><path d="M9.3 17.6h.01M14.4 16.4h.01M11.8 18.9h.01"/></svg><span class="lbl">Organ bath</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="flow" title="Flow diagrams of physiological control, with a simulator"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="5" rx="1.2"/><rect x="14" y="3" width="7" height="5" rx="1.2"/><rect x="14" y="16" width="7" height="5" rx="1.2"/><path d="M10 5.5h4M17.5 8v8M14 18.5H7.5a1.5 1.5 0 0 1-1.5-1.5V8"/></svg><span class="lbl">Diagrams</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="circuit" title="Electrical circuits, and the circuit models of physiology"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2 12h3.5l1.7-4 2.6 8 2.6-8 2.6 8 1.7-4H22"/></svg><span class="lbl">Circuits</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="sims" title="Interactive simulations from PhET (University of Colorado Boulder)"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h8.5M16.5 6H20M4 12h2.5M10.5 12H20M4 18h10.5M18.5 18H20"/><circle cx="14.5" cy="6" r="2"/><circle cx="8.5" cy="12" r="2"/><circle cx="16.5" cy="18" r="2"/></svg><span class="lbl">Simulations</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="rstudio" title="RStudio, for analysing data in R"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16M3 12h18"/></svg><span class="lbl">RStudio</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="editor" title="Your files"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v1H7l-4 9z"/><path d="M3 19l3.5-8H22l-3.5 8z"/></svg><span class="lbl">Files</span><span class="dot"></span></button>
+        <button class="bench-close" type="button" aria-label="Back to the instructions" title="Back to the instructions">✕<span class="lbl">Instructions</span></button>
+      </div>
+      <div class="wb-body">
+        <div class="wb-pane" data-wb="scope" hidden><div id="scopeRoot"></div></div>
+        <div class="wb-pane" data-wb="anatomy" hidden><div id="anatRoot"></div></div>
+        <div class="wb-pane" data-wb="viewer" hidden><div id="viewerRoot"></div></div>
+        <div class="wb-pane" data-wb="recorder" hidden><div id="recRoot"></div></div>
+        <div class="wb-pane" data-wb="bath" hidden><div id="bathRoot"></div></div>
+        <div class="wb-pane" data-wb="flow" hidden><div id="flowRoot"></div></div>
+        <div class="wb-pane" data-wb="circuit" hidden><div id="circuitRoot"></div></div>
+        <div class="wb-pane" data-wb="sims" hidden><div id="simsRoot"></div></div>
+        <div class="wb-pane" data-wb="exam"><div id="examRoot"></div></div>
+        <div class="wb-pane" data-wb="rstudio" hidden><div id="rsRoot"></div></div>
+        <div class="wb-pane" data-wb="editor" hidden><div id="edRoot"></div></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<button class="bench-fab" type="button" aria-label="Open the workbench"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16M3 12h18"/></svg>Workbench</button>
+<noscript><p style="padding:20px">This page needs JavaScript.</p></noscript>
+
+<script>window.BMS_STARTERS = [];
+window.BMS_STARTERS_VERSION = 1;</script>
+<script>window.BMS_PAGE = {"week": 3, "page": "supervision-3.html", "title": "Supervision 3", "site": "Physiology supervisions"};</script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/core.js"></script>
+<script src="assets/js/icons.js"></script>
+<script src="assets/js/vfs.js"></script>
+<script src="assets/js/project.js"></script>
+<script src="assets/vendor/codemirror/codemirror.js"></script>
+<script src="assets/vendor/codemirror/r.js"></script>
+<script src="assets/vendor/codemirror/markdown.js"></script>
+<script src="assets/vendor/codemirror/yaml.js"></script>
+<script src="assets/vendor/codemirror/shell.js"></script>
+<script src="assets/vendor/codemirror/javascript.js"></script>
+<script src="assets/vendor/codemirror/python.js"></script>
+<script src="assets/vendor/codemirror/overlay.js"></script>
+<script src="assets/vendor/codemirror/multiplex.js"></script>
+<script src="assets/vendor/codemirror/yaml-frontmatter.js"></script>
+<script src="assets/vendor/codemirror/rmarkdown.js"></script>
+<script src="assets/vendor/codemirror/matchbrackets.js"></script>
+<script src="assets/vendor/codemirror/closebrackets.js"></script>
+<script src="assets/vendor/codemirror/comment.js"></script>
+<script src="assets/vendor/codemirror/searchcursor.js"></script>
+<script src="assets/vendor/codemirror/active-line.js"></script>
+<script src="assets/vendor/codemirror/runmode.js"></script>
+<script src="assets/vendor/dompurify/purify.min.js"></script>
+<script src="assets/vendor/marked/marked.min.js"></script>
+<script src="assets/js/rsession.js"></script>
+<script src="assets/js/rui.js"></script>
+<script src="assets/js/dataview.js"></script>
+<script src="assets/js/knit.js"></script>
+<script src="assets/js/rstudio.js"></script>
+<script src="assets/js/rsource.js"></script>
+<script src="assets/js/shiny.js"></script>
+<script src="assets/js/pdfview.js"></script>
+<script src="assets/js/editor.js"></script>
+<script src="assets/js/page.js"></script>
+<script src="assets/js/tutorial.js"></script>
+<script src="assets/js/workbench.js"></script>
+</body>
+</html>

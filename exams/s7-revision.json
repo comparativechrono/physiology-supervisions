@@ -1,0 +1,114 @@
+{
+ "id": "s7-revision",
+ "week": 7,
+ "required": false,
+ "order": 2,
+ "title": "Supervision 7 revision essays",
+ "description": "Twelve more essay titles on this week’s lectures. Write one for practice, and hand it in if you’d like feedback on it.",
+ "minutes": null,
+ "suggestedMinutes": null,
+ "autoSubmit": false,
+ "spellcheck": false,
+ "showWordCount": true,
+ "clipboard": "exam",
+ "handIn": true,
+ "instructions": "<p><b>Optional, for revision.</b> These essay titles go with this week’s lectures. Only the Supervision 7 essay has to be handed in.</p><ul><li><b>Choose one</b> and write it here, as you would in the exam. Leave the others blank: you can still submit.</li><li><b>Handing in.</b> If you’d like my feedback on it, hand it in once you’ve submitted, in the same way as the work for this week. It goes into the same folder in my Google Drive.</li><li>Planning an answer to each of the others (your argument, your evidence and the order you’d put them in) is good revision too.</li><li>After you submit, <b>Review my answers</b> shows you the ground each title covers.</li><li><b>Pasting.</b> As in the exam, you can copy and paste within your work, but you can’t paste in text copied from anywhere else. Write everything in your own words.</li></ul>",
+ "questions": [
+  {
+   "id": "ecfv-control",
+   "type": "essay",
+   "title": "Controlling the ECF volume",
+   "lines": 18,
+   "text": "<p>What are the mechanisms and importance of the control of extracellular fluid volume?</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>Why Na<sup>+</sup> sets volume</b>: osmoregulation holds the ECF’s concentration, so its volume is its Na<sup>+</sup> content divided by that concentration; volume matters for plasma volume, venous return, cardiac output and arterial pressure.</li><li><b>Physical factors</b>: GFR and glomerulotubular balance; pressure natriuresis (higher glomerular and peritubular capillary pressures, a higher renal interstitial pressure, more back-leak in the leaky proximal tubule); the colloid osmotic pressure in the peritubular capillaries. <b>Nerves</b>: the renal sympathetic nerves (proximal Na<sup>+</sup> reabsorption, arteriolar constriction, renin through β<sub>1</sub> receptors), driven by cardiopulmonary receptors and arterial baroreceptors. <b>Hormones</b>: angiotensin II (proximal Na<sup>+</sup>/H<sup>+</sup> exchange, efferent constriction, aldosterone, thirst and Na<sup>+</sup> appetite), aldosterone (ENaC, Na<sup>+</sup>/K<sup>+</sup>-ATPase), ANP (higher GFR, less renin and aldosterone, less Na<sup>+</sup> reabsorption).</li><li><b>Importance</b>: the circulation depends on it (blood volume, mean systemic filling pressure, cardiac output, arterial pressure); volume depletion (haemorrhage, diarrhoea) threatens the perfusion of organs; expansion causes oedema and hypertension.</li><li><b>Its limits</b>: volume regulation is subordinate to osmoregulation, and the ECF volume varies acutely by about −10% to +20%; a transplanted, denervated kidney works well because the many mechanisms overlap.</li></ul>"
+  },
+  {
+   "id": "ecfv-regulation",
+   "type": "essay",
+   "title": "Regulating the ECF volume",
+   "lines": 18,
+   "text": "<p>Discuss the regulation of the extracellular fluid volume.</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><p>This overlaps with the previous title; planning both, and seeing how “discuss” lets you weigh the mechanisms, is good practice.</p><ul><li><b>Why Na<sup>+</sup> sets volume</b>: osmoregulation holds the ECF’s concentration, so its volume is its Na<sup>+</sup> content divided by that concentration; volume matters for plasma volume, venous return, cardiac output and arterial pressure.</li><li><b>Sensing</b>: there’s no receptor for the ECF volume itself; what is sensed is the filling of the circulation (cardiopulmonary receptors, arterial baroreceptors, the afferent arteriole, the macula densa).</li><li><b>Physical factors</b>: GFR and glomerulotubular balance; pressure natriuresis (higher glomerular and peritubular capillary pressures, a higher renal interstitial pressure, more back-leak in the leaky proximal tubule); the colloid osmotic pressure in the peritubular capillaries. <b>Nerves</b>: the renal sympathetic nerves (proximal Na<sup>+</sup> reabsorption, arteriolar constriction, renin through β<sub>1</sub> receptors), driven by cardiopulmonary receptors and arterial baroreceptors. <b>Hormones</b>: angiotensin II (proximal Na<sup>+</sup>/H<sup>+</sup> exchange, efferent constriction, aldosterone, thirst and Na<sup>+</sup> appetite), aldosterone (ENaC, Na<sup>+</sup>/K<sup>+</sup>-ATPase), ANP (higher GFR, less renin and aldosterone, less Na<sup>+</sup> reabsorption).</li><li><b>Weighing them</b>: which matter most, and when? The evidence from denervated kidneys, from adrenalectomised animals given a constant aldosterone infusion, and from ACE inhibitors. The integrated responses to volume depletion (haemorrhage) and expansion (a salty meal).</li></ul>"
+  },
+  {
+   "id": "mannitol",
+   "type": "essay",
+   "title": "Saline and mannitol",
+   "lines": 18,
+   "text": "<p>What is the response to an intravenous infusion of one litre of isotonic saline in a normal adult man? How would it differ if isotonic mannitol were substituted for the saline?</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>Saline</b>: as in this week’s essay, but given straight into the blood, so the plasma volume rises at once before the fluid spreads into the interstitial fluid; ECF +1 L, no change in osmolality, a slow natriuresis over a day or more (ANP, less renin, angiotensin II and aldosterone, pressure natriuresis, lower peritubular colloid osmotic pressure).</li><li><b>Mannitol</b>: also stays in the ECF at first, so the same initial expansion. But it’s freely filtered and not reabsorbed, so it holds water in the tubule (an osmotic diuresis): proximal water reabsorption falls, the tubular Na<sup>+</sup> concentration falls, and Na<sup>+</sup> reabsorption falls too. It’s excreted within hours, with water and some Na<sup>+</sup>, so the ECF may end slightly smaller than before.</li><li><b>On the way</b>: mannitol dilutes the plasma Na<sup>+</sup> without lowering the osmolality, so the osmoreceptors aren’t fooled; a hypertonic solution of mannitol is used clinically to draw water out of swollen brain tissue.</li></ul>"
+  },
+  {
+   "id": "renin",
+   "type": "essay",
+   "title": "Renin",
+   "lines": 18,
+   "text": "<p>What are the functions of renin? How is its secretion regulated?</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>Functions</b>: renin cleaves angiotensinogen to angiotensin I, the rate-limiting step; ACE makes angiotensin II (normally 500–600 pM, up to ten-fold more in severe Na<sup>+</sup> depletion). Angiotensin II: vasoconstriction; proximal Na<sup>+</sup> reabsorption; efferent constriction, protecting GFR; aldosterone; thirst (Fitzsimons) and Na<sup>+</sup> appetite; ADH release.</li><li><b>Secretion</b> by the granular cells of the afferent arteriole: the intrarenal baroreceptor (less stretch, more renin); the renal sympathetic nerves (β<sub>1</sub>), driven by the baroreceptors and cardiopulmonary receptors; the macula densa (less NaCl delivered, more renin). Inhibited by angiotensin II (negative feedback) and by ANP.</li><li><b>In context</b>: haemorrhage, salt depletion, standing up; ACE inhibitors and angiotensin receptor blockers in hypertension and heart failure.</li></ul>"
+  },
+  {
+   "id": "salt-water",
+   "type": "essay",
+   "title": "Salt and water",
+   "lines": 18,
+   "text": "<p>Give an overview of the role of the kidney in controlling body salt and water contents.</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>The two systems</b>: water is controlled by osmoregulation (ADH and the concentrating mechanism; thirst), salt by volume regulation (Na<sup>+</sup> excretion); the kidney is the effector of both.</li><li><b>Where</b>: the proximal tubule reabsorbs about 65% isosmotically (set fractions, glomerulotubular balance); the loop of Henle separates salt from water, making the medullary gradient; the distal tubule and collecting duct make the regulated adjustments (aldosterone, ADH).</li><li><b>How they interact</b>: the integrated responses to drinking water, saline or seawater, and to haemorrhage; osmolality is defended first.</li><li>“Overview” means breadth and balance: cover everything briefly, and keep detail for where it explains something.</li></ul>"
+  },
+  {
+   "id": "na-ways",
+   "type": "essay",
+   "title": "Varying sodium excretion",
+   "lines": 18,
+   "text": "<p>In what ways may the rate of excretion of sodium by the kidney be varied?</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>Filtered load</b>: GFR, and why changes in it don’t change excretion much (autoregulation, glomerulotubular balance).</li><li><b>Physical factors</b>: GFR and glomerulotubular balance; pressure natriuresis (higher glomerular and peritubular capillary pressures, a higher renal interstitial pressure, more back-leak in the leaky proximal tubule); the colloid osmotic pressure in the peritubular capillaries. <b>Nerves</b>: the renal sympathetic nerves (proximal Na<sup>+</sup> reabsorption, arteriolar constriction, renin through β<sub>1</sub> receptors), driven by cardiopulmonary receptors and arterial baroreceptors. <b>Hormones</b>: angiotensin II (proximal Na<sup>+</sup>/H<sup>+</sup> exchange, efferent constriction, aldosterone, thirst and Na<sup>+</sup> appetite), aldosterone (ENaC, Na<sup>+</sup>/K<sup>+</sup>-ATPase), ANP (higher GFR, less renin and aldosterone, less Na<sup>+</sup> reabsorption).</li><li><b>Where along the nephron</b>: proximal (angiotensin II, nerves, physical factors), loop (the thick ascending limb, and loop diuretics), distal (thiazides), collecting duct (aldosterone, ANP, amiloride).</li><li><b>Numbers</b>: about 25,000 mmol filtered a day, and well over 99% reabsorbed, so a small change in fractional reabsorption makes a large change in excretion.</li></ul>"
+  },
+  {
+   "id": "ca-k",
+   "type": "essay",
+   "title": "Calcium and potassium",
+   "lines": 18,
+   "text": "<p>Why is it important that the free concentrations of calcium and potassium ions in the extracellular fluid are tightly controlled? What mechanisms help achieve these aims? What are the major physiological challenges to calcium and potassium ion homeostasis?</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>Why</b>: K<sup>+</sup> sets the resting potential (hyperkalaemia above 5.5 mM and hypokalaemia below 3.5 mM disturb the heart, nerves and muscle; acid–base balance); free Ca<sup>2+</sup> (about 1.2 mM) affects the threshold of Na<sup>+</sup> channels (low Ca<sup>2+</sup> causes tetany), and clotting and secretion.</li><li><b>K<sup>+</sup></b>: internal balance (insulin, adrenaline, aldosterone; pH and osmolality shift it); external balance by secretion in the distal tubule and collecting duct (aldosterone, plasma K<sup>+</sup>, tubular flow, ADH’s effect on luminal K<sup>+</sup> permeability).</li><li><b>Ca<sup>2+</sup></b>: PTH, calcitriol and calcitonin; the kidney reabsorbs a fixed 70% proximally and 20% in the thick ascending limb, and regulates the last 10% distally (TRPV5, calbindin, the Ca<sup>2+</sup>-ATPase and NCX); bone and gut.</li><li><b>Challenges</b>: K<sup>+</sup>: meals, exercise, cell lysis (burns), acidosis and alkalosis, diuretics, a fall in volume. Ca<sup>2+</sup>: growth, pregnancy and lactation (the fetus and the milk), a diet low in calcium or vitamin D, alkalosis (more Ca<sup>2+</sup> bound to protein).</li></ul>"
+  },
+  {
+   "id": "na-total",
+   "type": "essay",
+   "title": "The body’s sodium",
+   "lines": 18,
+   "text": "<p>How is the total quantity of sodium in the body regulated? What is the functional importance of this regulation?</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>Balance</b>: intake varies widely, and output is regulated mainly by the kidney (aldosterone also reduces the Na<sup>+</sup> lost in sweat and from the colon).</li><li><b>Physical factors</b>: GFR and glomerulotubular balance; pressure natriuresis (higher glomerular and peritubular capillary pressures, a higher renal interstitial pressure, more back-leak in the leaky proximal tubule); the colloid osmotic pressure in the peritubular capillaries. <b>Nerves</b>: the renal sympathetic nerves (proximal Na<sup>+</sup> reabsorption, arteriolar constriction, renin through β<sub>1</sub> receptors), driven by cardiopulmonary receptors and arterial baroreceptors. <b>Hormones</b>: angiotensin II (proximal Na<sup>+</sup>/H<sup>+</sup> exchange, efferent constriction, aldosterone, thirst and Na<sup>+</sup> appetite), aldosterone (ENaC, Na<sup>+</sup>/K<sup>+</sup>-ATPase), ANP (higher GFR, less renin and aldosterone, less Na<sup>+</sup> reabsorption).</li><li><b>Why Na<sup>+</sup> sets volume</b>: osmoregulation holds the ECF’s concentration, so its volume is its Na<sup>+</sup> content divided by that concentration; volume matters for plasma volume, venous return, cardiac output and arterial pressure.</li><li><b>Long-term arterial pressure</b>: the relationship between pressure and Na<sup>+</sup> excretion (pressure natriuresis) may set the long-term level of arterial pressure, which links this title to the next.</li></ul>"
+  },
+  {
+   "id": "pressure",
+   "type": "essay",
+   "title": "The kidney and blood pressure",
+   "lines": 18,
+   "text": "<p>Discuss the roles of intra-renal and extra-renal factors in the control of arterial blood pressure.</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>Extra-renal, and short-term</b>: the arterial baroreflex (adapts over about a day), cardiopulmonary receptors, the sympathetic nervous system, ADH in severe hypotension, the circulating renin–angiotensin system and ANP.</li><li><b>Intra-renal</b>: pressure natriuresis (despite autoregulation, which isn’t perfect); renin release by the intrarenal baroreceptor and the macula densa; tubuloglomerular feedback; local angiotensin II.</li><li><b>The long term</b>: arterial pressure can only stay high if the kidney excretes the day’s Na<sup>+</sup> at that pressure, so the kidney’s pressure–natriuresis relationship sets the long-term level (Guyton’s view); hypertension as a shift in that relationship.</li><li><b>Evidence and examples</b>: perfused kidneys show a smaller pressure natriuresis than kidneys in the body, so other factors add to it; renal artery stenosis; ACE inhibitors, diuretics; primary aldosteronism.</li></ul>"
+  },
+  {
+   "id": "na-mechanisms",
+   "type": "essay",
+   "title": "Sodium excretion and why it matters",
+   "lines": 18,
+   "text": "<p>Discuss the mechanisms that allow the kidney to vary the excretion of sodium ions. Why is the regulation of sodium excretion important?</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><p>Compare this with the title on the ways sodium excretion may be varied: here you have to say why it matters too.</p><ul><li><b>Physical factors</b>: GFR and glomerulotubular balance; pressure natriuresis (higher glomerular and peritubular capillary pressures, a higher renal interstitial pressure, more back-leak in the leaky proximal tubule); the colloid osmotic pressure in the peritubular capillaries. <b>Nerves</b>: the renal sympathetic nerves (proximal Na<sup>+</sup> reabsorption, arteriolar constriction, renin through β<sub>1</sub> receptors), driven by cardiopulmonary receptors and arterial baroreceptors. <b>Hormones</b>: angiotensin II (proximal Na<sup>+</sup>/H<sup>+</sup> exchange, efferent constriction, aldosterone, thirst and Na<sup>+</sup> appetite), aldosterone (ENaC, Na<sup>+</sup>/K<sup>+</sup>-ATPase), ANP (higher GFR, less renin and aldosterone, less Na<sup>+</sup> reabsorption).</li><li><b>Why Na<sup>+</sup> sets volume</b>: osmoregulation holds the ECF’s concentration, so its volume is its Na<sup>+</sup> content divided by that concentration; volume matters for plasma volume, venous return, cardiac output and arterial pressure.</li><li><b>Why it matters</b>: volume depletion (shock) and overload (oedema, hypertension, heart failure); Na<sup>+</sup> and K<sup>+</sup> and H<sup>+</sup> are linked (aldosterone, the Na<sup>+</sup>/H<sup>+</sup> exchanger); diuretics and where they act.</li></ul>"
+  },
+  {
+   "id": "potassium",
+   "type": "essay",
+   "title": "Plasma potassium",
+   "lines": 18,
+   "text": "<p>Why is it important to maintain a tightly controlled plasma [K<sup>+</sup>] and how is plasma potassium regulated?</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>Why</b>: excitability (the resting potential and E<sub>K</sub>; hyperkalaemia inactivates Na<sup>+</sup> channels and slows cardiac conduction; hypokalaemia hyperpolarises, causing weakness and arrhythmias); acid–base balance; the danger of a meal’s K<sup>+</sup> (about 40 mmol in 16 L would raise plasma K<sup>+</sup> by 2.5 mM).</li><li><b>Internal balance</b>: 4 mol inside the cells, about 50 mmol outside; insulin, adrenaline (β<sub>2</sub>) and aldosterone move K<sup>+</sup> into cells; acidosis, hyperosmolality, cell lysis and exercise move it out.</li><li><b>External balance</b>: freely filtered; 67% reabsorbed proximally and 20% in the loop, fixed; regulated secretion by the principal cells (Na<sup>+</sup>/K<sup>+</sup>-ATPase, ENaC, the luminal K<sup>+</sup> channels), stimulated by plasma K<sup>+</sup> and aldosterone, and by tubular flow; reabsorption by intercalated cells (H<sup>+</sup>/K<sup>+</sup>-ATPase) in K<sup>+</sup> depletion.</li><li><b>Keeping Na<sup>+</sup> and K<sup>+</sup> apart</b>: tubular flow in hypovolaemia, ADH’s effect on luminal K<sup>+</sup> permeability, and the evidence from adrenalectomised animals.</li></ul>"
+  },
+  {
+   "id": "surtees",
+   "type": "essay",
+   "title": "Surtees’s frost",
+   "lines": 18,
+   "text": "<p>“Harrah! Blister my kidneys!” exclaimed he in delight, “it is a frost! – the dahlias are dead!”<br>(R. S. Surtees, 1843)<br><br>What is the physiological connection?</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>Cold</b>: exposure to cold constricts the vessels of the skin, shifting blood into the central veins and the chest; the atria and great veins are stretched.</li><li><b>A cold diuresis</b>: the cardiopulmonary receptors signal an expanded volume, so ADH falls, ANP rises, renal sympathetic activity and renin fall, and more dilute urine is made, with Na<sup>+</sup> too: the body responds to a redistribution of its blood as if its volume had risen.</li><li><b>The same principle elsewhere</b>: immersion in water (the hydrostatic pressure on the legs shifts blood centrally), lying down, and weightlessness all cause a diuresis.</li><li>Take a light-hearted title seriously: explain the mechanisms, and give the evidence for them.</li></ul>"
+  }
+ ]
+}

@@ -1,0 +1,82 @@
+{
+ "id": "s3-revision",
+ "week": 3,
+ "required": false,
+ "order": 2,
+ "title": "Supervision 3 revision essays",
+ "description": "Eight more essay titles on this week’s lectures. Write one for practice, and hand it in if you’d like feedback on it.",
+ "minutes": null,
+ "suggestedMinutes": null,
+ "autoSubmit": false,
+ "spellcheck": false,
+ "showWordCount": true,
+ "clipboard": "exam",
+ "handIn": true,
+ "instructions": "<p><b>Optional, for revision.</b> These essay titles go with this week’s lectures. Only the Supervision 3 essay has to be handed in.</p><ul><li><b>Choose one</b> and write it here, as you would in the exam. Leave the others blank: you can still submit.</li><li><b>Handing in.</b> If you’d like my feedback on it, hand it in once you’ve submitted, in the same way as the work for this week. It goes into the same folder in my Google Drive.</li><li>Planning an answer to each of the others (your argument, your evidence and the order you’d put them in) is good revision too.</li><li>After you submit, <b>Review my answers</b> shows you the ground each title covers.</li><li><b>Pasting.</b> As in the exam, you can copy and paste within your work, but you can’t paste in text copied from anywhere else. Write everything in your own words.</li></ul>",
+ "questions": [
+  {
+   "id": "pth",
+   "type": "essay",
+   "title": "PTH, vitamin D and calcitonin",
+   "lines": 18,
+   "text": "<p>Compare the roles of parathyroid hormone, vitamin D and calcitonin in the regulation of blood calcium levels (NST 1B 1994).</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>The variable.</b> Free (ionised) plasma Ca<sup>2+</sup>, held at about 1.2 mM, matters for nerve and muscle excitability, clotting and secretion; most of the body’s calcium is in bone.</li><li><b>PTH</b> (parathyroid chief cells; Ca<sup>2+</sup>-sensing receptor): raises Ca<sup>2+</sup> within minutes by increasing reabsorption in the distal tubule, over hours by mobilising bone (osteocytic osteolysis, inhibiting osteoblasts, then osteoclasts through a paracrine signal from osteoblasts), and over days through calcitriol. It inhibits phosphate reabsorption in the proximal tubule, so net phosphate is lost.</li><li><b>Vitamin D</b>: 25-OHD from the liver (steady), converted in the proximal tubule to calcitriol (1,25(OH)<sub>2</sub>D) under PTH, low Ca<sup>2+</sup> or low phosphate. Calcitriol acts through a nuclear receptor, mainly to increase intestinal Ca<sup>2+</sup> absorption (apical channel, calbindin, basolateral Ca<sup>2+</sup>-ATPase), and phosphate absorption too. Deficiency: rickets, osteomalacia.</li><li><b>Calcitonin</b> (thyroid C cells), released by high Ca<sup>2+</sup> (and gastrin): rapidly inhibits osteoclasts. Its importance in humans is doubtful: neither its removal (thyroidectomy) nor its excess (medullary carcinoma) disturbs plasma Ca<sup>2+</sup> much. It may protect the skeleton when turnover is high (growth, lactation).</li><li><b>Compare</b> them on speed, targets, and importance: PTH the main minute-to-minute controller, calcitriol the long-term supplier, calcitonin a minor brake.</li></ul>"
+  },
+  {
+   "id": "stable",
+   "type": "essay",
+   "title": "Keeping free calcium stable",
+   "lines": 18,
+   "text": "<p>What mechanisms contribute to the stability of the plasma concentration of free calcium ions? (NST 1B 1996)</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>Why it matters</b>: excitability (low Ca<sup>2+</sup> causes tetany, by lowering the threshold of Na<sup>+</sup> channels), and the many processes Ca<sup>2+</sup> controls.</li><li><b>Buffers</b>: about half the plasma calcium is bound to albumin or complexed; the binding depends on pH (alkalosis lowers free Ca<sup>2+</sup>, so hyperventilation can cause tingling); the rapidly exchangeable pool of bone.</li><li><b>Hormonal feedback</b>: the Ca<sup>2+</sup>-sensing receptor of the parathyroid; PTH on kidney, bone and (via calcitriol) gut; calcitonin.</li><li><b>The kidney</b>: filtered calcium is mostly reabsorbed passively in the proximal tubule and thick ascending limb, and the regulated part in the distal tubule.</li><li><b>Large stores, and timescales</b>: seconds (binding), minutes (kidney), hours to days (bone, gut); how they protect against a calcium-free diet, or lactation.</li></ul>"
+  },
+  {
+   "id": "essential",
+   "type": "essay",
+   "title": "Why PTH, not calcitonin",
+   "lines": 18,
+   "text": "<p>Explain why parathyroid hormone, but not calcitonin, is essential for life (NST 1B 2000).</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>Removal of the parathyroids</b> causes hypocalcaemia, tetany and death, unless calcium and vitamin D are given (the classic early observation after thyroidectomy that took the parathyroids too).</li><li><b>Why</b>: PTH is the only hormone that rapidly raises Ca<sup>2+</sup> against losses (kidney, bone and, through calcitriol, gut); without it Ca<sup>2+</sup> falls and excitability rises.</li><li><b>Calcitonin</b> lowers Ca<sup>2+</sup>, which is rarely a threat; without it, other mechanisms prevent a rise (less PTH, more renal excretion). Thyroidectomy patients (no C cells) keep normal Ca<sup>2+</sup>, and patients with medullary thyroid carcinoma (much calcitonin) aren’t hypocalcaemic.</li><li><b>An asymmetry</b>: the body’s calcium is threatened mainly by losses, so the system defends against hypocalcaemia; the essential hormone is the one that does that.</li></ul>"
+  },
+  {
+   "id": "experiment",
+   "type": "essay",
+   "title": "Experiments with hormones",
+   "lines": 18,
+   "text": "<p>Discuss the theoretical problems that you might encounter in designing and interpreting an experiment to investigate the effects of a hormone on the body.</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>Removal and replacement</b>: removing a gland removes several hormones (the adrenal cortex: cortisol and aldosterone), and replacement doses may not mimic the natural pattern (pulses, circadian rhythm).</li><li><b>Dose and pattern</b>: pharmacological doses do things physiological ones don’t (glucocorticoids’ immunosuppression); pulsatility matters (growth hormone: a single blood sample tells you little).</li><li><b>Feedback and compensation</b>: giving a hormone suppresses its own axis (cortisol atrophies the adrenal cortex); other hormones compensate (redundancy in glucose counter-regulation).</li><li><b>Direct or indirect</b>: is the effect the hormone’s or a mediator’s (growth hormone and IGF-1: the somatomedin hypothesis, local injection into one growth plate, IGF-1 antiserum, liver-specific knockouts)?</li><li><b>Permissive effects, binding proteins, measurement</b> (immunoassays and their cross-reactivity; free against total), species differences (corticosterone in rats), and stress caused by the experiment itself.</li></ul>"
+  },
+  {
+   "id": "family",
+   "type": "essay",
+   "title": "The growth hormone and prolactin family",
+   "lines": 18,
+   "text": "<p>Discuss the actions of the hormones in the growth hormone / prolactin family (NST 1B 1999).</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><p>You’ll learn more about prolactin next term; for now, concentrate on growth hormone and what you know of the family.</p><ul><li><b>The family</b>: growth hormone, prolactin and the placental somatomammotropins (placental lactogen), similar four-helix proteins acting on related receptors that signal through JAK2–STAT.</li><li><b>Growth hormone’s metabolic actions</b> in fasting (fat mobilised, glucose spared, gluconeogenesis, insulin antagonism) and its growth actions (protein synthesis, chondrocytes, IGF-1: the somatomedin and dual-effector hypotheses).</li><li><b>In utero</b>: pituitary growth hormone isn’t needed; IGF-1 and IGF-2, regulated by placental somatomammotropins and insulin, are.</li><li><b>Prolactin</b>: milk production and maternal behaviour, and its many other actions in other vertebrates (osmoregulation in fish, for example), which show how a hormone family’s roles diverge.</li></ul>"
+  },
+  {
+   "id": "named",
+   "type": "essay",
+   "title": "Is growth hormone misnamed?",
+   "lines": 18,
+   "text": "<p>Is growth hormone inappropriately named?</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>The case for the name</b>: gigantism and acromegaly; pituitary dwarfism; Laron syndrome (receptor defects); growth at the growth plates; protein synthesis.</li><li><b>The case against</b>: much of its growth effect goes through IGF-1, local or endocrine; it isn’t needed for growth in utero; growth needs insulin and thyroid hormone too (permissive), and many other factors; its release is highest in fasting, when there’s no growth, and its most immediate effects are metabolic (a counter-regulatory hormone, like cortisol). FGF21 causes growth hormone resistance in fasting.</li><li><b>A conclusion</b>: the name describes one of its roles, in the fed state; “somatotropin” or a metabolic name would be no better. Take a position and defend it.</li></ul>"
+  },
+  {
+   "id": "adrenal",
+   "type": "essay",
+   "title": "Why do we have adrenal glands?",
+   "lines": 18,
+   "text": "<p>Why do we have adrenal glands? (NST 1B 1993)</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>What the glands do</b>: the cortex makes aldosterone (salt and water, K<sup>+</sup>; essential), cortisol (glucose, stress, permissive effects; essential) and androgens; the medulla makes adrenaline (fast responses, also done by the sympathetic nerves).</li><li><b>Why two parts in one gland</b>: the blood flows from cortex to medulla, so high cortisol induces PNMT and adrenaline synthesis; a single stress organ, answering in seconds and in minutes.</li><li><b>Which parts are essential</b>: adrenalectomy is fatal without replacement (salt loss, hyperkalaemia, hypoglycaemia, vascular collapse in stress), but the medulla can be lost without much harm, as the sympathetic nervous system covers for it.</li><li><b>An evolutionary angle</b>: in many fish the two tissues (interrenal and chromaffin) are separate. The question “why” invites a view on why they came together.</li></ul>"
+  },
+  {
+   "id": "stress",
+   "type": "essay",
+   "title": "Cortisol in stress",
+   "lines": 18,
+   "text": "<p>Discuss the roles of cortisol in times of stress.</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>Stress and the axis</b>: Selye’s general adaptation syndrome (alarm, resistance, “exhaustion”: really the harm of chronic high glucocorticoids); allostasis; the HPA axis, with the sympathetic response first.</li><li><b>Metabolic</b>: glucose mobilised and spared for the brain, gluconeogenesis from protein, fat mobilised.</li><li><b>Permissive</b>: vascular responsiveness to catecholamines; adrenaline synthesis (PNMT). Without cortisol, a stress can cause collapse.</li><li><b>Restraining</b>: Sapolsky’s view that cortisol restrains the immune and inflammatory responses that stress first activates, returning them to normal; pharmacological doses and chronic stress suppress immunity.</li><li><b>Costs of chronic stress</b>: muscle wasting, bone loss, impaired growth and reproduction, mood. Not every rise of cortisol means distress (exercise, courtship).</li></ul>"
+  }
+ ]
+}

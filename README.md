@@ -1,32 +1,33 @@
 # Physiology supervisions
 
-**Supervisions for NST IB Physiology with Tim Hearn, built on the [BMS workbench](https://github.com/comparativechrono/BMS-workbench)**, in the same way as the [BMS supervisions](https://github.com/comparativechrono/BMS-supervisions). The landing page has a tile for each supervision. Each supervision's page will hold the work to hand in – an essay, written in the workbench's *Supervision work* tab as students will write in the online exam, then handed in from the same page, as a Word document, straight to the supervisor's Google Drive – and short exercises in the workbench, with the instructions alongside: a virtual microscope, the human body in 3D, real recordings of people, an organ bath, flow diagrams that run, circuits, PhET simulations, molecules in 3D and RStudio.
+**Supervisions for NST IB Physiology with Tim Hearn, built on the [BMS workbench](https://github.com/comparativechrono/BMS-workbench)**, in the same way as the [BMS supervisions](https://github.com/comparativechrono/BMS-supervisions). The landing page has a tile for each supervision. Each supervision's page holds the work to hand in – an essay, or in two weeks four short answers, written in the workbench's *Supervision work* tab as students will write in the online exam, then handed in from the same page, as a Word document, straight to the supervisor's Google Drive – and short, optional exercises in the workbench, with the instructions alongside: a virtual microscope, the human body in 3D, real recordings of people, an organ bath, flow diagrams that run, circuits, PhET simulations, molecules in 3D and RStudio.
 
 Everything runs in the student's web browser. Students don't need to install anything, there is no server-side code, and their files, answers and essays are stored in their own browser. The site is static (HTML, CSS, JavaScript and the data: slides, models, recordings and simulations), so it is hosted for free on **GitHub Pages**.
 
-**The site is set up, and no supervision's work has been added yet.** The landing page has tiles for Supervisions 1 to 8, which open the workbench and its guide until their work is added (see [Adding a supervision](#adding-a-supervision)). Handing in is connected: work goes to the site's own hand-in script, which saves it in Tim Hearn's Google Drive ([Handing in](#handing-in)).
+**All eight supervisions are ready** ([The supervisions](#the-supervisions)): for each, a piece of work to hand in, with no time limit; about half an hour of optional exercises in the workbench; and the rest of the week's essay titles, for revision, which students can hand in too if they would like feedback. Handing in is connected: work goes to the site's own hand-in script, which saves it in Tim Hearn's Google Drive ([Handing in](#handing-in)).
 
 ---
 
 ## Contents
 
 1. [The site](#the-site)
-2. [Handing in](#handing-in)
-3. [Adding a supervision](#adding-a-supervision)
-4. [What's in the workbench](#whats-in-the-workbench)
-5. [The workbench guide](#the-workbench-guide)
-6. [Before students use it](#before-students-use-it)
-7. [Publishing it on GitHub Pages](#publishing-it-on-github-pages)
-8. [Trying it on your own computer](#trying-it-on-your-own-computer)
-9. [Settings in `config.js`](#settings-in-configjs)
-10. [Writing chapters](#writing-chapters)
-11. [Slides, models, recordings, simulations, papers and examples](#slides-models-recordings-simulations-papers-and-examples)
-12. [What students keep](#what-students-keep)
-13. [Privacy](#privacy)
-14. [Browser support and limitations](#browser-support-and-limitations)
-15. [How it was tested](#how-it-was-tested)
-16. [Files](#files)
-17. [Credits and licences](#credits-and-licences)
+2. [The supervisions](#the-supervisions)
+3. [Handing in](#handing-in)
+4. [Changing or adding a supervision](#changing-or-adding-a-supervision)
+5. [What's in the workbench](#whats-in-the-workbench)
+6. [The workbench guide](#the-workbench-guide)
+7. [Before students use it](#before-students-use-it)
+8. [Publishing it on GitHub Pages](#publishing-it-on-github-pages)
+9. [Trying it on your own computer](#trying-it-on-your-own-computer)
+10. [Settings in `config.js`](#settings-in-configjs)
+11. [Writing chapters](#writing-chapters)
+12. [Slides, models, recordings, simulations, papers and examples](#slides-models-recordings-simulations-papers-and-examples)
+13. [What students keep](#what-students-keep)
+14. [Privacy](#privacy)
+15. [Browser support and limitations](#browser-support-and-limitations)
+16. [How it was tested](#how-it-was-tested)
+17. [Files](#files)
+18. [Credits and licences](#credits-and-licences)
 
 ---
 
@@ -35,10 +36,10 @@ Everything runs in the student's web browser. Students don't need to install any
 | Page | What it is |
 | --- | --- |
 | `index.html` | The landing page: a tile for each supervision, showing how far the student has got with its exercises and what they have done with its work to hand in (started, submitted, handed in), and the student's name, which goes on the work they hand in (every page of the site shares it) |
-| `supervision-N.html` | A supervision's page, once its work is added: its chapters on the left and the workbench on the right, opening on Supervision work |
-| `workbench.html` | The workbench's guide: a tour of its tabs (the BMS workbench's starter practical). The tiles of the supervisions whose work isn't ready yet open it |
+| `supervision-N.html` | A supervision's page (Supervisions 1 to 8): its chapters on the left and the workbench on the right, opening on Supervision work |
+| `workbench.html` | The workbench's guide: a tour of its tabs (the BMS workbench's starter practical), linked from the landing page. A supervision whose work isn't ready yet opens it from its tile |
 
-Each supervision's page is the workbench, with that supervision's chapters. Its first tab, **Supervision work** (the BMS workbench's *Exam practice*, renamed and moved to the front), lists the supervision's own papers first – the work to hand in, marked *To hand in*, then the optional papers – then the practice papers, and, closed, the other supervisions' papers. A paper to hand in has no time limit, and may suggest a time: its clock counts the time spent writing up to the suggested time, says when it is reached, and locks nothing. **Handing in is built in**, as at the end of an exam: after submitting, the student types the hand-in password that the supervisor gives them (it is not on the site) and presses *Hand it in*, and the Word document – named after the paper and the student, with their name at the top – goes to the site's hand-in script, which saves it in Tim Hearn's Google Drive and sends back a receipt ([Handing in](#handing-in)). For the landing page, the site remembers when each supervision's paper to hand in was started, submitted, downloaded and handed in.
+Each supervision's page is the workbench, with that supervision's chapters. Its first tab, **Supervision work** (the BMS workbench's *Exam practice*, renamed and moved to the front), lists the supervision's own papers first – the work to hand in, marked *To hand in*, then the optional papers – then the practice papers, and, closed, the other supervisions' papers. A paper to hand in has no time limit, and here suggests no time either: its clock counts the time spent writing, and locks nothing. **Handing in is built in**, as at the end of an exam: after submitting, the student types the hand-in password that the supervisor gives them (it is not on the site) and presses *Hand it in*, and the Word document – named after the paper and the student, with their name at the top – goes to the site's hand-in script, which saves it in Tim Hearn's Google Drive and sends back a receipt ([Handing in](#handing-in)). For the landing page, the site remembers when each supervision's paper to hand in was started, submitted, downloaded and handed in.
 
 **How it differs from the BMS supervisions.** The workbench and the supervision pages work in the same way, from the same code. What is the site's own:
 
@@ -46,6 +47,29 @@ Each supervision's page is the workbench, with that supervision's chapters. Its 
 - where it saves things in the browser: everything has the prefix `physsup` (`storePrefix` in `config.js`), so the students' files, ticks, answers and name here are kept apart from the BMS workbench's (`bmswb`) and the BMS supervisions' (`bmssup`), although GitHub Pages serves all three from `comparativechrono.github.io`. Each page keeps its ticks and answers under its own name (its `data-page`), and the pages share the student's home folder and their name;
 - its hand-in script, a Google Apps Script project of its own (`handin/`), with its own password, folder and sheet;
 - its colours: navy, with a trace of the ECG as its mark, where the BMS sites are plum (the top bar in `assets/css/bms.css`, Supervision work and the calculator in `exam.css`, the landing page in `landing.css`, and the marks and icons in `build/template.html` and `build/landing.html`).
+
+## The supervisions
+
+| | Lectures | To hand in | Optional exercises (about half an hour) |
+| --- | --- | --- | --- |
+| 1 | Cardiovascular 1–3: the circulation and capillary exchange; arterioles; the determinants of cardiac output | An essay: *Discuss the cardiovascular adjustments that occur in whole body exercise.* | Organ bath: Furchgott's experiment on a ring of rat aorta, then L-NAME and nitroprusside. Circuits: Guyton's model of the circulation in exercise (`exercise-circulation.circuit.json`, from the BMS supervisions) |
+| 2 | Cardiovascular 4–5 and clinical cardiovascular physiology: blood pressure; exercise, haemorrhage and hypoxia; hypertension, heart failure and shock | Four short answers: removing the baroreceptors; haemorrhage; two responses to hypoxia; heart failure | Recorder: blood pressure and heart rate, beat by beat, as a young man stands up. Circuits: haemorrhage and heart failure in the same model |
+| 3 | Endocrinology: calcium; growth hormone and the IGFs; the hypothalamic–pituitary–adrenal axis | An essay: *Compare and contrast the metabolic roles of growth hormone and cortisol.* | Microscope and Diagrams: the adrenal gland, and the HPA axis run with the cortex knocked out and with cortisol fixed (`hpa-axis.flow.json`). Molecules: growth hormone with its receptors, the glucocorticoid receptor, cortisol and aldosterone |
+| 4 | Respiration 1–3: compliance and surfactant; airway resistance and the pulmonary circulation; ventilation–perfusion matching | An essay: *Why are ventilation and perfusion not perfectly matched in the healthy lung? Discuss how the lung limits the mismatch, and when its response can do harm.* | Microscope: a bronchiole, its smooth muscle, a pulmonary artery and alveoli. R: why blood from a well-ventilated unit can't make up for blood from a poorly ventilated one |
+| 5 | Respiration 4–6: gas transport; the control of breathing; clinical respiratory physiology | Four short answers: content and saturation; carrying CO₂; breathing at altitude; two spirometry results | Molecules and R: haemoglobin, an anaemia and carbon monoxide. The calculator: three people's lung function tests |
+| 6 | Renal 1–3: body fluids and the kidney; filtration and clearance; water handling | An essay: *What is the evidence that the kidneys produce urine by a process of ultrafiltration, followed by fluid reabsorption, involving expenditure by the tubule cells?* | Microscope: renal corpuscles and proximal tubules, measured. R: the clearances of inulin, glucose and PAH (an old Part IA question) |
+| 7 | Renal 4–5 and pH 1: extracellular fluid volume and the integrated responses; calcium, phosphate and potassium; buffers and the kidney's handling of acid | An essay: *How does an adult human respond to the ingestion of one litre of (a) fresh water; (b) isotonic saline; (c) seawater?* | The calculator: where each litre goes. The calculator and the Microscope: potassium after a meal, and the zona glomerulosa |
+| 8 | pH 2, a single lecture, so the supervision is synoptic: the kidney's secretion of acid, and the disorders of acid–base balance | An essay: *Discuss the relative importance of respiratory system and kidneys in regulating plasma pH.* | R: the Henderson–Hasselbalch equation, open and closed buffers, and a pH–bicarbonate diagram. Diagrams: the lungs and the kidneys sharing an acid load, each taken away in turn (`acid-base.flow.json`) |
+
+Each page has five chapters: *This week* (the work to hand in, the week's plan and the student's name); the two optional exercises; the work to hand in, with a point of writing for that week's title (using equations, setting out short answers, comparing, diagrams, answering from data, experimental evidence, a title in parts, weighing two systems) and the steps of writing, submitting and handing it in; and the revision titles. Only the name and the work to hand in count towards finishing the page. The chapters are in `build/s1.py` to `build/s8.py`, with what they share in `build/sup.py`, and nothing in them is copied from the handouts or the slides.
+
+**Where the titles come from.** The endocrinology, renal and pH handouts suggest essay titles. Supervisions 3, 6 and 8 hand in one of them, and Supervision 7 the title in the fourth renal lecture's slides; each handout's other titles are the revision titles, with the renal handout's three quotations and the old Part IA question in the second renal lecture's slides. The pH handout's first title is corrected ("By what mechanisms is the pH of the blood regulated?", where the handout reads "What mechanisms is…"). The cardiovascular and respiration handouts suggest no titles, so Supervision 1's essay is Tim Hearn's title, and Supervision 4's essay, the short-answer questions of Supervisions 2 and 5 and the revision titles of Supervisions 1, 2, 4 and 5 were written for the site, from the lectures and their learning outcomes. Each paper's guidance, which students see once they have submitted, sets out the ground a good answer covers; it isn't a model answer.
+
+**No time is given for the work to hand in.** Unlike the BMS supervisions, nothing says how long to spend on it: its papers have `"minutes": null` and no `suggestedMinutes`, so Supervision work shows *No time limit*, and the pages give no time for it. The optional exercises say roughly how long they take, and each tile says *Optional exercises: about half an hour*.
+
+**The revision titles can be handed in.** Each supervision's revision paper (`exams/sN-revision.json`) is optional, but has `"handIn": true`: a student can write one title, leave the others blank, submit, and hand it in for feedback, into the same folder as the week's work.
+
+**The numbers in the model answers** were measured in the workbench – the organ bath, the model of the circulation, the recording of standing up, the HPA and acid–base diagrams, the calculator and R – and `test/t_sups.py` checks each of them.
 
 ## Handing in
 
@@ -55,13 +79,15 @@ The site sends the work a student hands in to a **hand-in script**: [handin/Code
 
 **Without an address in `config.js`** (`script: ''`), nothing is handed in through the site: a paper to hand in is written and submitted as usual, its receipt says that nothing has been sent and that the student should download the Word document and send it, and nothing asks for a password. (`test/t_site.py` checks both ways, and hands nothing in: a stand-in answers for the script.)
 
-## Adding a supervision
+## Changing or adding a supervision
 
-1. **Its papers.** One JSON file for each paper, in `exams/`, named `sN-….json` and with `"week": N`. The paper to hand in has `"required": true`, `"minutes": null` (no time limit), `"suggestedMinutes": 40` and `"handIn": true`, which hands it in the way that `config.js` sets up (`handIn`). Optional papers leave out `required` and `handIn`. The BMS supervisions' `exams/s1-essay.json` is a good one to start from.
-2. **Its chapters.** A module `build/sN.py` with a function `ALL()` that returns the chapters, using the helpers of `build/lib.py` (see [Writing chapters](#writing-chapters)); the BMS supervisions' `build/s1.py` is a model. Give the chapters, steps and questions ids of their own (`sN-…`, checked when the page is built), and put the extras inside `optional()`, so that they don't count towards finishing the page.
+To change a supervision, edit its papers (`exams/sN-*.json`: the titles, instructions and guidance) or its chapters (`build/sN.py`), and run `python3 build/make_page.py`. The chapters read the titles from the papers, so a title is written in one place only. To add one:
+
+1. **Its papers.** One JSON file for each paper, in `exams/`, named `sN-….json` and with `"week": N`. The paper to hand in has `"required": true`, `"minutes": null` (no time limit) and `"handIn": true`, which hands it in the way that `config.js` sets up (`handIn`); the papers here suggest no time (no `suggestedMinutes`). Optional papers have `"required": false`, and `"handIn": true` if they can be handed in too, as the revision titles can. `exams/s1-essay.json` and `exams/s1-revision.json` are good ones to start from.
+2. **Its chapters.** A module `build/sN.py` with a function `ALL()` that returns the chapters, using the helpers of `build/lib.py` and `build/sup.py` (see [Writing chapters](#writing-chapters)); `build/s1.py` is a model. Give the chapters, steps and questions ids of their own (`sN-…`, checked when the page is built), and put the extras inside `optional()`, so that they don't count towards finishing the page.
 3. **Its data**, if it has any: files in `starter/` are copied into each student's home folder (increase `STARTERS_VERSION` in `build/make_page.py` when you add files after students have started), and diagrams and circuits go in `examples/`.
 4. **Its entry** in `build/supervisions.py`: add it to `READY`, like `EXAMPLE` there – its `page` (`supervision-N.html`), `data_page`, `module`, `title`, `topic`, `subtitle`, `description`, the texts of its tile (`card`, `handin`, `handin_short`, `time`), `handin_paper` (the id of its paper to hand in) and `handin_noun` (what the tile's status calls that work: *Essay*, or *Practical and short answers*). `COUNT` there is how many tiles the landing page has.
-5. Run `python3 build/make_page.py`, which writes `supervision-N.html` and the landing page; try it with `python3 serve.py`; and test it as a student would use it (the BMS supervisions' `test/t_s1.py` does this for their Supervision 1).
+5. Run `python3 build/make_page.py`, which writes `supervision-N.html` and the landing page; try it with `python3 serve.py`; and test it as a student would use it (`test/t_sups.py` does this for the eight supervisions).
 
 ## What's in the workbench
 
@@ -160,7 +186,7 @@ The site's name, course and supervisor, the number of tiles and the supervisions
 
 ## Writing chapters
 
-The supervisions' chapters are written like the BMS workbench's practicals. [Adding a supervision](#adding-a-supervision) says which files to change; this section describes the chapters themselves. The BMS supervisions' Supervision 1 (`build/s1.py` in the [BMS-supervisions](https://github.com/comparativechrono/BMS-supervisions) repository) is a model for most of what a supervision's page does: a hand-in box, buttons that open diagrams, slides, parts of the body, molecules, recordings and papers, R typed into the Console for the student, multiple-choice questions with feedback, model answers, and extras that don't count.
+The supervisions' chapters are written like the BMS workbench's practicals. [Changing or adding a supervision](#changing-or-adding-a-supervision) says which files to change; this section describes the chapters themselves. This site's `build/s1.py` to `build/s8.py` are models for most of what a supervision's page does: a hand-in box, buttons that open diagrams, slides, parts of the body, molecules, recordings and papers, R typed into the Console for the student, multiple-choice questions with feedback, model answers, and extras that don't count.
 
 The chapters, the papers' instructions and guidance and the landing page's notes are written in the supervisor's own voice, in the first person ("the hand-in password I give you", "my Google Drive"), in full sentences and British English. The site's own messages, in Supervision work and in the tiles, name the supervisor instead, from `handIn.to` in `config.js`.
 
@@ -255,7 +281,7 @@ It is worth testing a new supervision by working through it as a student would; 
 
 **Papers of Supervision work** are JSON files in `exams/` (the format is described at the top of `assets/js/exam.js`): a title, the time allowed (or `"minutes": null` and `suggestedMinutes`: no limit, and a suggested time), instructions, resources (the calculator, slides, links) and questions – information pages, essays (with a word limit, which can be a hard limit), short answers, numerical questions (with units and a tolerance) and multiple-choice questions – each with marking guidance that students see when they review their submitted answers. Pasting is kept within the exam unless a paper says `"clipboard": "any"` (as an exam taken in an ordinary browser allows). A supervision's papers have `week` (its number); the one to hand in also has `required: true` and `handIn`: `true` to hand it in through the hand-in script that `config.js` sets up, an object for a hand-in of its own (`{"script": …, "to": …, "password": true}`, which adds to `config.js`'s), or HTML that only says how to hand it in. The site comes with the BMS workbench's three practice papers (*Getting to know exam practice*, *Practice essay (45 minutes)* and *Calculations*). Write a new paper for each essay you set, and open it from the chapters with `exam('its-id')`.
 
-**Examples of diagrams and circuits** are the `.flow.json` and `.circuit.json` files in `examples/diagrams/` and `examples/circuits/`, offered in each tab's Examples menu. The easiest way to make one is to build it in the tab, save it, download it from Files, and copy it into the folder (give it a `title`, a `description`, a `group` and an `order`). The BMS supervisions added a circadian clock and thirst (`clock.flow.json`, `thirst.flow.json`) and Guyton's model of the circulation in exercise (`exercise-circulation.circuit.json`), which can be copied across when a supervision here needs them.
+**Examples of diagrams and circuits** are the `.flow.json` and `.circuit.json` files in `examples/diagrams/` and `examples/circuits/`, offered in each tab's Examples menu. The easiest way to make one is to build it in the tab, save it, download it from Files, and copy it into the folder (give it a `title`, a `description`, a `group` and an `order`). This site adds Guyton's model of the circulation in exercise (`exercise-circulation.circuit.json`, from the BMS supervisions), the hypothalamic–pituitary–adrenal axis (`hpa-axis.flow.json`) and acid–base balance, with the lungs and the kidneys (`acid-base.flow.json`).
 
 **The Molecules tab's library** is in `molecules/` (BinaryCIF files of the proteins, SDF files of the small molecules), and the list is in `assets/js/viewer-bms.js`. [molecules/README.md](molecules/README.md) says where they came from and how to add one.
 
@@ -283,11 +309,12 @@ The workbench works in current versions of Chrome, Edge, Firefox and Safari. It 
 
 ## How it was tested
 
-The site was tested in Chromium (using Playwright) on 20 November 2026, and again on 21 November 2026 with the hand-in script connected, with the scripts in the `test/` folder. The workbench's own code is the BMS supervisions' (tested there in the same way), so the tests here check the workbench again as this site serves it, and the parts that are this site's own:
+The site was tested in Chromium (using Playwright) on 20 November 2026, again on 21 November 2026 with the hand-in script connected, and with the eight supervisions on 21 November 2026, with the scripts in the `test/` folder. The workbench's own code is the BMS supervisions' (tested there in the same way), so the tests here check the workbench again as this site serves it, and the parts that are this site's own:
 
 | Script | What it checks |
 | --- | --- |
-| `t_site.py` | The site itself, before any supervision's work is added: the landing page (the site's name, course and supervisor, eight tiles coming soon that open the guide, the footer's links, the site's icon and colours, the student's name, and everything saved under the prefix `physsup`), the guide (its top bar, Supervision work first, the name given on the landing page), the files (no trace of the BMS supervisions' name, storage or hand-in script). Then a paper to hand in on a stand-in for a supervision's page: with no hand-in script (written, submitted and downloaded as a Word document with the student's name, and nothing asks for a password), and with the site's own hand-in script's address from `config.js`, answered by a stand-in for the script (so that the tests hand nothing in, and nothing reaches Google): a wrong password, then the receipt; what is sent (the paper, the supervision, the student, this site's page, and the Word document, opened and checked), that the password is kept nowhere, and that the web page of the submission names this site. Given the hand-in password as `PHYS_HANDIN_PASSWORD`, it checks that it is in none of the site's files. And the landing page on a phone |
+| `t_site.py` | The site itself: the landing page (the site's name, course and supervisor, eight tiles that each open their supervision's page, with its topic, the work to hand in and half an hour of optional exercises, and no time given for the work to hand in, the link to the guide, the footer's links, the site's icon and colours, the student's name, and everything saved under the prefix `physsup`), the guide (its top bar, Supervision work first, the name given on the landing page), the files (no trace of the BMS supervisions' name, storage or hand-in script). Then Supervision 1's essay: with no hand-in script (written, submitted and downloaded as a Word document with the student's name, and nothing asks for a password), and with the site's own hand-in script's address from `config.js`, answered by a stand-in for the script (so that the tests hand nothing in, and nothing reaches Google): a wrong password, then the receipt; what is sent (the paper, the supervision, the student, this site's page, and the Word document, opened and checked), that the password is kept nowhere, and that the web page of the submission names this site. Given the hand-in password as `PHYS_HANDIN_PASSWORD`, it checks that it is in none of the site's files. And the landing page on a phone |
+| `t_sups.py` | The eight supervisions' pages as a student would use them. For each: its five chapters, with only the name and the work to hand in counting towards finishing it; its paper to hand in first in Supervision work (no time limit, none suggested, and nothing on the page or in the paper that gives a time for it) and its revision titles next (optional, and they can be handed in), listed in the last chapter as in the paper; every step that ticks itself names an event the workbench sends; every link goes somewhere; every multiple-choice question has one right option, marked right, and every numerical question accepts the model answer's number. Then each optional exercise, step by step, each step ticking, with the numbers in its model answers checked against what the workbench shows (the organ bath, the model of the circulation, the recording of standing up, the adrenal gland, the lung and the kidney in the Microscope, the HPA and acid–base diagrams, the molecules, the calculator, and the R code, run in webR). Then work handed in to a stand-in for the hand-in script: Supervision 2's four short answers, Supervision 8's essay, and one title of Supervision 7's revision essays on its own; and the landing page's tiles afterwards |
 | `t_handin.js` | The hand-in script (`handin/Code.gs`), in Node, with stand-ins for Google's services (`node test/t_handin.js`): `setup` (the physiology folder and sheet), the password (and resting after too many wrong ones), saving the document in a folder for its supervision with a name that replaces nothing, its description, the line in the sheet, refusing what isn't a Word document or is too big, names made safe, the lock, and errors; and that the names it uses are this site's, not the BMS supervisions' |
 | `t_smoke.py` | The page loads, every tab opens, nothing reports an error, and numerical answers are read as students write them (spaces between thousands, decimal commas, workings such as 100/0.25 = 400, words) |
 | `t_tabs.py` | The workbench's eleven tabs on phones from 280 to 540 pixels wide held upright, turned sideways and turned while in use, on tablets and on computers: every tab shows its icon, the tabs and the button back to the instructions fit across the screen, they show as many names as fit (and no fewer), every tab is wide enough to tap and opens when it is tapped, and the help shows which icon is which tab |
@@ -308,7 +335,7 @@ To run the tests, install Playwright (`pip install playwright`, then `playwright
 
 ```
 index.html             the landing page (built by build/make_page.py from build/landing.html)
-supervision-N.html     each supervision's page, once its work is added (built from build/template.html and build/sN.py)
+supervision-N.html     each supervision's page, 1 to 8 (built from build/template.html and build/sN.py)
 workbench.html         the workbench's guide (built from build/template.html and build/chapters.py)
 isolation-sw.js        the service worker for cross-origin isolation and Shiny apps (keep it next to index.html)
 assets/js/             the workbench's code: config.js (settings), page.js (the tabs, and the actions and checks used by
@@ -323,14 +350,14 @@ slides/                the microscope's slides (index.json lists them; build/sli
 anatomy/               the Anatomy tab's models (glTF), with index.json and definitions.json (build/anatomy/README.md)
 recordings/            the Recorder's recordings (index.json lists them; build/recordings/README.md)
 sims/                  the PhET simulations (index.json lists them; build/sims/README.md)
-exams/                 the papers of Supervision work (index.json lists them; sN-*.json will be Supervision N's)
+exams/                 the papers of Supervision work (index.json lists them; sN-*.json are Supervision N's)
 examples/              the examples of Diagrams and Circuits (index.json lists them)
 molecules/             the Molecules tab's library (molecules/README.md)
 build/                 make_page.py, supervisions.py (the site's name, the pages and their tiles), landing.html,
                        chapters.py (the guide; the chapters of the newer tabs are in ch_anatomy.py, ch_recorder.py,
                        ch_organbath.py and ch_sims.py), lib.py (the helper functions), template.html, and the scripts
                        that make the data: slides/, anatomy/, recordings/ and sims/ (organbath/ describes the organ
-                       bath's model); each supervision's chapters will be sN.py
+                       bath's model); each supervision's chapters are in sN.py, with what they share in sup.py
 handin/                the hand-in script, Code.gs (a Google Apps Script web app that saves handed-in work in Google
                        Drive), with how to set it up (README.md)
 test/                  the tests (Playwright; t_handin.js, the hand-in script's, runs in Node)

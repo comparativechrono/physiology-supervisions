@@ -1,0 +1,42 @@
+{
+ "id": "s1-revision",
+ "week": 1,
+ "required": false,
+ "order": 2,
+ "title": "Supervision 1 revision essays",
+ "description": "Three more essay titles on this week’s lectures. Write one for practice, and hand it in if you’d like feedback on it.",
+ "minutes": null,
+ "suggestedMinutes": null,
+ "autoSubmit": false,
+ "spellcheck": false,
+ "showWordCount": true,
+ "clipboard": "exam",
+ "handIn": true,
+ "instructions": "<p><b>Optional, for revision.</b> These essay titles go with this week’s lectures. Only the Supervision 1 essay has to be handed in.</p><ul><li><b>Choose one</b> and write it here, as you would in the exam. Leave the others blank: you can still submit.</li><li><b>Handing in.</b> If you’d like my feedback on it, hand it in once you’ve submitted, in the same way as the work for this week. It goes into the same folder in my Google Drive.</li><li>Planning an answer to each of the others (your argument, your evidence and the order you’d put them in) is good revision too.</li><li>After you submit, <b>Review my answers</b> shows you the ground each title covers.</li><li><b>Pasting.</b> As in the exam, you can copy and paste within your work, but you can’t paste in text copied from anywhere else. Write everything in your own words.</li></ul>",
+ "questions": [
+  {
+   "id": "exchange",
+   "type": "essay",
+   "title": "Exchange and oedema",
+   "lines": 18,
+   "text": "<p>Discuss the factors that determine the exchange of solutes and water between the plasma and the interstitial fluid. Why does oedema develop?</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul>\n<li><b>Solutes.</b> Exchange is mostly by diffusion. Fick’s law: the flux depends on the area, the permeability and the concentration difference. Small lipid-soluble molecules (O<sub>2</sub>, CO<sub>2</sub>) cross the endothelial cells themselves; water-soluble ones go through the clefts between them; the clefts and fenestrations differ between continuous, fenestrated and sinusoidal capillaries, which is why exchange differs between organs. Proteins hardly cross.</li>\n<li><b>Flow- or diffusion-limited.</b> For a freely permeable solute, delivery depends on the flow (the extraction is nearly complete); for a poorly permeable one, on the permeability and area. So recruitment of capillaries and a rise in flow change exchange in different ways.</li>\n<li><b>Water.</b> Starling’s equation: J<sub>V</sub> = K[(P<sub>c</sub> − P<sub>if</sub>) − σ(π<sub>c</sub> − π<sub>if</sub>)]. Only the plasma proteins exert an effective osmotic pressure across the capillary wall (about 1.4 mM of them gives a colloid osmotic pressure of about 27 mmHg, by πV = nRT), and σ, the reflection coefficient, says how fully. The interstitial pressure is slightly negative in most tissues, because the lymphatics keep the matrix a little under-filled.</li>\n<li><b>Along the capillary, and the lymph.</b> The net filtration pressure falls along the capillary, mainly because the hydrostatic pressure falls, so water tends to leave the early part and return in the late part. But in most capillaries, most of the time, a little more leaves than returns: 2–4 litres a day, with 100–200 g of protein, which the lymphatics return to the blood. Capillary pressure follows venous pressure much more than arterial pressure, because of the arterioles upstream; after a haemorrhage, a lower capillary pressure draws tissue fluid into the blood (autotransfusion, which is why the haematocrit falls).</li>\n<li><b>Oedema.</b> Raised venous pressure (heart failure), low plasma protein (liver or kidney disease, starvation), more permeable capillaries (inflammation) or blocked lymphatics. Explain each in Starling’s terms, and say why the lungs resist oedema until left atrial pressure is high.</li></ul>"
+  },
+  {
+   "id": "flow",
+   "type": "essay",
+   "title": "Matching flow to need",
+   "lines": 18,
+   "text": "<p>How is the blood flow to each tissue matched to its needs, while arterial blood pressure is maintained?</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul>\n<li><b>The principle.</b> With arterial pressure held roughly constant, a tissue’s flow is set by its own resistance, mostly by its arterioles (Poiseuille: resistance goes with 1/r<sup>4</sup>).</li>\n<li><b>Local control matches flow to need.</b> Metabolic control (adenosine, K<sup>+</sup>, H<sup>+</sup>, CO<sub>2</sub>, low O<sub>2</sub>), functional and reactive hyperaemia; myogenic control and autoregulation (the kidney, the brain); the endothelium (nitric oxide in response to shear stress, acetylcholine and other agonists; endothelin; prostacyclin). Give the evidence: Furchgott’s rings, autoregulation curves.</li>\n<li><b>Systemic control protects the pressure.</b> Sympathetic vasoconstriction (α<sub>1</sub>), tonically active at 1–4 Hz; circulating adrenaline (β<sub>2</sub> dilatation in muscle), angiotensin II, vasopressin. Organs differ: the brain and heart are little affected by sympathetic activity, the skin and gut a lot.</li>\n<li><b>How they interact.</b> In exercise, local dilatation in the working muscles wins over sympathetic constriction there, while sympathetic constriction elsewhere holds up TPR. In haemorrhage, sympathetic constriction spares the brain and heart, whose local control dominates. The heart and brain show that local control is what matches flow to need.</li>\n<li><b>A conclusion.</b> Local mechanisms match flow to need; systemic mechanisms keep up the pressure that every tissue’s local control relies on.</li></ul>"
+  },
+  {
+   "id": "co",
+   "type": "essay",
+   "title": "What determines cardiac output",
+   "lines": 18,
+   "text": "<p>What determines cardiac output?</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer. Dr Fraser’s venous return equation is a good plan.</p><ul>\n<li><b>Two equations.</b> CO = HR × SV is always true, by definition, but it doesn’t say what causes what. CO = VR = (MSFP − RAP) / RvR says that in a steady circulation the output is set by what returns.</li>\n<li><b>The heart is necessary but doesn’t normally limit.</b> The heart can only lower RAP, and veins collapse once RAP falls much below zero, so a healthy heart can’t raise venous return by pumping harder. Pacing the heart faster raises CO little; an arteriovenous fistula raises it a lot (more returns, and the heart pumps it).</li>\n<li><b>What sets MSFP.</b> The stressed volume (only about the last fifth of the blood volume) and venous tone: venoconstriction raises MSFP, and a haemorrhage of 10% roughly halves it without compensation.</li>\n<li><b>Starling’s law</b> matches the output of the heart to its filling, and of the two ventricles to each other. Contractility and heart rate move the cardiac function curve; MSFP and RvR move the venous return curve. The output is where they cross (Guyton’s curves).</li>\n<li><b>When the heart does limit.</b> In heart failure the cardiac function curve is flattened, so raising MSFP raises RAP (and so oedema) more than CO. In maximal exercise the circulation as a whole becomes the limit.</li></ul>"
+  }
+ ]
+}

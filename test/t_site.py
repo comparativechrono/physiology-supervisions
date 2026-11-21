@@ -1,13 +1,13 @@
-"""The physiology supervisions site before any supervision's work is added: the landing page (eight tiles, each coming
-soon and opening the workbench's guide; the site's name, course and supervisor; the student's name, shared by every
+"""The physiology supervisions site: the landing page (a tile for each of the eight supervisions, each opening its own
+page, with its topic, the work to hand in and the optional exercises, and nothing that gives a time for the work to
+hand in; the site's name, course and supervisor; a link to the workbench's guide; the student's name, shared by every
 page), the guide (the site's name in its top bar, Supervision work first among the tabs) and the site's own storage
-(physsup, apart from the BMS sites'); opening them sends nothing to the hand-in script. Then a paper to hand in, on a
-stand-in for a supervision's page (week 1) – as Supervision 1's essay will be – first with no hand-in script (config.js
-served with none: it is written, submitted and downloaded, and nothing asks for a password), then with the site's own
-hand-in script, the address in config.js (or a stand-in's, if it has none), answered by a stand-in for the script, so
-that nothing reaches Google: a wrong password, then the receipt; what is sent (the Word document is opened and
-checked) and that the password is kept nowhere. Given the hand-in password as PHYS_HANDIN_PASSWORD, it checks that it
-is in none of the site's files.
+(physsup, apart from the BMS sites'); opening them sends nothing to the hand-in script. Then Supervision 1's essay,
+handed in: first with no hand-in script (config.js served with none: it is written, submitted and downloaded, and
+nothing asks for a password), then with the site's own hand-in script, the address in config.js (or a stand-in's, if
+it has none), answered by a stand-in for the script, so that nothing reaches Google: a wrong password, then the
+receipt; what is sent (the Word document is opened and checked) and that the password is kept nowhere. Given the
+hand-in password as PHYS_HANDIN_PASSWORD, it checks that it is in none of the site's files.
 Run:  python3 test/t_site.py   (screenshots in test/out/site-*.png)"""
 import base64
 import io
@@ -69,33 +69,15 @@ if PW:
                 pass
     check(not found, f'the hand-in password is in none of the site’s files: {found}')
 
-# ---------------------------------------------------------------------- a stand-in for a supervision's page, and its paper
-# (Supervision 1's page will be the workbench with its own chapters and "week": 1; here, the guide with week 1)
-guide = read('workbench.html')
-sup1 = guide.replace('data-page="workbench" data-title="The workbench guide" data-week="0"', 'data-page="supervision-1" data-title="Supervision 1" data-week="1"')
-sup1 = re.sub(r'window\.BMS_PAGE = \{[^}]*\}', 'window.BMS_PAGE = ' + json.dumps({'week': 1, 'page': 'supervision-1.html', 'title': 'Supervision 1', 'site': 'Physiology supervisions'}), sup1)
-assert sup1 != guide and '"week": 1' in sup1
-PAPER = {
-    'id': 't-essay', 'week': 1, 'required': True, 'order': 1, 'title': 'Supervision 1 essay',
-    'description': 'How does the kidney regulate the osmolarity of the plasma?',
-    'minutes': None, 'suggestedMinutes': 40, 'autoSubmit': False, 'spellcheck': False, 'showWordCount': True, 'clipboard': 'exam', 'handIn': True,
-    'instructions': '<p><b>This is the work to hand in for Supervision 1.</b></p>',
-    'questions': [{'id': 'essay', 'type': 'essay', 'title': 'The kidney and osmolarity', 'marks': 25, 'lines': 18,
-                   'text': '<p>How does the kidney regulate the osmolarity of the plasma?</p>', 'guidance': '<p>The loop of Henle, ADH and aquaporin 2.</p>'}],
-}
-index = json.loads(read('exams/index.json'))
-index['papers'].insert(0, {'id': 't-essay', 'file': 't-essay.json', 'title': PAPER['title'], 'kind': 'practice', 'minutes': None, 'suggestedMinutes': 40,
-                           'week': 1, 'required': True, 'questions': 1, 'description': PAPER['description'], 'order': 1})
-EXTRA = {'supervision-1.html': (sup1, 'text/html; charset=utf-8'),
-         'exams/index.json': (json.dumps(index), 'application/json'),
-         'exams/t-essay.json': (json.dumps(PAPER), 'application/json')}
-ESSAY = ('The kidney regulates the osmolarity of the plasma by changing how much water it returns to the blood, under the '
-         'control of antidiuretic hormone from the posterior pituitary, which puts aquaporin 2 into the collecting ducts. ')
+# ---------------------------------------------------------------------- Supervision 1's essay
+ESSAY = ('In whole-body exercise the cardiac output rises about five-fold, because central command and the reset baroreflex '
+         'raise the heart rate and contractility, while the dilated muscle arterioles and the muscle pump raise venous return. ')
+EXTRA = {}
 
 
 def write_and_submit(p, P):
     """opens the paper on the stand-in page, writes the essay and submits it"""
-    p.js(f"() => {E}.openPaper('t-essay')")
+    p.js(f"() => {E}.openPaper('s1-essay')")
     p.wait("() => document.querySelector('.ex-startcard h2') && document.querySelector('.ex-startcard h2').textContent === 'Supervision 1 essay'", timeout=30000)
     sc = p.js("() => document.querySelector('.ex-startcard').innerText")
     P.locator('.ex-startacts .btn.primary').first.click()
@@ -132,8 +114,19 @@ check(p.js("() => document.querySelector('.hero h1').textContent") == 'Physiolog
 tiles = p.js("""() => [...document.querySelectorAll('.tiles .tile')].map(t => ({ n: t.dataset.sup, href: t.getAttribute('href'), ready: t.classList.contains('ready'),
     soon: t.classList.contains('soon'), kicker: t.querySelector('.tile-kicker').textContent, text: t.innerText }))""")
 check([t['kicker'] for t in tiles] == [f'Supervision {i}' for i in range(1, 9)], f'eight tiles, Supervision 1 to 8: {[t["kicker"] for t in tiles]}')
-check(all(t['soon'] and not t['ready'] and t['href'] == 'workbench.html' and 'Coming soon' in t['text'] and 'Open the workbench' in t['text'] for t in tiles),
-      'each is coming soon, and opens the workbench and its guide')
+check(all(t['ready'] and not t['soon'] and t['href'] == f'supervision-{i}.html' for i, t in enumerate(tiles, 1)), 'each opens its own supervision’s page')
+TOPICS = ['Capillaries, arterioles and cardiac output', 'Blood pressure, stress and failure', 'Calcium, growth hormone and the adrenal gland',
+          'Lung mechanics, the pulmonary circulation and V/Q', 'Gases in the blood, control and disease', 'Body fluids, filtration and water',
+          'Volume, potassium and pH', 'pH, the lungs and the kidneys']
+check(all(TOPICS[i] in t['text'] and 'To hand in:' in t['text'] and 'Optional exercises: about half an hour' in t['text'] for i, t in enumerate(tiles)),
+      'each names its topic, the work to hand in, and about half an hour of optional exercises')
+status = p.js("() => [...document.querySelectorAll('.tile .tile-essay')].map(x => x.textContent)")
+check(status == ['Essay not started yet', 'Short answers not started yet', 'Essay not started yet', 'Essay not started yet', 'Short answers not started yet',
+                 'Essay not started yet', 'Essay not started yet', 'Essay not started yet'], f'nothing is started: essays, and short answers in weeks 2 and 5: {status}')
+handins = p.js("() => [...document.querySelectorAll('.tile-handin')].map(x => x.textContent + ' ' + x.title)")
+check(not any(re.search(r'\b\d+\s*minutes?\b|time limit', h, re.I) for h in handins), 'no tile gives a time for the work to hand in')
+check('Discuss the cardiovascular adjustments that occur in whole body exercise.' in handins[0], 'Supervision 1’s essay is the title given for it')
+check(p.js("() => [...document.querySelectorAll('.land-info a')].map(a => a.getAttribute('href'))") == ['workbench.html'], 'the landing page links to the workbench’s guide')
 foot = p.js("() => [...document.querySelectorAll('.land-foot a')].map(a => a.getAttribute('href'))")
 check(foot == ['https://github.com/comparativechrono/BMS-workbench', 'https://github.com/comparativechrono/physiology-supervisions'],
       f'the footer links to the BMS workbench and to this repository: {foot}')
@@ -154,10 +147,10 @@ check(keys and all(k.startswith('physsup:') for k in keys) and 'physsup:fullName
 no_errors(p, 'the landing page')
 
 # ====================================================================== the guide
-P.locator('.tile[data-sup="1"]').click()
+P.locator('.land-info a[href="workbench.html"]').click()
 P.wait_for_url('**/workbench.html', timeout=30000)
 p.wait("() => window.MG_READY === true", timeout=60000)
-check(p.js("() => location.pathname").endswith('/workbench.html'), 'a tile that is coming soon opens the guide')
+check(p.js("() => location.pathname").endswith('/workbench.html'), 'the link opens the guide')
 check(p.js("() => document.querySelector('.brand-title').textContent") == 'Physiology supervisions'
       and p.js("() => document.querySelector('.brand').getAttribute('href')") == 'index.html', 'the top bar names the site, and goes back to the landing page')
 check(p.js("() => document.title") == 'The workbench guide – Physiology supervisions', f'the guide’s title: {p.js("() => document.title")}')
@@ -185,13 +178,13 @@ p.js(f"() => MG.user.setFullName('{NAME}')")
 p.js("() => MG.app.showWorkbench('exam')")
 p.wait(f"() => {E} && document.querySelectorAll('.ex-card').length >= 4", timeout=30000)
 cards = p.js("() => [...document.querySelectorAll('.ex-card')].map(c => c.dataset.paper + ':' + (c.querySelector('.ex-badge') ? c.querySelector('.ex-badge').textContent : ''))")
-check(cards[0] == 't-essay:To hand in', f'on a supervision’s page its paper to hand in comes first: {cards[:2]}')
+check(cards[:2] == ['s1-essay:To hand in', 's1-revision:Optional'], f'on Supervision 1’s page its essay comes first, then its revision titles: {cards[:2]}')
 p.shot('site-papers')
 home = p.js("() => document.querySelector('.ex-home').innerText")
 check('then download it as a Word document and send it to your supervisor' in home and 'password' not in home and 'Google Drive' not in home,
       f'with no hand-in script yet, Supervision work says to download the work and send it (no password, no Drive): {home[:200]!r}')
 sc, mt = write_and_submit(p, P)
-check('password' not in sc.lower(), 'the paper’s first page asks for no password')
+check('password' not in sc.lower() and 'No time limit' in sc and not re.search(r'\\d+\\s*minutes', sc), 'the essay’s first page asks for no password, and gives no time')
 check('hand it in on the next page' not in mt, f'submitting doesn’t promise a hand-in: {mt[-100:]!r}')
 rc = p.js("() => document.querySelector('.ex-receipt').innerText")
 check(not p.js("() => !!document.querySelector('.ex-receipt .ex-hi')") and 'Nothing has been sent anywhere. To hand your work in, download it and send it yourself.' in rc,
@@ -200,9 +193,9 @@ with P.expect_download() as dl:
     P.locator('.ex-recacts .btn:has-text("Download submission")').click()
     P.locator('.popmenu button:has-text("Word document")').click()
 raw = open(dl.value.path(), 'rb').read()
-check(dl.value.suggested_filename == 'supervision-1-essay-ada-lovelace.docx' and NAME in docx_text(raw) and 'aquaporin 2' in docx_text(raw),
+check(dl.value.suggested_filename == 'supervision-1-essay-ada-lovelace.docx' and NAME in docx_text(raw) and 'muscle pump' in docx_text(raw),
       f'the Word document has the student’s name and the essay: {dl.value.suggested_filename}')
-st = p.js("() => MG.siteStore.get('paper:t-essay')") or {}
+st = p.js("() => MG.siteStore.get('paper:s1-essay')") or {}
 check(st.get('started') and st.get('submitted') and st.get('downloaded') and not st.get('handedIn'), f'the site remembers what was done with it: {sorted(st)}')
 p.shot('site-receipt-no-script')
 no_errors(p, 'a paper to hand in, with no hand-in script')
@@ -279,16 +272,16 @@ hdr, d = S.posts[-1]
 R = S.replies[-1]
 check(R.get('ok') and all(mth == 'POST' and u == URL for mth, u in S.calls) and hdr.get('content-type', '').startswith('text/plain'),
       f'the right password: it is sent to the hand-in script ({"the site’s own, in config.js" if LIVE else "a stand-in’s"}), as a POST of text (no preflight)')
-check(d.get('paper') == 't-essay' and d.get('week') == 1 and d.get('name') == NAME and d.get('site') == p.base + 'supervision-1.html' and d.get('words', 0) > 100,
+check(d.get('paper') == 's1-essay' and d.get('week') == 1 and d.get('name') == NAME and d.get('site') == p.base + 'supervision-1.html' and d.get('words', 0) > 100,
       f'with the paper, its supervision, the student, the words and this site’s page: { {k: v for k, v in d.items() if k not in ("file", "password")} }')
 raw = base64.b64decode((d.get('file') or {}).get('data') or '')
-check(d['file'].get('name') == 'supervision-1-essay-ada-lovelace.docx' and raw[:2] == b'PK' and NAME in docx_text(raw) and 'aquaporin 2' in docx_text(raw),
+check(d['file'].get('name') == 'supervision-1-essay-ada-lovelace.docx' and raw[:2] == b'PK' and NAME in docx_text(raw) and 'muscle pump' in docx_text(raw),
       'and the Word document, with the student’s name and the essay')
 time.sleep(0.3)
 done_text = p.js(f"() => document.querySelector('{RX}').innerText")
 check('Handed in to Tim Hearn' in done_text and f'Your receipt number is {R["receipt"]}.' in done_text and 'in the folder Supervision 1' in done_text,
       f'the receipt says it has arrived: {done_text[:160]!r}')
-st = p.js("() => MG.siteStore.get('paper:t-essay')") or {}
+st = p.js("() => MG.siteStore.get('paper:s1-essay')") or {}
 check(st.get('handedIn') == R['time'] and st.get('receipt') == R['receipt'], 'the site remembers that it was handed in, with the receipt')
 kept = p.js("""async () => { const E = MG.app.exam; let t = JSON.stringify(Object.assign({}, localStorage)) + JSON.stringify(Object.assign({}, sessionStorage));
     for (const f of E._attemptFiles()) t += await E.fs.readText(f); return t; }""")

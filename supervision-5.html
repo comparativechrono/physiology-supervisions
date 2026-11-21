@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supervision 5 – Physiology supervisions</title>
+<meta name="description" content="Supervision 5 of NST IB Physiology covers the transport of O₂ and CO₂ in the blood, the control of breathing in exercise, diving and altitude, and clinical respiratory physiology. There are four short answers to hand in, and optional exercises in the workbench.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2313304a'/%3E%3Cpath d='M3.5 17.5h5.2l1.6-2.6 1.6 2.6h1.3l1 2.4 2.4-13.4 2.4 15.5 1.4-4.5h1.6l1.9-3 1.9 3h2.7' fill='none' stroke='%23ff8a65' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<script src="assets/js/isolation.js"></script>
+<link rel="stylesheet" href="assets/vendor/codemirror/codemirror.css">
+<link rel="stylesheet" href="assets/css/app.css">
+<link rel="stylesheet" href="assets/css/wb.css">
+<link rel="stylesheet" href="assets/css/bms.css">
+<link rel="stylesheet" href="assets/css/r.css">
+<link rel="stylesheet" href="assets/css/rstudio.css">
+<link rel="stylesheet" href="assets/css/files.css">
+<link rel="stylesheet" href="assets/css/viewer.css">
+<link rel="stylesheet" href="assets/css/scope.css">
+<link rel="stylesheet" href="assets/css/flow.css">
+<link rel="stylesheet" href="assets/css/circuit.css">
+<link rel="stylesheet" href="assets/css/exam.css">
+<link rel="stylesheet" href="assets/css/anatomy.css">
+<link rel="stylesheet" href="assets/css/recorder.css">
+<link rel="stylesheet" href="assets/css/organbath.css">
+<link rel="stylesheet" href="assets/css/sims.css">
+</head>
+<body data-page="supervision-5" data-title="Supervision 5" data-week="5">
+<div class="app">
+
+  <header class="topbar">
+    <button class="btn top-toggle" id="tutToggle" type="button" title="Hide the instructions so that the workbench fills the window (Ctrl+\)" aria-controls="tut" aria-expanded="true"><svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M16 10l-2 2 2 2"/></svg></button>
+    <a class="brand" href="index.html" title="All the supervisions">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#1c4061"/><path d="M3.5 17.5h5.2l1.6-2.6 1.6 2.6h1.3l1 2.4 2.4-13.4 2.4 15.5 1.4-4.5h1.6l1.9-3 1.9 3h2.7" fill="none" stroke="#ff8a65" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div>
+        <div class="brand-title">Physiology supervisions</div>
+        <div class="brand-sub">Supervision 5: gases in the blood, control and disease</div>
+      </div>
+    </a>
+    <div class="spacer"></div>
+    <div class="progress-wrap" title="The steps you have done and the questions you have answered (saved in this browser)"><span class="progress-label">0% done</span><div class="progress"><i></i></div></div>
+    <span class="store-status" id="storeStatus" title="Your files are saved in this browser, on this computer"></span>
+    <button class="btn" id="userBtn" type="button" title="Your name, as it appears in the workbench"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span class="user-name">Your name</span></button>
+    <button class="btn" id="projectBtn" type="button" title="Download all your files, add files, or start afresh"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v1H7l-4 9z"/><path d="M3 19l3.5-8H22l-3.5 8z"/></svg><span>My files</span></button>
+    <button class="btn" id="answersBtn" type="button"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg><span>My answers</span></button>
+    <button class="btn" id="helpBtn" type="button" title="How this page works"><svg class="ic" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.2 9a2.9 2.9 0 0 1 5.6 1c0 2-2.8 2.6-2.8 4M12 17.5h.01"/></svg><span>Help</span></button>
+    <button class="btn" id="fullBtn" type="button" title="Full screen"><span>Full screen</span></button>
+  </header>
+
+  <div class="main">
+    <aside class="tut" id="tut" aria-label="Instructions">
+      <nav class="ch-nav" aria-label="Chapters"></nav>
+<!--CHAPTERS-->
+<section class="chapter" id="s5-week" data-num="0" data-title="This week" data-bench="exam">
+  <h1>Supervision 5: gases in the blood, control and disease</h1>
+  <div class="meta-row"><span class="pill time">≈ 5 min</span></div>
+  <p class="lede">This week’s lectures are about how O<sub>2</sub> and CO<sub>2</sub> are carried in the blood, how breathing is controlled and copes with exercise, diving and altitude, and what goes wrong in lung disease. This week you hand in short answers rather than an essay.</p>
+
+<div class="handin-box">
+  <div class="hb-k">To hand in this week</div>
+  <p class="hb-title">Four short-answer questions</p>
+  <ul><li><ol class="titles"><li>Distinguish between the oxygen content and the oxygen saturation of arterial blood. Why is carbon monoxide poisoning more dangerous than an anaemia that halves the oxygen-carrying capacity of the blood?</li><li>Describe how carbon dioxide is carried in the blood, and explain the Haldane effect.</li><li>Explain how ventilation changes over the first few days after arrival at high altitude, and why.</li><li>Patient X has an FEV<sub>1</sub> of 1.3 L and an FVC of 3.4 L. Patient Y has an FEV<sub>1</sub> of 2.0 L and an FVC of 2.3 L. Both have a low diffusing capacity for carbon monoxide. Interpret each result, and explain how each pattern arises.</li></ol></li><li>Each is marked out of five. You answer them in <b>Supervision work</b>, in bullet points, as you would in the exam. Two of them need a calculation or a judgement from data: chapter 3 says how to set those out.</li><li>Once you’ve submitted it, <b>hand it in</b> from the same page before your supervision. You’ll need the <b>hand-in password</b> I give you, and your work then goes straight into my Google Drive.</li></ul>
+  <p class="hb-acts"><button class="do showme" type="button" data-goto="s5-write">how to write it and hand it in</button> <button class="do showme" type="button" data-exam="s5-saqs">open the questions</button></p>
+</div>
+
+<h2 id="w5-plan">The week, step by step</h2>
+<ol class="plan">
+<li>If you’d like to, start with <b>two short exercises</b>. They’re optional, and take about half an hour altogether. In chapter 1 you look at haemoglobin in the <b>Molecules</b> tab, then use <b>R</b> to find out why carbon monoxide is worse than an anaemia. In chapter 2 you interpret the lung function tests of three people, with the calculator. Both go with the questions you hand in. <button class="do showme" type="button" data-goto="s5-hb">start</button></li>
+<li>Then <b>answer the four questions</b> and hand them in (chapter 3). <button class="do showme" type="button" data-goto="s5-write">go there</button></li>
+<li>Chapter 4 has four essay titles on this week’s lectures, for revision. You can hand one in for feedback if you’d like to, but you don’t have to. <button class="do showme" type="button" data-goto="s5-more">go there</button></li>
+</ol>
+<div class="activity">
+  <div class="act-t">Before you start</div>
+  <ol class="steps">
+    <li data-task="w5-name" data-check="named">Check that your name is at the top of the page. If it says <b>Your name</b>, click it and add yours. It goes at the top of the work you hand in, and every supervision’s page shares it.</li>
+  </ol>
+</div>
+<h2>How this page works</h2>
+<ul>
+<li>The steps tick themselves off as you do them, the buttons do things for you in the workbench on the right, and every question has a <b>model answer</b> you can look at once you’ve had a go.</li>
+<li>Chapters 1, 2 and 4 are optional, so their steps don’t count towards finishing the page. The rest do.</li>
+<li>If you haven’t used one of the workbench’s tabs before, the <a href="workbench.html" target="_blank" rel="noopener">workbench guide</a> shows you how it works.</li>
+</ul>
+
+</section>
+
+<section class="chapter" id="s5-hb" data-num="1" data-title="Haemoglobin" data-bench="viewer" hidden>
+  <h1>Optional: haemoglobin, anaemia and carbon monoxide</h1>
+  <div class="meta-row"><span class="pill time">≈ 15 min</span></div>
+  <p class="lede">Look at haemoglobin in 3D, then use its dissociation curve, in R, to find out why carbon monoxide is far more dangerous than an anaemia.</p>
+<div class="optional whole">
+
+<div class="callout info">
+  <div class="co-t">Optional, about 15 minutes</div>
+  <p>This exercise isn’t part of the work to hand in, and its steps don’t count towards finishing the page. It goes with the fourth lecture, on the transport of respiratory gases in the blood.</p>
+</div>
+
+<div class="activity">
+  <div class="act-t">Haemoglobin</div>
+  <ol class="steps">
+    <li data-task="hb-open" data-auto="viewer:loaded id~4hhb">Open haemoglobin <button class="do showme" type="button" data-pdb="4HHB">show me</button>, colour it by chain <button class="do showme" type="button" data-viewer="color chain">show me</button>, and show its four haem groups as spheres <button class="do showme" type="button" data-viewer="show spheres HEM">show me</button>. This is deoxyhaemoglobin: two α and two β chains, each holding a haem.</li>
+  </ol>
+</div>
+<div class="q" data-q="hb-q-bpg">
+  <div class="q-text">In deoxyhaemoglobin there’s a cavity between the two β chains, along the central axis of the molecule, which closes up when it binds O<sub>2</sub>. 2,3-BPG binds in it. What does that do to the dissociation curve, and why does it matter at altitude and in the fetus?</div>
+  <div class="q-model">2,3-BPG binds to the positively charged groups lining the cavity between the β chains, but only in the deoxy (T) form, which it stabilises. That lowers haemoglobin’s affinity for O<sub>2</sub> and shifts the dissociation curve to the right (a higher P<sub>50</sub>), so more O<sub>2</sub> is given up at the PO<sub>2</sub> of the tissues. At altitude, red cells make more 2,3-BPG within a day or two, which helps unloading. Fetal haemoglobin has γ chains in place of β, which bind 2,3-BPG poorly, so its curve lies to the left of the mother’s, and O<sub>2</sub> moves from her blood to the fetus’s across the placenta (in pregnancy, maternal 2,3-BPG rises, shifting her curve further right).</div>
+</div>
+<div class="activity">
+  <div class="act-t">Anaemia and carbon monoxide, in R</div>
+  <ol class="steps">
+    <li data-task="hb-sat" data-auto="r:input kind=rstudio line~sat &lt;- function">Write the dissociation curve as a function, the Hill equation, with P<sub>50</sub> as an argument: <code>sat &lt;- function(po2, p50 = 26.8) po2^2.7 / (po2^2.7 + p50^2.7)</code> <button class="do showme" type="button" data-rcon="sat &lt;- function(po2, p50 = 26.8) po2^2.7 / (po2^2.7 + p50^2.7)">show me</button></li>
+    <li data-task="hb-content" data-auto="r:input kind=rstudio line~content &lt;- function">And the O<sub>2</sub> content, in mL per litre, with the handout’s values: <code>content &lt;- function(po2, hb = 150, p50 = 26.8) 1.39 * hb * sat(po2, p50) + 0.03 * po2</code> <button class="do showme" type="button" data-rcon="content &lt;- function(po2, hb = 150, p50 = 26.8) 1.39 * hb * sat(po2, p50) + 0.03 * po2">show me</button></li>
+    <li data-task="hb-curve" data-auto="r:input kind=rstudio line~p50 = 15">Plot the normal curve <code>curve(content(x), 0, 120, ylim = c(0, 210), xlab = &quot;PO2 (mmHg)&quot;, ylab = &quot;O2 content (mL per litre)&quot;)</code> <button class="do showme" type="button" data-rcon="curve(content(x), 0, 120, ylim = c(0, 210), xlab = &quot;PO2 (mmHg)&quot;, ylab = &quot;O2 content (mL per litre)&quot;)">show me</button>, then add an anaemia with half the haemoglobin (dashed), and carbon monoxide occupying half of it, which also shifts the curve of what’s left to the left (P<sub>50</sub> about 15 mmHg; dotted): <code>curve(content(x, hb = 75), add = TRUE, lty = 2); curve(content(x, hb = 75, p50 = 15), add = TRUE, lty = 3)</code> <button class="do showme" type="button" data-rcon="curve(content(x, hb = 75), add = TRUE, lty = 2); curve(content(x, hb = 75, p50 = 15), add = TRUE, lty = 3)">show me</button></li>
+    <li data-task="hb-release" data-auto="r:input kind=rstudio line~release &lt;- function">How much O<sub>2</sub> does each litre of blood give up as its PO<sub>2</sub> falls from 100 mmHg (arterial) to 40 mmHg (mixed venous)? <code>release &lt;- function(...) content(100, ...) - content(40, ...); c(normal = release(), anaemia = release(hb = 75), CO = release(hb = 75, p50 = 15))</code> <button class="do showme" type="button" data-rcon="release &lt;- function(...) content(100, ...) - content(40, ...); c(normal = release(), anaemia = release(hb = 75), CO = release(hb = 75, p50 = 15))">show me</button></li>
+  </ol>
+</div>
+<div class="q" data-q="hb-q-co" data-accept="num:8±1.5" data-placeholder="mL per litre with carbon monoxide">
+  <div class="q-text">How much O<sub>2</sub> does a litre of blood give up between 100 and 40 mmHg in each case, to the nearest mL? Both the anaemia and the carbon monoxide halve the O<sub>2</sub> that the arterial blood carries, so why is carbon monoxide so much worse?</div>
+  <div class="q-model">About 49 mL normally, about 25 mL in the anaemia, and only about 8 mL with carbon monoxide. In both, the arterial content is roughly halved. But in the anaemia the curve keeps its shape, so the blood still gives up its O<sub>2</sub> at the PO<sub>2</sub> of the tissues. Carbon monoxide binds haemoglobin about 200 times more tightly than O<sub>2</sub>, and once it occupies some haems, the remaining haems hold their O<sub>2</sub> more tightly too (the curve shifts left and loses its sigmoid shape), so very little is released until the tissue PO<sub>2</sub> falls very low. Worse, the patient doesn’t hyperventilate, because the arterial PO<sub>2</sub> and PCO<sub>2</sub> are normal, the skin looks pink, and a pulse oximeter reads carboxyhaemoglobin as oxyhaemoglobin and gives a normal saturation.</div>
+</div>
+
+</div>
+</section>
+
+<section class="chapter" id="s5-pft" data-num="2" data-title="Lung function tests" data-bench="exam" hidden>
+  <h1>Optional: reading lung function tests</h1>
+  <div class="meta-row"><span class="pill time">≈ 15 min</span></div>
+  <p class="lede">Interpret the spirometry, lung volumes and diffusing capacity of three people, and work out what each pattern means.</p>
+<div class="optional whole">
+
+<div class="callout info">
+  <div class="co-t">Optional, about 15 minutes</div>
+  <p>This exercise isn’t part of the work to hand in, and its steps don’t count towards finishing the page. It goes with the sixth lecture, on clinical respiratory physiology.</p>
+</div>
+
+<p>Three people had their lung function tested: spirometry (the forced expiratory volume in one second, FEV<sub>1</sub>, and the forced vital capacity, FVC), the total lung capacity (TLC, measured by plethysmography), and the diffusing capacity for carbon monoxide.</p>
+<table class="data">
+<thead><tr><th>Patient</th><th>FEV<sub>1</sub> (L)</th><th>FVC (L)</th><th>TLC (L), and predicted</th><th>Diffusing capacity for CO (% of predicted)</th></tr></thead>
+<tbody>
+<tr><td>A, a man of 64, breathless on exertion</td><td>1.2</td><td>3.1</td><td>7.9 (6.5)</td><td>45%</td></tr>
+<tr><td>B, a woman of 58, breathless on exertion, with a dry cough</td><td>2.1</td><td>2.4</td><td>3.9 (6.4)</td><td>50%</td></tr>
+<tr><td>C, a man of 30, a healthy volunteer</td><td>3.3</td><td>4.1</td><td>6.3 (6.2)</td><td>98%</td></tr>
+</tbody></table>
+<div class="activity">
+  <div class="act-t">Work out the FEV₁/FVC ratios</div>
+  <ol class="steps">
+    <li data-task="pf-calc" data-auto="calc:open">Open the calculator <button class="do showme" type="button" data-calc="1">show me</button>.</li>
+    <li data-task="pf-a" data-auto="calc:result value&gt;0.38 value&lt;0.40">Work out FEV<sub>1</sub>/FVC for patient A.</li>
+    <li data-task="pf-b" data-auto="calc:result value&gt;0.86 value&lt;0.89">And for patient B.</li>
+    <li data-task="pf-c" data-auto="calc:result value&gt;0.79 value&lt;0.82">And for patient C.</li>
+  </ol>
+</div>
+<div class="q" data-q="pf-q-a" data-type="mcq">
+  <div class="q-text">Patient A: FEV<sub>1</sub>/FVC 0.39, a TLC above predicted, and a low diffusing capacity. What pattern is this, and what disease is most likely?</div>
+  <div class="mcq"><label data-correct data-why="Yes. A ratio below 0.7 means obstruction: the air comes out slowly. The high TLC is hyperinflation and air trapping: with the alveolar walls destroyed, the lungs are more compliant and recoil less, and the small airways, no longer tethered, collapse early in expiration (the equal pressure point moves into them). The low diffusing capacity reflects the lost surface area for gas exchange. In asthma, by contrast, the diffusing capacity is usually normal."><input type="radio"> <span>Obstructive, with air trapping and lost alveolar surface: emphysema (COPD)</span></label><label data-why="No. In restriction the ratio is normal or high, and the TLC low."><input type="radio"> <span>Restrictive: pulmonary fibrosis</span></label><label data-why="No. A ratio of 0.39 is far below the lower limit of normal (about 0.7)."><input type="radio"> <span>Normal</span></label></div>
+</div>
+<div class="q" data-q="pf-q-b" data-type="mcq">
+  <div class="q-text">Patient B: FEV<sub>1</sub>/FVC 0.88, a low TLC and a low diffusing capacity. What pattern is this?</div>
+  <div class="mcq"><label data-why="No. The ratio is high, not low: the air that can be breathed out comes out quickly."><input type="radio"> <span>Obstructive: chronic bronchitis</span></label><label data-correct data-why="Yes. The lungs are stiff (low compliance), so the volumes (FVC and TLC) are small, but the airways are open, and the stiff lungs’ strong recoil drives the air out fast, so the ratio is normal or high. The thickened, scarred interstitium lengthens the path for diffusion, so the diffusing capacity is low, and the PO&lt;sub&gt;2&lt;/sub&gt; may fall on exercise, when blood spends less time in the capillaries."><input type="radio"> <span>Restrictive, with a thickened barrier: pulmonary fibrosis</span></label><label data-why="No. Her FVC and TLC are well below predicted."><input type="radio"> <span>Normal</span></label></div>
+</div>
+<div class="q" data-q="pf-q-dlco">
+  <div class="q-text">Patients A and B both have a low diffusing capacity, for different reasons. Using Fick’s law, explain the reason in each.</div>
+  <div class="q-model">Fick’s law: the rate of diffusion across the barrier is proportional to its area and to the difference in partial pressure, and inversely proportional to its thickness (times a constant for the gas). In emphysema (A), the walls between alveoli are destroyed, so the area for exchange (and the capillaries in it) falls. In fibrosis (B), the area may be less affected, but the barrier is thickened by scar tissue, so the distance rises. Either lowers the rate at which carbon monoxide (or O<sub>2</sub>) moves from the alveoli into the blood. The test uses carbon monoxide because it binds haemoglobin so tightly that the blood’s partial pressure stays near zero: its uptake is limited by diffusion alone, not by blood flow.</div>
+</div>
+
+</div>
+</section>
+
+<section class="chapter" id="s5-write" data-num="3" data-title="Your short answers" data-bench="exam" hidden>
+  <h1>Answer the questions, and hand them in</h1>
+  <p class="lede">This is the work to hand in this week: four short-answer questions, written in Supervision work and handed in from the same page.</p>
+
+<p>This week you hand in four short answers instead of an essay. Each is marked out of five, against a list of points, so precision and coverage matter more than argument.</p>
+
+<h2 id="es5-saq">Answering a short-answer question</h2>
+<ol class="plan">
+<li><b>Read the verb.</b> “Distinguish” wants the differences, side by side; “explain” wants mechanisms; “interpret” wants a judgement from the data, justified.</li>
+<li><b>Count the marks.</b> Five marks means at least five separate, precise points, in bullet points.</li>
+<li><b>Show your working</b> for any number, with units, and say what the number means.</li>
+<li><b>Answer the question that’s asked.</b> A labelled sketch (a dissociation curve, say) can save words.</li>
+</ol>
+<div class="callout tip">
+  <div class="co-t">Setting out an answer that uses data</div>
+  <p><b>State the result, with the working.</b> “FEV<sub>1</sub>/FVC = 1.3 / 3.4 = 0.38.”</p><p><b>Compare it with a reference.</b> “This is below 0.7, so the pattern is obstructive.”</p><p><b>Interpret it.</b> “Air leaves the lungs slowly: the airways are narrowed, or collapse early in expiration.”</p><p><b>Explain the mechanism, and say what else would help.</b> “In emphysema, loss of elastic recoil and of the alveolar walls that tether the small airways moves the equal pressure point into them. A high TLC and a low diffusing capacity would support this.”</p><p>Each line can earn a mark. Answers that jump straight to a diagnosis often earn one.</p>
+</div>
+<div class="q" data-q="es5-q-sat" data-type="mcq">
+  <div class="q-text">One question asks you to distinguish the O<sub>2</sub> content of arterial blood from its O<sub>2</sub> saturation. Which point earns a mark?</div>
+  <div class="mcq"><label data-why="True, but it says nothing about how they differ, so it earns nothing."><input type="radio"> <span>“Content and saturation are different.”</span></label><label data-correct data-why="Yes. Each quantity is defined, with a typical value, and the difference that matters (the amount of haemoglobin) is stated. A second point could then show why: in anaemia the saturation is normal but the content low."><input type="radio"> <span>“Saturation is the percentage of haemoglobin’s binding sites occupied by O<sub>2</sub> (about 97.5% at a PO<sub>2</sub> of 100 mmHg); content is the volume of O<sub>2</sub> per litre of blood, which also depends on how much haemoglobin there is (about 200 mL/L normally).”</span></label><label data-why="True, and worth mentioning in passing (it’s why carbon monoxide poisoning is missed), but it doesn’t distinguish the two quantities."><input type="radio"> <span>“Saturation is measured by a pulse oximeter.”</span></label></div>
+</div>
+
+<h2>Before you start</h2>
+<ul>
+<li>Look back at the feedback on your earlier work, and pick one thing to do better this time.</li>
+<li>Make sure you have the <b>hand-in password</b> I gave you, because you’ll need it at the end. You won’t find it anywhere on this site.</li>
+<li>Your work saves itself in this browser as you type, so you can stop and come back to it. Submit it once it’s finished.</li>
+</ul>
+<div class="activity">
+  <div class="act-t">Write it, and hand it in</div>
+  <ol class="steps">
+    <li data-task="es5-start" data-auto="exam:start paper=s5-saqs" data-check="paper:s5-saqs.started">Open the questions <button class="do showme" type="button" data-exam="s5-saqs">show me</button>, read its first page, and press <b>Start</b> when you’re ready to write.</li>
+    <li data-task="es5-write" data-auto="exam:words paper=s5-saqs words&gt;79">Answer each question in bullet points, with your working for any calculation. Aim for at least five precise points for each one.</li>
+    <li data-task="es5-submit" data-auto="exam:submit paper=s5-saqs" data-check="paper:s5-saqs.submitted">When you’ve finished, go to the submission page (the ✓ tile at the bottom right), check your work and submit it.</li>
+    <li data-task="es5-send" data-auto="exam:handin paper=s5-saqs step=confirmed" data-check="paper:s5-saqs.handedIn">Hand it in on the page that comes up next. Type in the hand-in password and press <b>Hand it in</b>. The page shows you a receipt once your work has arrived.</li>
+    <li data-task="es5-word" data-auto="exam:download paper=s5-saqs format=docx" data-check="paper:s5-saqs.downloaded">To keep a copy, press <b>Download your copy</b>. Before you hand in, the same button is under the password box, and it’s called <b>Download a copy for yourself</b>. The copy is saved as a Word document, usually in your Downloads folder.</li>
+  </ol>
+</div>
+<div class="callout info">
+  <div class="co-t">Handing in</div>
+  <p>Your work goes straight from this page into my Google Drive, and you don’t need a Google account for that. The hand-in password I give you stops anyone else from handing work in, so please keep it to yourself. Once it has arrived, the page tells you so and gives you a receipt. If it can’t be handed in, the page will tell you why. If you try again and it still won’t go, download a copy and send it to me some other way.</p>
+</div>
+<div class="callout info">
+  <div class="co-t">After you’ve handed it in</div>
+  <p>Once you’ve submitted, <b>Review my answers</b> shows you the points each answer is marked against. Read it after you’ve handed your work in, and make a note of what you’d add or change. That’s what we’ll talk about in the supervision.</p><p>Your work is kept in this browser, in Files → <code>essays</code>. It won’t be there on another computer, and some shared computers clear it when you log out, so download a copy before you finish.</p>
+</div>
+<div class="q" data-q="es5-q-next">
+  <div class="q-text">Once you’ve read the marking points, which answer would have scored least, and was it missing a definition, a number, a mechanism, or the judgement the data needed?</div>
+  <div class="q-model">There’s no single right answer here, so bring yours to the supervision. Data questions most often lose marks by giving a diagnosis without the working or the reasoning, and definition questions by describing without defining.</div>
+</div>
+
+</section>
+
+<section class="chapter" id="s5-more" data-num="4" data-title="Revision titles" data-bench="exam" hidden>
+  <h1>Revision titles</h1>
+  <p class="lede">This chapter is optional. It has four essay titles on this week’s lectures, for revision. You can hand one in for feedback if you’d like to.</p>
+<h2 id="m5-rev">Essay titles for revision</h2>
+<p>These four titles go with this week’s three lectures. It’s worth noting them down: they’re the kind of title you could meet in the exam.</p>
+<ol class="titles"><li>Discuss the factors that affect the affinity of haemoglobin for oxygen, and their physiological importance.</li><li>How is breathing controlled? Discuss how its control is challenged by exercise and by ascent to high altitude.</li><li>Discuss the physiological challenges of breath-hold diving and of diving with compressed air.</li><li>Compare and contrast obstructive and restrictive lung diseases, with reference to the tests used to tell them apart.</li></ol>
+<p>The handout doesn’t suggest titles, so these are mine, based on the course’s learning outcomes.</p>
+<p>Planning an answer to each one (your argument, your evidence, and the order you’d put them in) is good revision. If you’d like feedback on one, write it in Supervision work <button class="do showme" type="button" data-exam="s5-revision">open them</button> and <b>hand it in</b>, in the same way as the work for this week. That’s optional: choose the title you want to write, and leave the others blank. After you submit, the guidance shows you the ground each title should cover.</p>
+<div class="optional">
+<h2>Practice</h2>
+<div class="activity">
+  <div class="act-t">If you want the practice</div>
+  <ol class="steps">
+    <li data-task="m5-plan">Plan an answer to one of the revision titles. Sum up your position in a sentence, then jot down the three or four points, with the evidence for each, that would support it.</li>
+    <li data-task="m5-rev" data-auto="exam:submit paper=s5-revision">Write one of them up in Supervision work, submit it, and hand it in if you’d like my feedback on it.</li>
+  </ol>
+</div>
+</div>
+</section>
+<!--/CHAPTERS-->
+    </aside>
+
+    <div class="splitter" role="separator" aria-orientation="vertical" title="Drag to resize, or double-click to reset"></div>
+
+    <section class="bench" aria-label="Workbench">
+      <div class="wb-tabs" role="tablist">
+        <button class="wb-tab rail-btn" type="button" id="tutRail" title="Show the instructions (Ctrl+\)" hidden><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M13 10l2 2-2 2"/></svg><span>Instructions</span></button>
+        <button class="wb-tab on" type="button" role="tab" data-wb="exam" title="Supervision work: the essay and the questions set for your supervision, written as in the online exam"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 3H6.5A2.5 2.5 0 0 0 4 5.5v13A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5V9z"/><path d="M14 3v6h6"/><path d="M8 13h8M8 17h5"/></svg><span class="lbl">Supervision work</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="scope" title="A virtual microscope with slides of human tissues"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M9.5 2.8l3.6 1.4-3 7.6-3.6-1.4z"/><path d="M7.7 12.4l-.9 2.2"/><path d="M4 16.5h9"/><path d="M13.6 7.6a6.5 6.5 0 0 1 1.9 11.2"/><path d="M5 21h14"/><path d="M15.5 18.8V21"/></svg><span class="lbl">Microscope</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="anatomy" title="The anatomy of the human body in 3D (from Z-Anatomy)"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="4.6" r="2.3"/><path d="M12 7.6v6.6M6.2 10.6L12 8.8l5.8 1.8M8.8 21l3.2-6.8 3.2 6.8"/></svg><span class="lbl">Anatomy</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="viewer" title="Proteins and other molecules in 3D"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="6" cy="7" r="2.6"/><circle cx="18" cy="7" r="2.6"/><circle cx="12" cy="17.5" r="2.6"/><path d="M8.6 7h6.8M7.3 9.3l3.4 5.9M16.7 9.3l-3.4 5.9"/></svg><span class="lbl">Molecules</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="recorder" title="A chart recorder with real recordings of people (the ECG, heart sounds, blood pressure, breathing, muscle and the brain), from PhysioNet"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M6 13h2.5l1.5-4.5 2.5 8 1.8-5.5 1 2H18"/></svg><span class="lbl">Recorder</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="bath" title="An organ bath: isolated tissues, drugs and concentration–response curves"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5.5 3h13"/><path d="M7 3v13.5A4.5 4.5 0 0 0 11.5 21h1a4.5 4.5 0 0 0 4.5-4.5V3"/><path d="M12 3v4.5"/><rect x="10.7" y="7.5" width="2.6" height="6" rx="1.3"/><path d="M9.3 17.6h.01M14.4 16.4h.01M11.8 18.9h.01"/></svg><span class="lbl">Organ bath</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="flow" title="Flow diagrams of physiological control, with a simulator"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="5" rx="1.2"/><rect x="14" y="3" width="7" height="5" rx="1.2"/><rect x="14" y="16" width="7" height="5" rx="1.2"/><path d="M10 5.5h4M17.5 8v8M14 18.5H7.5a1.5 1.5 0 0 1-1.5-1.5V8"/></svg><span class="lbl">Diagrams</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="circuit" title="Electrical circuits, and the circuit models of physiology"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M2 12h3.5l1.7-4 2.6 8 2.6-8 2.6 8 1.7-4H22"/></svg><span class="lbl">Circuits</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="sims" title="Interactive simulations from PhET (University of Colorado Boulder)"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 6h8.5M16.5 6H20M4 12h2.5M10.5 12H20M4 18h10.5M18.5 18H20"/><circle cx="14.5" cy="6" r="2"/><circle cx="8.5" cy="12" r="2"/><circle cx="16.5" cy="18" r="2"/></svg><span class="lbl">Simulations</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="rstudio" title="RStudio, for analysing data in R"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16M3 12h18"/></svg><span class="lbl">RStudio</span><span class="dot"></span></button>
+        <button class="wb-tab" type="button" role="tab" data-wb="editor" title="Your files"><svg class="ic" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v1H7l-4 9z"/><path d="M3 19l3.5-8H22l-3.5 8z"/></svg><span class="lbl">Files</span><span class="dot"></span></button>
+        <button class="bench-close" type="button" aria-label="Back to the instructions" title="Back to the instructions">✕<span class="lbl">Instructions</span></button>
+      </div>
+      <div class="wb-body">
+        <div class="wb-pane" data-wb="scope" hidden><div id="scopeRoot"></div></div>
+        <div class="wb-pane" data-wb="anatomy" hidden><div id="anatRoot"></div></div>
+        <div class="wb-pane" data-wb="viewer" hidden><div id="viewerRoot"></div></div>
+        <div class="wb-pane" data-wb="recorder" hidden><div id="recRoot"></div></div>
+        <div class="wb-pane" data-wb="bath" hidden><div id="bathRoot"></div></div>
+        <div class="wb-pane" data-wb="flow" hidden><div id="flowRoot"></div></div>
+        <div class="wb-pane" data-wb="circuit" hidden><div id="circuitRoot"></div></div>
+        <div class="wb-pane" data-wb="sims" hidden><div id="simsRoot"></div></div>
+        <div class="wb-pane" data-wb="exam"><div id="examRoot"></div></div>
+        <div class="wb-pane" data-wb="rstudio" hidden><div id="rsRoot"></div></div>
+        <div class="wb-pane" data-wb="editor" hidden><div id="edRoot"></div></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<button class="bench-fab" type="button" aria-label="Open the workbench"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16M3 12h18"/></svg>Workbench</button>
+<noscript><p style="padding:20px">This page needs JavaScript.</p></noscript>
+
+<script>window.BMS_STARTERS = [];
+window.BMS_STARTERS_VERSION = 1;</script>
+<script>window.BMS_PAGE = {"week": 5, "page": "supervision-5.html", "title": "Supervision 5", "site": "Physiology supervisions"};</script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/core.js"></script>
+<script src="assets/js/icons.js"></script>
+<script src="assets/js/vfs.js"></script>
+<script src="assets/js/project.js"></script>
+<script src="assets/vendor/codemirror/codemirror.js"></script>
+<script src="assets/vendor/codemirror/r.js"></script>
+<script src="assets/vendor/codemirror/markdown.js"></script>
+<script src="assets/vendor/codemirror/yaml.js"></script>
+<script src="assets/vendor/codemirror/shell.js"></script>
+<script src="assets/vendor/codemirror/javascript.js"></script>
+<script src="assets/vendor/codemirror/python.js"></script>
+<script src="assets/vendor/codemirror/overlay.js"></script>
+<script src="assets/vendor/codemirror/multiplex.js"></script>
+<script src="assets/vendor/codemirror/yaml-frontmatter.js"></script>
+<script src="assets/vendor/codemirror/rmarkdown.js"></script>
+<script src="assets/vendor/codemirror/matchbrackets.js"></script>
+<script src="assets/vendor/codemirror/closebrackets.js"></script>
+<script src="assets/vendor/codemirror/comment.js"></script>
+<script src="assets/vendor/codemirror/searchcursor.js"></script>
+<script src="assets/vendor/codemirror/active-line.js"></script>
+<script src="assets/vendor/codemirror/runmode.js"></script>
+<script src="assets/vendor/dompurify/purify.min.js"></script>
+<script src="assets/vendor/marked/marked.min.js"></script>
+<script src="assets/js/rsession.js"></script>
+<script src="assets/js/rui.js"></script>
+<script src="assets/js/dataview.js"></script>
+<script src="assets/js/knit.js"></script>
+<script src="assets/js/rstudio.js"></script>
+<script src="assets/js/rsource.js"></script>
+<script src="assets/js/shiny.js"></script>
+<script src="assets/js/pdfview.js"></script>
+<script src="assets/js/editor.js"></script>
+<script src="assets/js/page.js"></script>
+<script src="assets/js/tutorial.js"></script>
+<script src="assets/js/workbench.js"></script>
+</body>
+</html>

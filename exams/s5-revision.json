@@ -1,0 +1,50 @@
+{
+ "id": "s5-revision",
+ "week": 5,
+ "required": false,
+ "order": 2,
+ "title": "Supervision 5 revision essays",
+ "description": "Four more essay titles on this week’s lectures. Write one for practice, and hand it in if you’d like feedback on it.",
+ "minutes": null,
+ "suggestedMinutes": null,
+ "autoSubmit": false,
+ "spellcheck": false,
+ "showWordCount": true,
+ "clipboard": "exam",
+ "handIn": true,
+ "instructions": "<p><b>Optional, for revision.</b> These essay titles go with this week’s lectures. Only the Supervision 5 short answers has to be handed in.</p><ul><li><b>Choose one</b> and write it here, as you would in the exam. Leave the others blank: you can still submit.</li><li><b>Handing in.</b> If you’d like my feedback on it, hand it in once you’ve submitted, in the same way as the work for this week. It goes into the same folder in my Google Drive.</li><li>Planning an answer to each of the others (your argument, your evidence and the order you’d put them in) is good revision too.</li><li>After you submit, <b>Review my answers</b> shows you the ground each title covers.</li><li><b>Pasting.</b> As in the exam, you can copy and paste within your work, but you can’t paste in text copied from anywhere else. Write everything in your own words.</li></ul>",
+ "questions": [
+  {
+   "id": "affinity",
+   "type": "essay",
+   "title": "Haemoglobin’s affinity for O₂",
+   "lines": 18,
+   "text": "<p>Discuss the factors that affect the affinity of haemoglobin for oxygen, and their physiological importance.</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>The curve</b>: sigmoid because of cooperative binding (T and R states); the flat top protects loading against a fall in alveolar PO<sub>2</sub>, the steep part allows unloading at tissue PO<sub>2</sub>; P<sub>50</sub> about 27 mmHg.</li><li><b>Right shifts</b>: H<sup>+</sup> and CO<sub>2</sub> (the Bohr effect), temperature and 2,3-BPG, all higher in working tissues, so unloading rises where it’s needed; 2,3-BPG rises at altitude and in anaemia.</li><li><b>Left shifts</b>: fetal haemoglobin (γ chains bind 2,3-BPG poorly), carbon monoxide, alkalosis, cold; myoglobin’s hyperbolic curve, far to the left, for storage.</li><li><b>Content against saturation</b>: what matters is O<sub>2</sub> delivered; a right shift can cost loading at altitude, so the balance depends on the conditions.</li><li><b>Comparative examples</b>: species living at altitude or diving (high or low affinity, and why).</li></ul>"
+  },
+  {
+   "id": "control",
+   "type": "essay",
+   "title": "Controlling breathing",
+   "lines": 18,
+   "text": "<p>How is breathing controlled? Discuss how its control is challenged by exercise and by ascent to high altitude.</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>The controller and sensors</b>: the brainstem’s rhythm generator; central chemoreceptors (the pH of the CSF, so CO<sub>2</sub>), the main drive, with ventilation rising linearly with PCO<sub>2</sub> above its normal level; peripheral chemoreceptors (carotid and aortic bodies: low PO<sub>2</sub>, below about 60 mmHg, and H<sup>+</sup>); “look after the CO<sub>2</sub>, and the O<sub>2</sub> will look after itself”, in health.</li><li><b>Exercise</b>: in moderate exercise ventilation rises with almost no change in PO<sub>2</sub>, PCO<sub>2</sub> or H<sup>+</sup>, so feedback can’t explain it: central command (perhaps learned), limb afferents, temperature, cardiac output. Above the threshold, lactic acid adds a metabolic acidosis that drives ventilation further.</li><li><b>Altitude</b>: hypoxic drive blunted by the respiratory alkalosis; renal HCO<sub>3</sub><sup>−</sup> excretion over days lifts the brake (acclimatisation).</li><li><b>A conclusion</b> on feedback and feed-forward in the control of breathing.</li></ul>"
+  },
+  {
+   "id": "diving",
+   "type": "essay",
+   "title": "Diving",
+   "lines": 18,
+   "text": "<p>Discuss the physiological challenges of breath-hold diving and of diving with compressed air.</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>Pressure</b> rises by about 750 mmHg for every 10 m of depth; gas volumes shrink (Boyle) and partial pressures rise.</li><li><b>Breath-hold diving</b>: the diving reflex (bradycardia, vasoconstriction, conserving O<sub>2</sub> for the brain); hyperventilating first lowers PCO<sub>2</sub>, so the urge to breathe comes late, while O<sub>2</sub> stores rise only a little; at depth, compression keeps alveolar PO<sub>2</sub> up, but on ascent it falls sharply: loss of consciousness near the surface (shallow-water blackout).</li><li><b>Compressed air</b>: nitrogen dissolves in the tissues (especially fat, slowly); decompression sickness if ascent is too fast (bubbles); nitrogen narcosis; O<sub>2</sub> toxicity; the denser gas raises airway resistance.</li><li><b>Solutions</b>: decompression tables and recompression; helium–oxygen mixtures (less soluble, lighter, faster to diffuse, not narcotic).</li><li><b>Diving mammals</b>: seals’ large O<sub>2</sub> stores, strong diving reflex, and exhaling before a dive.</li></ul>"
+  },
+  {
+   "id": "disease",
+   "type": "essay",
+   "title": "Obstructive and restrictive disease",
+   "lines": 18,
+   "text": "<p>Compare and contrast obstructive and restrictive lung diseases, with reference to the tests used to tell them apart.</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>The patterns</b>: obstructive, a low FEV<sub>1</sub>/FVC (below 0.7), often a high TLC and residual volume (air trapping); restrictive, a normal or high ratio with small volumes (low FVC and TLC).</li><li><b>Examples and mechanisms</b>: COPD (emphysema: lost recoil and tethering, the equal pressure point moving into small airways; chronic bronchitis: mucus, narrowing), asthma (reversible bronchoconstriction); fibrosis (stiff lungs, a thick barrier), and restriction outside the lung (chest wall, muscles).</li><li><b>The tests</b>: spirometry and the flow–volume loop; lung volumes by plethysmography; diffusing capacity for carbon monoxide (low in emphysema and fibrosis, normal in asthma); reversibility with a bronchodilator; arterial blood gases.</li><li><b>Respiratory failure</b>: type 1 (hypoxaemia with a normal or low PCO<sub>2</sub>, as in V/Q mismatch and diffusion defects) and type 2 (hypercapnia from hypoventilation, as in severe COPD).</li><li><b>A conclusion</b> on how the physiology explains the tests.</li></ul>"
+  }
+ ]
+}

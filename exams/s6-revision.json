@@ -1,0 +1,74 @@
+{
+ "id": "s6-revision",
+ "week": 6,
+ "required": false,
+ "order": 2,
+ "title": "Supervision 6 revision essays",
+ "description": "Seven more essay titles on this week’s lectures. Write one for practice, and hand it in if you’d like feedback on it.",
+ "minutes": null,
+ "suggestedMinutes": null,
+ "autoSubmit": false,
+ "spellcheck": false,
+ "showWordCount": true,
+ "clipboard": "exam",
+ "handIn": true,
+ "instructions": "<p><b>Optional, for revision.</b> These essay titles go with this week’s lectures. Only the Supervision 6 essay has to be handed in.</p><ul><li><b>Choose one</b> and write it here, as you would in the exam. Leave the others blank: you can still submit.</li><li><b>Handing in.</b> If you’d like my feedback on it, hand it in once you’ve submitted, in the same way as the work for this week. It goes into the same folder in my Google Drive.</li><li>Planning an answer to each of the others (your argument, your evidence and the order you’d put them in) is good revision too.</li><li>After you submit, <b>Review my answers</b> shows you the ground each title covers.</li><li><b>Pasting.</b> As in the exam, you can copy and paste within your work, but you can’t paste in text copied from anywhere else. Write everything in your own words.</li></ul>",
+ "questions": [
+  {
+   "id": "functions",
+   "type": "essay",
+   "title": "The functions of the kidney",
+   "lines": 18,
+   "text": "<p>What are the functions of the kidney? To what extent are these functions regulated entirely within the kidney?</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>The functions</b>: excreting waste (urea, creatinine, drugs); regulating the volume, osmolality and composition of the extracellular fluid (Na<sup>+</sup>, K<sup>+</sup>, Ca<sup>2+</sup>, phosphate, H<sup>+</sup> and HCO<sub>3</sub><sup>−</sup>); and endocrine (renin, erythropoietin, calcitriol) and metabolic ones (gluconeogenesis in a fast).</li><li><b>Regulated within the kidney</b>: autoregulation of renal blood flow and GFR (the myogenic response and tubuloglomerular feedback through the macula densa); glomerulotubular balance; the Starling forces in the peritubular capillaries; renin released by the macula densa and the afferent arteriole’s own baroreceptor.</li><li><b>Regulated from outside</b>: ADH (osmoreceptors, and large falls in volume), the renal sympathetic nerves, angiotensin II and aldosterone, natriuretic peptides, PTH and calcitriol, and the plasma K<sup>+</sup> itself acting on the adrenal cortex.</li><li><b>To what extent</b>: a transplanted, denervated kidney still keeps the body in balance, which shows how much is intrinsic, but osmoregulation needs ADH, and volume regulation depends on hormones and nerves. Take a view.</li></ul>"
+  },
+  {
+   "id": "tubules",
+   "type": "essay",
+   "title": "Proximal and distal tubules",
+   "lines": 18,
+   "text": "<p>Contrast the functions of the proximal and distal tubules of the kidney.</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>Proximal tubule</b>: bulk, isosmotic reabsorption of about two-thirds of the filtered Na<sup>+</sup> and water; nearly all glucose and amino acids (secondary active transport, transport maxima); most of the filtered HCO<sub>3</sub><sup>−</sup> (Na<sup>+</sup>/H<sup>+</sup> exchange, carbonic anhydrase); phosphate; secretion of organic anions and cations (PAH, drugs); ammonium production. Leaky, with a brush border and many mitochondria; set fractions, not fine control.</li><li><b>Distal tubule and collecting duct</b>: a smaller amount of Na<sup>+</sup>, but regulated (aldosterone, through ENaC in principal cells); K<sup>+</sup> secretion; H<sup>+</sup> secretion by intercalated cells; Ca<sup>2+</sup> reabsorption regulated by PTH; water reabsorption regulated by ADH (aquaporin-2). Tight epithelia that can hold steep gradients.</li><li><b>The contrast</b>: bulk and fixed against fine and regulated; leaky against tight; isosmotic against able to make urine dilute or concentrated. Use the loop of Henle to link them if it helps.</li></ul>"
+  },
+  {
+   "id": "osmotic",
+   "type": "essay",
+   "title": "Varying the urine’s osmotic pressure",
+   "lines": 18,
+   "text": "<p>How is the kidney able to vary the osmotic pressure of the urine?</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>Dilution</b>: the thick ascending limb reabsorbs NaCl (NKCC2) but is impermeable to water, so the fluid leaving the loop is hyposmotic; with little ADH the collecting duct stays impermeable and dilute urine is made (a water diuresis).</li><li><b>Concentration</b>: counter-current multiplication of a single effect of about 200 mOsm by the loop builds a gradient through the outer medulla; urea, concentrated in the collecting ducts and leaving the inner medullary collecting duct (made permeable by ADH), extends it through the inner medulla; the vasa recta, as counter-current exchangers, keep it. ADH inserts aquaporin-2 in the collecting duct, which equilibrates with the medulla.</li><li><b>The evidence</b>: Ribbert, Hirokawa, the freezing-point studies of the frozen kidney; the medulla’s osmotic pressure follows the urine’s.</li><li><b>Control</b>: osmoreceptors (stretch-inactivated cation channels in the magnocellular neurones), ADH, and thirst; large falls in volume or pressure override.</li></ul>"
+  },
+  {
+   "id": "ultrafiltrate",
+   "type": "essay",
+   "title": "Forming an ultrafiltrate",
+   "lines": 18,
+   "text": "<p>How do the kidneys form an ultrafiltrate of the plasma? How are the effects of changes in arterial blood pressure minimised?</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>The barrier</b>: fenestrated endothelium, basement membrane and podocyte slit diaphragms, selecting by size and charge; albumin is barely filtered.</li><li><b>The forces</b>: GFR = K<sub>f</sub> [(P<sub>c</sub> − P<sub>b</sub>) − (π<sub>c</sub> − π<sub>b</sub>)]; P<sub>c</sub> about 60 mmHg, high and almost constant along the capillary because the efferent arteriole resists flow; π<sub>c</sub> rises from 21 to 33 mmHg as protein-free fluid leaves. GFR 125 mL/min, a filtration fraction of about 20%.</li><li><b>Autoregulation</b>: renal blood flow and GFR change little over a wide range of arterial pressures (roughly 80–180 mmHg), mainly because the afferent arteriole’s resistance changes: the myogenic response of the afferent arteriole, and tubuloglomerular feedback (the macula densa senses NaCl delivery, and adenosine and ATP constrict the afferent arteriole).</li><li><b>Beyond autoregulation</b>: angiotensin II constricts the efferent arteriole and protects GFR when pressure falls; sympathetic constriction in severe hypotension; pressure natriuresis shows that autoregulation isn’t perfect, and that matters for long-term blood pressure.</li></ul>"
+  },
+  {
+   "id": "clearances",
+   "type": "essay",
+   "title": "Glucose, inulin and PAH",
+   "lines": 18,
+   "text": "<p>Why is it that at high plasma concentrations the clearances of glucose, inulin and para-aminohippuric acid are similar?</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><p>This is the old exam question you answered in R, in chapter 2 of this week’s page. An essay needs more than the answer:</p><ul><li><b>Clearance</b>: its definition (C = UV/P), and what it means for each: inulin’s is the GFR, PAH’s at low concentrations the effective renal plasma flow (about 90% of the renal plasma flow), glucose’s zero below the threshold.</li><li><b>Saturable transport</b>: glucose reabsorption (SGLT2 and SGLT1, a T<sub>max</sub> of 375 mg/min) and PAH secretion (organic anion transporters, T<sub>max</sub> about 80 mg/min); splay and the renal threshold for glucose.</li><li><b>Why they converge</b>: filtration isn’t saturable, so at high concentrations the transported part becomes small beside the filtered load, and all three clearances tend to the GFR: glucose from below, PAH from above.</li><li><b>Why it matters</b>: measuring renal plasma flow with PAH needs low concentrations; glucosuria in diabetes; drugs that compete for secretion (probenecid and penicillin) or block reabsorption (SGLT2 inhibitors).</li></ul>"
+  },
+  {
+   "id": "peacock",
+   "type": "essay",
+   "title": "Peacock’s verse",
+   "lines": 18,
+   "text": "<p><i>Not drunk is he who from the floor<br>Can rise alone and still drink more;<br>But drunk is he, who prostrate lies,<br>Without the power to drink or rise.</i><br>(Thomas Love Peacock, <i>The Misfortunes of Elphin</i>, 1829)<br><br>What is the physiological connection?</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>Alcohol and ADH</b>: ethanol inhibits the release of ADH from the posterior pituitary, so drinking causes a diuresis of dilute urine; the water lost can make the drinker dehydrated, hypernatraemic and thirsty (the hangover).</li><li><b>Drinking more</b>: large volumes of a dilute drink lower plasma osmolality, which also cuts ADH, so the water is excreted and more can be drunk; the kidney’s capacity to excrete water.</li><li><b>Rising from the floor</b>: standing needs the baroreflex and an adequate blood volume; alcohol dilates vessels and its diuresis reduces volume, so postural hypotension and fainting follow (a link back to Supervision 2).</li><li>Take a light-hearted title seriously: organise the answer around osmoregulation and volume, with numbers.</li></ul>"
+  },
+  {
+   "id": "johnson",
+   "type": "essay",
+   "title": "Johnson’s verse",
+   "lines": 18,
+   "text": "<p><i>Hermit hoar, in solemn cell,<br>wearing out life’s evening gray;<br>smite thy bosom, sage and tell,<br>What is bliss, and which the way?<br>Thus I spoke; and speaking sigh’d;<br>-Scare repressed the starting tear;-<br>When the smiling sage reply’d-<br>- Come, my lad, and drink some beer.</i><br>(Samuel Johnson, 1777)<br><br>What is the physiological connection?</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>A litre of beer</b> is mostly water with a little solute and alcohol: it lowers plasma osmolality, ADH secretion falls (and alcohol inhibits it too), aquaporin-2 leaves the collecting duct, and a water diuresis of dilute urine follows within an hour or so.</li><li><b>The limits of water excretion</b>: urine can’t be diluted much below about 50 mOsm/kg, so the water that can be excreted depends on the solute there is to excrete; a heavy beer drinker who eats little (beer potomania) can become hyponatraemic.</li><li><b>Thirst and bliss</b>: drinking stops before the water has been absorbed, by mechanisms the handout calls uncertain, and reflexes from the gut and liver inhibit ADH during drinking; a dry throat makes you thirsty, but isn’t regulatory.</li><li>Compare it with Peacock’s verse, and with drinking a litre of fresh water, isotonic saline or seawater (Supervision 7).</li></ul>"
+  }
+ ]
+}

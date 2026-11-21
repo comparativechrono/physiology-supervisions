@@ -1,0 +1,50 @@
+{
+ "id": "s4-revision",
+ "week": 4,
+ "required": false,
+ "order": 2,
+ "title": "Supervision 4 revision essays",
+ "description": "Four more essay titles on this week’s lectures. Write one for practice, and hand it in if you’d like feedback on it.",
+ "minutes": null,
+ "suggestedMinutes": null,
+ "autoSubmit": false,
+ "spellcheck": false,
+ "showWordCount": true,
+ "clipboard": "exam",
+ "handIn": true,
+ "instructions": "<p><b>Optional, for revision.</b> These essay titles go with this week’s lectures. Only the Supervision 4 essay has to be handed in.</p><ul><li><b>Choose one</b> and write it here, as you would in the exam. Leave the others blank: you can still submit.</li><li><b>Handing in.</b> If you’d like my feedback on it, hand it in once you’ve submitted, in the same way as the work for this week. It goes into the same folder in my Google Drive.</li><li>Planning an answer to each of the others (your argument, your evidence and the order you’d put them in) is good revision too.</li><li>After you submit, <b>Review my answers</b> shows you the ground each title covers.</li><li><b>Pasting.</b> As in the exam, you can copy and paste within your work, but you can’t paste in text copied from anywhere else. Write everything in your own words.</li></ul>",
+ "questions": [
+  {
+   "id": "compliance",
+   "type": "essay",
+   "title": "Compliance and surfactant",
+   "lines": 18,
+   "text": "<p>What determines the compliance of the lungs? Discuss the importance of pulmonary surfactant, in health and in the premature newborn.</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>Compliance</b> = ΔV / ΔP (transpulmonary pressure); static compliance from the pressure–volume curve, and its hysteresis.</li><li><b>Two elastic forces</b>: the elastic tissue of the lung (elastin and collagen), and surface tension at the air–liquid interface, which is the larger. Saline-filled lungs are far easier to inflate than air-filled ones (von Neergaard).</li><li><b>Surfactant</b> (phospholipid, mainly dipalmitoylphosphatidylcholine, with proteins; from type II pneumocytes) lowers surface tension, more so as the surface shrinks: it raises compliance, stabilises small alveoli against collapse (Laplace: P = 2T/r), and keeps the alveoli dry.</li><li><b>The newborn</b>: surfactant is made late in gestation (glucocorticoids accelerate it; antenatal steroids for preterm delivery); its lack causes neonatal respiratory distress syndrome: stiff lungs, atelectasis, hypoxaemia. Treatment with exogenous surfactant.</li><li><b>Clinical changes in compliance</b>: low in fibrosis and oedema (stiff), high in emphysema (easy to inflate, poor recoil, air trapping).</li></ul>"
+  },
+  {
+   "id": "resistance",
+   "type": "essay",
+   "title": "Airway resistance",
+   "lines": 18,
+   "text": "<p>Discuss the factors that determine airway resistance, and explain why expiratory flow becomes independent of effort in a forced expiration.</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>Resistance</b> = ΔP / flow. Poiseuille for laminar flow (resistance ∝ length / r<sup>4</sup>); turbulent flow needs more pressure for the same flow (in the trachea and large airways, and at high flows).</li><li><b>Where the resistance is</b>: mostly in the medium-sized bronchi; the small airways, although each is narrow, are so many in parallel that they add little (so early small-airway disease is silent).</li><li><b>What changes it</b>: lung volume (radial traction), bronchial smooth muscle (parasympathetic constriction through muscarinic receptors, β<sub>2</sub> dilatation; histamine and other mediators in asthma), mucus, oedema.</li><li><b>Dynamic compression</b>: in a forced expiration, pleural pressure rises above atmospheric; the pressure inside the airway falls along it; at the equal pressure point the transmural pressure is zero, and downstream the airway is compressed. More effort raises the pressure on both sides equally, so the flow doesn’t rise: effort-independent flow, set by the lung’s elastic recoil and the resistance of the airways upstream.</li><li><b>In disease</b>: emphysema (less recoil and tethering, so the equal pressure point moves into the small airways: collapse, air trapping); asthma; the flattened expiratory flow–volume curve.</li></ul>"
+  },
+  {
+   "id": "circulations",
+   "type": "essay",
+   "title": "Pulmonary and systemic circulations",
+   "lines": 18,
+   "text": "<p>Compare and contrast the pulmonary and systemic circulations.</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>The same flow</b> (the whole cardiac output), at a much lower pressure (about 15 against 95 mmHg mean) and resistance (about a tenth); thin-walled vessels, a compliant bed; recruitment and distension of capillaries lower the resistance further as the cardiac output rises.</li><li><b>Gravity matters</b> in the lungs (West’s zones), much less in the high-pressure systemic circuit.</li><li><b>Control</b>: local hypoxia constricts pulmonary vessels and dilates systemic ones; the pulmonary circulation has little autonomic control of resistance.</li><li><b>Fluid exchange</b>: low capillary pressure keeps the alveoli dry; lymphatics; oedema when left atrial pressure rises (left heart failure) or at altitude.</li><li><b>Other functions</b>: a filter, a reservoir of blood, metabolic functions (angiotensin-converting enzyme). The bronchial circulation is systemic.</li></ul>"
+  },
+  {
+   "id": "hypoxia",
+   "type": "essay",
+   "title": "The pulmonary circulation in hypoxia",
+   "lines": 18,
+   "text": "<p>Discuss the response of the pulmonary circulation to hypoxia, and its consequences at high altitude.</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>Hypoxic pulmonary vasoconstriction</b>: alveolar (more than arterial) hypoxia constricts small pulmonary arteries; the mechanism is uncertain; the opposite of the systemic response.</li><li><b>Its purpose</b>: matching perfusion to ventilation when hypoxia is regional, with little rise in pulmonary arterial pressure; in the fetus it keeps the pulmonary resistance high, so blood bypasses the lungs.</li><li><b>At altitude</b> the hypoxia is global: pulmonary hypertension, right ventricular work and hypertrophy, then failure with peripheral oedema. Species differ with the muscularity of their pulmonary arteries: brisket disease in cattle.</li><li><b>High-altitude pulmonary oedema</b>: rapid ascent above about 2500 m; high pressures, uneven constriction overperfusing some capillaries, which leak; treated by descent, O<sub>2</sub>, pulmonary vasodilators.</li><li><b>A conclusion</b>: a response adaptive for regional hypoxia becomes maladaptive for global hypoxia.</li></ul>"
+  }
+ ]
+}

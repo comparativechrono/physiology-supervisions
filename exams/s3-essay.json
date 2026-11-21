@@ -1,0 +1,27 @@
+{
+ "id": "s3-essay",
+ "week": 3,
+ "required": true,
+ "order": 1,
+ "title": "Supervision 3 essay",
+ "description": "Compare and contrast the metabolic roles of growth hormone and cortisol.",
+ "minutes": null,
+ "suggestedMinutes": null,
+ "autoSubmit": false,
+ "spellcheck": false,
+ "showWordCount": true,
+ "clipboard": "exam",
+ "handIn": true,
+ "instructions": "<p><b>This is the work to hand in for Supervision 3.</b> Write it here, the same way you’ll write your essays in the online exam.</p><ul><li><b>Planning.</b> Plan your essay before you start writing, on paper if you like.</li><li><b>Diagrams.</b> You can add diagrams, just as you can in the exam. Draw one with <b>Insert drawing</b> (the pencil), or use <b>Insert picture</b> to add a picture, such as a photo of a diagram you drew on paper. Type a caption under it. Your pictures go into the Word document with your work.</li><li><b>Pasting.</b> As in the exam, you can copy and paste within your work, but you can’t paste in text copied from anywhere else. Write everything in your own words.</li><li><b>Saving.</b> Your work is saved in this browser as you type, so you can stop and come back to it. It stays here until you submit it.</li><li><b>When you’ve finished</b>, go to the submission page (the ✓ tile at the bottom right), check your work and submit it. Then hand it in as described below.</li></ul>",
+ "questions": [
+  {
+   "id": "essay",
+   "type": "essay",
+   "title": "Growth hormone and cortisol",
+   "marks": 25,
+   "lines": 22,
+   "text": "<p>Compare and contrast the metabolic roles of growth hormone and cortisol.</p><p class=\"muted\">Write in continuous prose, with an introduction, paragraphs that each make one point, and a conclusion. Support your argument with mechanisms, evidence and numbers from the lectures.</p>",
+   "guidance": "<p><b>Read this after you’ve written your essay</b>, and use it before the supervision to look back over what you wrote. It isn’t a model essay. It sets out the ground a good answer covers.</p>\n<p><b>What the title asks.</b> Similarities and differences, and the best essays explain them. Both hormones are counter-regulatory to insulin and protect the brain’s supply of glucose in a fast, but they differ in what releases them, in what they do to protein, in how fast they act, and in what else they do. A point-by-point structure, comparing the two on each aspect, works best.</p>\n<ul>\n<li><b>Secretion.</b> Both rise in hypoglycaemia, exercise and stress. Growth hormone: GHRH and ghrelin stimulate, somatostatin inhibits; pulsatile, with a large peak early in sleep (in men); also released by amino acids (arginine) and low free fatty acids; half-life under 20 minutes. Cortisol: CRH and ACTH; a circadian rhythm with a surge before waking; pulsatile; 95% bound to CBG; half-life about 70 minutes. Both have negative feedback (IGF-1 via somatostatin; cortisol on CRH and ACTH).</li>\n<li><b>Glucose.</b> Both raise it and spare it for the brain: hepatic gluconeogenesis and glucose output up, and glucose uptake by muscle and fat inhibited (insulin resistance, a diabetogenic effect). Cortisol’s nocturnal surge protects liver glycogen for emergencies.</li>\n<li><b>Fat.</b> Both mobilise free fatty acids from adipose tissue, so peripheral tissues use fat and spare glucose.</li>\n<li><b>Protein: the key difference.</b> Cortisol is catabolic: it breaks down muscle and plasma proteins to provide amino acids for gluconeogenesis. Growth hormone is anabolic for protein: it promotes amino acid uptake and protein synthesis in muscle and chondrocytes, conserving lean tissue during a fast while fat is used.</li>\n<li><b>Growth, and the paradox.</b> Growth hormone is released in fasting yet promotes growth. Growth needs it together with insulin (which raises IGF-1 production and lowers some IGF binding proteins) and thyroid hormone, while FGF21, released by the liver in fasting, causes growth hormone resistance. So in a fast its metabolic effects act without growth. Cortisol inhibits growth (and bone formation and collagen synthesis).</li>\n<li><b>Mechanism and timescale.</b> Growth hormone: a membrane receptor (pre-formed dimers) and JAK2; much of its growth effect through IGF-1 (the somatomedin and dual-effector hypotheses). Cortisol: an intracellular receptor that regulates transcription, so its effects take hours. Both matter more in prolonged fasting than in acute hypoglycaemia (glucagon and adrenaline act fastest).</li>\n<li><b>Too much and too little.</b> Acromegaly and Cushing’s syndrome both cause insulin resistance and diabetes. Deficiency of both growth hormone and ACTH can cause fatal hypoglycaemia in starvation or strenuous exercise. Cortisol is essential to life (its permissive effects too), growth hormone isn’t.</li>\n<li><b>Beyond metabolism, briefly.</b> Cortisol’s permissive effect on catecholamines, its anti-inflammatory and immunosuppressive effects, and its mineralocorticoid activity (11β-HSD2). Mention them only if you tie them to the comparison.</li>\n</ul>\n<p><b>What makes an essay stand out.</b> Every paragraph compares. The difference over protein is explained (spending lean tissue against conserving it). The growth paradox is resolved. And the conclusion says what the comparison shows: two hormones that share a goal in a fast, on different timescales, with different costs.</p>"
+  }
+ ]
+}

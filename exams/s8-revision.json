@@ -1,0 +1,58 @@
+{
+ "id": "s8-revision",
+ "week": 8,
+ "required": false,
+ "order": 2,
+ "title": "Supervision 8 revision essays",
+ "description": "Five more essay titles on this week’s lectures. Write one for practice, and hand it in if you’d like feedback on it.",
+ "minutes": null,
+ "suggestedMinutes": null,
+ "autoSubmit": false,
+ "spellcheck": false,
+ "showWordCount": true,
+ "clipboard": "exam",
+ "handIn": true,
+ "instructions": "<p><b>Optional, for revision.</b> These essay titles go with this week’s lectures. Only the Supervision 8 essay has to be handed in.</p><ul><li><b>Choose one</b> and write it here, as you would in the exam. Leave the others blank: you can still submit.</li><li><b>Handing in.</b> If you’d like my feedback on it, hand it in once you’ve submitted, in the same way as the work for this week. It goes into the same folder in my Google Drive.</li><li>Planning an answer to each of the others (your argument, your evidence and the order you’d put them in) is good revision too.</li><li>After you submit, <b>Review my answers</b> shows you the ground each title covers.</li><li><b>Pasting.</b> As in the exam, you can copy and paste within your work, but you can’t paste in text copied from anywhere else. Write everything in your own words.</li></ul>",
+ "questions": [
+  {
+   "id": "mechanisms",
+   "type": "essay",
+   "title": "Regulating the pH of the blood",
+   "lines": 18,
+   "text": "<p>By what mechanisms is the pH of the blood regulated?</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>Buffers</b>: the bicarbonate system (an open system: physiological buffering), phosphate, plasma proteins, haemoglobin (with the Haldane effect, in CO<sub>2</sub> transport), and intracellular proteins in the longer term.</li><li><b>The lungs</b>: chemoreceptors, central and peripheral; the control of PCO<sub>2</sub>; respiratory compensation.</li><li><b>The kidneys</b>: reabsorbing filtered HCO<sub>3</sub><sup>−</sup>; making new HCO<sub>3</sub><sup>−</sup> from glutamine; titratable acid; HCO<sub>3</sub><sup>−</sup> secretion in alkalosis; what regulates H<sup>+</sup> secretion (plasma HCO<sub>3</sub><sup>−</sup> and pH, PCO<sub>2</sub>, the filtered load, K<sup>+</sup>, ECF volume, angiotensin II and aldosterone).</li><li><b>The liver</b>: urea or glutamine. And how they work together over seconds, minutes and days.</li></ul>"
+  },
+  {
+   "id": "acidosis",
+   "type": "essay",
+   "title": "Acidosis",
+   "lines": 18,
+   "text": "<p>How may acidosis arise? How is it compensated for?</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>Respiratory acidosis</b>: hypoventilation (lung disease, weak respiratory muscles, opioids and other drugs that depress the respiratory centre), so PCO<sub>2</sub> rises; it can develop fast, so the uncompensated state is seen. Renal and hepatic compensation over days: more H<sup>+</sup> secretion (CO<sub>2</sub> acidifies the tubule cells) and more new HCO<sub>3</sub><sup>−</sup>; the lecture’s example: pH 7.30, HCO<sub>3</sub><sup>−</sup> 40 mM, PCO<sub>2</sub> 80 mmHg.</li><li><b>Metabolic acidosis</b>: ketoacidosis (insulin lack; acetoacetic and β-hydroxybutyric acids), lactic acidosis (heavy exercise, shock), renal failure, loss of HCO<sub>3</sub><sup>−</sup> (diarrhoea), hyperkalaemia. Respiratory compensation develops with it (the PCO<sub>2</sub> falls about 1.2 mmHg per mM fall in HCO<sub>3</sub><sup>−</sup>; deep, rapid Kussmaul breathing), then renal correction with the liver’s glutamine.</li><li><b>The consequences</b>: K<sup>+</sup> leaves cells (hyperkalaemia); effects on the heart, on enzymes and on haemoglobin’s affinity for O<sub>2</sub> (the Bohr effect).</li><li>A pH–bicarbonate diagram makes a good figure for this title.</li></ul>"
+  },
+  {
+   "id": "cellular",
+   "type": "essay",
+   "title": "Cells and the ECF",
+   "lines": 18,
+   "text": "<p>Discuss the mechanisms that regulate cellular and extracellular pH.</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>Intracellular pH</b> (about 7.1–7.2): intracellular buffers (proteins, phosphates); membrane transporters that extrude acid (the Na<sup>+</sup>/H<sup>+</sup> exchanger, Na<sup>+</sup>-coupled HCO<sub>3</sub><sup>−</sup> transport) and load it (Cl<sup>−</sup>/HCO<sub>3</sub><sup>−</sup> exchange); CO<sub>2</sub> crosses membranes easily, H<sup>+</sup> doesn’t.</li><li><b>Extracellular pH</b>: buffers, the lungs and the kidneys, as in the other titles.</li><li><b>Links between them</b>: tubule cells sense their own pH, and it sets their H<sup>+</sup> secretion; K<sup>+</sup> and H<sup>+</sup> exchange across cell membranes (hypokalaemia acidifies cells and causes a metabolic alkalosis); the central chemoreceptors sense the pH of the brain’s interstitial fluid; intracellular proteins buffer extracellular acid in the long term.</li><li><b>A special case</b>: the red cell, with carbonic anhydrase and the chloride shift, carries CO<sub>2</sub> and buffers H<sup>+</sup> with haemoglobin.</li></ul>"
+  },
+  {
+   "id": "nephron",
+   "type": "essay",
+   "title": "The kidney and acid–base balance",
+   "lines": 18,
+   "text": "<p>Discuss the role of the kidney in acid–base balance, contrasting the functions of the proximal and distal parts of the nephron.</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>Proximal tubule</b>: most of the filtered HCO<sub>3</sub><sup>−</sup> (about 85%) is reabsorbed, by secondary active H<sup>+</sup> secretion (NHE3) with luminal and cellular carbonic anhydrase, and NBC1 at the basolateral membrane; a large flux, but a small gradient (it can’t make the fluid very acid); glutamine catabolism makes NH<sub>4</sub><sup>+</sup> and new HCO<sub>3</sub><sup>−</sup>.</li><li><b>The loop of Henle</b>: 10–15% of filtered HCO<sub>3</sub><sup>−</sup>; NH<sub>4</sub><sup>+</sup> reabsorbed in the thick ascending limb (on NKCC2 and K<sup>+</sup> channels, and paracellularly), building up NH<sub>4</sub><sup>+</sup> in the medulla.</li><li><b>Distal tubule and collecting duct</b>: type A intercalated cells secrete H<sup>+</sup> by primary active transport (the H<sup>+</sup>-ATPase and the H<sup>+</sup>/K<sup>+</sup>-ATPase): a small flux, but a steep gradient, down to a urine pH of about 4.5; titratable acid; NH<sub>3</sub> secreted and trapped as NH<sub>4</sub><sup>+</sup>; type B cells secrete HCO<sub>3</sub><sup>−</sup> in alkalosis.</li><li><b>The contrast</b>: bulk and fixed against fine and regulated, as for Na<sup>+</sup>; leaky against tight epithelia; how each is regulated (pH, PCO<sub>2</sub>, K<sup>+</sup>, angiotensin II, aldosterone).</li></ul>"
+  },
+  {
+   "id": "compartments",
+   "type": "essay",
+   "title": "pH in the fluid compartments",
+   "lines": 18,
+   "text": "<p>How is the pH in the various extracellular fluid compartments regulated? Illustrate your answer with reference to one named example of an acidosis and one named example of an alkalosis.</p>",
+   "guidance": "<p>Here are some points to consider. It isn’t a model answer.</p><ul><li><b>The compartments</b>: plasma, interstitial fluid and the CSF, which has little protein and so little non-bicarbonate buffer, and is separated from the blood by the blood–brain barrier, which CO<sub>2</sub> crosses easily but HCO<sub>3</sub><sup>−</sup> doesn’t; that’s why the central chemoreceptors respond so quickly to PCO<sub>2</sub>.</li><li><b>The mechanisms</b>: buffers, the lungs and the kidneys, and the liver; transport of HCO<sub>3</sub><sup>−</sup> into and out of the CSF over hours to days.</li><li><b>An acidosis</b>: diabetic ketoacidosis, say, from its cause through respiratory compensation to renal correction; or a respiratory acidosis in lung disease.</li><li><b>An alkalosis</b>: altitude (respiratory, compensated by the kidneys, and the CSF’s HCO<sub>3</sub><sup>−</sup> adjusts too, which lets ventilation rise further); or vomiting (metabolic: gastric H<sup>+</sup> lost while its HCO<sub>3</sub><sup>−</sup> goes into the blood; hypoventilation; volume and K<sup>+</sup> depletion keep it going).</li></ul>"
+  }
+ ]
+}
