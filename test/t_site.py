@@ -1,12 +1,13 @@
 """The physiology supervisions site before any supervision's work is added: the landing page (eight tiles, each coming
 soon and opening the workbench's guide; the site's name, course and supervisor; the student's name, shared by every
 page), the guide (the site's name in its top bar, Supervision work first among the tabs) and the site's own storage
-(physsup, apart from the BMS sites'). Then a paper to hand in, on a stand-in for a supervision's page (week 1) – as
-Supervision 1's essay will be – first as the site is now, with no hand-in script yet (it is written, submitted and
-downloaded, and nothing asks for a password), then with a hand-in script's address in config.js, through a stand-in
-for the script (so that nothing is handed in): a wrong password, then the receipt; what is sent (the Word document is
-opened and checked) and that the password is kept nowhere. Given the hand-in password as PHYS_HANDIN_PASSWORD, it
-checks that it is in none of the site's files.
+(physsup, apart from the BMS sites'); opening them sends nothing to the hand-in script. Then a paper to hand in, on a
+stand-in for a supervision's page (week 1) – as Supervision 1's essay will be – first with no hand-in script (config.js
+served with none: it is written, submitted and downloaded, and nothing asks for a password), then with the site's own
+hand-in script, the address in config.js (or a stand-in's, if it has none), answered by a stand-in for the script, so
+that nothing reaches Google: a wrong password, then the receipt; what is sent (the Word document is opened and
+checked) and that the password is kept nowhere. Given the hand-in password as PHYS_HANDIN_PASSWORD, it checks that it
+is in none of the site's files.
 Run:  python3 test/t_site.py   (screenshots in test/out/site-*.png)"""
 import base64
 import io
@@ -21,7 +22,14 @@ from h import Page, check, done, OUT, SITE
 NAME = 'Ada Lovelace'
 E = 'MG.app.exam'
 TEST_PW = 'the-stand-in-password'   # (the stand-in's: the real password is never in the tests)
-SCRIPT = 'https://script.google.com/macros/s/AKfycbTEST-physiology-stand-in/exec'
+SCRIPT = 'https://script.google.com/macros/s/AKfycbTEST-physiology-stand-in/exec'   # (for when config.js has none)
+NOTHING = []   # what was sent to Google where nothing should be
+
+
+def nowhere(route):
+    """stands between the pages and Google where nothing should be sent: it keeps what was, and sends nothing on"""
+    NOTHING.append((route.request.method, route.request.url))
+    route.abort()
 
 
 def read(path):
@@ -38,10 +46,13 @@ def no_errors(p, where):
 cfg = read('assets/js/config.js')
 check("storePrefix: 'physsup'" in cfg, 'config.js: the site saves under its own prefix, physsup')
 check(re.search(r"handIn: \{\s*to: 'Tim Hearn',\s*password: true,", cfg) is not None, 'config.js: work is handed in to Tim Hearn, with a password')
-m = re.search(r"script: '([^']*)'", cfg)
+# (the setting itself, at the start of its line in handIn: not the comments that mention it)
+SCRIPT_RX = re.compile(r"^(\s+script: )'([^']*)'", re.M)
+m = SCRIPT_RX.search(cfg)
 check(m is not None and 'AKfycbxeCW2Orw3iCkQb5IPVtyGfB2' not in cfg, 'config.js: the hand-in script isn’t the BMS supervisions’ one')
-LIVE = m.group(1) if m else ''
-check(LIVE == '' or re.match(r'https://script\.google\.com/macros/s/[\w-]+/exec$', LIVE), f'config.js: the hand-in script is a web app of Apps Script, or not set yet ({LIVE[:50] or "not set"})')
+LIVE = m.group(2) if m else ''
+check(LIVE == '' or re.match(r'https://script\.google\.com/macros/s/[\w-]+/exec$', LIVE), f'config.js: the hand-in script is a web app of Apps Script, or not set ({LIVE[:50] or "not set"})')
+cfg_none = SCRIPT_RX.sub(r"\1''", cfg)   # (config.js with no hand-in script)
 for f in ('index.html', 'workbench.html'):
     t = read(f)
     check('BMS supervisions' not in t and 'bmssup' not in t and 'BMS-supervisions' not in t, f'{f} names nothing of the BMS supervisions')
@@ -109,6 +120,8 @@ def docx_text(raw):
 # ====================================================================== the landing page
 p = Page(width=1440, height=900, extra=EXTRA)
 P = p.p
+p.ctx.route('https://script.google.com/**', nowhere)
+p.ctx.route('https://script.googleusercontent.com/**', nowhere)
 p.open('index.html')
 p.js("() => { localStorage.clear(); sessionStorage.clear(); }")
 p.open('index.html')
@@ -158,40 +171,50 @@ chs = p.js("() => document.querySelectorAll('.chapter').length")
 check(chs == 12, f'the guide has its twelve chapters: {chs}')
 p.shot('site-guide')
 no_errors(p, 'the guide')
+check(not NOTHING, f'opening the landing page and the guide sends nothing to the hand-in script: {NOTHING}')
+p.close()
 
-# ====================================================================== a paper to hand in, with no hand-in script yet
+# ====================================================================== a paper to hand in, with no hand-in script
+# (as when config.js has none: what students are told, and that they can still download their work)
+p = Page(width=1440, height=900, extra=dict(EXTRA, **{'assets/js/config.js': (cfg_none, 'text/javascript')}))
+P = p.p
+p.ctx.route('https://script.google.com/**', nowhere)
+p.ctx.route('https://script.googleusercontent.com/**', nowhere)
 p.open('supervision-1.html')
+p.js(f"() => MG.user.setFullName('{NAME}')")
 p.js("() => MG.app.showWorkbench('exam')")
 p.wait(f"() => {E} && document.querySelectorAll('.ex-card').length >= 4", timeout=30000)
 cards = p.js("() => [...document.querySelectorAll('.ex-card')].map(c => c.dataset.paper + ':' + (c.querySelector('.ex-badge') ? c.querySelector('.ex-badge').textContent : ''))")
 check(cards[0] == 't-essay:To hand in', f'on a supervision’s page its paper to hand in comes first: {cards[:2]}')
 p.shot('site-papers')
 home = p.js("() => document.querySelector('.ex-home').innerText")
-if not LIVE:
-    check('then download it as a Word document and send it to your supervisor' in home and 'password' not in home and 'Google Drive' not in home,
-          f'with no hand-in script yet, Supervision work says to download the work and send it (no password, no Drive): {home[:200]!r}')
+check('then download it as a Word document and send it to your supervisor' in home and 'password' not in home and 'Google Drive' not in home,
+      f'with no hand-in script yet, Supervision work says to download the work and send it (no password, no Drive): {home[:200]!r}')
 sc, mt = write_and_submit(p, P)
-if not LIVE:
-    check('password' not in sc.lower(), 'the paper’s first page asks for no password')
-    check('hand it in on the next page' not in mt, f'submitting doesn’t promise a hand-in: {mt[-100:]!r}')
-    rc = p.js("() => document.querySelector('.ex-receipt').innerText")
-    check(not p.js("() => !!document.querySelector('.ex-receipt .ex-hi')") and 'Nothing has been sent anywhere. To hand your work in, download it and send it yourself.' in rc,
-          'the receipt has no hand-in box: it says that nothing was sent, and to download the work')
-    with P.expect_download() as dl:
-        P.locator('.ex-recacts .btn:has-text("Download submission")').click()
-        P.locator('.popmenu button:has-text("Word document")').click()
-    raw = open(dl.value.path(), 'rb').read()
-    check(dl.value.suggested_filename == 'supervision-1-essay-ada-lovelace.docx' and NAME in docx_text(raw) and 'aquaporin 2' in docx_text(raw),
-          f'the Word document has the student’s name and the essay: {dl.value.suggested_filename}')
-    st = p.js("() => MG.siteStore.get('paper:t-essay')") or {}
-    check(st.get('started') and st.get('submitted') and st.get('downloaded') and not st.get('handedIn'), f'the site remembers what was done with it: {sorted(st)}')
-    p.shot('site-receipt-no-script')
+check('password' not in sc.lower(), 'the paper’s first page asks for no password')
+check('hand it in on the next page' not in mt, f'submitting doesn’t promise a hand-in: {mt[-100:]!r}')
+rc = p.js("() => document.querySelector('.ex-receipt').innerText")
+check(not p.js("() => !!document.querySelector('.ex-receipt .ex-hi')") and 'Nothing has been sent anywhere. To hand your work in, download it and send it yourself.' in rc,
+      'the receipt has no hand-in box: it says that nothing was sent, and to download the work')
+with P.expect_download() as dl:
+    P.locator('.ex-recacts .btn:has-text("Download submission")').click()
+    P.locator('.popmenu button:has-text("Word document")').click()
+raw = open(dl.value.path(), 'rb').read()
+check(dl.value.suggested_filename == 'supervision-1-essay-ada-lovelace.docx' and NAME in docx_text(raw) and 'aquaporin 2' in docx_text(raw),
+      f'the Word document has the student’s name and the essay: {dl.value.suggested_filename}')
+st = p.js("() => MG.siteStore.get('paper:t-essay')") or {}
+check(st.get('started') and st.get('submitted') and st.get('downloaded') and not st.get('handedIn'), f'the site remembers what was done with it: {sorted(st)}')
+p.shot('site-receipt-no-script')
 no_errors(p, 'a paper to hand in, with no hand-in script')
+check(not NOTHING, f'with no hand-in script, nothing is sent to Google: {NOTHING}')
 p.close()
 
-# ====================================================================== with a hand-in script (a stand-in)
-cfg_test = re.sub(r"script: '[^']*'", f"script: '{SCRIPT}'", cfg)
-assert SCRIPT in cfg_test
+# ====================================================================== with the site's hand-in script
+# (its address in config.js – or, if it has none, a stand-in's – answered by a stand-in for the script, so that nothing
+# reaches Google: the tests hand nothing in)
+URL = LIVE or SCRIPT
+cfg_test = SCRIPT_RX.sub(lambda x: x.group(1) + "'" + SCRIPT + "'", cfg)
+assert SCRIPT in cfg_test and len(SCRIPT_RX.findall(cfg)) == 1 and SCRIPT_RX.search(cfg_none).group(2) == ''
 
 
 class Script:
@@ -217,9 +240,9 @@ class Script:
         route.fulfill(status=200, headers=dict(cors, **{'Content-Type': 'application/json; charset=utf-8'}), body=json.dumps(r))
 
 
-p = Page(width=1440, height=900, extra=dict(EXTRA, **{'assets/js/config.js': (cfg_test, 'text/javascript')}))
+p = Page(width=1440, height=900, extra=EXTRA if LIVE else dict(EXTRA, **{'assets/js/config.js': (cfg_test, 'text/javascript')}))
 P = p.p
-S = Script(SCRIPT)
+S = Script(URL)
 p.ctx.route('https://script.google.com/**', S)
 p.ctx.route('https://script.googleusercontent.com/**', lambda r: r.abort())
 p.open('supervision-1.html')
@@ -254,8 +277,8 @@ send(TEST_PW)
 p.wait(f"() => document.querySelector('{RX}.handed')", timeout=20000)
 hdr, d = S.posts[-1]
 R = S.replies[-1]
-check(R.get('ok') and all(mth == 'POST' and u == SCRIPT for mth, u in S.calls) and hdr.get('content-type', '').startswith('text/plain'),
-      'the right password: it is sent to the hand-in script, as a POST of text (no preflight)')
+check(R.get('ok') and all(mth == 'POST' and u == URL for mth, u in S.calls) and hdr.get('content-type', '').startswith('text/plain'),
+      f'the right password: it is sent to the hand-in script ({"the site’s own, in config.js" if LIVE else "a stand-in’s"}), as a POST of text (no preflight)')
 check(d.get('paper') == 't-essay' and d.get('week') == 1 and d.get('name') == NAME and d.get('site') == p.base + 'supervision-1.html' and d.get('words', 0) > 100,
       f'with the paper, its supervision, the student, the words and this site’s page: { {k: v for k, v in d.items() if k not in ("file", "password")} }')
 raw = base64.b64decode((d.get('file') or {}).get('data') or '')
@@ -278,11 +301,14 @@ p.close()
 
 # ====================================================================== on a phone
 m = Page(width=390, height=844, mobile=True)
+m.ctx.route('https://script.google.com/**', nowhere)
+m.ctx.route('https://script.googleusercontent.com/**', nowhere)
 m.open('index.html')
 cols = m.js("() => getComputedStyle(document.querySelector('.tiles')).gridTemplateColumns.split(' ').length")
 wide = m.js("() => document.documentElement.scrollWidth <= innerWidth + 1")
 check(cols == 1 and wide, f'on a phone, the tiles are in one column and nothing is wider than the screen ({cols} column)')
 m.shot('site-landing-phone')
 no_errors(m, 'the landing page on a phone')
+check(not NOTHING, f'nothing was sent to Google where nothing should be: {NOTHING}')
 m.close()
 done()

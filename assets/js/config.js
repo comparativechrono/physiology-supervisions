@@ -42,13 +42,14 @@ window.MG_CONFIG = {
        supervisor's Google account (handin/README.md says how). The site sends the Word document to it, with the
        password that the student types; it checks the password, saves the document in the supervisor's Google Drive
        and sends back a receipt. This site has a hand-in script of its own, not the BMS supervisions' one, so that
-       the physiology work, its password and its list are kept apart from theirs. Until its address (ending in /exec)
-       is put here, nothing is handed in through the site: students can still download their work as a Word document.
+       the physiology work, its password and its list are kept apart from theirs (its address says "Physiology
+       supervisions hand-in" when it is opened). Without an address here (script: ''), nothing is handed in through
+       the site: students can still download their work as a Word document.
      to: who the work goes to; password: whether students need a password. */
   handIn: {
     to: 'Tim Hearn',
     password: true,
-    script: ''
+    script: 'https://script.google.com/macros/s/AKfycbyFAJYE-AOgMFvfY-L8nTBABA0vIErxq3-zm6aKOPWlGedqLDZm-nJaXrsseZF_SAuY/exec'
   },
 
   /* The examples of the Diagrams and Circuits tabs. */
